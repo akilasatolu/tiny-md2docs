@@ -1,0 +1,130 @@
+.tm2d-sidebar {
+  position: sticky;
+  top: $tm2d-header-height;
+  flex: 0 0 $tm2d-sidebar-width;
+  width: $tm2d-sidebar-width;
+  max-height: calc(100vh - #{$tm2d-header-height});
+  overflow-y: auto;
+  padding: 24px 12px 48px;
+  font-size: 14px;
+  line-height: 1.5;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: var(--tm2d-muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      margin-left: auto;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(-45deg);
+    }
+
+    &:hover {
+      color: var(--tm2d-text);
+    }
+  }
+
+  details[open] > summary::after {
+    transform: rotate(45deg);
+  }
+}
+
+.tm2d-nav__group {
+  margin-top: 8px;
+}
+
+.tm2d-nav__group--sub {
+  margin: 0 0 0 12px;
+
+  summary {
+    font-size: 13px;
+    letter-spacing: 0;
+  }
+}
+
+.tm2d-nav__link {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: var(--tm2d-text);
+
+  &:hover {
+    background: var(--tm2d-subtle);
+    text-decoration: none;
+  }
+
+  &[aria-current="page"] {
+    background: var(--tm2d-accent-weak);
+    color: var(--tm2d-accent);
+    font-weight: 600;
+  }
+}
+
+.tm2d-backdrop {
+  display: none;
+}
+
+// Narrow screens: the sidebar becomes a drawer opened by the menu button.
+@media (max-width: $tm2d-narrow) {
+  .tm2d-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 40;
+    width: 300px;
+    max-width: 85vw;
+    max-height: none;
+    background: var(--tm2d-bg);
+    border-right: 1px solid var(--tm2d-border);
+    transform: translateX(-100%);
+    visibility: hidden;
+    // Hide after the slide-out; show at once on open so focus can move in.
+    transition: transform 0.2s ease, visibility 0s linear 0.2s;
+
+    &.is-open {
+      transform: none;
+      visibility: visible;
+      transition: transform 0.2s ease;
+    }
+  }
+
+  .tm2d-backdrop:not([hidden]) {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    background: rgba(0, 0, 0, 0.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tm2d-sidebar {
+    transition: none;
+  }
+}

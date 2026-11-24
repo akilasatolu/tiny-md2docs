@@ -1,0 +1,29 @@
+---
+layout: null
+---
+{%- if site.theme_options.search == false -%}
+[]
+{%- else -%}
+{%- assign _tm2d_limit = site.theme_options.search_content_limit | default: 5000 -%}
+{%- assign _tm2d_id = 0 -%}
+[
+{%- for p in site.html_pages -%}
+  {%- if p.search_exclude == true or p.url == "/404.html" -%}{%- continue -%}{%- endif -%}
+  {%- assign _tm2d_head = p.url | slice: 0, 8 -%}
+  {%- if _tm2d_head == "/assets/" -%}{%- continue -%}{%- endif -%}
+  {%- assign _tm2d_html = p.content | markdownify -%}
+  {%- include headings.html html=_tm2d_html -%}
+  {%- assign _tm2d_hs = "" | split: "" -%}
+  {%- for _h in tm2d_headings -%}
+    {%- assign _tm2d_ht = _h | split: "␟" | last -%}
+    {%- assign _tm2d_hs = _tm2d_hs | push: _tm2d_ht -%}
+  {%- endfor -%}
+  {%- assign _tm2d_title = p.title | default: "" -%}
+  {%- if _tm2d_title == "" -%}{%- assign _tm2d_title = p.name | split: "." | first -%}{%- endif -%}
+  {%- assign _tm2d_text = _tm2d_html | strip_html | normalize_whitespace | strip | slice: 0, _tm2d_limit -%}
+  {%- if _tm2d_id > 0 %},{% endif %}
+{"id":{{ _tm2d_id }},"title":{{ _tm2d_title | jsonify }},"url":{{ p.url | relative_url | jsonify }},"headings":{{ _tm2d_hs | jsonify }},"content":{{ _tm2d_text | jsonify }},"lang":{{ p.lang | default: site.lang | default: "ja" | jsonify }}}
+  {%- assign _tm2d_id = _tm2d_id | plus: 1 -%}
+{%- endfor %}
+]
+{%- endif %}

@@ -1,0 +1,12 @@
+{%- comment -%}
+  URL を比べるための形にそろえ、tm2d_url_key に入れる。
+  末尾の index.html を除く(/index.html → /、/guide/index.html → /guide/)。
+  使い方: {% include url-key.html url=page.url %} のあと、すぐに tm2d_url_key を使うか写す。
+{%- endcomment -%}
+{%- assign _tm2d_tail = include.url | slice: -10, 10 -%}
+{%- if _tm2d_tail == "index.html" -%}
+  {%- assign _tm2d_len = include.url | size | minus: 10 -%}
+  {%- assign tm2d_url_key = include.url | slice: 0, _tm2d_len -%}
+{%- else -%}
+  {%- assign tm2d_url_key = include.url -%}
+{%- endif -%}

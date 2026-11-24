@@ -1,0 +1,22 @@
+- title: はじめに
+  children:
+    - title: 概要
+      url: /
+    - title: インストール
+      url: /getting-started/install.html
+- title: 使い方
+  children:
+    - title: 設定
+      url: /guide/config.html
+    - title: サイドバー
+      url: /guide/sidebar.html
+    - title: 検索
+      url: /guide/search.html
+    - title: 色とダークモード
+      url: /guide/colors.html
+- title: リファレンス
+  children:
+    - title: theme_options
+      url: /reference/theme-options.html
+    - title: front matter
+      url: /reference/front-matter.html

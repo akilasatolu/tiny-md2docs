@@ -1,0 +1,67 @@
+// Code colors for rouge. Each color has 4.5:1 or more on --tm2d-subtle.
+:root {
+  --tm2d-code-comment: #5B6168;
+  --tm2d-code-keyword: #8C2F9E;
+  --tm2d-code-string: #1A6B35;
+  --tm2d-code-number: #9A4A00;
+  --tm2d-code-name: #1E5AA8;
+  --tm2d-code-attr: #7A5300;
+}
+
+@mixin tm2d-code-dark {
+  --tm2d-code-comment: #A3AAB2;
+  --tm2d-code-keyword: #D9A6F2;
+  --tm2d-code-string: #8FD69B;
+  --tm2d-code-number: #F2A766;
+  --tm2d-code-name: #7DB1F0;
+  --tm2d-code-attr: #E8B65A;
+}
+
+:root[data-theme="dark"] {
+  @include tm2d-code-dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    @include tm2d-code-dark;
+  }
+}
+
+.highlight {
+  .c, .c1, .cm, .cs, .cp, .cpf {
+    color: var(--tm2d-code-comment);
+    font-style: italic;
+  }
+
+  .k, .kc, .kd, .kn, .kp, .kr, .kt, .ow {
+    color: var(--tm2d-code-keyword);
+  }
+
+  .s, .s1, .s2, .sa, .sb, .sc, .sd, .se, .sh, .si, .sr, .ss, .sx, .dl {
+    color: var(--tm2d-code-string);
+  }
+
+  .m, .mb, .mf, .mh, .mi, .mo, .il, .no {
+    color: var(--tm2d-code-number);
+  }
+
+  .nf, .fm, .nc, .nb, .bp, .nt, .nn {
+    color: var(--tm2d-code-name);
+  }
+
+  .na, .nv, .vc, .vg, .vi, .py {
+    color: var(--tm2d-code-attr);
+  }
+
+  .gd {
+    color: var(--tm2d-code-number);
+  }
+
+  .gi {
+    color: var(--tm2d-code-string);
+  }
+
+  .err {
+    color: inherit;
+  }
+}

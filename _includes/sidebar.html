@@ -1,0 +1,31 @@
+{%- comment -%}
+  サイドバー。先に nav-order.html を include しておく。
+  直下のページはグループの外、グループとサブグループは details で出す。
+{%- endcomment -%}
+<div class="tm2d-backdrop" data-tm2d-backdrop hidden></div>
+<nav id="tm2d-sidebar" class="tm2d-sidebar" aria-label="{% include t.html key="nav_label" %}">
+<ul class="tm2d-nav">
+{%- assign _tm2d_pg = "" -%}
+{%- assign _tm2d_ps = "" -%}
+{%- for _i in tm2d_nav_items -%}
+  {%- assign _f = _i | split: "␟" -%}
+  {%- if _f[4] != _tm2d_pg or _f[5] != _tm2d_ps -%}
+    {%- if _tm2d_ps != "" %}</ul></details></li>{% endif -%}
+    {%- if _f[4] != _tm2d_pg -%}
+      {%- if _tm2d_pg != "" %}</ul></details></li>{% endif -%}
+      {%- if _f[4] != "" %}
+<li class="tm2d-nav__group"><details{% if _f[4] == tm2d_current_group %} open{% endif %}><summary>{{ _f[4] | escape }}</summary><ul>
+      {%- endif -%}
+    {%- endif -%}
+    {%- if _f[5] != "" %}
+<li class="tm2d-nav__group tm2d-nav__group--sub"><details{% if _f[4] == tm2d_current_group and _f[5] == tm2d_current_subgroup %} open{% endif %}><summary>{{ _f[5] | escape }}</summary><ul>
+    {%- endif -%}
+    {%- assign _tm2d_pg = _f[4] -%}
+    {%- assign _tm2d_ps = _f[5] -%}
+  {%- endif %}
+<li><a class="tm2d-nav__link" href="{{ _f[1] | relative_url }}"{% if forloop.index0 == tm2d_current_index %} aria-current="page"{% endif %}>{{ _f[3] | escape }}</a></li>
+{%- endfor -%}
+{%- if _tm2d_ps != "" %}</ul></details></li>{% endif -%}
+{%- if _tm2d_pg != "" %}</ul></details></li>{% endif %}
+</ul>
+</nav>

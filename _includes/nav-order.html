@@ -1,0 +1,90 @@
+{%- comment -%}
+  ナビの並びを作る。作る変数:
+  - tm2d_nav_items: 並べた項目の配列。各項目は「␟」区切りの文字列で、
+    split: "␟" すると [0]並びのキー [1]URL(baseurl なし) [2]比べるための URL [3]表示名 [4]グループ名 [5]サブグループ名 [6]終わりの印
+  - tm2d_nav_groups: グループ名の配列(出てくる順、重なりなし)
+  - tm2d_current_key: 今のページの URL をそろえたもの
+  - tm2d_current_index: 今のページの項目の位置(nav にないときは nil)
+  - tm2d_current_group、tm2d_current_subgroup: 今のページのグループ名とサブグループ名
+  _data/nav.yml があればその順と名前を使い、なければフォルダから自動で作る。
+{%- endcomment -%}
+{%- assign _tm2d_r = "" -%}
+{%- assign _tm2d_n = 10000 -%}
+{%- if site.data.nav -%}
+  {%- for _a in site.data.nav -%}
+    {%- if _a.url -%}
+      {%- assign _tm2d_n = _tm2d_n | plus: 1 -%}
+      {%- include url-key.html url=_a.url -%}
+      {%- capture _tm2d_rec -%}{{ _tm2d_n }}␟{{ _a.url }}␟{{ tm2d_url_key }}␟{{ _a.title }}␟␟␟.{%- endcapture -%}
+      {%- assign _tm2d_r = _tm2d_r | append: _tm2d_rec | append: "␞" -%}
+    {%- endif -%}
+    {%- for _b in _a.children -%}
+      {%- if _b.url -%}
+        {%- assign _tm2d_n = _tm2d_n | plus: 1 -%}
+        {%- include url-key.html url=_b.url -%}
+        {%- capture _tm2d_rec -%}{{ _tm2d_n }}␟{{ _b.url }}␟{{ tm2d_url_key }}␟{{ _b.title }}␟{{ _a.title }}␟␟.{%- endcapture -%}
+        {%- assign _tm2d_r = _tm2d_r | append: _tm2d_rec | append: "␞" -%}
+      {%- endif -%}
+      {%- for _c in _b.children -%}
+        {%- if _c.url -%}
+          {%- assign _tm2d_n = _tm2d_n | plus: 1 -%}
+          {%- include url-key.html url=_c.url -%}
+          {%- capture _tm2d_rec -%}{{ _tm2d_n }}␟{{ _c.url }}␟{{ tm2d_url_key }}␟{{ _c.title }}␟{{ _a.title }}␟{{ _b.title }}␟.{%- endcapture -%}
+          {%- assign _tm2d_r = _tm2d_r | append: _tm2d_rec | append: "␞" -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endfor -%}
+  {%- endfor -%}
+{%- else -%}
+  {%- for _p in site.html_pages -%}
+    {%- if _p.nav_exclude == true or _p.url == "/404.html" -%}{%- continue -%}{%- endif -%}
+    {%- assign _tm2d_head = _p.url | slice: 0, 8 -%}
+    {%- if _tm2d_head == "/assets/" -%}{%- continue -%}{%- endif -%}
+    {%- comment -%} P2 の多言語: ここで今のページと同じ lang のものだけに絞る。 {%- endcomment -%}
+    {%- assign _tm2d_parts = _p.path | split: "/" -%}
+    {%- assign _tm2d_depth = _tm2d_parts | size -%}
+    {%- assign _tm2d_order = _p.nav_order | default: 9999 | plus: 10000 -%}
+    {%- assign _tm2d_title = _p.title | default: "" -%}
+    {%- if _tm2d_title == "" -%}{%- assign _tm2d_title = _p.name | split: "." | first -%}{%- endif -%}
+    {%- if _tm2d_depth == 1 -%}
+      {%- if _p.url == "/" -%}{%- assign _tm2d_top = "0" -%}{%- else -%}{%- assign _tm2d_top = "1" -%}{%- endif -%}
+      {%- capture _tm2d_rec -%}0-{{ _tm2d_top }}-{{ _tm2d_order }}-{{ _p.path }}␟{{ _p.url }}␟{{ _p.url }}␟{{ _tm2d_title }}␟␟␟.{%- endcapture -%}
+    {%- else -%}
+      {%- if _p.name == "index.md" -%}{%- continue -%}{%- endif -%}
+      {%- assign _tm2d_gdir = _tm2d_parts | first -%}
+      {%- assign _tm2d_gpath = _tm2d_gdir | prepend: "/" | append: "/" -%}
+      {%- assign _tm2d_gindex = site.html_pages | where: "dir", _tm2d_gpath | where: "name", "index.md" | first -%}
+      {%- assign _tm2d_gname = _tm2d_gindex.title | default: _tm2d_gdir -%}
+      {%- assign _tm2d_gorder = _tm2d_gindex.nav_order | default: 9999 | plus: 10000 -%}
+      {%- assign _tm2d_sdir = "" -%}
+      {%- assign _tm2d_sname = "" -%}
+      {%- assign _tm2d_sorder = "0" -%}
+      {%- if _tm2d_depth > 2 -%}
+        {%- assign _tm2d_sdir = _tm2d_parts[1] -%}
+        {%- assign _tm2d_spath = _tm2d_gpath | append: _tm2d_sdir | append: "/" -%}
+        {%- assign _tm2d_sindex = site.html_pages | where: "dir", _tm2d_spath | where: "name", "index.md" | first -%}
+        {%- assign _tm2d_sname = _tm2d_sindex.title | default: _tm2d_sdir -%}
+        {%- assign _tm2d_sorder = _tm2d_sindex.nav_order | default: 9999 | plus: 10000 -%}
+      {%- endif -%}
+      {%- capture _tm2d_rec -%}1-{{ _tm2d_gorder }}-{{ _tm2d_gdir }}-{{ _tm2d_sorder }}-{{ _tm2d_sdir }}-{{ _tm2d_order }}-{{ _p.path }}␟{{ _p.url }}␟{{ _p.url }}␟{{ _tm2d_title }}␟{{ _tm2d_gname }}␟{{ _tm2d_sname }}␟.{%- endcapture -%}
+    {%- endif -%}
+    {%- assign _tm2d_r = _tm2d_r | append: _tm2d_rec | append: "␞" -%}
+  {%- endfor -%}
+{%- endif -%}
+{%- assign tm2d_nav_items = _tm2d_r | split: "␞" | sort -%}
+{%- include url-key.html url=page.url -%}
+{%- assign tm2d_current_key = tm2d_url_key -%}
+{%- assign tm2d_current_index = nil -%}
+{%- assign tm2d_current_group = nil -%}
+{%- assign tm2d_current_subgroup = nil -%}
+{%- assign _tm2d_g = "" -%}
+{%- for _i in tm2d_nav_items -%}
+  {%- assign _f = _i | split: "␟" -%}
+  {%- if _f[4] != "" -%}{%- assign _tm2d_g = _tm2d_g | append: _f[4] | append: "␞" -%}{%- endif -%}
+  {%- if tm2d_current_index == nil and _f[2] == tm2d_current_key -%}
+    {%- assign tm2d_current_index = forloop.index0 -%}
+    {%- assign tm2d_current_group = _f[4] -%}
+    {%- assign tm2d_current_subgroup = _f[5] -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign tm2d_nav_groups = _tm2d_g | split: "␞" | uniq -%}

@@ -1,0 +1,23 @@
+{%- comment -%}
+  前後リンク。page.html で nav-order.html を include したあとに使う。
+{%- endcomment -%}
+{%- if site.theme_options.prev_next != false and tm2d_current_index != nil -%}
+  {%- assign _tm2d_prev = nil -%}
+  {%- if tm2d_current_index > 0 -%}
+    {%- assign _tm2d_k = tm2d_current_index | minus: 1 -%}
+    {%- assign _tm2d_prev = tm2d_nav_items[_tm2d_k] | split: "␟" -%}
+  {%- endif -%}
+  {%- assign _tm2d_k = tm2d_current_index | plus: 1 -%}
+  {%- assign _tm2d_next = tm2d_nav_items[_tm2d_k] -%}
+  {%- if _tm2d_next -%}{%- assign _tm2d_next = _tm2d_next | split: "␟" -%}{%- endif -%}
+  {%- if _tm2d_prev or _tm2d_next %}
+<div class="tm2d-pager">
+  {%- if _tm2d_prev %}
+  <a class="tm2d-pager__link tm2d-pager__link--prev" href="{{ _tm2d_prev[1] | relative_url }}"><span class="tm2d-pager__label">{% include t.html key="prev" %}</span><span class="tm2d-pager__title">{{ _tm2d_prev[3] | escape }}</span></a>
+  {%- endif -%}
+  {%- if _tm2d_next %}
+  <a class="tm2d-pager__link tm2d-pager__link--next" href="{{ _tm2d_next[1] | relative_url }}"><span class="tm2d-pager__label">{% include t.html key="next" %}</span><span class="tm2d-pager__title">{{ _tm2d_next[3] | escape }}</span></a>
+  {%- endif %}
+</div>
+  {%- endif -%}
+{%- endif -%}

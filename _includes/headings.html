@@ -1,0 +1,20 @@
+{%- comment -%}
+  渡された HTML(include.html)から h2 と h3 を取り出し、tm2d_headings に入れる。
+  各要素は「段␟id␟文字」の文字列。索引と目次で使う。
+{%- endcomment -%}
+{%- assign tm2d_headings = "" | split: "" -%}
+{%- assign _tm2d_hparts = include.html | split: "<h" -%}
+{%- for _hp in _tm2d_hparts offset: 1 -%}
+  {%- assign _tm2d_lv = _hp | slice: 0, 1 -%}
+  {%- if _tm2d_lv != "2" and _tm2d_lv != "3" -%}{%- continue -%}{%- endif -%}
+  {%- assign _tm2d_open = _hp | split: ">" | first -%}
+  {%- assign _tm2d_hid = "" -%}
+  {%- if _tm2d_open contains 'id="' -%}
+    {%- assign _tm2d_hid = _tm2d_open | split: 'id="' | last | split: '"' | first -%}
+  {%- endif -%}
+  {%- assign _tm2d_htext = _hp | split: "</h" | first | remove_first: _tm2d_open | remove_first: ">" | strip_html | normalize_whitespace | strip -%}
+  {%- if _tm2d_htext != "" -%}
+    {%- assign _tm2d_hrec = _tm2d_lv | append: "␟" | append: _tm2d_hid | append: "␟" | append: _tm2d_htext -%}
+    {%- assign tm2d_headings = tm2d_headings | push: _tm2d_hrec -%}
+  {%- endif -%}
+{%- endfor -%}

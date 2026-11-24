@@ -1,9 +1,15 @@
 ---
 layout: default
 ---
+{%- if site.theme_options.prev_next != false -%}
+{%- include nav-order.html -%}
+{%- endif %}
 <article class="tm2d-content">
 {%- unless content contains "<h1" or page.title == nil %}
 <h1>{{ page.title | escape }}</h1>
 {%- endunless %}
 {{ content }}
 </article>
+{%- if site.theme_options.prev_next != false %}
+{%- include pager.html %}
+{%- endif %}

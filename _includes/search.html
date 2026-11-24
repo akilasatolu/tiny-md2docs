@@ -1,0 +1,10 @@
+{%- comment -%}
+  検索窓。動きは assets/js/search-ui.js。文言は data 属性で渡す。
+{%- endcomment -%}
+<div class="tm2d-search" data-tm2d-search data-index-url="{{ '/assets/search.json' | relative_url }}" data-text-count="{% include t.html key="search_results_count" %}" data-text-none="{% include t.html key="search_no_results" %}">
+  <label class="tm2d-sr-only" for="tm2d-search-input">{% include t.html key="search_label" %}</label>
+  <input id="tm2d-search-input" class="tm2d-search__input" type="search" placeholder="{% include t.html key="search_placeholder" %}" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="tm2d-search-results">
+  <kbd class="tm2d-search__key" aria-hidden="true">/</kbd>
+  <ul id="tm2d-search-results" class="tm2d-search__results" role="listbox" aria-label="{% include t.html key="search_label" %}" hidden></ul>
+  <p class="tm2d-sr-only" aria-live="polite" data-tm2d-search-status></p>
+</div>

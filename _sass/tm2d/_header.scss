@@ -1,7 +1,11 @@
 .tm2d-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   height: $tm2d-header-height;
   padding: 0 24px;
   border-bottom: 1px solid var(--tm2d-border);
+  background: var(--tm2d-bg);
   display: flex;
   align-items: center;
   gap: 24px;
@@ -11,9 +15,11 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  min-height: 40px;
   color: var(--tm2d-text);
   font-weight: 700;
   font-size: 18px;
+  white-space: nowrap;
 
   &:hover {
     text-decoration: none;
@@ -25,6 +31,11 @@
   height: 32px;
 }
 
+.tm2d-header__search {
+  flex: 0 1 420px;
+  margin: 0 auto;
+}
+
 .tm2d-header__actions {
   margin-left: auto;
   display: flex;
@@ -32,18 +43,89 @@
   gap: 8px;
 }
 
+.tm2d-header__search + .tm2d-header__actions {
+  margin-left: 0;
+}
+
 .tm2d-header__link {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
   padding: 0 8px;
   color: var(--tm2d-muted);
   font-size: 14px;
 }
 
+// Icon-only buttons
+.tm2d-iconbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--tm2d-muted);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--tm2d-subtle);
+    color: var(--tm2d-text);
+  }
+
+  svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+.tm2d-header__menu,
+.tm2d-header__search-btn,
+.tm2d-icon-sun,
+[data-theme="dark"] .tm2d-icon-moon {
+  display: none;
+}
+
+[data-theme="dark"] .tm2d-icon-sun {
+  display: block;
+}
+
 @media (max-width: $tm2d-narrow) {
   .tm2d-header {
-    padding: 0 16px;
+    padding: 0 8px 0 4px;
+    gap: 4px;
+  }
+
+  .tm2d-header__menu,
+  .tm2d-header__search-btn {
+    display: inline-flex;
   }
 
   .tm2d-header__link {
     display: none;
+  }
+
+  .tm2d-header__search {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--tm2d-border);
+    background: var(--tm2d-bg);
+  }
+
+  .tm2d-header.is-search-open .tm2d-header__search {
+    display: block;
+  }
+
+  .tm2d-header__search + .tm2d-header__actions {
+    margin-left: auto;
   }
 }
