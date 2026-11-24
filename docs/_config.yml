@@ -2,6 +2,8 @@ remote_theme: akilasatolu/tiny-md2docs
 title: tm2d
 description: docs/ に置くだけの、小さなドキュメントテーマ
 lang: ja
+optional_front_matter:
+  remove_originals: true
 theme_options:
   logo: /assets/images/tm2d-mark.svg
   favicon: /assets/images/tm2d-mark.svg

@@ -11,10 +11,20 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 
 ## 導入
 
-`docs/_config.yml` に次の1行を書き、リポジトリの Settings → Pages で、ブランチの `/docs` フォルダを公開元にします。
+`docs/_config.yml` に次のように書き、リポジトリの Settings → Pages で、ブランチの `/docs` フォルダを公開元にします。必須は `remote_theme` の1行だけです。ほかの行は Jekyll と GitHub Pages の一般の設定で、要らなければ行ごと削除します。
 
 ```yaml
+# 使うテーマ(必須)
 remote_theme: akilasatolu/tiny-md2docs
+# サイト名。ヘッダーとブラウザのタブに出る。不要なら削除
+title: My Docs
+# サイトの説明。検索エンジンや SNS で使われる。不要なら削除
+description: 製品の使い方をまとめたドキュメント
+# ページの言語。<html lang> と画面の文言に使われる。省略すると ja。不要なら削除
+lang: ja
+# 元の .md ファイルを公開しない(HTML のページだけを公開する)。.md も公開してよければ、この2行を削除
+optional_front_matter:
+  remove_originals: true
 ```
 
 版を固定するときは、`@` のあとに版の名前を書きます。版の一覧は [CHANGELOG.md](CHANGELOG.md) にあります。
