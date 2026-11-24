@@ -1,0 +1,32 @@
+// Color values live in Sass variables (!default) and are copied into CSS variables.
+// Components use only the CSS variables (--tm2d-*).
+// Users change colors by overriding the CSS variables in docs/assets/css/style.scss.
+
+$tm2d-accent: #1E5AA8 !default;
+$tm2d-accent-weak: #E8F0FA !default;
+$tm2d-bg: #FFFFFF !default;
+$tm2d-text: #1A1D21 !default;
+$tm2d-muted: #5B6168 !default;
+$tm2d-subtle: #F5F6F4 !default;
+$tm2d-border: #E4E6E1 !default;
+$tm2d-warning: #8A5A00 !default;
+$tm2d-warning-weak: #FBF1DC !default;
+
+$tm2d-font-body: system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif !default;
+$tm2d-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !default;
+$tm2d-header-height: 56px !default;
+$tm2d-content-max-width: 760px !default;
+$tm2d-narrow: 767px !default;
+
+:root {
+  --tm2d-accent: #{$tm2d-accent};
+  --tm2d-accent-weak: #{$tm2d-accent-weak};
+  --tm2d-bg: #{$tm2d-bg};
+  --tm2d-text: #{$tm2d-text};
+  --tm2d-muted: #{$tm2d-muted};
+  --tm2d-subtle: #{$tm2d-subtle};
+  --tm2d-border: #{$tm2d-border};
+  --tm2d-link: var(--tm2d-accent);
+  --tm2d-warning: #{$tm2d-warning};
+  --tm2d-warning-weak: #{$tm2d-warning-weak};
+}

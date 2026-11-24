@@ -1,0 +1,11 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- assign _tm2d_page_title = page.title | default: "" %}
+{%- if page.url == "/" or _tm2d_page_title == "" %}
+<title>{{ site.title | escape }}</title>
+{%- elsif site.title %}
+<title>{{ page.title | escape }} | {{ site.title | escape }}</title>
+{%- else %}
+<title>{{ page.title | escape }}</title>
+{%- endif %}
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">

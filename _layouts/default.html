@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | default: 'ja' }}">
+<head>
+{% include head.html %}
+</head>
+<body>
+<a class="tm2d-skip" href="#main">{% include t.html key="skip_to_content" %}</a>
+{% include header.html %}
+<div class="tm2d-shell tm2d-shell--no-sidebar">
+<main id="main" class="tm2d-main">
+{{ content }}
+</main>
+</div>
+</body>
+</html>

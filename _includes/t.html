@@ -1,0 +1,35 @@
+{%- comment -%}
+  画面文言を出す。使い方: {% include t.html key="search_placeholder" %}
+  探す順: theme_options.strings[言語][key] → theme_options.strings[key] → 内蔵の既定値(日本語)
+{%- endcomment -%}
+{%- assign _tm2d_lang = page.lang | default: site.lang | default: "ja" -%}
+{%- assign _tm2d_s = nil -%}
+{%- if site.theme_options.strings -%}
+  {%- assign _tm2d_s = site.theme_options.strings[_tm2d_lang][include.key] | default: site.theme_options.strings[include.key] -%}
+{%- endif -%}
+{%- if _tm2d_s == nil or _tm2d_s == "" -%}
+  {%- case include.key -%}
+    {%- when "skip_to_content" -%}{%- assign _tm2d_s = "本文へ移動" -%}
+    {%- when "nav_label" -%}{%- assign _tm2d_s = "ドキュメント" -%}
+    {%- when "menu_open" -%}{%- assign _tm2d_s = "メニューを開く" -%}
+    {%- when "menu_close" -%}{%- assign _tm2d_s = "メニューを閉じる" -%}
+    {%- when "search_label" -%}{%- assign _tm2d_s = "検索" -%}
+    {%- when "search_placeholder" -%}{%- assign _tm2d_s = "ドキュメントを検索" -%}
+    {%- when "search_open" -%}{%- assign _tm2d_s = "検索を開く" -%}
+    {%- when "search_no_results" -%}{%- assign _tm2d_s = "見つかりませんでした" -%}
+    {%- when "search_results_count" -%}{%- assign _tm2d_s = "{n} 件" -%}
+    {%- when "toggle_dark" -%}{%- assign _tm2d_s = "ダークモードに切り替え" -%}
+    {%- when "toggle_light" -%}{%- assign _tm2d_s = "ライトモードに切り替え" -%}
+    {%- when "github" -%}{%- assign _tm2d_s = "GitHub" -%}
+    {%- when "toc_title" -%}{%- assign _tm2d_s = "このページの内容" -%}
+    {%- when "breadcrumb_label" -%}{%- assign _tm2d_s = "現在の位置" -%}
+    {%- when "prev" -%}{%- assign _tm2d_s = "前へ" -%}
+    {%- when "next" -%}{%- assign _tm2d_s = "次へ" -%}
+    {%- when "copy" -%}{%- assign _tm2d_s = "コピー" -%}
+    {%- when "copied" -%}{%- assign _tm2d_s = "コピーしました" -%}
+    {%- when "not_found_title" -%}{%- assign _tm2d_s = "ページが見つかりません" -%}
+    {%- when "not_found_body" -%}{%- assign _tm2d_s = "お探しのページは、移動したか削除された可能性があります。" -%}
+    {%- when "lang_switch" -%}{%- assign _tm2d_s = "言語" -%}
+  {%- endcase -%}
+{%- endif -%}
+{{- _tm2d_s -}}

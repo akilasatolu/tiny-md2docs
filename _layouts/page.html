@@ -1,0 +1,9 @@
+---
+layout: default
+---
+<article class="tm2d-content">
+{%- unless content contains "<h1" or page.title == nil %}
+<h1>{{ page.title | escape }}</h1>
+{%- endunless %}
+{{ content }}
+</article>

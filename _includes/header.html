@@ -1,0 +1,13 @@
+<header class="tm2d-header">
+  <a class="tm2d-brand" href="{{ '/' | relative_url }}">
+    {%- if site.theme_options.logo %}
+    <img class="tm2d-brand__logo" src="{{ site.theme_options.logo | relative_url }}" alt="{{ site.title | escape }}" width="32" height="32">
+    {%- endif %}
+    <span class="tm2d-brand__title">{{ site.title | escape }}</span>
+  </a>
+  <div class="tm2d-header__actions">
+    {%- if site.theme_options.github_link != false and site.github.repository_url %}
+    <a class="tm2d-header__link" href="{{ site.github.repository_url }}">{% include t.html key="github" %}</a>
+    {%- endif %}
+  </div>
+</header>
