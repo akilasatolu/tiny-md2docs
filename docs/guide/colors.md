@@ -53,3 +53,32 @@
 | `auto`(既定) | OS の設定に合わせます。ヘッダーに切り替えボタンが出て、選んだ方を覚えます |
 | `light` | いつもライトモードです。ボタンは出ません |
 | `dark` | いつもダークモードです。ボタンは出ません |
+
+## 文字と幅を変える
+
+文字と幅も、同じ `:root` の中で CSS 変数を上書きして変えます。
+
+| 変数 | 使われる場所 | 既定値 |
+| --- | --- | --- |
+| `--tm2d-font-body` | 本文の書体 | システムの書体 |
+| `--tm2d-font-heading` | 見出しの書体 | `--tm2d-font-body` と同じ |
+| `--tm2d-font-mono` | コードの書体 | システムの等幅の書体 |
+| `--tm2d-font-size` | 本文の文字の大きさ | `16px` |
+| `--tm2d-line-height` | 本文の行の高さ | `1.8` |
+| `--tm2d-sidebar-width` | サイドバーの幅 | `264px` |
+| `--tm2d-toc-width` | 右の目次の幅 | `220px` |
+| `--tm2d-content-max-width` | 本文の最大の幅 | `760px` |
+
+テーマは、外部から書体を読み込みません。Noto Sans JP などの Web フォントを使うときは、自分の `style.scss` で読み込み、`--tm2d-font-body` を上書きします。
+
+```scss
+---
+---
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
+@import "tm2d";
+
+:root {
+  --tm2d-font-body: "Noto Sans JP", sans-serif;
+}
+```

@@ -1,0 +1,13 @@
+// Callouts: write {: .note } or {: .warning } on the line after a blockquote.
+.tm2d-content blockquote {
+  &.note,
+  &.warning {
+    border-left: 4px solid var(--tm2d-accent);
+    background: var(--tm2d-accent-weak);
+  }
+
+  &.warning {
+    border-left-color: var(--tm2d-warning);
+    background: var(--tm2d-warning-weak);
+  }
+}

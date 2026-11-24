@@ -12,9 +12,9 @@ body {
   margin: 0;
   background: var(--tm2d-bg);
   color: var(--tm2d-text);
-  font-family: $tm2d-font-body;
-  font-size: 16px;
-  line-height: 1.8;
+  font-family: var(--tm2d-font-body);
+  font-size: var(--tm2d-font-size);
+  line-height: var(--tm2d-line-height);
 }
 
 a {
@@ -53,8 +53,14 @@ img {
   h2,
   h3,
   h4 {
+    font-family: var(--tm2d-font-heading);
     font-weight: 700;
     line-height: 1.4;
+  }
+
+  // Keep anchored headings clear of the sticky header.
+  [id] {
+    scroll-margin-top: $tm2d-header-height + 16px;
   }
 
   h1 {
@@ -93,7 +99,7 @@ img {
   }
 
   code {
-    font-family: $tm2d-font-mono;
+    font-family: var(--tm2d-font-mono);
     font-size: 0.875em;
     background: var(--tm2d-subtle);
     padding: 2px 6px;

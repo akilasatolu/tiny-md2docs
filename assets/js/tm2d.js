@@ -70,4 +70,50 @@
       }
     });
   }
+
+  // Copy buttons on code blocks (off when theme_options.code_copy is false).
+  var copy = d.body.dataset.tm2dCopy;
+  if (copy && navigator.clipboard) {
+    d.querySelectorAll('.tm2d-content div.highlighter-rouge').forEach(function (box) {
+      var pre = box.querySelector('pre');
+      if (!pre) return;
+      var b = d.createElement('button');
+      b.type = 'button';
+      b.className = 'tm2d-copy';
+      b.textContent = copy;
+      b.addEventListener('click', function () {
+        navigator.clipboard.writeText(pre.innerText.replace(/\n$/, '')).then(function () {
+          b.textContent = d.body.dataset.tm2dCopied;
+          b.classList.add('is-done');
+          setTimeout(function () {
+            b.textContent = copy;
+            b.classList.remove('is-done');
+          }, 2000);
+        });
+      });
+      box.appendChild(b);
+    });
+  }
+
+  // Table of contents: mark the heading being read.
+  var tocLinks = d.querySelectorAll('.tm2d-toc a[href^="#"]');
+  if (tocLinks.length && window.IntersectionObserver) {
+    var heads = [];
+    tocLinks.forEach(function (a) {
+      var h = d.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
+      if (h && heads.indexOf(h) < 0) heads.push(h);
+    });
+    var update = function () {
+      var cur = heads[0];
+      heads.forEach(function (h) {
+        if (h.getBoundingClientRect().top < 120) cur = h;
+      });
+      tocLinks.forEach(function (a) {
+        a.classList.toggle('is-active', cur && a.getAttribute('href') === '#' + cur.id);
+      });
+    };
+    var io = new IntersectionObserver(update, { rootMargin: '0px 0px -60% 0px' });
+    heads.forEach(function (h) { io.observe(h); });
+    update();
+  }
 })();

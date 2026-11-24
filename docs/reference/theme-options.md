@@ -8,15 +8,18 @@
 | `search` | `true` | `false` で検索窓と索引を消す |
 | `dark_mode` | `auto` | `auto`、`light`、`dark` のどれか |
 | `prev_next` | `true` | `false` でページ下の前後リンクを消す |
+| `toc` | `true` | `false` で目次を消す |
+| `breadcrumb` | `true` | `false` でパンくずを消す |
+| `code_copy` | `true` | `false` でコードのコピーのボタンを消す |
 | `github_link` | `true` | `false` でヘッダーの GitHub へのリンクを消す。リンクはリポジトリの URL が分かるときだけ出る |
 | `logo` | なし | ヘッダーのロゴ画像のパス。なければサイト名の文字だけ |
 | `favicon` | なし | ファビコンのパス。なければ出さない |
 | `search_content_limit` | `5000` | 索引に入れる本文の文字数の上限(1ページあたり) |
-| `strings` | なし | 画面の文言の上書き |
+| `strings` | なし | 画面の文言の上書き。言語ごとに分けて書くこともできる([多言語](../guide/i18n.md)) |
 
 ## 画面の文言
 
-`strings` に書けるキーと、既定の文言です。
+`strings` に書けるキーと、既定の文言(日本語)です。言語が `en` のページでは、英語の文言が既定になります。
 
 | キー | 既定の文言 |
 | --- | --- |
@@ -32,5 +35,12 @@
 | `toggle_dark` | ダークモードに切り替え |
 | `toggle_light` | ライトモードに切り替え |
 | `github` | GitHub |
+| `toc_title` | このページの内容 |
+| `breadcrumb_label` | 現在の位置 |
 | `prev` | 前へ |
 | `next` | 次へ |
+| `copy` | コピー |
+| `copied` | コピーしました |
+| `not_found_title` | ページが見つかりません |
+| `not_found_body` | お探しのページは、移動したか削除された可能性があります。 |
+| `lang_switch` | 言語 |

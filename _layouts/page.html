@@ -1,9 +1,11 @@
 ---
 layout: default
 ---
-{%- if site.theme_options.prev_next != false -%}
+{%- if site.theme_options.prev_next != false or site.theme_options.breadcrumb != false -%}
 {%- include nav-order.html -%}
 {%- endif %}
+{%- include breadcrumb.html %}
+{%- include toc.html html=content variant="inline" %}
 <article class="tm2d-content">
 {%- unless content contains "<h1" or page.title == nil %}
 <h1>{{ page.title | escape }}</h1>

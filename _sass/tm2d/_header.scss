@@ -56,6 +56,31 @@
   font-size: 14px;
 }
 
+.tm2d-lang {
+  display: flex;
+}
+
+.tm2d-lang__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 8px;
+  color: var(--tm2d-muted);
+  font-size: 13px;
+  font-weight: 600;
+
+  &:hover {
+    background: var(--tm2d-subtle);
+    text-decoration: none;
+  }
+
+  &[aria-current="page"] {
+    color: var(--tm2d-accent);
+  }
+}
+
 // Icon-only buttons
 .tm2d-iconbtn {
   display: inline-flex;

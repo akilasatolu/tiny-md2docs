@@ -4,7 +4,7 @@
 <head>
 {% include head.html %}
 </head>
-<body>
+<body{% if site.theme_options.code_copy != false %} data-tm2d-copy="{% include t.html key="copy" %}" data-tm2d-copied="{% include t.html key="copied" %}"{% endif %}>
 <a class="tm2d-skip" href="#main">{% include t.html key="skip_to_content" %}</a>
 {% include header.html %}
 {%- if site.theme_options.sidebar != false %}
@@ -17,6 +17,11 @@
 <main id="main" class="tm2d-main">
 {{ content }}
 </main>
+{%- capture _tm2d_side_toc %}{% include toc.html html=content variant="side" %}{% endcapture %}
+{%- assign _tm2d_side_toc = _tm2d_side_toc | strip %}
+{%- if _tm2d_side_toc != "" %}
+<aside class="tm2d-toc-col">{{ _tm2d_side_toc }}</aside>
+{%- endif %}
 </div>
 <script src="{{ '/assets/js/tm2d.js' | relative_url }}" defer></script>
 {%- if site.theme_options.search != false %}

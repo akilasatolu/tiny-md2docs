@@ -124,3 +124,31 @@ test('evaluation cases from docs/', () => {
   }
   assert.deepEqual(failed, []);
 });
+
+test('fuzzy: one edit away for words of 4+ letters, at half score', () => {
+  const ix = createIndex([
+    { id: 0, title: 'search', headings: [], content: '' },
+    { id: 1, title: 'other', headings: [], content: 'search' },
+    { id: 2, title: 'cat', headings: [], content: '' },
+  ]);
+  assert.deepEqual(ids(ix, 'serch'), [0, 1]);
+  assert.deepEqual(ids(ix, 'seacrh'), []);
+  assert.deepEqual(ids(ix, 'ca'), [2]);
+  assert.deepEqual(ids(ix, 'cot'), []);
+  const exact = ix.search('search')[0].score;
+  const fuzzy = ix.search('serch')[0].score;
+  assert.ok(fuzzy < exact);
+});
+
+test('segmenter words add score but do not change what matches', () => {
+  const docsSeg = [
+    { id: 0, title: '設定', headings: [], content: '東京都の設定' },
+    { id: 1, title: '設定', headings: [], content: '京都の設定' },
+  ];
+  const plain = createIndex(docsSeg);
+  const seg = createIndex(docsSeg, { segmenter: new Intl.Segmenter('ja', { granularity: 'word' }) });
+  assert.deepEqual(ids(plain, '京都').sort(), [0, 1]);
+  assert.deepEqual(ids(seg, '京都').sort(), [0, 1]);
+  const s = seg.search('京都');
+  assert.equal(s[0].id, 1);
+});

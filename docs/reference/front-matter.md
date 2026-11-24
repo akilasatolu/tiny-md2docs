@@ -19,3 +19,5 @@ nav_order: 1
 | `nav_exclude` | `true` でサイドバーと前後リンクに出さない |
 | `search_exclude` | `true` で検索に出さない |
 | `lang` | ページの言語。省略するとサイトの `lang` |
+| `toc` | `false` で目次を出さない |
+| `ref` | 翻訳どうしで同じ値を書くと、ヘッダーに言語の切り替えが出る |

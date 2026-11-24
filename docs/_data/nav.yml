@@ -14,6 +14,10 @@
       url: /guide/search.html
     - title: 色とダークモード
       url: /guide/colors.html
+    - title: ページの書き方
+      url: /guide/writing.html
+    - title: 多言語
+      url: /guide/i18n.html
 - title: リファレンス
   children:
     - title: theme_options

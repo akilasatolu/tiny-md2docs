@@ -18,7 +18,7 @@
 }
 
 .tm2d-content {
-  max-width: $tm2d-content-max-width;
+  max-width: var(--tm2d-content-max-width);
   margin: 0 auto;
 }
 
@@ -26,7 +26,7 @@
 .tm2d-pager {
   display: flex;
   gap: 16px;
-  max-width: $tm2d-content-max-width;
+  max-width: var(--tm2d-content-max-width);
   margin: 48px auto 0;
   padding-top: 24px;
   border-top: 1px solid var(--tm2d-border);

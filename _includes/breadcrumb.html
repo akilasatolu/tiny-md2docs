@@ -1,0 +1,15 @@
+{%- comment -%}
+  パンくず。page.html で nav-order.html を include したあとに使う。
+  「グループ / サブグループ / 今のページ名」。グループは名前だけ。
+  トップページ、nav にないページ、グループに入っていないページでは出さない。
+{%- endcomment -%}
+{%- if site.theme_options.breadcrumb != false and tm2d_current_index != nil and tm2d_current_key != "/" and tm2d_current_group != "" -%}
+  {%- assign _f = tm2d_nav_items[tm2d_current_index] | split: "␟" %}
+<nav class="tm2d-breadcrumb" aria-label="{% include t.html key="breadcrumb_label" %}"><ol>
+<li>{{ tm2d_current_group | escape }}</li>
+{%- if tm2d_current_subgroup != "" %}
+<li>{{ tm2d_current_subgroup | escape }}</li>
+{%- endif %}
+<li aria-current="page">{{ _f[3] | escape }}</li>
+</ol></nav>
+{%- endif -%}

@@ -29,6 +29,7 @@ $tm2d-header-height: 56px !default;
 $tm2d-content-max-width: 760px !default;
 $tm2d-narrow: 767px !default;
 $tm2d-sidebar-width: 264px !default;
+$tm2d-toc-width: 220px !default;
 
 :root {
   --tm2d-accent: #{$tm2d-accent};
@@ -50,6 +51,14 @@ $tm2d-sidebar-width: 264px !default;
   --tm2d-dark-border: #{$tm2d-dark-border};
   --tm2d-dark-warning: #{$tm2d-dark-warning};
   --tm2d-dark-warning-weak: #{$tm2d-dark-warning-weak};
+  --tm2d-font-body: #{inspect($tm2d-font-body)};
+  --tm2d-font-heading: var(--tm2d-font-body);
+  --tm2d-font-mono: #{inspect($tm2d-font-mono)};
+  --tm2d-font-size: 16px;
+  --tm2d-line-height: 1.8;
+  --tm2d-sidebar-width: #{$tm2d-sidebar-width};
+  --tm2d-toc-width: #{$tm2d-toc-width};
+  --tm2d-content-max-width: #{$tm2d-content-max-width};
 }
 
 // Dark mode: swap the component variables for the dark ones.

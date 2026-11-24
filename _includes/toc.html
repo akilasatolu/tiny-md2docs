@@ -1,0 +1,24 @@
+{%- comment -%}
+  目次。渡された HTML(include.html)の h2 と h3 を並べる。2つ未満なら出さない。
+  include.variant: "inline"(狭い画面用、本文の上の details)か "side"(広い画面用の右のカラム)。
+{%- endcomment -%}
+{%- if site.theme_options.toc != false and page.toc != false -%}
+{%- include headings.html html=include.html -%}
+{%- if tm2d_headings.size >= 2 -%}
+{%- capture _tm2d_toc_list -%}
+<ul>
+{%- for _h in tm2d_headings -%}
+  {%- assign _f = _h | split: "␟" -%}
+  {%- if _f[1] != "" %}
+<li class="tm2d-toc__l{{ _f[0] }}"><a href="#{{ _f[1] }}">{{ _f[2] | escape }}</a></li>
+  {%- endif -%}
+{%- endfor %}
+</ul>
+{%- endcapture -%}
+{%- if include.variant == "inline" %}
+<details class="tm2d-toc tm2d-toc--inline"><summary>{% include t.html key="toc_title" %}</summary>{{ _tm2d_toc_list }}</details>
+{%- else %}
+<nav class="tm2d-toc tm2d-toc--side" aria-label="{% include t.html key="toc_title" %}"><p class="tm2d-toc__title">{% include t.html key="toc_title" %}</p>{{ _tm2d_toc_list }}</nav>
+{%- endif -%}
+{%- endif -%}
+{%- endif -%}

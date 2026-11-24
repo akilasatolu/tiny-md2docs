@@ -32,6 +32,7 @@ function init(root) {
   let loading = null;
   let timer = 0;
   let active = -1;
+  const lang = document.documentElement.lang || undefined;
 
   function load() {
     if (!loading) {
@@ -39,7 +40,8 @@ function init(root) {
         .then((r) => r.json())
         .then((data) => {
           docs = new Map(data.map((d) => [d.id, d]));
-          index = createIndex(data);
+          const seg = window.Intl && Intl.Segmenter ? new Intl.Segmenter(lang, { granularity: 'word' }) : null;
+          index = createIndex(data, { segmenter: seg });
         })
         .catch(() => {
           loading = null;
@@ -74,7 +76,7 @@ function init(root) {
     }
     await load();
     if (!index || input.value.trim() !== q) return;
-    const results = index.search(q, { limit: 10 });
+    const results = index.search(q, { lang, limit: 10 });
     active = -1;
     input.removeAttribute('aria-activedescendant');
     if (!results.length) {

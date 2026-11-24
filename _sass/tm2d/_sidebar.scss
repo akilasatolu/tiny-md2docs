@@ -1,8 +1,8 @@
 .tm2d-sidebar {
   position: sticky;
   top: $tm2d-header-height;
-  flex: 0 0 $tm2d-sidebar-width;
-  width: $tm2d-sidebar-width;
+  flex: 0 0 var(--tm2d-sidebar-width);
+  width: var(--tm2d-sidebar-width);
   max-height: calc(100vh - #{$tm2d-header-height});
   overflow-y: auto;
   padding: 24px 12px 48px;

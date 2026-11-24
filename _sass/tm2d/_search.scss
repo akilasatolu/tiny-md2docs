@@ -32,7 +32,7 @@
   border: 1px solid var(--tm2d-border);
   border-radius: 4px;
   color: var(--tm2d-muted);
-  font-family: $tm2d-font-mono;
+  font-family: var(--tm2d-font-mono);
   font-size: 12px;
   line-height: 20px;
   text-align: center;

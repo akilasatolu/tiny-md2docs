@@ -4,7 +4,7 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 
 - GitHub Pages の標準のビルドだけで動きます。Actions、npm、プラグインの追加は要りません。
 - 日本語の検索ができます(外部のサービスは使いません)。
-- ダークモードに対応しています。
+- ダークモード、目次、パンくず、コードのコピー、多言語に対応しています。
 - CSS と JS は、合わせて gzip で 10 KB 以下です。
 
 ドキュメント: https://akilasatolu.github.io/tiny-md2docs/
@@ -17,6 +17,12 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 remote_theme: akilasatolu/tiny-md2docs
 ```
 
+版を固定するときは、`@` のあとに版の名前を書きます。版の一覧は [CHANGELOG.md](CHANGELOG.md) にあります。
+
+```yaml
+remote_theme: akilasatolu/tiny-md2docs@v0.1.0
+```
+
 ## 設定
 
 `docs/_config.yml` の `theme_options` に書きます。省略した項目は既定値になります。
@@ -27,6 +33,9 @@ remote_theme: akilasatolu/tiny-md2docs
 | `search` | `true` | `false` で検索を消す |
 | `dark_mode` | `auto` | `auto`(OS に合わせ、切り替えボタンを出す)、`light`、`dark` |
 | `prev_next` | `true` | `false` でページ下の前後リンクを消す |
+| `toc` | `true` | `false` で目次を消す |
+| `breadcrumb` | `true` | `false` でパンくずを消す |
+| `code_copy` | `true` | `false` でコードのコピーのボタンを消す |
 | `github_link` | `true` | `false` でヘッダーの GitHub へのリンクを消す |
 | `logo` | なし | ヘッダーのロゴ画像のパス |
 | `favicon` | なし | ファビコンのパス |
@@ -50,7 +59,11 @@ remote_theme: akilasatolu/tiny-md2docs
 }
 ```
 
-使える変数は[色とダークモード](https://akilasatolu.github.io/tiny-md2docs/guide/colors.html)にあります。
+文字と幅も CSS 変数で変えられます。使える変数は[色とダークモード](https://akilasatolu.github.io/tiny-md2docs/guide/colors.html)にあります。
+
+## 404 ページ
+
+テーマが `/404.html` を用意するので、自分で置く必要はありません。文言は `theme_options.strings` の `not_found_title` と `not_found_body` で変えられます。
 
 ## サイズ
 
@@ -58,11 +71,11 @@ remote_theme: akilasatolu/tiny-md2docs
 
 | ファイル | gzip |
 | --- | --- |
-| style.css | 2852 バイト |
-| tm2d.js | 873 バイト |
-| search-core.js | 1672 バイト |
-| search-ui.js | 1825 バイト |
-| 合計 | 7222 バイト |
+| style.css | 3360 バイト |
+| tm2d.js | 1480 バイト |
+| search-core.js | 2120 バイト |
+| search-ui.js | 1911 バイト |
+| 合計 | 8871 バイト |
 
 ## 開発
 

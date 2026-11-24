@@ -1,0 +1,37 @@
+// Copy button on code blocks (added by tm2d.js)
+.tm2d-content div.highlighter-rouge {
+  position: relative;
+}
+
+.tm2d-copy {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 0 10px;
+  border: 1px solid var(--tm2d-border);
+  border-radius: 6px;
+  background: var(--tm2d-bg);
+  color: var(--tm2d-muted);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0;
+
+  &:hover {
+    color: var(--tm2d-text);
+  }
+}
+
+div.highlighter-rouge:hover .tm2d-copy,
+.tm2d-copy:focus-visible,
+.tm2d-copy.is-done {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .tm2d-copy {
+    opacity: 1;
+  }
+}

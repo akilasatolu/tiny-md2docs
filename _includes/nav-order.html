@@ -6,12 +6,17 @@
   - tm2d_current_key: 今のページの URL をそろえたもの
   - tm2d_current_index: 今のページの項目の位置(nav にないときは nil)
   - tm2d_current_group、tm2d_current_subgroup: 今のページのグループ名とサブグループ名
-  _data/nav.yml があればその順と名前を使い、なければフォルダから自動で作る。
+  _data/nav.<lang>.yml、_data/nav.yml の順に探し、あればその順と名前を使う。なければフォルダから自動で作る。
+  自動のときは、今のページと同じ lang のページだけを並べ、パスの先頭が lang と同じフォルダ(docs/en/ など)は除いて考える。
 {%- endcomment -%}
 {%- assign _tm2d_r = "" -%}
 {%- assign _tm2d_n = 10000 -%}
-{%- if site.data.nav -%}
-  {%- for _a in site.data.nav -%}
+{%- assign _tm2d_lang = page.lang | default: site.lang | default: "ja" -%}
+{%- comment -%} Jekyll はデータのファイル名の「.」を除いてキーにする(nav.en.yml → naven)。 {%- endcomment -%}
+{%- assign _tm2d_navkey = "nav" | append: _tm2d_lang -%}
+{%- assign _tm2d_nav = site.data[_tm2d_navkey] | default: site.data.nav -%}
+{%- if _tm2d_nav -%}
+  {%- for _a in _tm2d_nav -%}
     {%- if _a.url -%}
       {%- assign _tm2d_n = _tm2d_n | plus: 1 -%}
       {%- include url-key.html url=_a.url -%}
@@ -40,19 +45,25 @@
     {%- if _p.nav_exclude == true or _p.url == "/404.html" -%}{%- continue -%}{%- endif -%}
     {%- assign _tm2d_head = _p.url | slice: 0, 8 -%}
     {%- if _tm2d_head == "/assets/" -%}{%- continue -%}{%- endif -%}
-    {%- comment -%} P2 の多言語: ここで今のページと同じ lang のものだけに絞る。 {%- endcomment -%}
+    {%- assign _tm2d_plang = _p.lang | default: site.lang | default: "ja" -%}
+    {%- if _tm2d_plang != _tm2d_lang -%}{%- continue -%}{%- endif -%}
     {%- assign _tm2d_parts = _p.path | split: "/" -%}
+    {%- assign _tm2d_base = "" -%}
+    {%- if _tm2d_parts[0] == _tm2d_lang and _tm2d_parts.size > 1 -%}
+      {%- assign _tm2d_base = "/" | append: _tm2d_lang -%}
+      {%- assign _tm2d_parts = _tm2d_parts | shift -%}
+    {%- endif -%}
     {%- assign _tm2d_depth = _tm2d_parts | size -%}
     {%- assign _tm2d_order = _p.nav_order | default: 9999 | plus: 10000 -%}
     {%- assign _tm2d_title = _p.title | default: "" -%}
     {%- if _tm2d_title == "" -%}{%- assign _tm2d_title = _p.name | split: "." | first -%}{%- endif -%}
     {%- if _tm2d_depth == 1 -%}
-      {%- if _p.url == "/" -%}{%- assign _tm2d_top = "0" -%}{%- else -%}{%- assign _tm2d_top = "1" -%}{%- endif -%}
+      {%- if _p.name == "index.md" -%}{%- assign _tm2d_top = "0" -%}{%- else -%}{%- assign _tm2d_top = "1" -%}{%- endif -%}
       {%- capture _tm2d_rec -%}0-{{ _tm2d_top }}-{{ _tm2d_order }}-{{ _p.path }}␟{{ _p.url }}␟{{ _p.url }}␟{{ _tm2d_title }}␟␟␟.{%- endcapture -%}
     {%- else -%}
       {%- if _p.name == "index.md" -%}{%- continue -%}{%- endif -%}
       {%- assign _tm2d_gdir = _tm2d_parts | first -%}
-      {%- assign _tm2d_gpath = _tm2d_gdir | prepend: "/" | append: "/" -%}
+      {%- assign _tm2d_gpath = _tm2d_base | append: "/" | append: _tm2d_gdir | append: "/" -%}
       {%- assign _tm2d_gindex = site.html_pages | where: "dir", _tm2d_gpath | where: "name", "index.md" | first -%}
       {%- assign _tm2d_gname = _tm2d_gindex.title | default: _tm2d_gdir -%}
       {%- assign _tm2d_gorder = _tm2d_gindex.nav_order | default: 9999 | plus: 10000 -%}

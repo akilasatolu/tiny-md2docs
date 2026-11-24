@@ -23,6 +23,17 @@
     {%- if site.theme_options.github_link != false and site.github.repository_url %}
     <a class="tm2d-header__link" href="{{ site.github.repository_url }}">{% include t.html key="github" %}</a>
     {%- endif %}
+    {%- if page.ref %}
+      {%- assign _tm2d_tr = site.html_pages | where: "ref", page.ref %}
+      {%- if _tm2d_tr.size > 1 %}
+    <nav class="tm2d-lang" aria-label="{% include t.html key="lang_switch" %}">
+      {%- for _t in _tm2d_tr %}
+        {%- assign _tm2d_tl = _t.lang | default: site.lang | default: "ja" %}
+      <a class="tm2d-lang__link" href="{{ _t.url | relative_url }}" hreflang="{{ _tm2d_tl }}" lang="{{ _tm2d_tl }}"{% if _t.url == page.url %} aria-current="page"{% endif %}>{{ _tm2d_tl | upcase }}</a>
+      {%- endfor %}
+    </nav>
+      {%- endif %}
+    {%- endif %}
     {%- if _tm2d_mode != "light" and _tm2d_mode != "dark" %}
     <button type="button" class="tm2d-iconbtn tm2d-header__theme" data-tm2d-theme-toggle aria-label="{% include t.html key="toggle_dark" %}" data-label-dark="{% include t.html key="toggle_dark" %}" data-label-light="{% include t.html key="toggle_light" %}">
       <svg class="tm2d-icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
