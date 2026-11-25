@@ -22,7 +22,7 @@ layout: null
   {%- if _tm2d_title == "" -%}{%- assign _tm2d_title = p.name | split: "." | first -%}{%- endif -%}
   {%- assign _tm2d_text = _tm2d_html | strip_html | normalize_whitespace | strip | slice: 0, _tm2d_limit -%}
   {%- if _tm2d_id > 0 %},{% endif %}
-{"id":{{ _tm2d_id }},"title":{{ _tm2d_title | jsonify }},"url":{{ p.url | relative_url | jsonify }},"headings":{{ _tm2d_hs | jsonify }},"content":{{ _tm2d_text | jsonify }},"lang":{{ p.lang | default: site.lang | default: "ja" | jsonify }}}
+{"id":{{ _tm2d_id }},"title":{{ _tm2d_title | jsonify }},"url":{{ p.url | relative_url | jsonify }},"headings":{{ _tm2d_hs | jsonify }},"content":{{ _tm2d_text | jsonify }},"lang":{{ p.lang | default: site.lang | default: "en" | jsonify }}}
   {%- assign _tm2d_id = _tm2d_id | plus: 1 -%}
 {%- endfor %}
 ]

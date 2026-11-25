@@ -11,7 +11,7 @@
 {%- endcomment -%}
 {%- assign _tm2d_r = "" -%}
 {%- assign _tm2d_n = 10000 -%}
-{%- assign _tm2d_lang = page.lang | default: site.lang | default: "ja" -%}
+{%- assign _tm2d_lang = page.lang | default: site.lang | default: "en" -%}
 {%- comment -%} Jekyll はデータのファイル名の「.」を除いてキーにする(nav.en.yml → naven)。 {%- endcomment -%}
 {%- assign _tm2d_navkey = "nav" | append: _tm2d_lang -%}
 {%- assign _tm2d_nav = site.data[_tm2d_navkey] | default: site.data.nav -%}
@@ -45,7 +45,7 @@
     {%- if _p.nav_exclude == true or _p.url == "/404.html" -%}{%- continue -%}{%- endif -%}
     {%- assign _tm2d_head = _p.url | slice: 0, 8 -%}
     {%- if _tm2d_head == "/assets/" -%}{%- continue -%}{%- endif -%}
-    {%- assign _tm2d_plang = _p.lang | default: site.lang | default: "ja" -%}
+    {%- assign _tm2d_plang = _p.lang | default: site.lang | default: "en" -%}
     {%- if _tm2d_plang != _tm2d_lang -%}{%- continue -%}{%- endif -%}
     {%- assign _tm2d_parts = _p.path | split: "/" -%}
     {%- assign _tm2d_base = "" -%}

@@ -2,16 +2,19 @@
 
 GitHub Pages で使う、小さな Jekyll のドキュメントテーマです。Markdown を `docs/` に置くだけで、サイドバーと検索のあるドキュメントサイトになります。
 
-- GitHub Pages の標準のビルドだけで動きます。Actions、npm、プラグインの追加は要りません。
+- 導入は `docs/_config.yml` の1行だけです。ほかに用意するものはありません。
+- GitHub Pages の標準のビルドだけで動きます。ワークフロー、npm、プラグインの追加は要りません。
 - 日本語の検索ができます(外部のサービスは使いません)。
 - ダークモード、目次、パンくず、コードのコピー、多言語に対応しています。
 - CSS と JS は、合わせて gzip で 10 KB 以下です。
+
+社内のドキュメントを手早く公開したいチームや、ドキュメントの公開に時間をかけたくない個人・OSS・ライブラリの開発者に向いています。
 
 ドキュメント: https://akilasatolu.github.io/tiny-md2docs/
 
 ## 導入
 
-`docs/_config.yml` に次のように書き、リポジトリの Settings → Pages で、ブランチの `/docs` フォルダを公開元にします。必須は `remote_theme` の1行だけです。ほかの行は Jekyll と GitHub Pages の一般の設定で、要らなければ行ごと削除します。
+`docs/_config.yml` に次のように書き、リポジトリの Settings → Pages で、ブランチの `/docs` フォルダを公開元にします。必須は `remote_theme` の1行だけです。ほかの行は Jekyll と GitHub Pages の一般の設定で、要らなければ行ごと削除します。リポジトリのルートや GitHub Actions で公開する方法は、[インストール](https://akilasatolu.github.io/tiny-md2docs/getting-started/install.html)を見てください。
 
 ```yaml
 # 使うテーマ(必須)
@@ -20,8 +23,9 @@ remote_theme: akilasatolu/tiny-md2docs
 title: My Docs
 # サイトの説明。検索エンジンや SNS で使われる。不要なら削除
 description: 製品の使い方をまとめたドキュメント
-# ページの言語。<html lang> と画面の文言に使われる。省略すると ja。不要なら削除
-lang: ja
+# サイト全体の言語。<html lang> と画面の文言に使われる。省略すると en。
+# en 以外にするときは、画面の文言を theme_options.strings に書く(「多言語」のページ)。不要なら削除
+lang: en
 # 元の .md ファイルを公開しない(HTML のページだけを公開する)。.md も公開してよければ、この2行を削除
 optional_front_matter:
   remove_originals: true

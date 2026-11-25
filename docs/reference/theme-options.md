@@ -19,29 +19,29 @@
 
 ## 画面の文言
 
-`strings` に書けるキーと、既定の文言(日本語)です。言語が `en` のページでは、英語の文言が既定になります。
+`strings` に書けるキーと、既定の文言(英語)です。テーマが持っている文言は英語だけです。英語以外の言語では、言語ごとに書きます([多言語](../guide/i18n.md))。
 
 | キー | 既定の文言 |
 | --- | --- |
-| `skip_to_content` | 本文へ移動 |
-| `nav_label` | ドキュメント |
-| `menu_open` | メニューを開く |
-| `menu_close` | メニューを閉じる |
-| `search_label` | 検索 |
-| `search_placeholder` | ドキュメントを検索 |
-| `search_open` | 検索を開く |
-| `search_clear` | 検索語を消す |
-| `search_no_results` | 見つかりませんでした |
-| `search_results_count` | {n} 件(`{n}` が件数になる) |
-| `toggle_dark` | ダークモードに切り替え |
-| `toggle_light` | ライトモードに切り替え |
+| `skip_to_content` | Skip to content |
+| `nav_label` | Documentation |
+| `menu_open` | Open menu |
+| `menu_close` | Close menu |
+| `search_label` | Search |
+| `search_placeholder` | Search the docs |
+| `search_open` | Open search |
+| `search_clear` | Clear search |
+| `search_no_results` | No results |
+| `search_results_count` | {n} results(`{n}` が件数になる) |
+| `toggle_dark` | Switch to dark mode |
+| `toggle_light` | Switch to light mode |
 | `github` | GitHub |
-| `toc_title` | このページの内容 |
-| `breadcrumb_label` | 現在の位置 |
-| `prev` | 前へ |
-| `next` | 次へ |
-| `copy` | コピー |
-| `copied` | コピーしました |
-| `not_found_title` | ページが見つかりません |
-| `not_found_body` | お探しのページは、移動したか削除された可能性があります。 |
-| `lang_switch` | 言語 |
+| `toc_title` | On this page |
+| `breadcrumb_label` | Breadcrumb |
+| `prev` | Previous |
+| `next` | Next |
+| `copy` | Copy |
+| `copied` | Copied |
+| `not_found_title` | Page not found |
+| `not_found_body` | The page you are looking for may have been moved or deleted. |
+| `lang_switch` | Language |

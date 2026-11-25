@@ -31,7 +31,7 @@
       {%- if _tm2d_tr.size > 1 %}
     <nav class="tm2d-lang" aria-label="{% include t.html key="lang_switch" %}">
       {%- for _t in _tm2d_tr %}
-        {%- assign _tm2d_tl = _t.lang | default: site.lang | default: "ja" %}
+        {%- assign _tm2d_tl = _t.lang | default: site.lang | default: "en" %}
       <a class="tm2d-lang__link" href="{{ _t.url | relative_url }}" hreflang="{{ _tm2d_tl }}" lang="{{ _tm2d_tl }}"{% if _t.url == page.url %} aria-current="page"{% endif %}>{{ _tm2d_tl | upcase }}</a>
       {%- endfor %}
     </nav>

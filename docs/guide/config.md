@@ -8,12 +8,12 @@
 remote_theme: akilasatolu/tiny-md2docs
 title: My Docs
 description: 製品の使い方をまとめたドキュメント
-lang: ja
+lang: en
 ```
 
 - `title` はヘッダーとブラウザのタブに出るサイト名です。
 - `description` は検索エンジンや SNS で使われる説明文です。ページごとに front matter の `description` で上書きできます。
-- `lang` はページの言語で、`<html lang>` に入ります。省略すると `ja` です。
+- `lang` はサイト全体の言語で、`<html lang>` と画面の文言に使われます。省略すると `en` です。英語以外の言語にするときは、[多言語](i18n.md)を見てください。
 
 ## テーマの設定
 
@@ -33,7 +33,7 @@ theme_options:
 
 ## 画面の文言を変える
 
-ボタンや検索窓の文言は、`theme_options.strings` で上書きできます。
+ボタンや検索窓の文言は、`theme_options.strings` で上書きできます。ここに書いた文言は、言語ごとの文言を書いていない言語のページに使われます。言語ごとに分けるときは、[多言語](i18n.md)を見てください。
 
 ```yaml
 theme_options:
@@ -46,4 +46,4 @@ theme_options:
 
 ## 404 ページ
 
-存在しない URL を開くと、テーマが用意した 404 ページ(「ページが見つかりません」)が出ます。自分で置く必要はありません。文言は `strings` の `not_found_title` と `not_found_body` で変えられます。
+存在しない URL を開くと、テーマが用意した 404 ページ(英語では「Page not found」)が出ます。自分で置く必要はありません。文言は `strings` の `not_found_title` と `not_found_body` で変えられます。
