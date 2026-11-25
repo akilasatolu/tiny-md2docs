@@ -30,6 +30,7 @@
 | `search_label` | 検索 |
 | `search_placeholder` | ドキュメントを検索 |
 | `search_open` | 検索を開く |
+| `search_clear` | 検索語を消す |
 | `search_no_results` | 見つかりませんでした |
 | `search_results_count` | {n} 件(`{n}` が件数になる) |
 | `toggle_dark` | ダークモードに切り替え |

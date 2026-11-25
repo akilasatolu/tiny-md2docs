@@ -32,7 +32,7 @@
 }
 
 .tm2d-header__search {
-  flex: 0 1 420px;
+  flex: 0 1 560px;
   margin: 0 auto;
 }
 
@@ -45,15 +45,6 @@
 
 .tm2d-header__search + .tm2d-header__actions {
   margin-left: 0;
-}
-
-.tm2d-header__link {
-  display: flex;
-  align-items: center;
-  min-height: 40px;
-  padding: 0 8px;
-  color: var(--tm2d-muted);
-  font-size: 14px;
 }
 
 .tm2d-lang {
@@ -109,6 +100,12 @@
   }
 }
 
+// The GitHub mark is a filled shape (must come after .tm2d-iconbtn).
+.tm2d-header__github svg {
+  fill: currentColor;
+  stroke: none;
+}
+
 .tm2d-header__menu,
 .tm2d-header__search-btn,
 .tm2d-icon-sun,
@@ -131,7 +128,7 @@
     display: inline-flex;
   }
 
-  .tm2d-header__link {
+  .tm2d-header__github {
     display: none;
   }
 

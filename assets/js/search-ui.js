@@ -111,6 +111,16 @@ function init(root) {
     input.setAttribute('aria-expanded', 'true');
   }
 
+  const clear = root.querySelector('[data-tm2d-search-clear]');
+  if (clear) {
+    clear.addEventListener('click', () => {
+      clearTimeout(timer);
+      input.value = '';
+      close();
+      status.textContent = '';
+      input.focus();
+    });
+  }
   input.addEventListener('focus', load);
   input.addEventListener('input', () => {
     clearTimeout(timer);

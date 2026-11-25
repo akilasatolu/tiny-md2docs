@@ -58,6 +58,7 @@
 
 .tm2d-pager__title {
   font-weight: 600;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: $tm2d-narrow) {
@@ -79,5 +80,9 @@
 
   .tm2d-pager {
     flex-direction: column;
+  }
+
+  .tm2d-pager__link {
+    flex: none;
   }
 }

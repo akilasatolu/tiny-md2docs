@@ -3,8 +3,12 @@
 {%- endcomment -%}
 <div class="tm2d-search" data-tm2d-search data-index-url="{{ '/assets/search.json' | relative_url }}" data-text-count="{% include t.html key="search_results_count" %}" data-text-none="{% include t.html key="search_no_results" %}">
   <label class="tm2d-sr-only" for="tm2d-search-input">{% include t.html key="search_label" %}</label>
+  <svg class="tm2d-search__icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
   <input id="tm2d-search-input" class="tm2d-search__input" type="search" placeholder="{% include t.html key="search_placeholder" %}" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="tm2d-search-results">
   <kbd class="tm2d-search__key" aria-hidden="true">/</kbd>
+  <button type="button" class="tm2d-search__clear" data-tm2d-search-clear aria-label="{% include t.html key="search_clear" %}">
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
   <ul id="tm2d-search-results" class="tm2d-search__results" role="listbox" aria-label="{% include t.html key="search_label" %}" hidden></ul>
   <p class="tm2d-sr-only" aria-live="polite" data-tm2d-search-status></p>
 </div>

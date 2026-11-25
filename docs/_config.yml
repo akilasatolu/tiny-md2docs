@@ -5,5 +5,4 @@ lang: ja
 optional_front_matter:
   remove_originals: true
 theme_options:
-  logo: /assets/images/tm2d-mark.svg
   favicon: /assets/images/tm2d-mark.svg

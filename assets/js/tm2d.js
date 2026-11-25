@@ -40,6 +40,8 @@
       setMenu(!side.classList.contains('is-open'));
     });
     if (back) back.addEventListener('click', function () { setMenu(false); });
+    var closeBtn = side.querySelector('[data-tm2d-menu-close]');
+    if (closeBtn) closeBtn.addEventListener('click', function () { setMenu(false); });
     d.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && side.classList.contains('is-open')) setMenu(false);
     });

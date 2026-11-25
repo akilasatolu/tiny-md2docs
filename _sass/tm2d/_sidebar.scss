@@ -85,6 +85,10 @@
   }
 }
 
+.tm2d-sidebar__head {
+  display: none;
+}
+
 .tm2d-backdrop {
   display: none;
 }
@@ -112,6 +116,12 @@
       visibility: visible;
       transition: transform 0.2s ease;
     }
+  }
+
+  .tm2d-sidebar__head {
+    display: flex;
+    justify-content: flex-end;
+    margin: -16px -4px 8px;
   }
 
   .tm2d-backdrop:not([hidden]) {
