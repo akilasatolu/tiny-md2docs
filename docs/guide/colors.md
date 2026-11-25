@@ -67,7 +67,9 @@
 | `--tm2d-line-height` | 本文の行の高さ | `1.8` |
 | `--tm2d-sidebar-width` | サイドバーの幅 | `264px` |
 | `--tm2d-toc-width` | 右の目次の幅 | `220px` |
-| `--tm2d-content-max-width` | 本文の最大の幅 | `760px` |
+| `--tm2d-content-max-width` | 本文の最大の幅 | なし(`none`) |
+
+本文の幅に上限を付けたいときは、`--tm2d-content-max-width` に `760px` などを指定します。
 
 テーマは、外部から書体を読み込みません。Noto Sans JP などの Web フォントを使うときは、自分の `style.scss` で読み込み、`--tm2d-font-body` を上書きします。
 
