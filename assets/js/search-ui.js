@@ -127,6 +127,8 @@ function init(root) {
     timer = setTimeout(run, 100);
   });
   input.addEventListener('keydown', (e) => {
+    // Keys typed while an IME is composing (e.g. Enter to confirm Japanese) are not ours.
+    if (e.isComposing || e.keyCode === 229) return;
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
       if (list.hidden) return;
       e.preventDefault();

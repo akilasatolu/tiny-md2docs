@@ -66,6 +66,7 @@
       if (sbtn.offsetParent !== null) setSearch(true);
     });
     d.addEventListener('keydown', function (e) {
+      if (e.isComposing || e.keyCode === 229) return;
       if (e.key === 'Escape' && header.classList.contains('is-search-open') && !e.defaultPrevented) {
         setSearch(false);
         sbtn.focus();
