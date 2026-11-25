@@ -27,7 +27,7 @@
     </a>
     {%- endif %}
     {%- if page.ref %}
-      {%- assign _tm2d_tr = site.html_pages | where: "ref", page.ref %}
+      {%- assign _tm2d_tr = site.html_pages | where: "ref", page.ref | sort: "lang" %}
       {%- if _tm2d_tr.size > 1 %}
     <nav class="tm2d-lang" aria-label="{% include t.html key="lang_switch" %}">
       {%- for _t in _tm2d_tr %}
