@@ -40,6 +40,17 @@
   pointer-events: none;
 }
 
+// While the box has focus, hide the icon and give the text the room.
+.tm2d-search:focus-within {
+  .tm2d-search__icon {
+    display: none;
+  }
+
+  .tm2d-search__input {
+    padding-left: 14px;
+  }
+}
+
 .tm2d-search__key {
   position: absolute;
   top: 9px;

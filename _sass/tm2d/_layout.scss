@@ -85,4 +85,8 @@
   .tm2d-pager__link {
     flex: none;
   }
+
+  .tm2d-pager__link--next {
+    margin-left: 0;
+  }
 }
