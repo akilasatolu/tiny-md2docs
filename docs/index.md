@@ -16,4 +16,4 @@ tm2d(tiny-md2docs)は、GitHub Pages で使う小さな Jekyll テーマです�
 
 ## 始め方
 
-[インストール](getting-started/install.md)の手順に沿って、設定を書きます。
+[インストール](getting-started/install.md)の3つの手順で公開できます。

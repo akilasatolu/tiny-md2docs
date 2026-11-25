@@ -4,6 +4,8 @@
       url: /
     - title: インストール
       url: /getting-started/install.html
+    - title: 公開の方法
+      url: /getting-started/publish.html
 - title: 使い方
   children:
     - title: 設定

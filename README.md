@@ -14,22 +14,17 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 
 ## 導入
 
-`docs/_config.yml` に次のように書き、リポジトリの Settings → Pages で、ブランチの `/docs` フォルダを公開元にします。必須は `remote_theme` の1行だけです。ほかの行は Jekyll と GitHub Pages の一般の設定で、要らなければ行ごと削除します。リポジトリのルートや GitHub Actions で公開する方法は、[インストール](https://akilasatolu.github.io/tiny-md2docs/getting-started/install.html)を見てください。
+1. `docs/_config.yml` に次の1行を書きます。
 
-```yaml
-# 使うテーマ(必須)
-remote_theme: akilasatolu/tiny-md2docs
-# サイト名。ヘッダーとブラウザのタブに出る。不要なら削除
-title: My Docs
-# サイトの説明。検索エンジンや SNS で使われる。不要なら削除
-description: 製品の使い方をまとめたドキュメント
-# サイト全体の言語。<html lang> と画面の文言に使われる。省略すると en。
-# en 以外にするときは、画面の文言を theme_options.strings に書く(「多言語」のページ)。不要なら削除
-lang: en
-# 元の .md ファイルを公開しない(HTML のページだけを公開する)。.md も公開してよければ、この2行を削除
-optional_front_matter:
-  remove_originals: true
-```
+   ```yaml
+   remote_theme: akilasatolu/tiny-md2docs
+   ```
+
+2. `docs/` に Markdown のファイルを置きます。
+3. リポジトリの Settings → Pages で、ブランチの `/docs` フォルダを公開元にします。
+
+> [!NOTE]
+> この設定だけだと、HTML のページと一緒に、元の `.md` ファイルも公開されます。公開したくないときは、[設定](https://akilasatolu.github.io/tiny-md2docs/guide/config.html)を見てください。リポジトリのルートや GitHub Actions で公開する方法は、[公開の方法](https://akilasatolu.github.io/tiny-md2docs/getting-started/publish.html)にあります。
 
 版を固定するときは、`@` のあとに版の名前を書きます。版の一覧は [CHANGELOG.md](CHANGELOG.md) にあります。
 

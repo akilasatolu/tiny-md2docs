@@ -14,6 +14,25 @@ lang: en
 - `title` はヘッダーとブラウザのタブに出るサイト名です。
 - `description` は検索エンジンや SNS で使われる説明文です。ページごとに front matter の `description` で上書きできます。
 - `lang` はサイト全体の言語で、`<html lang>` と画面の文言に使われます。省略すると `en` です。英語以外の言語にするときは、[多言語](i18n.md)を見てください。
+- `title` を書かないと、プロジェクトのページ(`https://user.github.io/repo/`)ではリポジトリの名前が、ユーザーのページ(`https://user.github.io/`)ではアカウントの名前が、サイト名になります。`description` を書かないと、リポジトリの説明(About)が使われます。
+
+## 元の .md ファイルを公開しない
+
+`remote_theme` の1行だけだと、HTML のページと一緒に、元の `.md` ファイルも公開されます(例: `/guide/config.html` と `/guide/config.md`)。中身は同じですが、公開したくないときは、次の2行を足します。
+
+```yaml
+optional_front_matter:
+  remove_originals: true
+```
+
+- front matter のあるページは、この設定がなくても、元の `.md` が公開されません。
+- `README.md`、`LICENSE.md`、`CONTRIBUTING.md` など、決まった名前のファイルは、front matter がないとページにならず、この設定を書いても `.md` のまま公開されます。ページにするときは、先頭に空の front matter(`---` の2行)を書きます。
+- `README.md` は、同じフォルダに `index.md` がなければ、そのフォルダのトップページにもなります。このときの元の `README.md` も公開しないときは、次も足します。
+
+```yaml
+readme_index:
+  remove_originals: true
+```
 
 ## テーマの設定
 
