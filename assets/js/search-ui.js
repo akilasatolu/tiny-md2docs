@@ -100,7 +100,7 @@ function init(root) {
           const snip = (from > 0 ? '…' : '') + mark(content, cm, from, to) + (to < content.length ? '…' : '');
           return (
             '<li role="option" id="tm2d-search-opt-' + i + '" aria-selected="false">' +
-            '<a href="' + esc(d.url) + '" tabindex="-1"><span class="tm2d-search__title">' + mark(title, tm, 0, title.length) +
+            '<a href="' + esc(d.url) + '"><span class="tm2d-search__title">' + mark(title, tm, 0, title.length) +
             '</span><span class="tm2d-search__snippet">' + snip + '</span></a></li>'
           );
         })
@@ -109,6 +109,7 @@ function init(root) {
     }
     list.hidden = false;
     input.setAttribute('aria-expanded', 'true');
+    if (results.length) select(0);
   }
 
   const clear = root.querySelector('[data-tm2d-search-clear]');
@@ -121,6 +122,22 @@ function init(root) {
       input.focus();
     });
   }
+  // Tab into a result: highlight it like the arrow keys do; Esc goes back to the box.
+  list.addEventListener('focusin', (e) => {
+    const opt = e.target.closest('[role="option"]');
+    if (opt) select([...list.querySelectorAll('[role="option"]')].indexOf(opt));
+  });
+  list.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    e.preventDefault();
+    e.stopPropagation();
+    input.focus();
+    close();
+  });
+  // Leaving the search with Tab closes the results.
+  root.addEventListener('focusout', (e) => {
+    if (e.relatedTarget && !root.contains(e.relatedTarget)) close();
+  });
   input.addEventListener('focus', load);
   input.addEventListener('input', () => {
     clearTimeout(timer);
