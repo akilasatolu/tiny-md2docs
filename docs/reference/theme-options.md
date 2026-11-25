@@ -1,27 +1,31 @@
+---
+ref: theme-options
+---
+
 # theme_options
 
-`docs/_config.yml` の `theme_options` に書ける項目です。
+These are the items you can write in `theme_options` in `docs/_config.yml`.
 
-| 項目 | 既定値 | 内容 |
+| Item | Default | Description |
 | --- | --- | --- |
-| `sidebar` | `true` | `false` でサイドバーを消す |
-| `search` | `true` | `false` で検索窓と索引を消す |
-| `dark_mode` | `auto` | `auto`、`light`、`dark` のどれか |
-| `prev_next` | `true` | `false` でページ下の前後リンクを消す |
-| `toc` | `true` | `false` で目次を消す |
-| `breadcrumb` | `true` | `false` でパンくずを消す |
-| `code_copy` | `true` | `false` でコードのコピーのボタンを消す |
-| `github_link` | `true` | `false` でヘッダーの GitHub へのリンクを消す。リンクはリポジトリの URL が分かるときだけ出る |
-| `logo` | なし | ヘッダーのロゴ画像のパス。なければサイト名の文字だけ |
-| `favicon` | なし | ファビコンのパス。なければ出さない |
-| `search_content_limit` | `5000` | 索引に入れる本文の文字数の上限(1ページあたり) |
-| `strings` | なし | 画面の文言の上書き。言語ごとに分けて書くこともできる([多言語](../guide/i18n.md)) |
+| `sidebar` | `true` | `false` hides the sidebar |
+| `search` | `true` | `false` removes the search box and the index |
+| `dark_mode` | `auto` | One of `auto`, `light`, and `dark` |
+| `prev_next` | `true` | `false` hides the previous/next links at the bottom of the page |
+| `toc` | `true` | `false` hides the table of contents |
+| `breadcrumb` | `true` | `false` hides the breadcrumb |
+| `code_copy` | `true` | `false` hides the code copy button |
+| `github_link` | `true` | `false` hides the link to GitHub in the header. The link appears only when the repository URL is known |
+| `logo` | None | The path of the logo image in the header. If not set, only the site name text appears |
+| `favicon` | None | The path of the favicon. If not set, none is shown |
+| `search_content_limit` | `5000` | The maximum number of body characters put in the index (per page) |
+| `strings` | None | Overrides for on-screen text. You can also split it by language ([Multilingual](../guide/i18n.md)) |
 
-## 画面の文言
+## On-screen text
 
-`strings` に書けるキーと、既定の文言(英語)です。テーマが持っている文言は英語だけです。英語以外の言語では、言語ごとに書きます([多言語](../guide/i18n.md))。
+These are the keys you can write in `strings`, with the default text (English). The theme has text in English only. For languages other than English, write it for each language ([Multilingual](../guide/i18n.md)).
 
-| キー | 既定の文言 |
+| Key | Default text |
 | --- | --- |
 | `skip_to_content` | Skip to content |
 | `nav_label` | Documentation |
@@ -32,7 +36,7 @@
 | `search_open` | Open search |
 | `search_clear` | Clear search |
 | `search_no_results` | No results |
-| `search_results_count` | {n} results(`{n}` が件数になる) |
+| `search_results_count` | {n} results (`{n}` becomes the count) |
 | `toggle_dark` | Switch to dark mode |
 | `toggle_light` | Switch to light mode |
 | `github` | GitHub |

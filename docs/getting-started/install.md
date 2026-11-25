@@ -1,24 +1,28 @@
-# インストール
+---
+ref: install
+---
 
-## 1. 設定ファイルを置く
+# Install
 
-公開したいリポジトリに `docs/_config.yml` を作り、次の1行を書きます。
+## 1. Add the config file
+
+In the repository you want to publish, create `docs/_config.yml` and write this one line.
 
 ```yaml
 remote_theme: akilasatolu/tiny-md2docs
 ```
 
-> **メモ** この設定だけだと、HTML のページと一緒に、元の `.md` ファイルも公開されます。公開したくないときは、[設定](../guide/config.md)の「元の .md ファイルを公開しない」を見てください。
+> **Note** With only this setting, the original `.md` files are published along with the HTML pages. If you do not want that, see "Do not publish the original .md files" in [Configuration](../guide/config.md).
 {: .note }
 
-## 2. ページを書く
+## 2. Write pages
 
-`docs/` の下に Markdown のファイルを置きます。トップページは `docs/index.md` です。書き方は[ページの書き方](../guide/writing.md)を見てください。
+Put Markdown files under `docs/`. The top page is `docs/index.md`. For how to write them, see [Writing pages](../guide/writing.md).
 
-## 3. GitHub Pages を有効にする
+## 3. Turn on GitHub Pages
 
-1. リポジトリの Settings → Pages を開きます。
-2. 「Build and deployment」の「Source」(公開元)で、「Deploy from a branch」を選びます。
-3. 「Branch」で、公開するブランチと `/docs` フォルダを選び、「Save」を押します。
+1. Open Settings → Pages in the repository.
+2. Under "Build and deployment", set "Source" to "Deploy from a branch".
+3. For "Branch", choose the branch to publish and the `/docs` folder, then press "Save".
 
-数分たつと、サイトが公開されます。リポジトリのルートや GitHub Actions で公開する方法は、[公開の方法](publish.md)を見てください。
+After a few minutes, the site is published. To publish from the repository root or with GitHub Actions, see [Publishing](publish.md).

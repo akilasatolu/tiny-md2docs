@@ -1,65 +1,69 @@
-# ページの書き方
+---
+ref: writing
+---
 
-ページは、ふつうの Markdown で書きます。ここでは、ページとリンクの書き方と、テーマが用意している表示を紹介します。
+# Writing pages
 
-## ページとリンク
+Write pages in ordinary Markdown. This page explains how to write pages and links, and the displays the theme provides.
 
-- ページの先頭の front matter(`---` で囲んだ設定)は、なくてもかまいません。ページの名前には、本文の最初の見出しが使われます。書ける項目は [front matter](../reference/front-matter.md) にあります。
-- ページどうしのリンクは、リンク先の `.md` ファイルへの相対パスで書きます。公開するときに、`.html` のページへのリンクに変わります。たとえばこのページ(`docs/guide/writing.md`)から[概要](../index.md)へのリンクは、`../index.md` と書きます。
-- `/` で始まるパス(`/guide/config.md` など)は使いません。`docs/` の直下のページ以外では、リンクが変換されずに切れます。
-- `.html` へのリンクを直接書くのも避けます。`/` で始まる `.html` のリンクは、プロジェクトのページ(`https://user.github.io/repo/`)で切れます。
+## Pages and links
 
-## 目次
+- The front matter at the top of a page (settings enclosed in `---`) is optional. The first heading of the body is used as the page name. The items you can write are listed in [front matter](../reference/front-matter.md).
+- Write links between pages as a relative path to the `.md` file you link to. When published, they turn into links to the `.html` pages. For example, a link from this page (`docs/guide/writing.md`) to [Overview](../index.md) is written as `../index.md`.
+- Do not use paths that start with `/` (such as `/guide/config.md`). Except on pages directly under `docs/`, the link is not converted and breaks.
+- Also avoid writing `.html` links directly. A `.html` link that starts with `/` breaks on a project page (`https://user.github.io/repo/`).
 
-ページに h2 と h3 の見出しが2つ以上あると、目次が出ます。広い画面では本文の右に、狭い画面では本文の上に折りたたんで出ます。読んでいる見出しは、目次の中で強調されます。
+## Table of contents
 
-目次を消すときは、ページの front matter に `toc: false` を書きます。サイト全体で消すときは `theme_options.toc: false` にします。
+When a page has two or more h2 and h3 headings, a table of contents appears. On wide screens it is to the right of the body, and on narrow screens it is collapsed above the body. The heading you are reading is highlighted in the table of contents.
 
-## パンくず
+To hide it, write `toc: false` in the page's front matter. To hide it on the whole site, set `theme_options.toc: false`.
 
-ページの上に、サイドバーでのグループの位置(「使い方 / 設定」など)が出ます。トップページと、グループに入っていないページには出ません。`theme_options.breadcrumb: false` で消せます。
+## Breadcrumb
 
-## 注意書きの囲み
+Above the page, the position in the sidebar groups (such as "Guide / Configuration") appears. It does not appear on the top page or on pages that are not in a group. You can turn it off with `theme_options.breadcrumb: false`.
 
-引用(`>`)の最後の行の次に `{: .note }` か `{: .warning }` を書くと、色の付いた囲みになります。「メモ」「注意」などのラベルは、本文の先頭に自分で書きます。
+## Callout boxes
+
+Write `{: .note }` or `{: .warning }` on the line after the last line of a quote (`>`), and it becomes a colored box. Write labels such as "Note" and "Warning" yourself at the start of the body.
 
 ```markdown
-> **メモ** 設定を変えたら、数分待ってから確かめます。
+> **Note** After you change the settings, wait a few minutes before checking.
 {: .note }
 
-> **注意** この操作は元に戻せません。
+> **Warning** This operation cannot be undone.
 {: .warning }
 ```
 
-> **メモ** 設定を変えたら、数分待ってから確かめます。
+> **Note** After you change the settings, wait a few minutes before checking.
 {: .note }
 
-> **注意** この操作は元に戻せません。
+> **Warning** This operation cannot be undone.
 {: .warning }
 
-複数の行や段落も書けます。各行の先頭に `>` を付け、段落を分けるところには `>` だけの行を入れます。`{: .note }` は、最後の行の次に書きます。続けて書いた行は、表示では1行につながります。
+You can also write several lines or paragraphs. Start each line with `>`, and put a line with only `>` where paragraphs are separated. Write `{: .note }` on the line after the last line. Lines written one after another are joined into one line when displayed.
 
 ```markdown
-> **メモ** 1つ目の段落です。
-> 続けて書いた行は、同じ段落になります。
+> **Note** This is the first paragraph.
+> Lines written one after another are in the same paragraph.
 >
-> 2つ目の段落です。
+> This is the second paragraph.
 >
-> - リストも書けます
+> - You can also write a list
 {: .note }
 ```
 
-> **メモ** 1つ目の段落です。
-> 続けて書いた行は、同じ段落になります。
+> **Note** This is the first paragraph.
+> Lines written one after another are in the same paragraph.
 >
-> 2つ目の段落です。
+> This is the second paragraph.
 >
-> - リストも書けます
+> - You can also write a list
 {: .note }
 
-## コードのコピー
+## Copy code
 
-コードのブロックにマウスを重ねると、右上にコピーのボタンが出ます。タッチ操作の画面では、いつも出ています。`theme_options.code_copy: false` で消せます。
+When you hover over a code block, a copy button appears at the top right. On touch screens, it is always shown. You can turn it off with `theme_options.code_copy: false`.
 
 ```bash
 bundle exec jekyll serve

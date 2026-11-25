@@ -10,7 +10,7 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 
 社内のドキュメントを手早く公開したいチームや、ドキュメントの公開に時間をかけたくない個人・OSS・ライブラリの開発者に向いています。
 
-ドキュメント: https://akilasatolu.github.io/tiny-md2docs/
+ドキュメント: https://akilasatolu.github.io/tiny-md2docs/ja/
 
 ## 導入
 
@@ -24,7 +24,7 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 3. リポジトリの Settings → Pages で、ブランチの `/docs` フォルダを公開元にします。
 
 > [!NOTE]
-> この設定だけだと、HTML のページと一緒に、元の `.md` ファイルも公開されます。公開したくないときは、[設定](https://akilasatolu.github.io/tiny-md2docs/guide/config.html)を見てください。リポジトリのルートや GitHub Actions で公開する方法は、[公開の方法](https://akilasatolu.github.io/tiny-md2docs/getting-started/publish.html)にあります。
+> この設定だけだと、HTML のページと一緒に、元の `.md` ファイルも公開されます。公開したくないときは、[設定](https://akilasatolu.github.io/tiny-md2docs/ja/guide/config.html)を見てください。リポジトリのルートや GitHub Actions で公開する方法は、[公開の方法](https://akilasatolu.github.io/tiny-md2docs/ja/getting-started/publish.html)にあります。
 
 版を固定するときは、`@` のあとに版の名前を書きます。版の一覧は [CHANGELOG.md](CHANGELOG.md) にあります。
 
@@ -51,7 +51,7 @@ remote_theme: akilasatolu/tiny-md2docs@v0.1.0
 | `search_content_limit` | `5000` | 索引に入れる本文の上限(1ページあたりの文字数) |
 | `strings` | なし | 画面の文言の上書き |
 
-サイドバーの並びは `docs/_data/nav.yml` で決められます。なければフォルダから自動で並べます。詳しくは[ドキュメント](https://akilasatolu.github.io/tiny-md2docs/guide/sidebar.html)を見てください。
+サイドバーの並びは `docs/_data/nav.yml` で決められます。なければフォルダから自動で並べます。詳しくは[ドキュメント](https://akilasatolu.github.io/tiny-md2docs/ja/guide/sidebar.html)を見てください。
 
 ## 色の変え方
 
@@ -68,7 +68,7 @@ remote_theme: akilasatolu/tiny-md2docs@v0.1.0
 }
 ```
 
-文字と幅も CSS 変数で変えられます。使える変数は[色とダークモード](https://akilasatolu.github.io/tiny-md2docs/guide/colors.html)にあります。
+文字と幅も CSS 変数で変えられます。使える変数は[色とダークモード](https://akilasatolu.github.io/tiny-md2docs/ja/guide/colors.html)にあります。
 
 ## 404 ページ
 

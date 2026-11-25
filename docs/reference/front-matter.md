@@ -1,22 +1,26 @@
+---
+ref: front-matter
+---
+
 # front matter
 
-ページの先頭に書ける項目です。どれも省略できます。front matter 自体を書かなくてもかまいません。
+These are the items you can write at the top of a page. All of them are optional. You do not even have to write the front matter itself.
 
 ```markdown
 ---
-title: インストール
-description: tm2d を使い始める手順
+title: Install
+description: Steps to start using tm2d
 nav_order: 1
 ---
 ```
 
-| 項目 | 内容 |
+| Item | Description |
 | --- | --- |
-| `title` | ページの名前。省略すると、本文の最初の見出しが使われる |
-| `description` | ページの説明文。省略するとサイトの `description` |
-| `image` | SNS で共有したときの画像。省略するとサイトの `image` |
-| `nav_order` | 自動の並びでの順番。小さいほど先 |
-| `nav_exclude` | `true` でサイドバーと前後リンクに出さない |
-| `search_exclude` | `true` で検索に出さない |
-| `toc` | `false` で目次を出さない |
-| `ref` | 翻訳どうしで同じ値を書くと、ヘッダーに言語の切り替えが出る |
+| `title` | The page name. If omitted, the first heading of the body is used |
+| `description` | The page description. If omitted, the site's `description` |
+| `image` | The image shown when shared on social media. If omitted, the site's `image` |
+| `nav_order` | The order in the automatic order. Smaller comes first |
+| `nav_exclude` | `true` hides the page from the sidebar and the previous/next links |
+| `search_exclude` | `true` hides the page from search |
+| `toc` | `false` hides the table of contents |
+| `ref` | If you write the same value on translations of each other, a language switcher appears in the header |

@@ -1,80 +1,84 @@
-# サイドバー
+---
+ref: sidebar
+---
 
-サイドバーには、ドキュメントのページが並びます。並びは2通りの方法で決められます。
+# Sidebar
 
-## nav.yml で並べる
+The sidebar lists the pages of the documentation. You can decide the order in two ways.
 
-`docs/_data/nav.yml` を置くと、その順と名前で並びます。
+## Order with nav.yml
+
+If you put `docs/_data/nav.yml`, the pages are listed in that order and with those names.
 
 ```yaml
-- title: はじめに
+- title: Getting started
   children:
-    - title: 概要
+    - title: Overview
       url: /
-    - title: インストール
+    - title: Install
       url: /getting-started/install.html
-- title: よくある質問
+- title: FAQ
   url: /faq.html
 ```
 
-- `url` を持たない項目はグループになり、`children` の項目をまとめます。
-- `children` の中にもう1段グループを作れます。深さは2段までです。
-- `url` はサイトのルートからのパスで書き、末尾は `.html` にします。トップページは `/` です。
+- An item without `url` becomes a group, and it gathers the items in `children`.
+- You can make one more level of group inside `children`. The depth is two levels at most.
+- Write `url` as a path from the site root, ending in `.html`. The top page is `/`.
 
-## フォルダから自動で並べる
+## Order automatically from folders
 
-`nav.yml` がないときは、`docs/` の中のフォルダの構成から、サイドバーを自動で作ります。
+When there is no `nav.yml`, the sidebar is built automatically from the folder structure inside `docs/`.
 
-たとえば、次のようにファイルを置いたとします。
+For example, suppose you place files like this.
 
 ```text
 docs/
-  index.md              # 見出しは「概要」
-  faq.md                # 見出しは「よくある質問」
+  index.md              # heading is "Overview"
+  faq.md                # heading is "FAQ"
   getting-started/
-    index.md            # front matter に title: はじめに
-    install.md          # 見出しは「インストール」
+    index.md            # title: Getting started in the front matter
+    install.md          # heading is "Install"
   guide/
-    config.md           # 見出しは「設定」
+    config.md           # heading is "Configuration"
     advanced/
-      cache.md          # 見出しは「キャッシュ」
+      cache.md          # heading is "Caching"
 ```
 
-サイドバーは、次のように並びます。
+The sidebar is ordered like this.
 
 ```text
-概要
-よくある質問
-はじめに
-  インストール
+Overview
+FAQ
+Getting started
+  Install
 guide
-  設定
+  Configuration
   advanced
-    キャッシュ
+    Caching
 ```
 
-- フォルダの段は、`docs/` から数えます。`docs/` の直下のページは、グループに入れずに先頭に並べます。トップページ(`index.md`)が最初です。
-- `docs/` の直下のフォルダがグループ、その中のフォルダがサブグループになります。それより深いフォルダのページは、サブグループの中に並びます。
-- フォルダの `index.md` は項目に出ず、その `title` がグループ名になります。`index.md` がなければ、フォルダ名がグループ名です(上の例の `guide` と `advanced`)。
-- 項目の名前は、front matter の `title`、なければ本文の最初の見出しです。
-- 順番は front matter の `nav_order` の小さい順で、同じならファイルのパスの順です。グループの順番は、フォルダの `index.md` の `nav_order` の小さい順で、同じならフォルダ名の順です。グループの中では、ページがサブグループより先に並びます。
+- Folder levels are counted from `docs/`. Pages directly under `docs/` are placed first, without a group. The top page (`index.md`) comes first.
+- A folder directly under `docs/` is a group, and a folder inside it is a subgroup. Pages in deeper folders are placed inside the subgroup.
+- A folder's `index.md` does not appear as an item, and its `title` becomes the group name. If there is no `index.md`, the folder name is the group name (`guide` and `advanced` in the example above).
+- An item's name is the `title` in the front matter, or otherwise the first heading of the body.
+- The order is by `nav_order` in the front matter, smallest first; if equal, by file path. The order of groups is by the `nav_order` in the folder's `index.md`, smallest first; if equal, by folder name. Within a group, pages come before subgroups.
 
 ```markdown
 ---
 nav_order: 2
 ---
 
-# インストール
+# Install
 ```
 
-サイドバーに出したくないページには `nav_exclude: true` を書きます。
+Write `nav_exclude: true` on pages you do not want in the sidebar.
 
-言語ごとのフォルダを分けたときの並び方は、[多言語](i18n.md)を見てください。
+For how the order works when you split folders by language, see [Multilingual](i18n.md).
 
-## 前後のリンク
+## Previous and next links
 
-ページの下には、サイドバーの並びでの前後のページへのリンクが出ます。`theme_options.prev_next: false` で消せます。
+At the bottom of each page, links to the previous and next pages in the sidebar order appear. You can turn them off with `theme_options.prev_next: false`.
 
-## サイドバーを消す
+## Hide the sidebar
 
-`theme_options.sidebar: false` で、すべてのページのサイドバーを消せます。狭い画面のメニューボタンも消えます。
+With `theme_options.sidebar: false`, you can hide the sidebar on all pages. The menu button on narrow screens is hidden too.

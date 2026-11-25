@@ -1,34 +1,38 @@
-# 検索
+---
+ref: search
+---
 
-ヘッダーの検索窓で、サイト内のページを検索できます。外部のサービスは使わず、ビルド時に作った索引をブラウザで検索します。
+# Search
 
-## 使い方
+The search box in the header searches the pages of the site. It does not use an external service; the browser searches an index built at build time.
 
-- `/` キーで検索窓に移ります。
-- 入力すると、タイトル、見出し、本文から一致するページが最大10件出ます。
-- 結果が出ると、先頭のページが選ばれた状態(色付き)になります。↑↓ キーで選び直し、Enter で選んだページを開きます。Esc で結果を閉じます。
-- Tab キーで、検索窓の右端の ×、結果の各ページの順に移れます。結果のページで Enter を押すと開き、Esc を押すと検索窓に戻ります。
-- 入力中は、検索窓の右端の × で入力を消せます。
+## How to use it
 
-## 日本語の検索
+- Press the `/` key to move to the search box.
+- As you type, up to 10 matching pages from titles, headings, and body text appear.
+- When results appear, the first page is selected (colored). Use the ↑ and ↓ keys to change the selection, and Enter to open the selected page. Esc closes the results.
+- With the Tab key, you can move to the × at the right end of the search box, then to each result page. Press Enter on a result page to open it, and Esc to go back to the search box.
+- While you type, the × at the right end of the search box clears the input.
 
-日本語は、2文字ずつずらした組(「設定変更」なら「設定」「定変」「変更」)で照合します。そのため、単語の区切りがなくても、文の途中の語が見つかります。
+## Searching Japanese, Chinese, and Korean
 
-検索の前に、次のように文字をそろえます。
+Text in Japanese, Chinese, and Korean is matched with overlapping pairs of two characters (for "設定変更", these are "設定", "定変", and "変更"). Because of this, a word in the middle of a sentence is found even without word separators.
 
-- 全角の英数字と半角のカナは、ふつうの文字にそろえます。「ＡＢＣ」は「abc」で、「ｶﾞｲﾄﾞ」は「ガイド」で見つかります。
-- カタカナとひらがなは区別しません。「がいど」でも「ガイド」が見つかります。
-- 英字の大文字と小文字、アクセント記号は区別しません。「café」は「cafe」で見つかります。
-- 濁点と半濁点は区別します。「が」で「か」は見つかりません。
+Before searching, characters are normalized as follows.
 
-複数の語をスペースで区切ると、すべての語を含むページだけが出ます。
+- Full-width letters and digits and half-width kana are converted to ordinary characters. "ＡＢＣ" is found by "abc", and "ｶﾞｲﾄﾞ" by "ガイド".
+- Katakana and hiragana are not distinguished. "がいど" also finds "ガイド".
+- Upper and lower case letters and accent marks are not distinguished. "café" is found by "cafe".
+- Voiced and semi-voiced marks are distinguished. "が" does not find "か".
 
-## 順位
+If you separate several words with spaces, only pages that contain all of the words appear.
 
-タイトルに一致したページが上に、本文だけに一致したページが下に並びます。
+## Ranking
 
-## 検索から外す
+Pages that match in the title rank above pages that match only in the body.
 
-ページの front matter に `search_exclude: true` を書くと、そのページは検索に出ません。サイト全体の検索をやめるときは `theme_options.search: false` にします。
+## Exclude pages from search
 
-索引に入れる本文は、1ページあたり 5000 文字までです。`theme_options.search_content_limit` で変えられます。ページが多くて索引が重いときは、小さくします。
+Write `search_exclude: true` in a page's front matter, and the page does not appear in search. To turn off search for the whole site, set `theme_options.search: false`.
+
+The body text put in the index is limited to 5000 characters per page. You can change it with `theme_options.search_content_limit`. If you have many pages and the index is heavy, make it smaller.

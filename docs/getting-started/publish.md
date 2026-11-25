@@ -1,19 +1,23 @@
-# 公開の方法
+---
+ref: publish
+---
 
-ふつうは、[インストール](install.md)の手順のとおり、ブランチの `docs` フォルダから公開します。ここでは、ほかの2つの方法を説明します。どちらも、リポジトリの Settings → Pages の「Build and deployment」で設定します。
+# Publishing
 
-## ブランチのルートから公開する
+Normally you publish from the `docs` folder of a branch, as described in [Install](install.md). This page explains the other two ways. Both are set under "Build and deployment" in the repository's Settings → Pages.
 
-ドキュメントだけのリポジトリなどで、リポジトリのルートを公開する方法です。
+## Publish from the root of a branch
 
-1. `_config.yml` と Markdown のファイルを、`docs/` ではなくリポジトリのルートに置きます。このドキュメントの `docs/` は、リポジトリのルートに読み替えてください。
-2. [インストール](install.md)の「3. GitHub Pages を有効にする」と同じように設定します。フォルダだけは、`/docs` ではなく `/(root)` を選びます。
+Use this when the repository only holds documentation and you want to publish its root.
 
-ルートから公開すると、リポジトリのほかのファイルも公開されます。公開したくないファイルやフォルダは、`_config.yml` の `exclude` に書きます。`exclude` を書くと、Jekyll が既定で除いているファイル(`Gemfile`、`node_modules` など)の一覧が置き換わります。次の例のように、既定のものも一緒に書きます。
+1. Put `_config.yml` and the Markdown files in the repository root instead of `docs/`. Read `docs/` in this documentation as the repository root.
+2. Set it up as in "3. Turn on GitHub Pages" of [Install](install.md). Only the folder differs: choose `/(root)` instead of `/docs`.
+
+When you publish from the root, the other files in the repository are published too. List the files and folders you do not want to publish in `exclude` in `_config.yml`. Writing `exclude` replaces the list of files Jekyll excludes by default (`Gemfile`, `node_modules`, and so on). As in the example below, write the default entries as well.
 
 ```yaml
 exclude:
-  # Jekyll の既定の除外
+  # Jekyll's default excludes
   - Gemfile
   - Gemfile.lock
   - node_modules
@@ -21,21 +25,21 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
-  # 独自のドメインを使うときのファイル
+  # File for a custom domain
   - CNAME
-  # 公開したくないもの
+  # Things you do not want to publish
   - README.md
   - src/
 ```
 
-## GitHub Actions で公開する
+## Publish with GitHub Actions
 
-ビルドの前に処理を足したいときなど、自分のワークフローで公開する方法です。ワークフローは、GitHub が用意している公式のひな形から作ります。
+Use this when you want to add steps before the build, or otherwise publish with your own workflow. Create the workflow from the official template that GitHub provides.
 
-1. Settings → Pages の「Source」で「GitHub Actions」を選びます。
-2. リポジトリの「Actions」を開きます。ワークフローがすでにあるときは、「New workflow」を押します。
-3. 「Choose a workflow」のページで「GitHub Pages Jekyll」を探し、「Configure」を押します。
-4. 開いたワークフローの `source: ./` を `source: ./docs` に直します。
-5. 「Commit changes...」を押して、ワークフローを commit します。
+1. Under Settings → Pages, set "Source" to "GitHub Actions".
+2. Open "Actions" in the repository. If a workflow already exists, press "New workflow".
+3. On the "Choose a workflow" page, find "GitHub Pages Jekyll" and press "Configure".
+4. In the workflow that opens, change `source: ./` to `source: ./docs`.
+5. Press "Commit changes..." to commit the workflow.
 
-commit すると、ワークフローが動いてサイトが公開されます。そのあとは、既定のブランチに push するたびに公開されます。
+After you commit, the workflow runs and the site is published. From then on, it is published every time you push to the default branch.

@@ -1,42 +1,46 @@
-# 設定
+---
+ref: config
+---
 
-設定は、すべて `docs/_config.yml` に書きます。最小の設定は `remote_theme` の1行だけです。
+# Configuration
 
-## サイトの情報
+All settings go in `docs/_config.yml`. The minimum setting is the single `remote_theme` line.
+
+## Site information
 
 ```yaml
 remote_theme: akilasatolu/tiny-md2docs
 title: My Docs
-description: 製品の使い方をまとめたドキュメント
+description: Documentation on how to use the product
 lang: en
 ```
 
-- `title` はヘッダーとブラウザのタブに出るサイト名です。
-- `description` は検索エンジンや SNS で使われる説明文です。ページごとに front matter の `description` で上書きできます。
-- `lang` はサイト全体の言語で、`<html lang>` と画面の文言に使われます。省略すると `en` です。英語以外の言語にするときは、[多言語](i18n.md)を見てください。
-- `title` を書かないと、プロジェクトのページ(`https://user.github.io/repo/`)ではリポジトリの名前が、ユーザーのページ(`https://user.github.io/`)ではアカウントの名前が、サイト名になります。`description` を書かないと、リポジトリの説明(About)が使われます。
+- `title` is the site name shown in the header and the browser tab.
+- `description` is the description used by search engines and social media. A page can override it with `description` in its front matter.
+- `lang` is the language of the whole site. It is used for `<html lang>` and the on-screen text. If you omit it, it is `en`. To use a language other than English, see [Multilingual](i18n.md).
+- If you do not write `title`, the site name is the repository name for a project page (`https://user.github.io/repo/`), and the account name for a user page (`https://user.github.io/`). If you do not write `description`, the repository description (About) is used.
 
-## 元の .md ファイルを公開しない
+## Do not publish the original .md files
 
-`remote_theme` の1行だけだと、HTML のページと一緒に、元の `.md` ファイルも公開されます(例: `/guide/config.html` と `/guide/config.md`)。中身は同じですが、公開したくないときは、次の2行を足します。
+With only the `remote_theme` line, the original `.md` files are published along with the HTML pages (for example, `/guide/config.html` and `/guide/config.md`). The content is the same, but if you do not want them published, add these two lines.
 
 ```yaml
 optional_front_matter:
   remove_originals: true
 ```
 
-- front matter のあるページは、この設定がなくても、元の `.md` が公開されません。
-- `README.md`、`LICENSE.md`、`CONTRIBUTING.md` など、決まった名前のファイルは、front matter がないとページにならず、この設定を書いても `.md` のまま公開されます。ページにするときは、先頭に空の front matter(`---` の2行)を書きます。
-- `README.md` は、同じフォルダに `index.md` がなければ、そのフォルダのトップページにもなります。このときの元の `README.md` も公開しないときは、次も足します。
+- A page that has front matter does not have its original `.md` published, even without this setting.
+- Files with certain names, such as `README.md`, `LICENSE.md`, and `CONTRIBUTING.md`, do not become pages without front matter, and they are published as `.md` even with this setting. To make one a page, write an empty front matter (two `---` lines) at the top.
+- `README.md` also becomes the top page of its folder when the same folder has no `index.md`. To stop publishing the original `README.md` in that case too, add the following.
 
 ```yaml
 readme_index:
   remove_originals: true
 ```
 
-## テーマの設定
+## Theme settings
 
-テーマの動きは `theme_options` の下にまとめて書きます。書かなかった項目は既定値になります。
+The theme's behavior is set together under `theme_options`. Items you do not write use their default values.
 
 ```yaml
 theme_options:
@@ -46,23 +50,23 @@ theme_options:
   search: true
 ```
 
-ロゴやファビコンのパスは、サイトのルートからのパスで書きます。プロジェクトページ(`https://user.github.io/repo/`)でも、`/repo` を付ける必要はありません。
+Write the paths of the logo and favicon as paths from the site root. Even for a project page (`https://user.github.io/repo/`), you do not need to add `/repo`.
 
-すべての項目は [theme_options](../reference/theme-options.md) にあります。
+All items are listed in [theme_options](../reference/theme-options.md).
 
-## 画面の文言を変える
+## Change the on-screen text
 
-ボタンや検索窓の文言は、`theme_options.strings` で上書きできます。ここに書いた文言は、言語ごとの文言を書いていない言語のページに使われます。言語ごとに分けるときは、[多言語](i18n.md)を見てください。
+You can override the text of buttons and the search box with `theme_options.strings`. The text written here is used for pages in languages that have no text of their own. To split it by language, see [Multilingual](i18n.md).
 
 ```yaml
 theme_options:
   strings:
-    search_placeholder: キーワードで検索
-    next: 次のページ
+    search_placeholder: Search by keyword
+    next: Next page
 ```
 
-キーの一覧は [theme_options](../reference/theme-options.md) の「画面の文言」にあります。
+The list of keys is under "On-screen text" in [theme_options](../reference/theme-options.md).
 
-## 404 ページ
+## 404 page
 
-存在しない URL を開くと、テーマが用意した 404 ページ(英語では「Page not found」)が出ます。自分で置く必要はありません。文言は `strings` の `not_found_title` と `not_found_body` で変えられます。
+When you open a URL that does not exist, the theme shows its own 404 page ("Page not found" in English). You do not need to add one. Change the text with `not_found_title` and `not_found_body` in `strings`.

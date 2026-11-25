@@ -108,7 +108,9 @@ function toDoc(file, id) {
     .replace(/[`*|>]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
-  return { id, title, url, headings, content, lang: 'ja' };
+  const first = rel.split('/')[0];
+  const lang = first === 'ja' || first === 'ko' ? first : 'en';
+  return { id, title, url, headings, content, lang };
 }
 
 const corpus = walk(join(root, 'docs')).map(toDoc);
@@ -116,10 +118,10 @@ const corpusIndex = createIndex(corpus);
 const cases = JSON.parse(readFileSync(join(root, 'test/search-cases.json'), 'utf8'));
 
 test('evaluation cases from docs/', () => {
-  assert.ok(cases.length >= 20 && cases.length <= 30);
+  assert.ok(cases.length >= 20 && cases.length <= 50);
   const failed = [];
   for (const c of cases) {
-    const top = corpusIndex.search(c.q, { limit: c.top || 1 }).map((r) => corpus[r.id].url);
+    const top = corpusIndex.search(c.q, { limit: c.top || 1, lang: c.lang }).map((r) => corpus[r.id].url);
     if (!top.includes(c.expect)) failed.push(`${c.q} -> ${top.join(', ') || '(none)'} (expected ${c.expect})`);
   }
   assert.deepEqual(failed, []);

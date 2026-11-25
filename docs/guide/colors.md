@@ -1,8 +1,12 @@
-# 色とダークモード
+---
+ref: colors
+---
 
-## 色を変える
+# Colors and dark mode
 
-色は CSS 変数で決めています。変えるときは、`docs/assets/css/style.scss` を作り、次のように書きます。
+## Change the colors
+
+The colors are set with CSS variables. To change them, create `docs/assets/css/style.scss` and write the following.
 
 ```scss
 ---
@@ -16,26 +20,26 @@
 }
 ```
 
-最初の2行(空の front matter)と `@import "tm2d";` は必ず書きます。このファイルがテーマの `style.scss` の代わりに使われます。
+You must write the first two lines (an empty front matter) and `@import "tm2d";`. This file is used in place of the theme's `style.scss`.
 
-使える変数は次のとおりです。
+The variables you can use are as follows.
 
-| 変数 | 使われる場所 | 既定値 |
+| Variable | Where it is used | Default |
 | --- | --- | --- |
-| `--tm2d-accent` | リンク、今のページの強調、フォーカスの枠 | `#1E5AA8` |
-| `--tm2d-accent-weak` | 今のページの背景 | `#E8F0FA` |
-| `--tm2d-bg` | 背景 | `#FFFFFF` |
-| `--tm2d-text` | 文字 | `#1A1D21` |
-| `--tm2d-muted` | 補足の文字 | `#5B6168` |
-| `--tm2d-subtle` | コードや引用の背景 | `#F5F6F4` |
-| `--tm2d-border` | 区切りの線 | `#E4E6E1` |
-| `--tm2d-link` | リンク(既定は accent と同じ) | `--tm2d-accent` |
+| `--tm2d-accent` | Links, the current page highlight, focus outlines | `#1E5AA8` |
+| `--tm2d-accent-weak` | Background of the current page | `#E8F0FA` |
+| `--tm2d-bg` | Background | `#FFFFFF` |
+| `--tm2d-text` | Text | `#1A1D21` |
+| `--tm2d-muted` | Secondary text | `#5B6168` |
+| `--tm2d-subtle` | Background of code and quotes | `#F5F6F4` |
+| `--tm2d-border` | Divider lines | `#E4E6E1` |
+| `--tm2d-link` | Links (the same as accent by default) | `--tm2d-accent` |
 
-文字と背景のコントラストが 4.5:1 以上になる色を選んでください。
+Choose colors that give a contrast ratio of at least 4.5:1 between text and background.
 
-## ダークモードの色
+## Dark mode colors
 
-ダークモードの色は、別の名前の変数(`--tm2d-dark-accent` など)で持っています。`--tm2d-accent` を変えても、ダークモードの色は変わりません。ダークモードの色も変えるときは、同じ `:root` の中に書きます。
+The dark mode colors are kept in variables with different names (such as `--tm2d-dark-accent`). Changing `--tm2d-accent` does not change the dark mode colors. To change the dark mode colors too, write them in the same `:root`.
 
 ```scss
 :root {
@@ -44,34 +48,34 @@
 }
 ```
 
-## ダークモードの切り替え
+## Switch dark mode
 
-`theme_options.dark_mode` で決めます。
+Set it with `theme_options.dark_mode`.
 
-| 値 | 動き |
+| Value | Behavior |
 | --- | --- |
-| `auto`(既定) | OS の設定に合わせます。ヘッダーに切り替えボタンが出て、選んだ方を覚えます |
-| `light` | いつもライトモードです。ボタンは出ません |
-| `dark` | いつもダークモードです。ボタンは出ません |
+| `auto` (default) | Follows the OS setting. A toggle button appears in the header and remembers the choice |
+| `light` | Always light mode. No button |
+| `dark` | Always dark mode. No button |
 
-## 文字と幅を変える
+## Change fonts and widths
 
-文字と幅も、同じ `:root` の中で CSS 変数を上書きして変えます。
+Fonts and widths are also changed by overriding CSS variables in the same `:root`.
 
-| 変数 | 使われる場所 | 既定値 |
+| Variable | Where it is used | Default |
 | --- | --- | --- |
-| `--tm2d-font-body` | 本文の書体 | システムの書体 |
-| `--tm2d-font-heading` | 見出しの書体 | `--tm2d-font-body` と同じ |
-| `--tm2d-font-mono` | コードの書体 | システムの等幅の書体 |
-| `--tm2d-font-size` | 本文の文字の大きさ | `16px` |
-| `--tm2d-line-height` | 本文の行の高さ | `1.8` |
-| `--tm2d-sidebar-width` | サイドバーの幅 | `264px` |
-| `--tm2d-toc-width` | 右の目次の幅 | `220px` |
-| `--tm2d-content-max-width` | 本文の最大の幅 | なし(`none`) |
+| `--tm2d-font-body` | Body font | System font |
+| `--tm2d-font-heading` | Heading font | Same as `--tm2d-font-body` |
+| `--tm2d-font-mono` | Code font | System monospace font |
+| `--tm2d-font-size` | Body font size | `16px` |
+| `--tm2d-line-height` | Body line height | `1.8` |
+| `--tm2d-sidebar-width` | Sidebar width | `264px` |
+| `--tm2d-toc-width` | Width of the table of contents on the right | `220px` |
+| `--tm2d-content-max-width` | Maximum width of the body | None (`none`) |
 
-本文の幅に上限を付けたいときは、`--tm2d-content-max-width` に `760px` などを指定します。
+To limit the width of the body, set `--tm2d-content-max-width` to a value such as `760px`.
 
-テーマは、外部から書体を読み込みません。Noto Sans JP などの Web フォントを使うときは、自分の `style.scss` で読み込み、`--tm2d-font-body` を上書きします。
+The theme does not load fonts from outside. To use a web font such as Noto Sans JP, load it in your own `style.scss` and override `--tm2d-font-body`.
 
 ```scss
 ---

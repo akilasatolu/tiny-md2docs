@@ -1,26 +1,26 @@
-- title: はじめに
+- title: Getting started
   children:
-    - title: 概要
+    - title: Overview
       url: /
-    - title: インストール
+    - title: Install
       url: /getting-started/install.html
-    - title: 公開の方法
+    - title: Publishing
       url: /getting-started/publish.html
-- title: 使い方
+- title: Guide
   children:
-    - title: 設定
+    - title: Configuration
       url: /guide/config.html
-    - title: サイドバー
+    - title: Sidebar
       url: /guide/sidebar.html
-    - title: 検索
+    - title: Search
       url: /guide/search.html
-    - title: 色とダークモード
+    - title: Colors and dark mode
       url: /guide/colors.html
-    - title: ページの書き方
+    - title: Writing pages
       url: /guide/writing.html
-    - title: 多言語
+    - title: Multilingual
       url: /guide/i18n.html
-- title: リファレンス
+- title: Reference
   children:
     - title: theme_options
       url: /reference/theme-options.html

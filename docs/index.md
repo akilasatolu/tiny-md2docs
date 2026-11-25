@@ -1,19 +1,24 @@
-# 概要
+---
+ref: index
+description: A small documentation theme. Just put Markdown in docs/
+---
 
-tm2d(tiny-md2docs)は、GitHub Pages で使う小さな Jekyll テーマです。Markdown を `docs/` に置くだけで、ドキュメントサイトとして公開できます。
+# Overview
 
-## 特徴
+tm2d (tiny-md2docs) is a small Jekyll theme for GitHub Pages. Put Markdown files in `docs/` and publish them as a documentation site.
 
-- 導入は、`docs/_config.yml` に1行(`remote_theme`)書くだけ
-- GitHub Pages の標準のビルドだけで動く。ワークフロー、npm、プラグインの追加は要らない
-- ほかに用意するものはない。サイドバー、検索、目次、404 ページはテーマが作る
-- 色は CSS 変数の上書きで変えられる
+## Features
 
-## 向いている人
+- Setup is one line in `docs/_config.yml` (`remote_theme`)
+- It runs on the standard GitHub Pages build. No workflow, npm, or extra plugins are needed
+- Nothing else to prepare. The theme builds the sidebar, search, table of contents, and 404 page
+- Colors can be changed by overriding CSS variables
 
-- 社内のドキュメントを、手早く公開したいチーム
-- ドキュメントの公開に時間をかけたくない、個人や OSS・ライブラリの開発者
+## Who it is for
 
-## 始め方
+- Teams that want to publish internal documentation quickly
+- Individuals, open-source, and library developers who do not want to spend time on publishing docs
 
-[インストール](getting-started/install.md)の3つの手順で公開できます。
+## Getting started
+
+You can publish with the three steps in [Install](getting-started/install.md).
