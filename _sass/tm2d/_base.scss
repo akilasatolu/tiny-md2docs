@@ -181,6 +181,46 @@ img {
   }
 }
 
+// Task lists: the checkbox takes the place of the bullet.
+.tm2d-content .task-list-item-checkbox {
+  width: 1em;
+  height: 1em;
+  margin: 0 0.5em 0 0;
+  font-size: inherit;
+  vertical-align: -0.125em;
+}
+
+.tm2d-content ul > li.task-list-item {
+  &:has(> .task-list-item-checkbox),
+  &:has(> p:first-child > .task-list-item-checkbox) {
+    list-style: none;
+
+    > .task-list-item-checkbox,
+    > p:first-child > .task-list-item-checkbox {
+      margin-left: -1.5em;
+    }
+  }
+}
+
+// Definition lists
+.tm2d-content {
+  dl {
+    margin: 0 0 24px;
+  }
+
+  dt {
+    font-weight: 700;
+  }
+
+  dd {
+    margin: 0 0 8px 1.5em;
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
 :focus-visible {
   outline: 2px solid var(--tm2d-accent);
   outline-offset: 2px;

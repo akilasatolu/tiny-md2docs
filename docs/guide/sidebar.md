@@ -22,7 +22,7 @@ If you put `docs/_data/nav.yml`, the pages are listed in that order and with tho
 ```
 
 - An item without `url` becomes a group, and it gathers the items in `children`.
-- You can make groups inside `children` too. There is no limit on the depth.
+- You can make groups inside `children` too. In `nav.yml`, you can nest up to 48 levels (the build fails at 49 or more).
 - Write `url` as a path from the site root, ending in `.html`. The top page is `/`.
 
 ## Order automatically from folders

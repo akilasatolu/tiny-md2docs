@@ -59,6 +59,12 @@ Second line
 {% endcapture %}
 {% include example.html md=ex %}
 
+{% capture ex %}
+- [ ] To do
+- [x] Done
+{% endcapture %}
+{% include example.html md=ex %}
+
 ## Code
 
 {% capture ex %}

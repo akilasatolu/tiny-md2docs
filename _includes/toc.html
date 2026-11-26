@@ -1,9 +1,9 @@
 {%- comment -%}
-  目次。渡された HTML(include.html)の h2 と h3 を並べる。2つ未満なら出さない。
+  目次。渡された HTML(include.html)の h2 と h3 を並べる(no_toc の見出しは除く)。2つ未満なら出さない。
   include.variant: "inline"(狭い画面用、本文の上の details)か "side"(広い画面用の右のカラム)。
 {%- endcomment -%}
 {%- if site.theme_options.toc != false and page.toc != false -%}
-{%- include headings.html html=include.html -%}
+{%- include headings.html html=include.html skip_no_toc=true -%}
 {%- if tm2d_headings.size >= 2 -%}
 {%- capture _tm2d_toc_list -%}
 <ul>

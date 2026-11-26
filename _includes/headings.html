@@ -1,6 +1,7 @@
 {%- comment -%}
   渡された HTML(include.html)から h2 と h3 を取り出し、tm2d_headings に入れる。
   各要素は「段␟id␟文字」の文字列。索引と目次で使う。
+  include.skip_no_toc があれば、class に no_toc がある見出しを除く(目次用)。
 {%- endcomment -%}
 {%- assign tm2d_headings = "" | split: "" -%}
 {%- assign _tm2d_hparts = include.html | split: "<h" -%}
@@ -8,6 +9,10 @@
   {%- assign _tm2d_lv = _hp | slice: 0, 1 -%}
   {%- if _tm2d_lv != "2" and _tm2d_lv != "3" -%}{%- continue -%}{%- endif -%}
   {%- assign _tm2d_open = _hp | split: ">" | first -%}
+  {%- if include.skip_no_toc and _tm2d_open contains 'class="' -%}
+    {%- assign _tm2d_hcls = _tm2d_open | split: 'class="' | last | split: '"' | first | split: " " -%}
+    {%- if _tm2d_hcls contains "no_toc" -%}{%- continue -%}{%- endif -%}
+  {%- endif -%}
   {%- assign _tm2d_hid = "" -%}
   {%- if _tm2d_open contains 'id="' -%}
     {%- assign _tm2d_hid = _tm2d_open | split: 'id="' | last | split: '"' | first -%}

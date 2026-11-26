@@ -59,6 +59,12 @@ ref: elements
 {% endcapture %}
 {% include example.html md=ex %}
 
+{% capture ex %}
+- [ ] 未完了
+- [x] 完了
+{% endcapture %}
+{% include example.html md=ex %}
+
 ## コード
 
 {% capture ex %}

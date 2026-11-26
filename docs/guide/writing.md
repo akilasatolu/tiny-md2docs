@@ -21,9 +21,16 @@ When a page has two or more h2 and h3 headings, a table of contents appears. On 
 
 To hide it, write `toc: false` in the page's front matter. To hide it on the whole site, set `theme_options.toc: false`.
 
+To leave one heading out of the table of contents, write `{: .no_toc }` on the line after the heading. The heading can still be found by search.
+
+```markdown
+## Notes
+{: .no_toc }
+```
+
 ## Breadcrumb
 
-Above the page, the position in the sidebar groups (such as "Guide / Configuration") appears. It does not appear on the top page or on pages that are not in a group. You can turn it off with `theme_options.breadcrumb: false`.
+Above the page, the position in the sidebar groups (such as "Guide / Configuration") appears. A group is a link when it has a page to go to: its `url` in `nav.yml`, or the folder's `index.md` in the automatic order. It does not appear on the top page or on pages that are not in a group. You can turn it off with `theme_options.breadcrumb: false`.
 
 ## Callout boxes
 
