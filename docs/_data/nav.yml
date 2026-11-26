@@ -18,6 +18,8 @@
       url: /guide/colors.html
     - title: Writing pages
       url: /guide/writing.html
+    - title: Markdown examples
+      url: /guide/elements.html
     - title: Multilingual
       url: /guide/i18n.html
 - title: Reference

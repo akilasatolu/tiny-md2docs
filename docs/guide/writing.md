@@ -6,6 +6,8 @@ ref: writing
 
 Write pages in ordinary Markdown. This page explains how to write pages and links, and the displays the theme provides.
 
+The writing you can use in the body is listed with examples in [Markdown examples](elements.md).
+
 ## Pages and links
 
 - The front matter at the top of a page (settings enclosed in `---`) is optional. The first heading of the body is used as the page name. The items you can write are listed in [front matter](../reference/front-matter.md).

@@ -55,6 +55,8 @@ remote_theme: akilasatolu/tiny-md2docs@v0.1.0
 
 サイドバーの並びは `docs/_data/nav.yml` で決められます。なければフォルダから自動で並べます。詳しくは[ドキュメント](https://akilasatolu.github.io/tiny-md2docs/ja/guide/sidebar.html)を見てください。
 
+本文で使える書き方は、[表示の一覧](https://akilasatolu.github.io/tiny-md2docs/ja/guide/elements.html)に見本があります。
+
 ## 色の変え方
 
 `docs/assets/css/style.scss` を作り、CSS 変数を上書きします。

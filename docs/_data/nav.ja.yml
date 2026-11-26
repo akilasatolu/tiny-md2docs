@@ -18,6 +18,8 @@
       url: /ja/guide/colors.html
     - title: ページの書き方
       url: /ja/guide/writing.html
+    - title: 表示の一覧
+      url: /ja/guide/elements.html
     - title: 多言語
       url: /ja/guide/i18n.html
 - title: リファレンス

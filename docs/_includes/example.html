@@ -1,0 +1,20 @@
+{%- comment -%}
+  表示の一覧(guide/elements.md)用。include.md の Markdown を、コード、表示結果の順に出す。
+  相対パスは「writing__DOT__md」のように書く。そのまま「.md」と書くと、
+  jekyll-relative-links が見本のコードまで .html に書き換えるため。
+  include.ids が false なら、見本の見出しに id を付けない(ページの目次に混ざらない)。
+{%- endcomment -%}
+{%- assign _md = include.md | strip | replace: "__DOT__", "." -%}
+{%- assign _src = include.md | strip | replace: "__DOT__md", ".html" | replace: "__DOT__", "." -%}
+{%- capture _code %}````markdown
+{{ _md }}
+````{% endcapture -%}
+{%- if include.ids == false -%}
+  {%- capture _src %}{::options auto_ids="false" /}
+
+{{ _src }}{% endcapture -%}
+{%- endif %}
+{{ _code | markdownify }}
+<div style="margin: 0 0 40px; padding: 20px 20px 12px; border: 1px solid var(--tm2d-border); border-radius: 8px;">
+{{ _src | markdownify }}
+</div>
