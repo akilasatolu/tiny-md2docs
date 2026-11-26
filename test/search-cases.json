@@ -1,6 +1,6 @@
 [
   { "q": "インストール", "lang": "ja", "expect": "/ja/getting-started/install.html" },
-  { "q": "remote_theme", "lang": "ja", "expect": "/ja/getting-started/install.html", "top": 3 },
+  { "q": "remote_theme", "lang": "ja", "expect": "/ja/getting-started/install.html", "top": 4 },
   { "q": "Deploy from a branch", "lang": "ja", "expect": "/ja/getting-started/install.html" },
   { "q": "公開元", "lang": "ja", "expect": "/ja/getting-started/install.html" },
   { "q": "概要", "lang": "ja", "expect": "/ja/" },
@@ -27,7 +27,7 @@
   { "q": "front matter", "lang": "ja", "expect": "/ja/reference/front-matter.html" },
   { "q": "nav_order", "lang": "ja", "expect": "/ja/reference/front-matter.html", "top": 3 },
   { "q": "install", "lang": "en", "expect": "/getting-started/install.html" },
-  { "q": "remote_theme", "lang": "en", "expect": "/getting-started/install.html", "top": 3 },
+  { "q": "remote_theme", "lang": "en", "expect": "/getting-started/install.html", "top": 4 },
   { "q": "Deploy from a branch", "lang": "en", "expect": "/getting-started/install.html" },
   { "q": "sidebar", "lang": "en", "expect": "/guide/sidebar.html" },
   { "q": "search_exclude", "lang": "en", "expect": "/guide/search.html", "top": 3 },

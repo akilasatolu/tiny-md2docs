@@ -6,6 +6,8 @@ ref: config
 
 All settings go in `docs/_config.yml`. The minimum setting is the single `remote_theme` line.
 
+The settings are listed in [_config.yml](../reference/site-config.md).
+
 ## Site information
 
 ```yaml

@@ -6,6 +6,8 @@ ref: config
 
 설정은 모두 `docs/_config.yml`에 씁니다. 최소 설정은 `remote_theme` 한 줄뿐입니다.
 
+설정 목록은 [_config.yml](../reference/site-config.md)에 있습니다.
+
 ## 사이트 정보
 
 ```yaml

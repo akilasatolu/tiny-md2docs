@@ -51,6 +51,8 @@ remote_theme: akilasatolu/tiny-md2docs@v0.1.0
 | `search_content_limit` | `5000` | 索引に入れる本文の上限(1ページあたりの文字数) |
 | `strings` | なし | 画面の文言の上書き |
 
+`_config.yml` の直下に書く設定は、[リファレンス](https://akilasatolu.github.io/tiny-md2docs/ja/reference/site-config.html)にまとめています。
+
 サイドバーの並びは `docs/_data/nav.yml` で決められます。なければフォルダから自動で並べます。詳しくは[ドキュメント](https://akilasatolu.github.io/tiny-md2docs/ja/guide/sidebar.html)を見てください。
 
 ## 色の変え方

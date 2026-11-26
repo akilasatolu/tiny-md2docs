@@ -22,6 +22,8 @@
       url: /ja/guide/i18n.html
 - title: リファレンス
   children:
+    - title: _config.yml
+      url: /ja/reference/site-config.html
     - title: theme_options
       url: /ja/reference/theme-options.html
     - title: front matter
