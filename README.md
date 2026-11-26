@@ -6,7 +6,8 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 - GitHub Pages の標準のビルドだけで動きます。ワークフロー、npm、プラグインの追加は要りません。
 - 日本語の検索ができます(外部のサービスは使いません)。
 - ダークモード、目次、パンくず、コードのコピー、多言語に対応しています。
-- CSS と JS は、合わせて gzip で 10 KB 以下です。
+- ボタン、バッジ、ユーティリティクラスを本文で使え、印刷にも対応しています。
+- CSS と JS は、合わせて gzip で 16 KB 以下です。
 
 社内のドキュメントを手早く公開したいチームや、ドキュメントの公開に時間をかけたくない個人・OSS・ライブラリの開発者に向いています。
 
@@ -45,6 +46,8 @@ remote_theme: akilasatolu/tiny-md2docs@v0.1.0
 | `toc` | `true` | `false` で目次を消す |
 | `breadcrumb` | `true` | `false` でパンくずを消す |
 | `code_copy` | `true` | `false` でコードのコピーのボタンを消す |
+| `top_link` | `true` | `false` で本文の下の「ページ先頭へ戻る」を消す |
+| `heading_link` | `true` | `false` で見出しのリンクを消す |
 | `github_link` | `true` | `false` でヘッダーの GitHub へのリンクを消す |
 | `logo` | なし | ヘッダーのロゴ画像のパス |
 | `favicon` | なし | ファビコンのパス |
@@ -55,7 +58,7 @@ remote_theme: akilasatolu/tiny-md2docs@v0.1.0
 
 サイドバーの並びは `docs/_data/nav.yml` で決められます。なければフォルダから自動で並べます。詳しくは[ドキュメント](https://akilasatolu.github.io/tiny-md2docs/ja/guide/sidebar.html)を見てください。
 
-本文で使える書き方は、[表示の一覧](https://akilasatolu.github.io/tiny-md2docs/ja/guide/elements.html)に見本があります。
+本文で使える書き方は、[表示の一覧](https://akilasatolu.github.io/tiny-md2docs/ja/guide/elements.html)に見本があります。ボタンやバッジなどのクラスは、[UI パーツ](https://akilasatolu.github.io/tiny-md2docs/ja/guide/ui-parts.html)にあります。
 
 ## 色の変え方
 
@@ -88,11 +91,11 @@ remote_theme: akilasatolu/tiny-md2docs@v0.1.0
 
 | ファイル | gzip |
 | --- | --- |
-| style.css | 3553 バイト |
-| tm2d.js | 1528 バイト |
+| style.css | 7980 バイト |
+| tm2d.js | 1664 バイト |
 | search-core.js | 2120 バイト |
 | search-ui.js | 2199 バイト |
-| 合計 | 9400 バイト |
+| 合計 | 13963 バイト |
 
 ## 開発
 

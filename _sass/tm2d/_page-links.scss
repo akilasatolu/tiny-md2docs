@@ -1,0 +1,29 @@
+// Links on headings (added by tm2d.js) and the back-to-top link.
+.tm2d-heading-link {
+  margin-left: 8px;
+  color: var(--tm2d-muted);
+  font-weight: 400;
+  opacity: 0;
+
+  &::after {
+    content: "#";
+  }
+}
+
+.tm2d-content :hover > .tm2d-heading-link,
+.tm2d-heading-link:focus-visible {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .tm2d-heading-link {
+    opacity: 1;
+  }
+}
+
+.tm2d-top-link {
+  max-width: var(--tm2d-content-max-width);
+  margin: 32px auto 0;
+  font-size: 13px;
+  text-align: right;
+}

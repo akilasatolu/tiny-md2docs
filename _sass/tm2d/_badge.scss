@@ -1,0 +1,20 @@
+// Badges: write {: .badge .badge-green } on the line after a short paragraph.
+.badge,
+.badge-blue {
+  display: inline-block;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  padding: 0.16em 0.7em;
+  border-radius: 12px;
+  background: var(--tm2d-color-blue-2);
+  color: var(--tm2d-bg);
+  font-size: 12px;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+@each $hue in "green", "purple", "red", "yellow" {
+  .badge-#{$hue} {
+    background: var(--tm2d-color-#{$hue}-2);
+  }
+}

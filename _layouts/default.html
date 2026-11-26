@@ -4,7 +4,7 @@
 <head>
 {% include head.html %}
 </head>
-<body{% if site.theme_options.code_copy != false %} data-tm2d-copy="{% include t.html key="copy" %}" data-tm2d-copied="{% include t.html key="copied" %}"{% endif %}>
+<body id="tm2d-top"{% if site.theme_options.code_copy != false %} data-tm2d-copy="{% include t.html key="copy" %}" data-tm2d-copied="{% include t.html key="copied" %}"{% endif %}{% if site.theme_options.heading_link != false %} data-tm2d-heading-link="{% include t.html key="heading_link" %}"{% endif %}>
 <a class="tm2d-skip" href="#main">{% include t.html key="skip_to_content" %}</a>
 {% include header.html %}
 {%- if site.theme_options.sidebar != false %}

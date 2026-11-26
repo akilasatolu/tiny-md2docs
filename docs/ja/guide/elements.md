@@ -16,6 +16,10 @@ ref: elements
 ### 見出し 3
 
 #### 見出し 4
+
+##### 見出し 5
+
+###### 見出し 6
 {% endcapture %}
 {% include example.html md=ex ids=false %}
 
@@ -93,6 +97,9 @@ const message = "hello";
 
 > **注意** 引用文
 {: .warning }
+
+> 引用文
+{: .note data-title="メモ" }
 {% endcapture %}
 {% include example.html md=ex %}
 
@@ -163,6 +170,8 @@ HTML
 #### 節 B
 {% endcapture %}
 {% include example.html md=ex %}
+
+ボタンやバッジなどは、[UI パーツ](ui-parts.md)を見てください。
 
 ## 設定で出る部品
 

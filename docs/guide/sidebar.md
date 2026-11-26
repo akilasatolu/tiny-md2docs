@@ -50,6 +50,7 @@ The sidebar is ordered like this.
 Overview
 FAQ
 Getting started
+  Getting started
   Install
 guide
   Configuration
@@ -59,9 +60,9 @@ guide
 
 - Folder levels are counted from `docs/`. Pages directly under `docs/` are placed first, without a group. The top page (`index.md`) comes first.
 - A folder directly under `docs/` is a group, and a folder inside it is a subgroup. Pages in deeper folders are placed inside the subgroup.
-- A folder's `index.md` does not appear as an item, and its `title` becomes the group name. If there is no `index.md`, the folder name is the group name (`guide` and `advanced` in the example above).
+- A folder's `index.md` also appears as an item, like other pages. Its `title` is also the group name. If there is no `index.md`, the folder name is the group name (`guide` and `advanced` in the example above). To keep it out of the items, write `nav_exclude: true` (the `title` is still used as the group name).
 - An item's name is the `title` in the front matter, or otherwise the first heading of the body.
-- The order is by `nav_order` in the front matter, smallest first; if equal, by file path. The order of groups is by the `nav_order` in the folder's `index.md`, smallest first; if equal, by folder name. Within a group, pages come before subgroups.
+- The order is by `nav_order` in the front matter, smallest first; if equal, by file path. The order of groups is by the `nav_order` in the folder's `index.md`, smallest first; if equal, by folder name. Within a group, pages come before subgroups. The `nav_order` of an `index.md` is used both for the order of the groups and for the order of that page within its group.
 
 ```markdown
 ---

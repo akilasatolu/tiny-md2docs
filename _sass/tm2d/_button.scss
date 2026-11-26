@@ -1,0 +1,61 @@
+// Buttons: [text](url){: .button .button-primary }
+.button {
+  display: inline-block;
+  margin: 0;
+  padding: 0.3em 1em;
+  border: 0;
+  border-radius: 6px;
+  background: var(--tm2d-subtle);
+  box-shadow: inset 0 0 0 1px var(--tm2d-border);
+  color: var(--tm2d-link);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  line-height: 1.5;
+  vertical-align: baseline;
+  cursor: pointer;
+  appearance: none;
+
+  &:hover {
+    text-decoration: none;
+    filter: brightness(0.95);
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: 0.5;
+    cursor: default;
+    filter: none;
+  }
+}
+
+.button-outline {
+  background: transparent;
+  box-shadow: inset 0 0 0 2px var(--tm2d-border);
+}
+
+.button-primary {
+  background: var(--tm2d-accent);
+  box-shadow: none;
+  color: var(--tm2d-bg);
+}
+
+@each $hue in "green", "purple", "red" {
+  .button-#{$hue} {
+    background: var(--tm2d-color-#{$hue}-2);
+    box-shadow: none;
+    color: var(--tm2d-bg);
+  }
+}
+
+.button-plain {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+}

@@ -1,0 +1,147 @@
+// Utility classes. Each name is the CSS property followed by the value or a step number.
+
+// Colors: shade 1 is a quiet tone for backgrounds, shade 2 a strong tone for text.
+// They follow dark mode like the other theme colors.
+$tm2d-palette: (
+  ("blue" #e8f0fa #1e5aa8 #1c2a3b #7db1f0),
+  ("green" #e4f3e8 #1a6b35 #17301f #8fd69b),
+  ("yellow" #fbf1dc #8a5a00 #2e2614 #e8b65a),
+  ("red" #fbe9e7 #a62b22 #38201e #f29a92),
+  ("purple" #f5e9f8 #8c2f9e #2e2033 #d9a6f2),
+  ("gray" #eceee9 #50565d #262b31 #a3aab2)
+) !default;
+
+:root {
+  @each $c in $tm2d-palette {
+    --tm2d-color-#{nth($c, 1)}-1: #{nth($c, 2)};
+    --tm2d-color-#{nth($c, 1)}-2: #{nth($c, 3)};
+  }
+}
+
+@mixin tm2d-palette-dark {
+  @each $c in $tm2d-palette {
+    --tm2d-color-#{nth($c, 1)}-1: #{nth($c, 4)};
+    --tm2d-color-#{nth($c, 1)}-2: #{nth($c, 5)};
+  }
+}
+
+@media screen {
+  :root[data-theme="dark"] {
+    @include tm2d-palette-dark;
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    @include tm2d-palette-dark;
+  }
+}
+
+@each $c in $tm2d-palette {
+  @each $shade in 1, 2 {
+    .color-#{nth($c, 1)}-#{$shade} { color: var(--tm2d-color-#{nth($c, 1)}-#{$shade}) !important; }
+    .background-#{nth($c, 1)}-#{$shade} { background-color: var(--tm2d-color-#{nth($c, 1)}-#{$shade}) !important; }
+  }
+}
+
+// Layout
+$tm2d-displays: block, flex, inline, inline-block, none;
+
+@each $value in $tm2d-displays {
+  .display-#{$value} { display: #{$value} !important; }
+}
+
+.float-left { float: left !important; }
+.float-right { float: right !important; }
+
+@each $name, $value in (start flex-start), (end flex-end), (space-between space-between), (space-around space-around) {
+  .justify-content-#{$name} { justify-content: $value !important; }
+}
+
+@each $value in baseline, bottom, middle, text-bottom, text-top, top {
+  .vertical-align-#{$value} { vertical-align: #{$value} !important; }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Text: .font-size-1 to .font-size-10
+$tm2d-font-sizes: 12px, 13px, 14px, 16px, 19px, 24px, 28px, 34px, 42px, 48px;
+
+@for $i from 1 through length($tm2d-font-sizes) {
+  .font-size-#{$i} { font-size: nth($tm2d-font-sizes, $i) !important; }
+}
+
+@for $i from 6 through length($tm2d-font-sizes) {
+  .font-size-#{$i} { line-height: 1.3 !important; }
+}
+
+@each $weight in 300, 400, 500, 600, 700 {
+  .font-weight-#{$weight} { font-weight: $weight !important; }
+}
+
+.font-family-mono { font-family: var(--tm2d-font-mono) !important; }
+.line-height-0 { line-height: 0 !important; }
+.line-height-body { line-height: var(--tm2d-line-height) !important; }
+.line-height-tight { line-height: 1.3 !important; }
+.letter-spacing-0 { letter-spacing: 0 !important; }
+.letter-spacing-wide { letter-spacing: 0.04em !important; }
+.letter-spacing-wider { letter-spacing: 0.08em !important; }
+.text-transform-uppercase { text-transform: uppercase !important; }
+
+// The look of the h1 to h6 headings of this theme.
+@each $level, $size, $weight in (1 34px 700), (2 24px 700), (3 19px 700), (4 16px 700), (5 16px 600), (6 16px 600) {
+  .heading-#{$level} { font-size: $size !important; font-weight: $weight !important; line-height: 1.4 !important; }
+}
+
+.heading-6 { color: var(--tm2d-muted) !important; }
+
+@each $value in left, center, right {
+  .align-#{$value} { text-align: #{$value} !important; }
+}
+
+// Spacing: the number times 4px. After .from-768- or .from-1200- they apply from that screen width.
+$tm2d-spaces: 0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16;
+$tm2d-widths: 768, 1200;
+
+@mixin tm2d-spacing($prefix) {
+  @each $step in $tm2d-spaces {
+    $size: $step * 0.25rem;
+
+    @each $property in margin, padding {
+      .#{$prefix}#{$property}-#{$step} { #{$property}: $size !important; }
+
+      @each $side in top, right, bottom, left {
+        .#{$prefix}#{$property}-#{$side}-#{$step} { #{$property}-#{$side}: $size !important; }
+      }
+
+      .#{$prefix}#{$property}-x-#{$step} { #{$property}-right: $size !important; #{$property}-left: $size !important; }
+      .#{$prefix}#{$property}-y-#{$step} { #{$property}-top: $size !important; #{$property}-bottom: $size !important; }
+    }
+
+    .#{$prefix}margin-x-negative-#{$step} { margin-right: -$size !important; margin-left: -$size !important; }
+  }
+
+  .#{$prefix}margin-x-auto { margin-right: auto !important; margin-left: auto !important; }
+}
+
+@include tm2d-spacing("");
+
+@each $width in $tm2d-widths {
+  @media (min-width: #{$width}px) {
+    @each $value in $tm2d-displays {
+      .from-#{$width}-display-#{$value} { display: #{$value} !important; }
+    }
+
+    @include tm2d-spacing("from-#{$width}-");
+  }
+}

@@ -1,4 +1,5 @@
-// tm2d: theme toggle, sidebar drawer, and the search box on narrow screens.
+// tm2d: theme toggle, sidebar drawer, the search box on narrow screens,
+// copy buttons, heading links and the table of contents.
 (function () {
   var d = document;
   var html = d.documentElement;
@@ -95,6 +96,18 @@
         });
       });
       box.appendChild(b);
+    });
+  }
+
+  // Heading anchor links (off when theme_options.heading_link is false).
+  var linkLabel = d.body.dataset.tm2dHeadingLink;
+  if (linkLabel) {
+    d.querySelectorAll('.tm2d-content :is(h2, h3, h4, h5, h6)[id]').forEach(function (h) {
+      var a = d.createElement('a');
+      a.className = 'tm2d-heading-link';
+      a.href = '#' + h.id;
+      a.setAttribute('aria-label', linkLabel + ': ' + h.textContent);
+      h.appendChild(a);
     });
   }
 

@@ -20,6 +20,8 @@
       url: /ko/guide/writing.html
     - title: 표시 예시
       url: /ko/guide/elements.html
+    - title: UI 구성 요소
+      url: /ko/guide/ui-parts.html
     - title: 다국어
       url: /ko/guide/i18n.html
 - title: 레퍼런스

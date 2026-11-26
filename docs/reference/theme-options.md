@@ -15,6 +15,8 @@ These are the items you can write in `theme_options` in `docs/_config.yml`.
 | `toc` | `true` | `false` hides the table of contents |
 | `breadcrumb` | `true` | `false` hides the breadcrumb |
 | `code_copy` | `true` | `false` hides the code copy button |
+| `top_link` | `true` | `false` hides the back-to-top link below the body |
+| `heading_link` | `true` | `false` removes the links on headings |
 | `github_link` | `true` | `false` hides the link to GitHub in the header. The link appears only when the repository URL is known |
 | `logo` | None | The path of the logo image in the header. If not set, only the site name text appears |
 | `favicon` | None | The path of the favicon. If not set, none is shown |
@@ -48,4 +50,6 @@ These are the keys you can write in `strings`, with the default text (English). 
 | `copied` | Copied |
 | `not_found_title` | Page not found |
 | `not_found_body` | The page you are looking for may have been moved or deleted. |
+| `top_link` | Back to top |
+| `heading_link` | Link to this section |
 | `lang_switch` | Language |

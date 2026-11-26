@@ -63,6 +63,7 @@ $tm2d-toc-width: 220px !default;
 
 // Dark mode: swap the component variables for the dark ones.
 // The second block covers auto mode when JS is off (no data-theme).
+// Screen only, so printing always uses the light colors.
 @mixin tm2d-dark {
   --tm2d-accent: var(--tm2d-dark-accent);
   --tm2d-accent-weak: var(--tm2d-dark-accent-weak);
@@ -76,11 +77,13 @@ $tm2d-toc-width: 220px !default;
   color-scheme: dark;
 }
 
-:root[data-theme="dark"] {
-  @include tm2d-dark;
+@media screen {
+  :root[data-theme="dark"] {
+    @include tm2d-dark;
+  }
 }
 
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     @include tm2d-dark;
   }

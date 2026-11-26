@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# CSS と JS の大きさを gzip で測る。合計が 10240 バイトを超えたら失敗する。
+# CSS と JS の大きさを gzip で測る。合計が 16384 バイトを超えたら失敗する。
 # Pages と同じく、本番の設定(Sass を圧縮)でビルドしてから測る。
 set -euo pipefail
 
 root="$(cd "$(dirname "$0")/.." && pwd)"
-limit=10240
+limit=16384
 
 # 本番の設定では、github-metadata が git のリモートからリポジトリ名を取らないので、渡す。
 export PAGES_REPO_NWO="${PAGES_REPO_NWO:-akilasatolu/tiny-md2docs}"

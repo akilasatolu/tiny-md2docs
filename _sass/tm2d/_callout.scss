@@ -1,4 +1,5 @@
 // Callouts: write {: .note } or {: .warning } on the line after a blockquote.
+// Add data-title="..." to show a title.
 .tm2d-content blockquote {
   &.note,
   &.warning {
@@ -9,5 +10,18 @@
   &.warning {
     border-left-color: var(--tm2d-warning);
     background: var(--tm2d-warning-weak);
+  }
+
+  &.note[data-title]::before,
+  &.warning[data-title]::before {
+    content: attr(data-title);
+    display: block;
+    margin-bottom: 4px;
+    color: var(--tm2d-accent);
+    font-weight: 700;
+  }
+
+  &.warning[data-title]::before {
+    color: var(--tm2d-warning);
   }
 }

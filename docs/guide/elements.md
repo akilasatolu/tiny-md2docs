@@ -16,6 +16,10 @@ Copy the code into your `.md` file. The box below each code block shows how it a
 ### Heading 3
 
 #### Heading 4
+
+##### Heading 5
+
+###### Heading 6
 {% endcapture %}
 {% include example.html md=ex ids=false %}
 
@@ -93,6 +97,9 @@ const message = "hello";
 
 > **Warning** Quote
 {: .warning }
+
+> Quote
+{: .note data-title="Note" }
 {% endcapture %}
 {% include example.html md=ex %}
 
@@ -163,6 +170,8 @@ Hidden **text**.
 #### Section B
 {% endcapture %}
 {% include example.html md=ex %}
+
+For buttons, badges, and more, see [UI parts](ui-parts.md).
 
 ## Parts shown by settings
 

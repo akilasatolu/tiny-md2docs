@@ -15,6 +15,8 @@ ref: theme-options
 | `toc` | `true` | `false` で目次を消す |
 | `breadcrumb` | `true` | `false` でパンくずを消す |
 | `code_copy` | `true` | `false` でコードのコピーのボタンを消す |
+| `top_link` | `true` | `false` で本文の下の「ページ先頭へ戻る」を消す |
+| `heading_link` | `true` | `false` で見出しのリンクを消す |
 | `github_link` | `true` | `false` でヘッダーの GitHub へのリンクを消す。リンクはリポジトリの URL が分かるときだけ出る |
 | `logo` | なし | ヘッダーのロゴ画像のパス。なければサイト名の文字だけ |
 | `favicon` | なし | ファビコンのパス。なければ出さない |
@@ -48,4 +50,6 @@ ref: theme-options
 | `copied` | Copied |
 | `not_found_title` | Page not found |
 | `not_found_body` | The page you are looking for may have been moved or deleted. |
+| `top_link` | Back to top |
+| `heading_link` | Link to this section |
 | `lang_switch` | Language |

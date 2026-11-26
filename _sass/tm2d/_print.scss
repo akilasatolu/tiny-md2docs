@@ -1,0 +1,53 @@
+// Printing: only the page content, in the light colors.
+@media print {
+  .tm2d-skip,
+  .tm2d-header,
+  .tm2d-sidebar,
+  .tm2d-backdrop,
+  .tm2d-toc-col,
+  .tm2d-toc--inline,
+  .tm2d-pager,
+  .tm2d-top-link,
+  .tm2d-heading-link,
+  .tm2d-copy {
+    display: none !important;
+  }
+
+  body,
+  .tm2d-shell {
+    display: block;
+    min-height: 0;
+  }
+
+  .tm2d-main {
+    padding: 0;
+    border: 0 !important;
+  }
+
+  .tm2d-content {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      break-after: avoid;
+    }
+
+    blockquote,
+    tr,
+    img {
+      break-inside: avoid;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    table {
+      display: table;
+      overflow: visible;
+    }
+  }
+}

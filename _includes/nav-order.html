@@ -61,7 +61,6 @@
       {%- if _p.name == "index.md" -%}{%- assign _tm2d_top = "0" -%}{%- else -%}{%- assign _tm2d_top = "1" -%}{%- endif -%}
       {%- capture _tm2d_rec -%}0-{{ _tm2d_top }}-{{ _tm2d_order }}-{{ _p.path }}␟{{ _p.url }}␟{{ _p.url }}␟{{ _tm2d_title }}␟␟␟.{%- endcapture -%}
     {%- else -%}
-      {%- if _p.name == "index.md" -%}{%- continue -%}{%- endif -%}
       {%- assign _tm2d_gdir = _tm2d_parts | first -%}
       {%- assign _tm2d_gpath = _tm2d_base | append: "/" | append: _tm2d_gdir | append: "/" -%}
       {%- assign _tm2d_gindex = site.html_pages | where: "dir", _tm2d_gpath | where: "name", "index.md" | first -%}

@@ -6,7 +6,7 @@ ref: writing
 
 Write pages in ordinary Markdown. This page explains how to write pages and links, and the displays the theme provides.
 
-The writing you can use in the body is listed with examples in [Markdown examples](elements.md).
+The writing you can use in the body is listed with examples in [Markdown examples](elements.md). The classes for buttons, badges, and more are in [UI parts](ui-parts.md).
 
 ## Pages and links
 
@@ -27,7 +27,7 @@ Above the page, the position in the sidebar groups (such as "Guide / Configurati
 
 ## Callout boxes
 
-Write `{: .note }` or `{: .warning }` on the line after the last line of a quote (`>`), and it becomes a colored box. Write labels such as "Note" and "Warning" yourself at the start of the body.
+Write `{: .note }` or `{: .warning }` on the line after the last line of a quote (`>`), and it becomes a colored box. To add a title, write `{: .note data-title="Note" }`. You can also write a label yourself at the start of the body.
 
 ```markdown
 > **Note** After you change the settings, wait a few minutes before checking.
@@ -42,6 +42,16 @@ Write `{: .note }` or `{: .warning }` on the line after the last line of a quote
 
 > **Warning** This operation cannot be undone.
 {: .warning }
+
+Here is an example with a title.
+
+```markdown
+> Save the file before you continue.
+{: .note data-title="Note" }
+```
+
+> Save the file before you continue.
+{: .note data-title="Note" }
 
 You can also write several lines or paragraphs. Start each line with `>`, and put a line with only `>` where paragraphs are separated. Write `{: .note }` on the line after the last line. Lines written one after another are joined into one line when displayed.
 
@@ -70,3 +80,15 @@ When you hover over a code block, a copy button appears at the top right. On tou
 ```bash
 bundle exec jekyll serve
 ```
+
+## Heading links
+
+When you hover over a heading from h2 to h6, a `#` link to that heading appears. On touch screens, it is always shown. This link needs JavaScript. You can turn it off with `theme_options.heading_link: false`.
+
+## Back to top
+
+A link back to the top of the page appears below the body. You can turn it off with `theme_options.top_link: false`.
+
+## Printing
+
+When you print a page, the header, sidebar, table of contents, previous and next links, and copy buttons are left out, and the page is printed in the light colors.

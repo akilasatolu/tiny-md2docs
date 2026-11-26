@@ -17,11 +17,13 @@
   --tm2d-code-attr: #E8B65A;
 }
 
-:root[data-theme="dark"] {
-  @include tm2d-code-dark;
+@media screen {
+  :root[data-theme="dark"] {
+    @include tm2d-code-dark;
+  }
 }
 
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     @include tm2d-code-dark;
   }

@@ -15,6 +15,8 @@ ref: theme-options
 | `toc` | `true` | `false`로 하면 목차를 끔 |
 | `breadcrumb` | `true` | `false`로 하면 이동 경로를 끔 |
 | `code_copy` | `true` | `false`로 하면 코드 복사 버튼을 끔 |
+| `top_link` | `true` | `false`로 하면 본문 아래의 맨 위로 가는 링크를 끔 |
+| `heading_link` | `true` | `false`로 하면 제목 링크를 끔 |
 | `github_link` | `true` | `false`로 하면 헤더의 GitHub 링크를 끔. 링크는 리포지토리의 URL을 알 수 있을 때만 나옴 |
 | `logo` | 없음 | 헤더의 로고 이미지 경로. 없으면 사이트 이름 글자만 나옴 |
 | `favicon` | 없음 | 파비콘의 경로. 없으면 내지 않음 |
@@ -48,4 +50,6 @@ ref: theme-options
 | `copied` | Copied |
 | `not_found_title` | Page not found |
 | `not_found_body` | The page you are looking for may have been moved or deleted. |
+| `top_link` | Back to top |
+| `heading_link` | Link to this section |
 | `lang_switch` | Language |

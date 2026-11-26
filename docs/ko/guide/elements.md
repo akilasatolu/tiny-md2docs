@@ -16,6 +16,10 @@ ref: elements
 ### 제목 3
 
 #### 제목 4
+
+##### 제목 5
+
+###### 제목 6
 {% endcapture %}
 {% include example.html md=ex ids=false %}
 
@@ -93,6 +97,9 @@ const message = "hello";
 
 > **주의** 인용문
 {: .warning }
+
+> 인용문
+{: .note data-title="참고" }
 {% endcapture %}
 {% include example.html md=ex %}
 
@@ -163,6 +170,8 @@ HTML
 #### 절 B
 {% endcapture %}
 {% include example.html md=ex %}
+
+버튼이나 배지 등은 [UI 구성 요소](ui-parts.md)를 참고하세요.
 
 ## 설정으로 표시되는 부분
 
