@@ -3,21 +3,39 @@
 const COMBINING = /[゙゚ﾞﾟ̀-ͯ]/;
 const CJK = /(?:(?=\p{L})[\p{scx=Han}\p{scx=Hira}\p{scx=Kana}\p{scx=Hang}])+/u;
 const TOKEN = /((?:(?=\p{L})[\p{scx=Han}\p{scx=Hira}\p{scx=Kana}\p{scx=Hang}])+)|((?:(?![\p{scx=Han}\p{scx=Hira}\p{scx=Kana}\p{scx=Hang}])[\p{L}\p{N}])+)/gu;
+// Particles between Han, katakana or ASCII; dropped only when nothing matches.
+const PARTICLE = /(?<=[\p{sc=Han}\p{sc=Kana}ーA-Za-z0-9])(?:から|まで|より|など|[のをにはがでとへもや])+(?=[\p{sc=Han}\p{sc=Kana}A-Za-z0-9])/gu;
+// A final long vowel mark of a 4+ letter word typed in hiragana. Applied before katakana is folded.
+const LONG_HIRA = /(?<![ぁ-ゖァ-ヺー])([ぁ-ゖー]{3,})ー(?![ぁ-ゖァ-ヺー])/g;
 const FIELDS = ['title', 'headings', 'content'];
 const WEIGHT = { title: 10, headings: 4, content: 1 };
 
 // Normalize text and keep a map from each normalized code unit to the original range.
+// The final long vowel mark of a katakana run of 4+ letters is dropped; the letter before it covers it.
 function normalizeMap(text) {
   text = String(text || '');
   let out = '';
   const start = [];
   const end = [];
   let i = 0;
+  let kana = 0;
+  // Drop the final long vowel mark of a katakana run of 4+ letters; the previous letter covers it.
+  const trim = () => {
+    if (kana >= 4 && out.endsWith('ー')) {
+      out = out.slice(0, -1);
+      start.pop();
+      const e = end.pop();
+      end[end.length - 1] = e;
+    }
+    kana = 0;
+  };
   while (i < text.length) {
     const s = i;
     i += text.codePointAt(i) > 0xffff ? 2 : 1;
     while (i < text.length && COMBINING.test(text[i])) i++;
     let g = text.slice(s, i).normalize('NFKC').toLowerCase();
+    if (/^[ァ-ヺー]+$/.test(g)) kana += g.length;
+    else trim();
     g = g.replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
     g = g.normalize('NFD').replace(/[̀-ͯ]/g, '').normalize('NFC');
     for (let k = 0; k < g.length; k++) {
@@ -26,6 +44,7 @@ function normalizeMap(text) {
     }
     out += g;
   }
+  trim();
   return { text: out, start, end };
 }
 
@@ -103,17 +122,28 @@ export function createIndex(docs, options) {
     return { doc, f };
   });
 
+  // Search as typed; when nothing matches, drop particles and search again.
   function search(query, opts) {
+    const res = find(query, opts);
+    if (res.length) return res;
+    const text = String(query || '').normalize('NFKC');
+    const loose = text.replace(PARTICLE, ' ');
+    return loose === text ? res : find(loose, opts);
+  }
+
+  function find(query, opts) {
     const o = opts || {};
-    const q = normalize(query).trim();
+    const q = normalize(String(query || '').normalize('NFKC').replace(LONG_HIRA, '$1')).trim();
     const terms = split(q);
     if (!terms.length) return [];
+    const runs = Array.from(q.matchAll(TOKEN), (m) => m[1]).filter(Boolean);
     const qWords = segWords(segmenter, q);
     const out = [];
     for (const it of items) {
       if (o.lang && it.doc.lang !== o.lang) continue;
       let score = 0;
-      let ok = true;
+      // Each CJK run must appear unbroken in one field.
+      let ok = runs.every((r) => FIELDS.some((name) => it.f[name].norm.includes(r)));
       const matches = [];
       terms.forEach((term, k) => {
         if (!ok) return;
@@ -132,7 +162,7 @@ export function createIndex(docs, options) {
           hit = true;
           score += WEIGHT[name];
           if (name === 'content') score += 0.2 * count(f.norm, term, 5);
-          mark(f, name, term);
+          if (!CJK.test(term)) mark(f, name, term);
         }
         // Fuzzy: a word of 4 or more letters with no hit may match a word one edit away, at half score.
         if (!hit && !CJK.test(term) && term.length >= 4) {
@@ -150,6 +180,17 @@ export function createIndex(docs, options) {
         if (!hit) ok = false;
       });
       if (!ok) continue;
+      // Highlight CJK runs as a whole, not by pairs.
+      for (const r of runs) {
+        for (const name of FIELDS) {
+          const f = it.f[name];
+          let p = f.norm.indexOf(r);
+          for (let n = 0; p !== -1 && n < 3; n++) {
+            matches.push({ field: name, start: f.start[p], end: f.end[p + r.length - 1] });
+            p = f.norm.indexOf(r, p + r.length);
+          }
+        }
+      }
       if (it.f.title.norm.includes(q)) score += 5;
       for (const w of qWords) {
         for (const name of FIELDS) if (it.f[name].words.has(w)) score += WEIGHT[name] / 2;

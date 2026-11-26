@@ -26,6 +26,8 @@
   { "q": "favicon", "lang": "ja", "expect": "/ja/reference/theme-options.html", "top": 3 },
   { "q": "front matter", "lang": "ja", "expect": "/ja/reference/front-matter.html" },
   { "q": "nav_order", "lang": "ja", "expect": "/ja/reference/front-matter.html", "top": 3 },
+  { "q": "フォルダー", "lang": "ja", "expect": "/ja/guide/sidebar.html", "top": 3 },
+  { "q": "検索の順位", "lang": "ja", "expect": "/ja/guide/search.html", "top": 3 },
   { "q": "install", "lang": "en", "expect": "/getting-started/install.html" },
   { "q": "remote_theme", "lang": "en", "expect": "/getting-started/install.html", "top": 4 },
   { "q": "Deploy from a branch", "lang": "en", "expect": "/getting-started/install.html" },

@@ -94,9 +94,9 @@ remote_theme: akilasatolu/tiny-md2docs@v0.1.0
 | --- | --- |
 | style.css | 8171 バイト |
 | tm2d.js | 1664 バイト |
-| search-core.js | 2120 バイト |
+| search-core.js | 2812 バイト |
 | search-ui.js | 2199 バイト |
-| 合計 | 14154 バイト |
+| 合計 | 14846 バイト |
 
 ## 開発
 

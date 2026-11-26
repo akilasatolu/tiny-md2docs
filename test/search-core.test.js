@@ -82,7 +82,7 @@ test('lang filter', () => {
 test('match positions point into the original text', () => {
   const [r] = index.search('ガイド');
   const m = r.matches.find((x) => x.field === 'title');
-  assert.equal(docs[1].title.slice(m.start, m.end), 'ｶﾞｲ');
+  assert.equal(docs[1].title.slice(m.start, m.end), docs[1].title);
 });
 
 // Build a corpus from docs/**/*.md, the same fields as assets/search.json.
@@ -153,4 +153,42 @@ test('segmenter words add score but do not change what matches', () => {
   assert.deepEqual(ids(seg, '京都').sort(), [0, 1]);
   const s = seg.search('京都');
   assert.equal(s[0].id, 1);
+});
+
+// An index of body-only documents, for the Japanese matching tests.
+function bodies(...contents) {
+  return createIndex(contents.map((content, id) => ({ id, title: '', headings: [], content })));
+}
+
+function marked(ix, q, content) {
+  const r = ix.search(q)[0];
+  return r.matches.map((m) => content.slice(m.start, m.end));
+}
+
+test('CJK runs must appear unbroken', () => {
+  assert.deepEqual(ids(bodies('東京と京都'), '東京都'), []);
+  assert.deepEqual(ids(bodies('設定する。鑑定変わる。変更する。'), '設定変更'), []);
+  const text = '設定を変更する';
+  assert.deepEqual(ids(bodies(text), '設定 変更'), [0]);
+  assert.deepEqual(ids(bodies(text), '設定変更'), []);
+  assert.deepEqual(marked(bodies(text), '設定 変更', text), ['設定', '変更']);
+});
+
+test('final long vowel mark of 4+ letter katakana words is ignored', () => {
+  for (const content of ['サーバー', 'サーバ']) {
+    for (const q of ['サーバー', 'サーバ', 'ｻｰﾊﾞｰ', 'さーばー']) assert.deepEqual(ids(bodies(content), q), [0], q + ' ' + content);
+  }
+  assert.equal(normalize('コピー'), 'こぴー');
+  assert.equal(normalize('キー'), 'きー');
+  const text = 'サーバーを起動する';
+  assert.deepEqual(marked(bodies(text), 'サーバ', text), ['サーバー']);
+  assert.deepEqual(ids(bodies('ファイルのコピペ'), 'のコピー'), []);
+  assert.deepEqual(ids(bodies('このコピペ'), 'このコピー'), []);
+});
+
+test('particles are dropped only when nothing matches', () => {
+  assert.deepEqual(ids(bodies('設定の方法', '設定方法'), '設定の方法'), [0]);
+  assert.deepEqual(ids(bodies('設定方法'), '設定の方法'), [0]);
+  assert.deepEqual(ids(bodies('色は自由に変えるとよい'), '色を変える'), [0]);
+  assert.deepEqual(ids(bodies('はじめて使う'), 'はじめに'), []);
 });
