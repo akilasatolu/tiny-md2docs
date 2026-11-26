@@ -1,0 +1,28 @@
+// Collapsible blocks written as <details> / <summary> in the page content.
+.tm2d-content details {
+  margin: 0 0 24px;
+  padding: 0 16px;
+  border: 1px solid var(--tm2d-border);
+  border-radius: 8px;
+
+  &[open] {
+    padding-bottom: 16px;
+  }
+
+  > summary {
+    min-height: 40px;
+    margin: 0 -16px;
+    padding: 8px 16px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  &[open] > summary {
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--tm2d-border);
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}

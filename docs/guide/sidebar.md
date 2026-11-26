@@ -22,7 +22,7 @@ If you put `docs/_data/nav.yml`, the pages are listed in that order and with tho
 ```
 
 - An item without `url` becomes a group, and it gathers the items in `children`.
-- You can make one more level of group inside `children`. The depth is two levels at most.
+- You can make groups inside `children` too. There is no limit on the depth.
 - Write `url` as a path from the site root, ending in `.html`. The top page is `/`.
 
 ## Order automatically from folders
@@ -59,7 +59,7 @@ guide
 ```
 
 - Folder levels are counted from `docs/`. Pages directly under `docs/` are placed first, without a group. The top page (`index.md`) comes first.
-- A folder directly under `docs/` is a group, and a folder inside it is a subgroup. Pages in deeper folders are placed inside the subgroup.
+- A folder directly under `docs/` is a group, and a folder inside it is a subgroup. Deeper folders nest in the same way, with no limit on the depth. The indentation stops growing from the fifth level.
 - A folder's `index.md` also appears as an item, like other pages. Its `title` is also the group name. If there is no `index.md`, the folder name is the group name (`guide` and `advanced` in the example above). To keep it out of the items, write `nav_exclude: true` (the `title` is still used as the group name).
 - An item's name is the `title` in the front matter, or otherwise the first heading of the body.
 - The order is by `nav_order` in the front matter, smallest first; if equal, by file path. The order of groups is by the `nav_order` in the folder's `index.md`, smallest first; if equal, by folder name. Within a group, pages come before subgroups. The `nav_order` of an `index.md` is used both for the order of the groups and for the order of that page within its group.

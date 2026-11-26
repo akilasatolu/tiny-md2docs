@@ -149,6 +149,8 @@ HTML
 
 ## 접기
 
+`<details markdown="1">`와 `<summary>`를 쓰면 클릭할 때까지 본문을 숨길 수 있습니다. 처음부터 펼쳐서 보여 주려면 `<details open markdown="1">`라고 씁니다.
+
 {% capture ex %}
 <details markdown="1">
 <summary>자세히 보기</summary>

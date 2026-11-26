@@ -149,6 +149,8 @@ HTML
 
 ## 折りたたみ
 
+`<details markdown="1">` と `<summary>` を書くと、クリックするまで本文を隠せます。初めから開いて見せるときは、`<details open markdown="1">` と書きます。
+
 {% capture ex %}
 <details markdown="1">
 <summary>詳しく見る</summary>

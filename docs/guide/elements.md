@@ -149,6 +149,8 @@ HTML
 
 ## Collapsible blocks
 
+Write `<details markdown="1">` and `<summary>` to hide text until it is clicked. To show it open from the start, write `<details open markdown="1">`.
+
 {% capture ex %}
 <details markdown="1">
 <summary>Show details</summary>
