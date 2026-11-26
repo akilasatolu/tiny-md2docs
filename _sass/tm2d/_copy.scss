@@ -7,20 +7,38 @@
   position: absolute;
   top: 4px;
   right: 4px;
-  min-width: 40px;
-  min-height: 40px;
-  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
   border: 1px solid var(--tm2d-border);
   border-radius: 6px;
   background: var(--tm2d-bg);
   color: var(--tm2d-muted);
-  font: inherit;
-  font-size: 12px;
   cursor: pointer;
   opacity: 0;
 
   &:hover {
     color: var(--tm2d-text);
+  }
+
+  svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .tm2d-icon-check,
+  &.is-done .tm2d-icon-copy {
+    display: none;
+  }
+
+  &.is-done .tm2d-icon-check {
+    display: block;
   }
 }
 
@@ -33,5 +51,18 @@ div.highlighter-rouge:hover .tm2d-copy,
 @media (hover: none) {
   .tm2d-copy {
     opacity: 1;
+  }
+}
+
+// On touch screens the button is always shown, so the code scrolls in the space left of it.
+@media screen and (hover: none) {
+  .tm2d-content div.highlighter-rouge:has(> .tm2d-copy) > .highlight > pre {
+    padding: 16px 40px 0 0;
+
+    > code {
+      display: block;
+      overflow-x: auto;
+      padding: 0 0 16px 20px;
+    }
   }
 }

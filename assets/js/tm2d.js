@@ -78,19 +78,26 @@
   // Copy buttons on code blocks (off when theme_options.code_copy is false).
   var copy = d.body.dataset.tm2dCopy;
   if (copy && navigator.clipboard) {
+    var icons = '<svg class="tm2d-icon-copy" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4V4h11v1"/></svg>' +
+      '<svg class="tm2d-icon-check" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M4 12.5l5 5L20 6.5"/></svg>';
+    var label = function (b, text) {
+      b.title = text;
+      b.setAttribute('aria-label', text);
+    };
     d.querySelectorAll('.tm2d-content div.highlighter-rouge').forEach(function (box) {
       var pre = box.querySelector('pre');
       if (!pre) return;
       var b = d.createElement('button');
       b.type = 'button';
       b.className = 'tm2d-copy';
-      b.textContent = copy;
+      b.innerHTML = icons;
+      label(b, copy);
       b.addEventListener('click', function () {
         navigator.clipboard.writeText(pre.innerText.replace(/\n$/, '')).then(function () {
-          b.textContent = d.body.dataset.tm2dCopied;
+          label(b, d.body.dataset.tm2dCopied);
           b.classList.add('is-done');
           setTimeout(function () {
-            b.textContent = copy;
+            label(b, copy);
             b.classList.remove('is-done');
           }, 2000);
         });
