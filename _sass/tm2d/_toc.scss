@@ -10,7 +10,9 @@
   }
 
   a {
-    display: block;
+    display: flex;
+    align-items: center;
+    min-height: 40px;
     padding: 6px 12px;
     border-left: 2px solid var(--tm2d-border);
     color: var(--tm2d-muted);

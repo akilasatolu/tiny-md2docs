@@ -91,11 +91,11 @@ remote_theme: akilasatolu/tiny-md2docs@v0.1.0
 
 | ファイル | gzip |
 | --- | --- |
-| style.css | 7980 バイト |
+| style.css | 7982 バイト |
 | tm2d.js | 1664 バイト |
 | search-core.js | 2120 バイト |
 | search-ui.js | 2199 バイト |
-| 合計 | 13963 バイト |
+| 合計 | 13965 バイト |
 
 ## 開発
 
