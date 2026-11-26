@@ -26,3 +26,5 @@ Put Markdown files under `docs/`. The top page is `docs/index.md`. For how to wr
 3. For "Branch", choose the branch to publish and the `/docs` folder, then press "Save".
 
 After a few minutes, the site is published. To publish from the repository root or with GitHub Actions, see [Publishing](publish.md).
+
+To have an AI write the pages, copy [Information for AI](ai.md).

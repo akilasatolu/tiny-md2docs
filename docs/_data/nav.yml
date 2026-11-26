@@ -6,6 +6,8 @@
       url: /getting-started/install.html
     - title: Publishing
       url: /getting-started/publish.html
+    - title: Information for AI
+      url: /getting-started/ai.html
 - title: Guide
   children:
     - title: Configuration

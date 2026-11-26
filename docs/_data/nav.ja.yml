@@ -6,6 +6,8 @@
       url: /ja/getting-started/install.html
     - title: 公開の方法
       url: /ja/getting-started/publish.html
+    - title: AI に渡す情報
+      url: /ja/getting-started/ai.html
 - title: 使い方
   children:
     - title: 設定

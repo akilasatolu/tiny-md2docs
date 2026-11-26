@@ -26,3 +26,5 @@ remote_theme: akilasatolu/tiny-md2docs
 3. 「Branch」で、公開するブランチと `/docs` フォルダを選び、「Save」を押します。
 
 数分たつと、サイトが公開されます。リポジトリのルートや GitHub Actions で公開する方法は、[公開の方法](publish.md)を見てください。
+
+AI にページを作らせるときは、[AI に渡す情報](ai.md)をコピーして使えます。

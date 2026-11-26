@@ -26,3 +26,5 @@ remote_theme: akilasatolu/tiny-md2docs
 3. 'Branch'에서 공개할 브랜치와 `/docs` 폴더를 선택하고 'Save'를 누릅니다.
 
 몇 분 지나면 사이트가 공개됩니다. 리포지토리의 루트나 GitHub Actions로 공개하는 방법은 [공개 방법](publish.md)을 보세요.
+
+AI에게 페이지를 만들게 할 때는 [AI에게 전달할 정보](ai.md)를 복사해 쓸 수 있습니다.

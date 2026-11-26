@@ -6,6 +6,8 @@
       url: /ko/getting-started/install.html
     - title: 공개 방법
       url: /ko/getting-started/publish.html
+    - title: AI에게 전달할 정보
+      url: /ko/getting-started/ai.html
 - title: 사용법
   children:
     - title: 설정

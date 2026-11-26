@@ -91,7 +91,8 @@ function walk(dir) {
     const p = join(dir, name);
     if (name.startsWith('_')) return [];
     if (statSync(p).isDirectory()) return walk(p);
-    return name.endsWith('.md') ? [p] : [];
+    // Pages with search_exclude are not in search.json either.
+    return name.endsWith('.md') && !/^search_exclude: true$/m.test(readFileSync(p, 'utf8').split(/^---$/m)[1] || '') ? [p] : [];
   });
 }
 
