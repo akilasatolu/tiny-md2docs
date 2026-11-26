@@ -67,6 +67,10 @@ theme_options:
 
 키 목록은 [theme_options](../reference/theme-options.md)의 '화면의 문구'에 있습니다.
 
+## 푸터
+
+모든 페이지 아래에 'Powered by tiny-md2docs'와 tiny-md2docs 문서 사이트로 가는 링크가 나옵니다. 숨기는 설정은 없습니다. 문구는 어느 언어의 페이지에서든 영어 그대로입니다.
+
 ## 404 페이지
 
 존재하지 않는 URL을 열면 테마가 준비한 404 페이지(영어로는 'Page not found')가 나옵니다. 직접 둘 필요가 없습니다. 문구는 `strings`의 `not_found_title`과 `not_found_body`로 바꿀 수 있습니다.

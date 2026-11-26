@@ -1,4 +1,12 @@
+// Keep the footer at the bottom of the window on short pages.
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .tm2d-shell {
+  flex: 1 0 auto;
   display: flex;
   align-items: flex-start;
   width: 100%;
@@ -7,13 +15,13 @@
 
 .tm2d-main {
   flex: 1 1 auto;
+  align-self: stretch;
   min-width: 0;
   padding: 32px 40px 64px;
 }
 
 .tm2d-sidebar + .tm2d-main {
   border-left: 1px solid var(--tm2d-border);
-  min-height: calc(100vh - #{$tm2d-header-height});
 }
 
 .tm2d-content {

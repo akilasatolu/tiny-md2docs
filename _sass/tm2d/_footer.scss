@@ -1,0 +1,11 @@
+.tm2d-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--tm2d-border);
+  color: var(--tm2d-muted);
+  font-size: 13px;
+  text-align: center;
+
+  a {
+    text-decoration: underline;
+  }
+}

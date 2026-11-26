@@ -67,6 +67,10 @@ theme_options:
 
 キーの一覧は [theme_options](../reference/theme-options.md) の「画面の文言」にあります。
 
+## フッター
+
+すべてのページの下に「Powered by tiny-md2docs」と、tiny-md2docs のドキュメントサイトへのリンクが出ます。消す設定はありません。文言はどの言語のページでも英語のままです。
+
 ## 404 ページ
 
 存在しない URL を開くと、テーマが用意した 404 ページ(英語では「Page not found」)が出ます。自分で置く必要はありません。文言は `strings` の `not_found_title` と `not_found_body` で変えられます。

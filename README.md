@@ -70,6 +70,10 @@ remote_theme: akilasatolu/tiny-md2docs@v0.1.0
 
 文字と幅も CSS 変数で変えられます。使える変数は[色とダークモード](https://akilasatolu.github.io/tiny-md2docs/ja/guide/colors.html)にあります。
 
+## フッター
+
+すべてのページの下に「Powered by tiny-md2docs」と、tiny-md2docs のドキュメントサイトへのリンクを表示します。消す設定はありません。文言はどの言語のページでも英語のままです。
+
 ## 404 ページ
 
 テーマが `/404.html` を用意するので、自分で置く必要はありません。文言は `theme_options.strings` の `not_found_title` と `not_found_body` で変えられます。
@@ -80,11 +84,11 @@ remote_theme: akilasatolu/tiny-md2docs@v0.1.0
 
 | ファイル | gzip |
 | --- | --- |
-| style.css | 3506 バイト |
+| style.css | 3553 バイト |
 | tm2d.js | 1528 バイト |
 | search-core.js | 2120 バイト |
 | search-ui.js | 2199 バイト |
-| 合計 | 9353 バイト |
+| 合計 | 9400 バイト |
 
 ## 開発
 

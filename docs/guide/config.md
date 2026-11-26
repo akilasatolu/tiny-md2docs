@@ -67,6 +67,10 @@ theme_options:
 
 The list of keys is under "On-screen text" in [theme_options](../reference/theme-options.md).
 
+## Footer
+
+Every page shows "Powered by tiny-md2docs" at the bottom, with a link to the tiny-md2docs documentation site. There is no setting to hide it. The text stays in English on pages in every language.
+
 ## 404 page
 
 When you open a URL that does not exist, the theme shows its own 404 page ("Page not found" in English). You do not need to add one. Change the text with `not_found_title` and `not_found_body` in `strings`.
