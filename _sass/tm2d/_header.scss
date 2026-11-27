@@ -151,6 +151,10 @@
   display: block;
 }
 
+// Narrow screens: the open search box (40px input, 8px padding twice, 1px border).
+// It follows from those sizes, so it is not a setting in _variables.scss.
+$tm2d-search-panel-height: 57px;
+
 @media (max-width: $tm2d-narrow) {
   .tm2d-header {
     padding: 0 8px 0 4px;
@@ -192,6 +196,20 @@
 
   .tm2d-header.is-search-open .tm2d-header__search {
     display: block;
+  }
+
+  // Push the page down so that the open search box does not cover it.
+  .tm2d-header.is-search-open {
+    margin-bottom: $tm2d-search-panel-height;
+  }
+
+  // Scroll anchoring would keep the text where it is, under the search box.
+  html:has(.tm2d-header.is-search-open) {
+    overflow-anchor: none;
+  }
+
+  .tm2d-header.is-search-open ~ .tm2d-shell .tm2d-content [id] {
+    scroll-margin-top: $tm2d-header-height + $tm2d-search-panel-height + 16px;
   }
 
   .tm2d-header__search + .tm2d-header__actions {
