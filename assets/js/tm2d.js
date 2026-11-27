@@ -1,5 +1,5 @@
-// tm2d: theme toggle, sidebar drawer, the search box on narrow screens,
-// copy buttons, heading links and the table of contents.
+// tm2d: theme toggle, sidebar drawer, language menu, the search box on narrow
+// screens, copy buttons, heading links and the table of contents.
 (function () {
   var d = document;
   var html = d.documentElement;
@@ -48,6 +48,26 @@
     });
     window.matchMedia('(min-width: 768px)').addEventListener('change', function (e) {
       if (e.matches) setMenu(false);
+    });
+  }
+
+  // Language menu: a <details> that also closes on an outside press, on focus leaving and on Escape.
+  var lang = d.querySelector('[data-tm2d-lang]');
+  if (lang) {
+    d.addEventListener('pointerdown', function (e) {
+      if (!lang.contains(e.target)) lang.open = false;
+    });
+    lang.addEventListener('focusout', function (e) {
+      if (e.relatedTarget && !lang.contains(e.relatedTarget)) lang.open = false;
+    });
+    d.addEventListener('keydown', function (e) {
+      if (e.isComposing || e.keyCode === 229) return;
+      if (e.key === 'Escape' && lang.open && !e.defaultPrevented) {
+        e.preventDefault();
+        var inside = lang.contains(d.activeElement);
+        lang.open = false;
+        if (inside) lang.querySelector('summary').focus();
+      }
     });
   }
 
