@@ -92,7 +92,7 @@ theme_options(생략한 항목은 기본값):
 | github_link | true | false면 GitHub 링크를 없앰 |
 | logo | 없음 | 로고 이미지 경로(사이트 루트부터. /repo는 붙이지 않음) |
 | favicon | 없음 | 파비콘 경로(위와 같음) |
-| search_content_limit | 5000 | 검색 색인에 넣는 본문의 상한(페이지당 글자 수) |
+| search_content_limit | 5000 | 검색에서 확인하는 본문 글자 수의 상한(한 페이지당) |
 | strings | 없음 | 화면 문구 덮어쓰기 |
 
 ## 페이지 작성

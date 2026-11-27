@@ -20,7 +20,7 @@ ref: theme-options
 | `github_link` | `true` | `false`로 하면 헤더의 GitHub 링크를 끔. 링크는 리포지토리의 URL을 알 수 있을 때만 나옴 |
 | `logo` | 없음 | 헤더의 로고 이미지 경로. 없으면 사이트 이름 글자만 나옴 |
 | `favicon` | 없음 | 파비콘의 경로. 없으면 내지 않음 |
-| `search_content_limit` | `5000` | 색인에 넣는 본문 글자 수의 상한(한 페이지당) |
+| `search_content_limit` | `5000` | 검색에서 확인하는 본문 글자 수의 상한(한 페이지당) |
 | `strings` | 없음 | 화면 문구의 덮어쓰기. 언어별로 나눠 쓸 수도 있음([다국어](../guide/i18n.md)) |
 
 ## 화면의 문구

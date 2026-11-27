@@ -6,7 +6,7 @@
 {%- endcomment -%}
 {%- if site.theme_options.breadcrumb != false and tm2d_current_index != nil and tm2d_current_key != "/" and tm2d_current_groups.size > 0 -%}
   {%- assign _f = tm2d_nav_items[tm2d_current_index] | split: "␟" %}
-<nav class="tm2d-breadcrumb" aria-label="{% include t.html key="breadcrumb_label" %}"><ol>
+<nav class="tm2d-breadcrumb" aria-label="{% include t.html key="breadcrumb_label" attr=true %}"><ol>
 {%- for _name in tm2d_current_groups -%}
   {%- assign _tm2d_gurl = tm2d_current_group_urls[forloop.index0] -%}
   {%- assign _tm2d_gkey = "" -%}

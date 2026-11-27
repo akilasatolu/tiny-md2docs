@@ -1,6 +1,6 @@
 {%- comment -%}
   渡された HTML(include.html)から h2 と h3 を取り出し、tm2d_headings に入れる。
-  各要素は「段␟id␟文字」の文字列。索引と目次で使う。
+  各要素は「段␟id␟文字」の文字列。目次で使う。
   include.skip_no_toc があれば、class に no_toc がある見出しを除く(目次用)。
 {%- endcomment -%}
 {%- assign tm2d_headings = "" | split: "" -%}

@@ -4,7 +4,7 @@ ref: search
 
 # Search
 
-The search box in the header searches the pages of the site. It does not use an external service; the browser searches an index built at build time.
+The search box in the header searches the pages of the site. It does not use an external service; the browser searches the published pages: when you first enter the search box, it reads the list of pages made at build time, then reads each page.
 
 ## How to use it
 
@@ -74,4 +74,4 @@ For each word you type, the points for each place it matches are added up, and p
 
 Write `search_exclude: true` in a page's front matter, and the page does not appear in search. To turn off search for the whole site, set `theme_options.search: false`.
 
-The body text put in the index is limited to 5000 characters per page. You can change it with `theme_options.search_content_limit`. If you have many pages and the index is heavy, make it smaller.
+Search looks at up to 5000 characters of the body of each page. You can change it with `theme_options.search_content_limit`. The first search reads all pages of the current language, so it takes longer on a site with many pages. A page that cannot be read within 10 seconds is found by its title only.

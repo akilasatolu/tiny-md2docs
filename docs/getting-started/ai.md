@@ -92,7 +92,7 @@ theme_options (omitted items use the default):
 | github_link | true | false removes the link to GitHub |
 | logo | none | path of the logo image (from the site root; do not add /repo) |
 | favicon | none | path of the favicon (same as above) |
-| search_content_limit | 5000 | limit of body text put in the search index (characters per page) |
+| search_content_limit | 5000 | maximum number of body characters searched (per page) |
 | strings | none | overrides of the interface text |
 
 ## Writing pages

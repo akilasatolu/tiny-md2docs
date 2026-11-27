@@ -18,7 +18,7 @@
 {%- if include.variant == "inline" %}
 <details class="tm2d-toc tm2d-toc--inline"><summary>{% include t.html key="toc_title" %}</summary>{{ _tm2d_toc_list }}</details>
 {%- else %}
-<nav class="tm2d-toc tm2d-toc--side" aria-label="{% include t.html key="toc_title" %}"><p class="tm2d-toc__title">{% include t.html key="toc_title" %}</p>{{ _tm2d_toc_list }}</nav>
+<nav class="tm2d-toc tm2d-toc--side" aria-label="{% include t.html key="toc_title" attr=true %}"><p class="tm2d-toc__title">{% include t.html key="toc_title" %}</p>{{ _tm2d_toc_list }}</nav>
 {%- endif -%}
 {%- endif -%}
 {%- endif -%}

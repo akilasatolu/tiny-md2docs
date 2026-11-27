@@ -1,10 +1,10 @@
 {%- assign _tm2d_mode = site.theme_options.dark_mode | default: "auto" -%}
 <!doctype html>
-<html lang="{{ page.lang | default: site.lang | default: 'en' }}"{% if _tm2d_mode == "light" or _tm2d_mode == "dark" %} data-theme="{{ _tm2d_mode }}"{% endif %}>
+<html lang="{{ page.lang | default: site.lang | default: 'en' | escape }}"{% if _tm2d_mode == "light" or _tm2d_mode == "dark" %} data-theme="{{ _tm2d_mode }}"{% endif %}>
 <head>
 {% include head.html %}
 </head>
-<body id="tm2d-top"{% if site.theme_options.code_copy != false %} data-tm2d-copy="{% include t.html key="copy" %}" data-tm2d-copied="{% include t.html key="copied" %}"{% endif %}{% if site.theme_options.heading_link != false %} data-tm2d-heading-link="{% include t.html key="heading_link" %}"{% endif %}>
+<body id="tm2d-top"{% if site.theme_options.code_copy != false %} data-tm2d-copy="{% include t.html key="copy" attr=true %}" data-tm2d-copied="{% include t.html key="copied" attr=true %}"{% endif %}{% if site.theme_options.heading_link != false %} data-tm2d-heading-link="{% include t.html key="heading_link" attr=true %}"{% endif %}>
 <a class="tm2d-skip" href="#main">{% include t.html key="skip_to_content" %}</a>
 {% include header.html %}
 {%- if site.theme_options.sidebar != false %}

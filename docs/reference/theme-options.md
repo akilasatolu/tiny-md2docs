@@ -20,7 +20,7 @@ These are the items you can write in `theme_options` in `docs/_config.yml`.
 | `github_link` | `true` | `false` hides the link to GitHub in the header. The link appears only when the repository URL is known |
 | `logo` | None | The path of the logo image in the header. If not set, only the site name text appears |
 | `favicon` | None | The path of the favicon. If not set, none is shown |
-| `search_content_limit` | `5000` | The maximum number of body characters put in the index (per page) |
+| `search_content_limit` | `5000` | The maximum number of body characters searched (per page) |
 | `strings` | None | Overrides for on-screen text. You can also split it by language ([Multilingual](../guide/i18n.md)) |
 
 ## On-screen text

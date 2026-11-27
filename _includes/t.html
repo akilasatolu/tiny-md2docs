@@ -1,5 +1,6 @@
 {%- comment -%}
   画面文言を出す。使い方: {% include t.html key="search_placeholder" %}
+  属性値の中で使うときは attr=true を足す。
   探す順: theme_options.strings[言語][key] → theme_options.strings[key] → 内蔵の既定値(英語)
 {%- endcomment -%}
 {%- assign _tm2d_lang = page.lang | default: site.lang | default: "en" -%}
@@ -35,4 +36,8 @@
     {%- when "lang_switch" -%}{%- assign _tm2d_s = "Language" -%}
   {%- endcase -%}
 {%- endif -%}
-{{- _tm2d_s -}}
+{%- if include.attr -%}
+  {{- _tm2d_s | replace: '"', '&quot;' -}}
+{%- else -%}
+  {{- _tm2d_s -}}
+{%- endif -%}

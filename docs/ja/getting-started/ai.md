@@ -92,7 +92,7 @@ theme_options(省略した項目は既定値):
 | github_link | true | false で GitHub へのリンクを消す |
 | logo | なし | ロゴ画像のパス(サイトのルートから。/repo は付けない) |
 | favicon | なし | ファビコンのパス(同上) |
-| search_content_limit | 5000 | 索引に入れる本文の上限(1ページの文字数) |
+| search_content_limit | 5000 | 検索で調べる本文の文字数の上限(1ページあたり) |
 | strings | なし | 画面の文言の上書き |
 
 ## ページの書き方
