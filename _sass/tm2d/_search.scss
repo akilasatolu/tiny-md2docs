@@ -28,6 +28,13 @@
   }
 }
 
+// iOS Safari zooms the page when a box with text under 16px gets the focus.
+@media (hover: none) {
+  .tm2d-search__input {
+    font-size: 16px;
+  }
+}
+
 .tm2d-search__icon {
   position: absolute;
   top: 12px;
