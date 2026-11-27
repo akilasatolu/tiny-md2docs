@@ -31,7 +31,7 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 版を固定するときは、`@` のあとに版の名前を書きます。版の一覧は [CHANGELOG.md](CHANGELOG.md) にあります。
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs@v0.1.0
+remote_theme: akilasatolu/tiny-md2docs@v0.1.1
 ```
 
 ## 設定
