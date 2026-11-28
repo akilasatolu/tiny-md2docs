@@ -1,34 +1,34 @@
 - title: 시작하기
   children:
     - title: 개요
-      url: /index.ko.html
+      url: /ko/
     - title: 설치
-      url: /getting-started/install.ko.html
+      url: /ko/getting-started/install.html
     - title: 공개 방법
-      url: /getting-started/publish.ko.html
+      url: /ko/getting-started/publish.html
     - title: AI에게 전달할 정보
-      url: /getting-started/ai.ko.html
+      url: /ko/getting-started/ai.html
 - title: 사용법
   children:
     - title: 설정
-      url: /guide/config.ko.html
+      url: /ko/guide/config.html
     - title: 사이드바
-      url: /guide/sidebar.ko.html
+      url: /ko/guide/sidebar.html
     - title: 검색
-      url: /guide/search.ko.html
+      url: /ko/guide/search.html
     - title: 색상과 다크 모드
-      url: /guide/colors.ko.html
+      url: /ko/guide/colors.html
     - title: 페이지 작성법
-      url: /guide/writing.ko.html
+      url: /ko/guide/writing.html
     - title: 표시 예시
-      url: /guide/elements.ko.html
+      url: /ko/guide/elements.html
     - title: 다국어
-      url: /guide/i18n.ko.html
+      url: /ko/guide/i18n.html
     - title: 테마 확장하기
-      url: /guide/jekyll.ko.html
+      url: /ko/guide/jekyll.html
 - title: 레퍼런스
   children:
     - title: _config.yml
-      url: /reference/site-config.ko.html
+      url: /ko/reference/site-config.html
     - title: theme_options
-      url: /reference/theme-options.ko.html
+      url: /ko/reference/theme-options.html

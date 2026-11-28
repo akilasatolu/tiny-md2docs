@@ -11,7 +11,7 @@ These are the settings you write at the top level of `docs/_config.yml` that the
 | `title` | The repository name for a project page, the account name for a user page | The site name | Common Jekyll name (default filled by `jekyll-github-metadata`) |
 | `description` | The repository description (About) | The site description | Common Jekyll name (default filled by `jekyll-github-metadata`) |
 | `image` | None | The image shown when shared on social media | This theme's use |
-| `lang` | `en` | The language of pages whose file name has no language ([Multilingual](../guide/i18n.md)) | This theme's use |
+| `lang` | `en` | The language of pages that are not in a language folder ([Multilingual](../guide/i18n.md)) | This theme's use |
 | `theme_options` | None | The theme's settings ([theme_options](theme-options.md)) | This theme |
 
 ## Related settings

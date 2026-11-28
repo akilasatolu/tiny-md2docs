@@ -90,16 +90,6 @@ function near(a, b) {
   return x === b.slice(i + 1) || x === b.slice(i) || a.slice(i) === b.slice(i + 1);
 }
 
-// Words from options.segmenter (Intl.Segmenter); used only to add score.
-function segWords(segmenter, norm) {
-  const out = new Set();
-  if (!segmenter) return out;
-  for (const s of segmenter.segment(norm)) {
-    if (s.isWordLike && Array.from(s.segment).length > 1) out.add(s.segment);
-  }
-  return out;
-}
-
 function hasTerm(f, term, prefix) {
   if (Array.from(term).length === 1) return f.norm.includes(term);
   if (f.terms.has(term)) return true;
@@ -109,15 +99,14 @@ function hasTerm(f, term, prefix) {
   return false;
 }
 
-export function createIndex(docs, options) {
-  const segmenter = (options && options.segmenter) || null;
+export function createIndex(docs) {
   const items = (docs || []).map((doc) => {
     const f = {};
     for (const name of FIELDS) {
       let raw = doc[name] || '';
       if (Array.isArray(raw)) raw = raw.join('\n');
       const m = normalizeMap(raw);
-      f[name] = { raw, norm: m.text, start: m.start, end: m.end, terms: new Set(split(m.text)), words: segWords(segmenter, m.text) };
+      f[name] = { raw, norm: m.text, start: m.start, end: m.end, terms: new Set(split(m.text)) };
     }
     return { doc, f };
   });
@@ -137,7 +126,6 @@ export function createIndex(docs, options) {
     const terms = split(q);
     if (!terms.length) return [];
     const runs = Array.from(q.matchAll(TOKEN), (m) => m[1]).filter(Boolean);
-    const qWords = segWords(segmenter, q);
     const out = [];
     for (const it of items) {
       if (o.lang && it.doc.lang !== o.lang) continue;
@@ -192,9 +180,6 @@ export function createIndex(docs, options) {
         }
       }
       if (it.f.title.norm.includes(q)) score += 5;
-      for (const w of qWords) {
-        for (const name of FIELDS) if (it.f[name].words.has(w)) score += WEIGHT[name] / 2;
-      }
       out.push({ id: it.doc.id, score, matches, title: it.f.title.raw, url: it.doc.url || '' });
     }
     out.sort((a, b) => b.score - a.score || a.title.length - b.title.length || (a.url < b.url ? -1 : a.url > b.url ? 1 : 0));

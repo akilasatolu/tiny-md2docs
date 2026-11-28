@@ -32,7 +32,7 @@
 ## リンク
 
 {% capture ex %}
-[ページの書き方](writing.ja__DOT__md)
+[ページの書き方](writing__DOT__md)
 
 [GitHub Pages](https://pages.github.com/)
 
@@ -119,7 +119,7 @@ const message = "hello";
 ## 画像
 
 {% capture ex %}
-![tm2d](../assets/images/tm2d-mark__DOT__svg){: width="96" }
+![tm2d](../../assets/images/tm2d-mark__DOT__svg){: width="96" }
 {% endcapture %}
 {% include example.html md=ex %}
 
@@ -177,4 +177,4 @@ HTML
 
 ## 設定で出る部品
 
-ヘッダー、サイドバー、パンくず、前後リンクなどは、本文には書きません。[設定](config.ja.md)、[サイドバー](sidebar.ja.md)、[検索](search.ja.md)、[色とダークモード](colors.ja.md)を見てください。
+ヘッダー、サイドバー、前後リンクなどは、本文には書きません。[設定](config.md)、[サイドバー](sidebar.md)、[検索](search.md)、[色とダークモード](colors.md)を見てください。

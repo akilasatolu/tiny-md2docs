@@ -1,5 +1,17 @@
 # 変更履歴
 
+## v0.3.0
+
+互換性がなくなる変更があります。必要な機能に絞りました。
+
+- 多言語は、言語のフォルダ(`docs/ja/` など)で分ける方式だけにしました。ファイル名の方式(`x.ja.md`)は使えません。移し方は次のとおりです。
+  - `docs/x.ja.md` を `docs/ja/x.md` にする。ページ間のリンクと画像のパス、`nav.<lang>.yml` の URL を直す(`/x.ja.html` は `/ja/x.html`)。公開される URL も変わります
+  - `lang_layout` の行は消してかまいません
+  - `it/` や `id/` のような2文字の名前のフォルダは、言語とみなされます
+- 設定の `sidebar`、`search`、`prev_next`、`toc`、`breadcrumb`、`code_copy`、`top_link`、`heading_link`、`github_link`、`search_content_limit`、`lang_layout` を削除。指定しても無視され、部品は常に出ます
+- パンくず、「ページ先頭へ戻る」、目次の読んでいる見出しの強調、`Intl.Segmenter` による検索の順位の補正を削除
+- 前の版のままにするときは `remote_theme: akilasatolu/tiny-md2docs@v0.2.2` と指定します
+
 ## v0.2.2
 
 - `_includes/head-custom.html` と `_includes/body-custom.html` で、`<head>` と `</body>` の直前に足せる

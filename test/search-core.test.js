@@ -98,7 +98,7 @@ function walk(dir) {
 function toDoc(file, id) {
   const rel = relative(join(root, 'docs'), file).split('\\').join('/');
   let url = '/' + rel.replace(/\.md$/, '.html');
-  url = url.replace(/(^|\/)index\.html$/, '$1'); // index.ja.html stays
+  url = url.replace(/(^|\/)index\.html$/, '$1');
   const src = readFileSync(file, 'utf8').replace(/^---\n[\s\S]*?\n---\n/, '');
   const title = (src.match(/^# (.+)$/m) || [, rel])[1];
   const headings = [...src.matchAll(/^#{2,3} (.+)$/gm)].map((m) => m[1]);
@@ -108,7 +108,7 @@ function toDoc(file, id) {
     .replace(/[`*|>]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
-  const lang = (rel.match(/\.(ja|ko)\.md$/) || [, 'en'])[1];
+  const lang = (rel.match(/^(ja|ko)\//) || [, 'en'])[1];
   return { id, title, url, headings, content, lang };
 }
 
@@ -139,19 +139,6 @@ test('fuzzy: one edit away for words of 4+ letters, at half score', () => {
   const exact = ix.search('search')[0].score;
   const fuzzy = ix.search('serch')[0].score;
   assert.ok(fuzzy < exact);
-});
-
-test('segmenter words add score but do not change what matches', () => {
-  const docsSeg = [
-    { id: 0, title: '設定', headings: [], content: '東京都の設定' },
-    { id: 1, title: '設定', headings: [], content: '京都の設定' },
-  ];
-  const plain = createIndex(docsSeg);
-  const seg = createIndex(docsSeg, { segmenter: new Intl.Segmenter('ja', { granularity: 'word' }) });
-  assert.deepEqual(ids(plain, '京都').sort(), [0, 1]);
-  assert.deepEqual(ids(seg, '京都').sort(), [0, 1]);
-  const s = seg.search('京都');
-  assert.equal(s[0].id, 1);
 });
 
 // An index of body-only documents, for the Japanese matching tests.

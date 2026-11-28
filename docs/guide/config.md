@@ -15,7 +15,7 @@ lang: en
 
 - `title` is the site name shown in the header and the browser tab.
 - `description` is the description used by search engines and social media. It is shared by all pages.
-- `lang` is the language of pages whose file name has no language. It is used for `<html lang>` and the on-screen text. If you omit it, it is `en`. To use several languages, see [Multilingual](i18n.md).
+- `lang` is the language of pages that are not in a language folder. It is used for `<html lang>` and the on-screen text. If you omit it, it is `en`. To use several languages, see [Multilingual](i18n.md).
 - If you do not write `title`, the site name is the repository name for a project page (`https://user.github.io/repo/`), and the account name for a user page (`https://user.github.io/`). If you do not write `description`, the repository description (About) is used.
 
 ## Do not publish the original .md files
@@ -45,7 +45,6 @@ theme_options:
   logo: /assets/images/logo.svg
   favicon: /assets/images/logo.svg
   dark_mode: auto
-  search: true
 ```
 
 Write the paths of the logo and favicon as paths from the site root. Even for a project page (`https://user.github.io/repo/`), you do not need to add `/repo`.

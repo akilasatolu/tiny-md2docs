@@ -2,7 +2,7 @@
 
 設定は、すべて `docs/_config.yml` に書きます。最小の設定は `remote_theme` の1行だけです。
 
-設定の一覧は [_config.yml](../reference/site-config.ja.md) にあります。
+設定の一覧は [_config.yml](../reference/site-config.md) にあります。
 
 ## サイトの情報
 
@@ -15,7 +15,7 @@ lang: en
 
 - `title` はヘッダーとブラウザのタブに出るサイト名です。
 - `description` は検索エンジンや SNS で使われる説明文です。すべてのページで使います。
-- `lang` は、ファイル名に言語のないページの言語で、`<html lang>` と画面の文言に使われます。省略すると `en` です。複数の言語を使うときは、[多言語](i18n.ja.md)を見てください。
+- `lang` は、言語のフォルダにないページの言語で、`<html lang>` と画面の文言に使われます。省略すると `en` です。複数の言語を使うときは、[多言語](i18n.md)を見てください。
 - `title` を書かないと、プロジェクトのページ(`https://user.github.io/repo/`)ではリポジトリの名前が、ユーザーのページ(`https://user.github.io/`)ではアカウントの名前が、サイト名になります。`description` を書かないと、リポジトリの説明(About)が使われます。
 
 ## 元の .md ファイルを公開しない
@@ -45,16 +45,15 @@ theme_options:
   logo: /assets/images/logo.svg
   favicon: /assets/images/logo.svg
   dark_mode: auto
-  search: true
 ```
 
 ロゴやファビコンのパスは、サイトのルートからのパスで書きます。プロジェクトページ(`https://user.github.io/repo/`)でも、`/repo` を付ける必要はありません。
 
-すべての項目は [theme_options](../reference/theme-options.ja.md) にあります。
+すべての項目は [theme_options](../reference/theme-options.md) にあります。
 
 ## 画面の文言を変える
 
-ボタンや検索窓の文言は、`theme_options.strings` で上書きできます。ここに書いた文言は、言語ごとの文言を書いていない言語のページに使われます。言語ごとに分けるときは、[多言語](i18n.ja.md)を見てください。
+ボタンや検索窓の文言は、`theme_options.strings` で上書きできます。ここに書いた文言は、言語ごとの文言を書いていない言語のページに使われます。言語ごとに分けるときは、[多言語](i18n.md)を見てください。
 
 ```yaml
 theme_options:
@@ -63,7 +62,7 @@ theme_options:
     next: 次のページ
 ```
 
-キーの一覧は [theme_options](../reference/theme-options.ja.md) の「画面の文言」にあります。
+キーの一覧は [theme_options](../reference/theme-options.md) の「画面の文言」にあります。
 
 ## フッター
 

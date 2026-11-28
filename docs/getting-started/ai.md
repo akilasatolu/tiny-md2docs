@@ -64,7 +64,7 @@ Top-level settings:
 - title: the site name. If omitted, the repository name or the account name.
 - description: the description of the site. If omitted, the description of the repository.
 - image: the default image used when a page is shared on social media.
-- lang: the language of pages whose file name has no language. If omitted, en.
+- lang: the language of pages that are not in a language folder. If omitted, en.
 - theme_options: theme settings (the table below).
 - optional_front_matter: remove_originals: true stops publishing the original .md files. With enabled: false, Markdown without front matter does not become a page.
 - readme_index: in a folder without index.md, README.md becomes the top page. You can set remove_originals, enabled, and with_frontmatter.
@@ -74,26 +74,15 @@ theme_options (omitted items use the default):
 
 | Item | Default | Meaning |
 | --- | --- | --- |
-| sidebar | true | false removes the sidebar |
-| search | true | false removes search |
 | dark_mode | auto | auto, light, or dark |
-| prev_next | true | false removes the previous and next links |
-| toc | true | false removes the table of contents |
-| breadcrumb | true | false removes the breadcrumb |
-| code_copy | true | false removes the copy button |
-| top_link | true | false removes "Back to top" |
-| heading_link | true | false removes the heading links |
-| github_link | true | false removes the link to GitHub |
 | logo | none | path of the logo image (from the site root; do not add /repo) |
 | favicon | none | path of the favicon (same as above) |
-| search_content_limit | 5000 | maximum number of body characters searched (per page) |
-| lang_layout | none | folder decides the language by the top folder (ja/config.md) instead of the file name (config.ja.md) |
 | strings | none | overrides of the interface text |
 
 ## Writing pages
 - Write in Markdown (kramdown with GFM, as on GitHub Pages).
 - Front matter is not needed. The name of a page is the first heading of the body. Start each page with a "# Heading".
-- Link between pages with a relative path to the target .md file. Examples: [Usage](guide/usage.md), [Back](../overview.md). In a translated page, write the file name of the same language, such as guide/usage.ja.md. Do not write paths starting with / or direct links to .html.
+- Link between pages with a relative path to the target .md file. Examples: [Usage](guide/usage.md), [Back](../overview.md). In a translated page too, write relative paths; they stay inside the same language folder. Do not write paths starting with / or direct links to .html.
 - Write images with a relative path. Example: ![Figure](../assets/images/figure.png){: width="480" }
 - A table of contents appears when a page has two or more h2 and h3 headings in total. To leave a heading out of it, write {: .no_toc } on the line after the heading.
 - Double curly braces, or a curly brace followed by %, in the body are processed as Liquid commands. To show them as they are, wrap them in raw tags ({% raw %} and the matching endraw tag).
@@ -112,7 +101,7 @@ If docs/_data/nav.yml exists, the sidebar follows its order and names.
   url: /faq.html
 ```
 
-- An item without url is a group that holds its children. A group with both url and children becomes a link in the breadcrumb.
+- An item without url is a group that holds its children.
 - url is a path from the site root, ending in .html. The top page is /.
 - Nesting can be up to 48 levels.
 
@@ -165,9 +154,9 @@ Create docs/assets/css/style.scss. The first two lines and the @import are requi
 - Keep the contrast between text and background at 4.5:1 or more.
 
 ## Multilingual
-- Put a translation next to the original page, with the language added to the file name: docs/guide/config.md and docs/guide/config.ja.md. Pages without a language in the name are in the language of the whole site.
-- The language is a two-letter ISO 639-1 code, optionally with a region (zh-CN). No setting is needed, and the language switch appears on pages that have translations.
-- To split languages by folder instead (docs/ja/guide/config.md), set theme_options.lang_layout: folder. Pages in the language of the whole site stay directly under docs/; do not make a folder for that language. Translations are files with the same path apart from the language folder. In nav.ja.yml, write URLs such as /ja/guide/config.html.
+- Put the pages in the language of the whole site directly under docs/, and translations in a folder named after their language: docs/guide/config.md and docs/ja/guide/config.md. No setting is needed. Do not make a folder for the language of the whole site.
+- A language folder is a two-letter ISO 639-1 code, optionally with a region (zh-CN). A folder with such a name is always treated as a language.
+- Translations are files with the same path apart from the language folder, and the language switch appears on pages that have them. Paths to shared images need one more ../ in a language folder.
 
 ```yaml
 lang: en
@@ -179,12 +168,12 @@ theme_options:
 ```
 
 - The theme's interface text is only in English. For other languages, write it per language in theme_options.strings.
-- To set the order by hand, add a file per language such as docs/_data/nav.ja.yml. In it, write URLs such as /guide/config.ja.html.
-- The top page of a language is index.<language>.md (URL /index.<language>.html).
+- To set the order by hand, add a file per language such as docs/_data/nav.ja.yml. In it, write URLs such as /ja/guide/config.html.
+- The top page of a language is <language>/index.md (URL /<language>/).
 - The sidebar and search cover only pages in the same language as the current page.
 
 Keys of strings (the default English text is in parentheses):
-skip_to_content (Skip to content), nav_label (Documentation), menu_open (Open menu), menu_close (Close menu), search_label (Search), search_placeholder (Search the docs), search_open (Open search), search_clear (Clear search), search_no_results (No results), search_results_count ({n} results), toggle_dark (Switch to dark mode), toggle_light (Switch to light mode), github (GitHub), toc_title (On this page), breadcrumb_label (Breadcrumb), prev (Previous), next (Next), copy (Copy), copied (Copied), not_found_title (Page not found), not_found_body (The page you are looking for may have been moved or deleted.), top_link (Back to top), heading_link (Link to this section), lang_switch (Language)
+skip_to_content (Skip to content), nav_label (Documentation), menu_open (Open menu), menu_close (Close menu), search_label (Search), search_placeholder (Search the docs), search_open (Open search), search_clear (Clear search), search_no_results (No results), search_results_count ({n} results), toggle_dark (Switch to dark mode), toggle_light (Switch to light mode), github (GitHub), toc_title (On this page), prev (Previous), next (Next), copy (Copy), copied (Copied), not_found_title (Page not found), not_found_body (The page you are looking for may have been moved or deleted.), heading_link (Link to this section), lang_switch (Language)
 
 ## What you cannot do, and limits
 - Use only what works with the standard GitHub Pages build. Custom plugins cannot be used.

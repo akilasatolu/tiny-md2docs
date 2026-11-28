@@ -4,7 +4,7 @@ AI にドキュメントを作らせるときに渡す情報を、下の枠に�
 
 1. 下の枠の全文をコピーして、AI に貼ります。
 2. 続けて、作りたいドキュメントの内容(製品やプロジェクトの説明、対象の読者、言語、載せたいページ)を書いて送ります。
-3. AI が作ったファイルをリポジトリに置き、[インストール](install.ja.md)の「3. GitHub Pages を有効にする」の手順で公開します。
+3. AI が作ったファイルをリポジトリに置き、[インストール](install.md)の「3. GitHub Pages を有効にする」の手順で公開します。
 
 {% raw %}
 ````text
@@ -64,7 +64,7 @@ theme_options:
 - title: サイト名。省略するとリポジトリ名かアカウント名です。
 - description: サイトの説明。省略するとリポジトリの説明です。
 - image: SNS で共有したときの画像の既定値。
-- lang: ファイル名に言語のないページの言語。省略すると en です。
+- lang: 言語のフォルダにないページの言語。省略すると en です。
 - theme_options: テーマの設定(下の表)。
 - optional_front_matter: remove_originals: true で、元の .md ファイルを公開しません。enabled: false にすると front matter のない Markdown はページになりません。
 - readme_index: index.md のないフォルダでは README.md がトップページになります。remove_originals、enabled、with_frontmatter を指定できます。
@@ -74,26 +74,15 @@ theme_options(省略した項目は既定値):
 
 | 項目 | 既定値 | 内容 |
 | --- | --- | --- |
-| sidebar | true | false でサイドバーを消す |
-| search | true | false で検索を消す |
 | dark_mode | auto | auto、light、dark |
-| prev_next | true | false で前後リンクを消す |
-| toc | true | false で目次を消す |
-| breadcrumb | true | false でパンくずを消す |
-| code_copy | true | false でコピーのボタンを消す |
-| top_link | true | false で「ページ先頭へ戻る」を消す |
-| heading_link | true | false で見出しのリンクを消す |
-| github_link | true | false で GitHub へのリンクを消す |
 | logo | なし | ロゴ画像のパス(サイトのルートから。/repo は付けない) |
 | favicon | なし | ファビコンのパス(同上) |
-| search_content_limit | 5000 | 検索で調べる本文の文字数の上限(1ページあたり) |
-| lang_layout | なし | folder にすると、ファイル名(config.ja.md)の代わりに一番上のフォルダ(ja/config.md)で言語を決める |
 | strings | なし | 画面の文言の上書き |
 
 ## ページの書き方
 - Markdown(GitHub Pages の kramdown、GFM)で書きます。
 - front matter は要りません。ページの名前は本文の最初の見出しです。各ページは「# 見出し」で始めます。
-- ページどうしのリンクは、リンク先の .md ファイルへの相対パスで書きます。例: [使い方](guide/usage.md)、[戻る](../overview.md)。翻訳したページでは、guide/usage.ja.md のように同じ言語のファイル名で書きます。/ で始まるパスや .html への直接のリンクは書きません。
+- ページどうしのリンクは、リンク先の .md ファイルへの相対パスで書きます。例: [使い方](guide/usage.md)、[戻る](../overview.md)。翻訳したページでも相対パスで書きます。同じ言語のフォルダの中に移ります。/ で始まるパスや .html への直接のリンクは書きません。
 - 画像は相対パスで書きます。例: ![図](../assets/images/figure.png){: width="480" }
 - h2 と h3 の見出しが合わせて2つ以上あると、目次が出ます。見出しを目次から外すには、見出しの次の行に {: .no_toc } を書きます。
 - 本文に二重の波かっこや「波かっこと %」を書くと、Liquid の命令として処理されます。そのまま見せるときは、raw タグ({% raw %} と、対になる endraw タグ)で囲みます。
@@ -112,7 +101,7 @@ docs/_data/nav.yml があれば、その順と名前で並びます。
   url: /faq.html
 ```
 
-- url のない項目はグループで、children にまとめます。url と children の両方を持つグループは、パンくずがリンクになります。
+- url のない項目はグループで、children にまとめます。
 - url はサイトのルートからのパスで、末尾は .html、トップページは / です。
 - 入れ子は48段までです。
 
@@ -165,9 +154,9 @@ docs/assets/css/style.scss を作ります。最初の2行と @import は必須�
 - 文字と背景のコントラストは 4.5:1 以上にします。
 
 ## 多言語
-- 翻訳は、元のページの隣に、ファイル名に言語を足して置きます: docs/guide/config.md と docs/guide/config.ja.md。名前に言語のないページは、サイト全体の言語です。
-- 言語は ISO 639-1 の2文字で、地域も付けられます(zh-CN)。設定は要らず、翻訳のあるページに言語の切り替えが出ます。
-- フォルダで分けるとき(docs/ja/guide/config.md)は theme_options.lang_layout: folder を指定します。サイト全体の言語のページは docs/ の直下に置き、その言語のフォルダは作りません。言語のフォルダを除いたパスが同じファイルが翻訳になります。nav.ja.yml の URL は /ja/guide/config.html のように書きます。
+- サイト全体の言語のページは docs/ の直下に、翻訳は言語の名前のフォルダに置きます: docs/guide/config.md と docs/ja/guide/config.md。設定は要りません。サイト全体の言語のフォルダは作りません。
+- 言語のフォルダの名前は ISO 639-1 の2文字で、地域も付けられます(zh-CN)。この形の名前のフォルダは、いつも言語とみなされます。
+- 言語のフォルダを除いたパスが同じファイルが翻訳で、翻訳のあるページに言語の切り替えが出ます。共通の画像へのパスは、言語のフォルダの中では ../ が1つ多くなります。
 
 ```yaml
 lang: en
@@ -179,12 +168,12 @@ theme_options:
 ```
 
 - テーマの画面の文言は英語だけです。ほかの言語では theme_options.strings に言語ごとに書きます。
-- 並びを手で決めるときは docs/_data/nav.ja.yml のように言語ごとに置きます。URL は /guide/config.ja.html のように書きます。
-- 言語ごとのトップページは index.<言語>.md です(URL は /index.<言語>.html)。
+- 並びを手で決めるときは docs/_data/nav.ja.yml のように言語ごとに置きます。URL は /ja/guide/config.html のように書きます。
+- 言語ごとのトップページは <言語>/index.md です(URL は /<言語>/)。
 - サイドバーと検索は、今のページと同じ言語のページだけが対象です。
 
 strings のキー(かっこ内は英語の既定の文言):
-skip_to_content (Skip to content)、nav_label (Documentation)、menu_open (Open menu)、menu_close (Close menu)、search_label (Search)、search_placeholder (Search the docs)、search_open (Open search)、search_clear (Clear search)、search_no_results (No results)、search_results_count ({n} results)、toggle_dark (Switch to dark mode)、toggle_light (Switch to light mode)、github (GitHub)、toc_title (On this page)、breadcrumb_label (Breadcrumb)、prev (Previous)、next (Next)、copy (Copy)、copied (Copied)、not_found_title (Page not found)、not_found_body (The page you are looking for may have been moved or deleted.)、top_link (Back to top)、heading_link (Link to this section)、lang_switch (Language)
+skip_to_content (Skip to content)、nav_label (Documentation)、menu_open (Open menu)、menu_close (Close menu)、search_label (Search)、search_placeholder (Search the docs)、search_open (Open search)、search_clear (Clear search)、search_no_results (No results)、search_results_count ({n} results)、toggle_dark (Switch to dark mode)、toggle_light (Switch to light mode)、github (GitHub)、toc_title (On this page)、prev (Previous)、next (Next)、copy (Copy)、copied (Copied)、not_found_title (Page not found)、not_found_body (The page you are looking for may have been moved or deleted.)、heading_link (Link to this section)、lang_switch (Language)
 
 ## 使えないことと制限
 - GitHub Pages の標準のビルドで動くものだけを使います。独自のプラグインは使えません。

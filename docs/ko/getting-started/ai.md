@@ -4,7 +4,7 @@ AI에게 문서를 만들게 할 때 전달할 정보를 아래 상자에 모았
 
 1. 아래 상자의 전체를 복사해 AI에게 붙여 넣습니다.
 2. 이어서 만들고 싶은 문서의 내용(제품이나 프로젝트 설명, 대상 독자, 언어, 넣고 싶은 페이지)을 써서 보냅니다.
-3. AI가 만든 파일을 저장소에 넣고, [설치](install.ko.md)의 "3. GitHub Pages 켜기" 절차로 공개합니다.
+3. AI가 만든 파일을 저장소에 넣고, [설치](install.md)의 "3. GitHub Pages 켜기" 절차로 공개합니다.
 
 {% raw %}
 ````text
@@ -64,7 +64,7 @@ theme_options:
 - title: 사이트 이름. 생략하면 저장소 이름이나 계정 이름입니다.
 - description: 사이트 설명. 생략하면 저장소 설명입니다.
 - image: SNS에 공유할 때 쓰는 이미지의 기본값.
-- lang: 파일 이름에 언어가 없는 페이지의 언어. 생략하면 en입니다.
+- lang: 언어 폴더에 없는 페이지의 언어. 생략하면 en입니다.
 - theme_options: 테마 설정(아래 표).
 - optional_front_matter: remove_originals: true로 하면 원본 .md 파일을 공개하지 않습니다. enabled: false로 하면 front matter가 없는 Markdown은 페이지가 되지 않습니다.
 - readme_index: index.md가 없는 폴더에서는 README.md가 첫 페이지가 됩니다. remove_originals, enabled, with_frontmatter를 지정할 수 있습니다.
@@ -74,26 +74,15 @@ theme_options(생략한 항목은 기본값):
 
 | 항목 | 기본값 | 내용 |
 | --- | --- | --- |
-| sidebar | true | false면 사이드바를 없앰 |
-| search | true | false면 검색을 없앰 |
 | dark_mode | auto | auto, light, dark |
-| prev_next | true | false면 이전·다음 링크를 없앰 |
-| toc | true | false면 목차를 없앰 |
-| breadcrumb | true | false면 이동 경로를 없앰 |
-| code_copy | true | false면 복사 버튼을 없앰 |
-| top_link | true | false면 "맨 위로"를 없앰 |
-| heading_link | true | false면 제목 링크를 없앰 |
-| github_link | true | false면 GitHub 링크를 없앰 |
 | logo | 없음 | 로고 이미지 경로(사이트 루트부터. /repo는 붙이지 않음) |
 | favicon | 없음 | 파비콘 경로(위와 같음) |
-| search_content_limit | 5000 | 검색에서 확인하는 본문 글자 수의 상한(한 페이지당) |
-| lang_layout | 없음 | folder면 파일 이름(config.ja.md) 대신 맨 위 폴더(ja/config.md)로 언어를 정함 |
 | strings | 없음 | 화면 문구 덮어쓰기 |
 
 ## 페이지 작성
 - Markdown(GitHub Pages의 kramdown, GFM)으로 씁니다.
 - front matter는 필요 없습니다. 페이지 이름은 본문의 첫 제목입니다. 각 페이지는 "# 제목"으로 시작합니다.
-- 페이지 사이의 링크는 대상 .md 파일의 상대 경로로 씁니다. 예: [사용법](guide/usage.md), [돌아가기](../overview.md). 번역한 페이지에서는 guide/usage.ko.md처럼 같은 언어의 파일 이름으로 씁니다. /로 시작하는 경로나 .html로의 직접 링크는 쓰지 않습니다.
+- 페이지 사이의 링크는 대상 .md 파일의 상대 경로로 씁니다. 예: [사용법](guide/usage.md), [돌아가기](../overview.md). 번역한 페이지에서도 상대 경로로 씁니다. 같은 언어 폴더 안으로 이동합니다. /로 시작하는 경로나 .html로의 직접 링크는 쓰지 않습니다.
 - 이미지는 상대 경로로 씁니다. 예: ![그림](../assets/images/figure.png){: width="480" }
 - h2와 h3 제목이 합쳐서 두 개 이상이면 목차가 나옵니다. 제목을 목차에서 빼려면 제목 다음 줄에 {: .no_toc }를 씁니다.
 - 본문에 이중 중괄호나 "중괄호와 %"를 쓰면 Liquid 명령으로 처리됩니다. 그대로 보여 주려면 raw 태그({% raw %}와 짝이 되는 endraw 태그)로 감쌉니다.
@@ -112,7 +101,7 @@ docs/_data/nav.yml이 있으면 그 순서와 이름으로 나열됩니다.
   url: /faq.html
 ```
 
-- url이 없는 항목은 그룹이며 children을 묶습니다. url과 children을 모두 가진 그룹은 이동 경로에서 링크가 됩니다.
+- url이 없는 항목은 그룹이며 children을 묶습니다.
 - url은 사이트 루트부터의 경로이고 끝은 .html, 첫 페이지는 /입니다.
 - 중첩은 48단계까지입니다.
 
@@ -165,9 +154,9 @@ docs/assets/css/style.scss를 만듭니다. 처음 두 줄과 @import는 필수�
 - 글자와 배경의 대비는 4.5:1 이상으로 합니다.
 
 ## 다국어
-- 번역은 원래 페이지 옆에, 파일 이름에 언어를 더해 둡니다: docs/guide/config.md와 docs/guide/config.ko.md. 이름에 언어가 없는 페이지는 사이트 전체의 언어입니다.
-- 언어는 ISO 639-1의 두 글자이고 지역도 붙일 수 있습니다(zh-CN). 설정은 필요 없고, 번역이 있는 페이지에 언어 전환이 나옵니다.
-- 폴더로 나눌 때(docs/ja/guide/config.md)는 theme_options.lang_layout: folder를 지정합니다. 사이트 전체 언어의 페이지는 docs/ 바로 아래에 두고, 그 언어의 폴더는 만들지 않습니다. 언어 폴더를 뺀 경로가 같은 파일이 번역이 됩니다. nav.ja.yml의 URL은 /ja/guide/config.html처럼 씁니다.
+- 사이트 전체 언어의 페이지는 docs/ 바로 아래에, 번역은 언어 이름의 폴더에 둡니다: docs/guide/config.md와 docs/ko/guide/config.md. 설정은 필요 없습니다. 사이트 전체 언어의 폴더는 만들지 않습니다.
+- 언어 폴더의 이름은 ISO 639-1의 두 글자이고 지역도 붙일 수 있습니다(zh-CN). 이런 형태의 이름을 가진 폴더는 항상 언어로 봅니다.
+- 언어 폴더를 뺀 경로가 같은 파일이 번역이고, 번역이 있는 페이지에 언어 전환이 나옵니다. 공통 이미지의 경로는 언어 폴더 안에서는 ../가 하나 더 필요합니다.
 
 ```yaml
 lang: en
@@ -179,12 +168,12 @@ theme_options:
 ```
 
 - 테마의 화면 문구는 영어뿐입니다. 다른 언어는 theme_options.strings에 언어별로 씁니다.
-- 순서를 직접 정할 때는 docs/_data/nav.ko.yml처럼 언어별 파일을 둡니다. URL은 /guide/config.ko.html처럼 씁니다.
-- 언어별 첫 페이지는 index.<언어>.md입니다(URL은 /index.<언어>.html).
+- 순서를 직접 정할 때는 docs/_data/nav.ko.yml처럼 언어별 파일을 둡니다. URL은 /ko/guide/config.html처럼 씁니다.
+- 언어별 첫 페이지는 <언어>/index.md입니다(URL은 /<언어>/).
 - 사이드바와 검색은 현재 페이지와 같은 언어의 페이지만 대상입니다.
 
 strings의 키(괄호 안은 영어 기본 문구):
-skip_to_content (Skip to content), nav_label (Documentation), menu_open (Open menu), menu_close (Close menu), search_label (Search), search_placeholder (Search the docs), search_open (Open search), search_clear (Clear search), search_no_results (No results), search_results_count ({n} results), toggle_dark (Switch to dark mode), toggle_light (Switch to light mode), github (GitHub), toc_title (On this page), breadcrumb_label (Breadcrumb), prev (Previous), next (Next), copy (Copy), copied (Copied), not_found_title (Page not found), not_found_body (The page you are looking for may have been moved or deleted.), top_link (Back to top), heading_link (Link to this section), lang_switch (Language)
+skip_to_content (Skip to content), nav_label (Documentation), menu_open (Open menu), menu_close (Close menu), search_label (Search), search_placeholder (Search the docs), search_open (Open search), search_clear (Clear search), search_no_results (No results), search_results_count ({n} results), toggle_dark (Switch to dark mode), toggle_light (Switch to light mode), github (GitHub), toc_title (On this page), prev (Previous), next (Next), copy (Copy), copied (Copied), not_found_title (Page not found), not_found_body (The page you are looking for may have been moved or deleted.), heading_link (Link to this section), lang_switch (Language)
 
 ## 할 수 없는 것과 제한
 - GitHub Pages의 표준 빌드에서 동작하는 것만 사용합니다. 자체 플러그인은 쓸 수 없습니다.

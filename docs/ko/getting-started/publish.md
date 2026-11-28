@@ -1,13 +1,13 @@
 # 공개 방법
 
-보통은 [설치](install.ko.md)의 순서대로 브랜치의 `docs` 폴더에서 공개합니다. 여기서는 나머지 두 가지 방법을 설명합니다. 둘 다 리포지토리의 Settings → Pages에 있는 'Build and deployment'에서 설정합니다.
+보통은 [설치](install.md)의 순서대로 브랜치의 `docs` 폴더에서 공개합니다. 여기서는 나머지 두 가지 방법을 설명합니다. 둘 다 리포지토리의 Settings → Pages에 있는 'Build and deployment'에서 설정합니다.
 
 ## 브랜치의 루트에서 공개하기
 
 문서만 있는 리포지토리 등에서 리포지토리의 루트를 공개하는 방법입니다.
 
 1. `_config.yml`과 Markdown 파일을 `docs/`가 아니라 리포지토리의 루트에 둡니다. 이 문서의 `docs/`는 리포지토리의 루트로 바꿔 읽으세요.
-2. [설치](install.ko.md)의 '3. GitHub Pages 켜기'와 같게 설정합니다. 폴더만 `/docs`가 아니라 `/(root)`를 선택합니다.
+2. [설치](install.md)의 '3. GitHub Pages 켜기'와 같게 설정합니다. 폴더만 `/docs`가 아니라 `/(root)`를 선택합니다.
 
 루트에서 공개하면 리포지토리의 다른 파일도 공개됩니다. 공개하고 싶지 않은 파일이나 폴더는 `_config.yml`의 `exclude`에 씁니다. `exclude`를 쓰면 Jekyll이 기본으로 제외하는 파일(`Gemfile`, `node_modules` 등)의 목록이 대체됩니다. 다음 예처럼 기본 항목도 함께 씁니다.
 

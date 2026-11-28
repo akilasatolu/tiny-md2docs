@@ -1,4 +1,4 @@
-// Table of contents and breadcrumb
+// Table of contents
 .tm2d-toc {
   font-size: 13px;
   line-height: 1.5;
@@ -17,14 +17,9 @@
     border-left: 2px solid var(--tm2d-border);
     color: var(--tm2d-muted);
 
-    &:hover,
-    &.is-active {
+    &:hover {
       color: var(--tm2d-accent);
       text-decoration: none;
-    }
-
-    &.is-active {
-      border-left-color: var(--tm2d-accent);
     }
   }
 
@@ -78,25 +73,5 @@
 @media (max-width: 1199px) {
   .tm2d-toc-col {
     display: none;
-  }
-}
-
-.tm2d-breadcrumb {
-  max-width: var(--tm2d-content-max-width);
-  margin: 0 auto 12px;
-  color: var(--tm2d-muted);
-  font-size: 13px;
-
-  ol {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  li + li::before {
-    content: "/";
-    padding: 0 8px;
   }
 }

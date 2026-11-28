@@ -1,10 +1,7 @@
 ---
 layout: default
 ---
-{%- if site.theme_options.prev_next != false or site.theme_options.breadcrumb != false -%}
 {%- include nav-order.html -%}
-{%- endif %}
-{%- include breadcrumb.html %}
 {%- include toc.html html=content variant="inline" %}
 <article class="tm2d-content">
 {%- unless content contains "<h1" or page.title == nil %}
@@ -12,9 +9,4 @@ layout: default
 {%- endunless %}
 {{ content }}
 </article>
-{%- if site.theme_options.top_link != false %}
-<p class="tm2d-top-link"><a href="#tm2d-top">{% include t.html key="top_link" %}</a></p>
-{%- endif %}
-{%- if site.theme_options.prev_next != false %}
 {%- include pager.html %}
-{%- endif %}

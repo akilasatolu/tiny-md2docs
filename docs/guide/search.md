@@ -63,11 +63,8 @@ For each word you type, the points for each place it matches are added up, and p
 
 - When the title contains the whole phrase you typed, 5 is added.
 - A word that matched one letter off gets half the points.
-- When the browser supports `Intl.Segmenter`, matching a word that can be separated as a word adds half the points for that place. The pages that match do not change; only the ranking is affected.
 - When the points are equal, shorter titles come first, then the URL order.
 
-## Turn off search
+## What is read
 
-To turn off search for the whole site, set `theme_options.search: false`. A single page cannot be left out of search.
-
-Search looks at up to 5000 characters of the body of each page. You can change it with `theme_options.search_content_limit`. The first search reads all pages of the current language, so it takes longer on a site with many pages. A page that cannot be read within 10 seconds is found by its title only.
+Search looks at up to 5000 characters of the body of each page. The first search reads all pages of the current language, so it takes longer on a site with many pages. A page that cannot be read within 10 seconds is found by its title only.

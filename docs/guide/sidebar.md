@@ -64,8 +64,4 @@ For how pages are listed for each language, see [Multilingual](i18n.md).
 
 ## Previous and next links
 
-At the bottom of each page, links to the previous and next pages in the sidebar order appear. You can turn them off with `theme_options.prev_next: false`.
-
-## Hide the sidebar
-
-With `theme_options.sidebar: false`, you can hide the sidebar on all pages. The menu button on narrow screens is hidden too.
+At the bottom of each page, links to the previous and next pages in the sidebar order appear.

@@ -1,9 +1,6 @@
 ---
 layout: null
 ---
-{%- if site.theme_options.search == false -%}
-[]
-{%- else -%}
 {%- comment -%}
   ページの一覧だけを出す。本文と見出しは、ブラウザが公開された HTML から取り出す。
 {%- endcomment -%}
@@ -22,4 +19,3 @@ layout: null
   {%- assign _tm2d_id = _tm2d_id | plus: 1 -%}
 {%- endfor %}
 ]
-{%- endif %}

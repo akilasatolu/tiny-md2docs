@@ -2,7 +2,7 @@
 
 설정은 모두 `docs/_config.yml`에 씁니다. 최소 설정은 `remote_theme` 한 줄뿐입니다.
 
-설정 목록은 [_config.yml](../reference/site-config.ko.md)에 있습니다.
+설정 목록은 [_config.yml](../reference/site-config.md)에 있습니다.
 
 ## 사이트 정보
 
@@ -15,7 +15,7 @@ lang: en
 
 - `title`은 헤더와 브라우저 탭에 나오는 사이트 이름입니다.
 - `description`은 검색 엔진이나 SNS에서 쓰이는 설명문입니다. 모든 페이지에서 씁니다.
-- `lang`은 파일 이름에 언어가 없는 페이지의 언어이며, `<html lang>`과 화면의 문구에 쓰입니다. 생략하면 `en`입니다. 여러 언어를 쓸 때는 [다국어](i18n.ko.md)를 보세요.
+- `lang`은 언어 폴더에 없는 페이지의 언어이며, `<html lang>`과 화면의 문구에 쓰입니다. 생략하면 `en`입니다. 여러 언어를 쓸 때는 [다국어](i18n.md)를 보세요.
 - `title`을 쓰지 않으면, 프로젝트 페이지(`https://user.github.io/repo/`)에서는 리포지토리 이름이, 사용자 페이지(`https://user.github.io/`)에서는 계정 이름이 사이트 이름이 됩니다. `description`을 쓰지 않으면 리포지토리의 설명(About)이 쓰입니다.
 
 ## 원본 .md 파일을 공개하지 않기
@@ -45,16 +45,15 @@ theme_options:
   logo: /assets/images/logo.svg
   favicon: /assets/images/logo.svg
   dark_mode: auto
-  search: true
 ```
 
 로고와 파비콘의 경로는 사이트 루트부터의 경로로 씁니다. 프로젝트 페이지(`https://user.github.io/repo/`)에서도 `/repo`를 붙일 필요가 없습니다.
 
-모든 항목은 [theme_options](../reference/theme-options.ko.md)에 있습니다.
+모든 항목은 [theme_options](../reference/theme-options.md)에 있습니다.
 
 ## 화면의 문구 바꾸기
 
-버튼이나 검색창의 문구는 `theme_options.strings`로 덮어쓸 수 있습니다. 여기에 쓴 문구는 언어별 문구를 쓰지 않은 언어의 페이지에 쓰입니다. 언어별로 나눌 때는 [다국어](i18n.ko.md)를 보세요.
+버튼이나 검색창의 문구는 `theme_options.strings`로 덮어쓸 수 있습니다. 여기에 쓴 문구는 언어별 문구를 쓰지 않은 언어의 페이지에 쓰입니다. 언어별로 나눌 때는 [다국어](i18n.md)를 보세요.
 
 ```yaml
 theme_options:
@@ -63,7 +62,7 @@ theme_options:
     next: 다음 페이지
 ```
 
-키 목록은 [theme_options](../reference/theme-options.ko.md)의 '화면의 문구'에 있습니다.
+키 목록은 [theme_options](../reference/theme-options.md)의 '화면의 문구'에 있습니다.
 
 ## 푸터
 

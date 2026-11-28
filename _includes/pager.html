@@ -1,7 +1,7 @@
 {%- comment -%}
   前後リンク。page.html で nav-order.html を include したあとに使う。
 {%- endcomment -%}
-{%- if site.theme_options.prev_next != false and tm2d_current_index != nil -%}
+{%- if tm2d_current_index != nil -%}
   {%- assign _tm2d_prev = nil -%}
   {%- if tm2d_current_index > 0 -%}
     {%- assign _tm2d_k = tm2d_current_index | minus: 1 -%}

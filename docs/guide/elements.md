@@ -177,4 +177,4 @@ Hidden **text**.
 
 ## Parts shown by settings
 
-Parts such as the header, sidebar, breadcrumb, and previous / next links are not written in the body. See [Configuration](config.md), [Sidebar](sidebar.md), [Search](search.md), and [Colors and dark mode](colors.md).
+Parts such as the header, sidebar, and previous / next links are not written in the body. See [Configuration](config.md), [Sidebar](sidebar.md), [Search](search.md), and [Colors and dark mode](colors.md).

@@ -5,15 +5,15 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 - 導入は `docs/_config.yml` の1行だけです。ほかに用意するものはありません。
 - GitHub Pages の標準のビルドだけで動きます。ワークフロー、npm、プラグインの追加は要りません。
 - 日本語の検索ができます(外部のサービスは使いません)。
-- ダークモード、目次、パンくず、コードのコピー、多言語に対応しています。
-- `head-custom.html` などで拡張できます([テーマを拡張する](https://akilasatolu.github.io/tiny-md2docs/guide/jekyll.ja.html))。
+- ダークモード、目次、コードのコピー、多言語に対応しています。
+- `head-custom.html` などで拡張できます([テーマを拡張する](https://akilasatolu.github.io/tiny-md2docs/ja/guide/jekyll.html))。
 - サイドバーの階層は深くできます(`nav.yml` の入れ子は48段まで)。本文の折りたたみ(`<details>`)も使えます。
 - 印刷に対応しています。
 - CSS と JS は、合わせて gzip で 16 KB 以下です。
 
 社内のドキュメントを手早く公開したいチームや、ドキュメントの公開に時間をかけたくない個人・OSS・ライブラリの開発者に向いています。
 
-ドキュメント: https://akilasatolu.github.io/tiny-md2docs/index.ja.html
+ドキュメント: https://akilasatolu.github.io/tiny-md2docs/ja/
 
 ## 導入
 
@@ -27,12 +27,12 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 3. リポジトリの Settings → Pages で、ブランチの `/docs` フォルダを公開元にします。
 
 > [!NOTE]
-> この設定だけだと、HTML のページと一緒に、元の `.md` ファイルも公開されます。公開したくないときは、[設定](https://akilasatolu.github.io/tiny-md2docs/guide/config.ja.html)を見てください。リポジトリのルートや GitHub Actions で公開する方法は、[公開の方法](https://akilasatolu.github.io/tiny-md2docs/getting-started/publish.ja.html)にあります。
+> この設定だけだと、HTML のページと一緒に、元の `.md` ファイルも公開されます。公開したくないときは、[設定](https://akilasatolu.github.io/tiny-md2docs/ja/guide/config.html)を見てください。リポジトリのルートや GitHub Actions で公開する方法は、[公開の方法](https://akilasatolu.github.io/tiny-md2docs/ja/getting-started/publish.html)にあります。
 
 `@v0` は、新しい版が次のビルドから自動で反映されます。版を固定するときは、`@` のあとに版の名前を書きます。版の一覧は [CHANGELOG.md](CHANGELOG.md) にあります。
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs@v0.2.2
+remote_theme: akilasatolu/tiny-md2docs@v0.3.0
 ```
 
 ## 設定
@@ -41,27 +41,16 @@ remote_theme: akilasatolu/tiny-md2docs@v0.2.2
 
 | 項目 | 既定値 | 内容 |
 | --- | --- | --- |
-| `sidebar` | `true` | `false` でサイドバーを消す |
-| `search` | `true` | `false` で検索を消す |
 | `dark_mode` | `auto` | `auto`(OS に合わせ、切り替えボタンを出す)、`light`、`dark` |
-| `prev_next` | `true` | `false` でページ下の前後リンクを消す |
-| `toc` | `true` | `false` で目次を消す |
-| `breadcrumb` | `true` | `false` でパンくずを消す |
-| `code_copy` | `true` | `false` でコードのコピーのボタンを消す |
-| `top_link` | `true` | `false` で本文の下の「ページ先頭へ戻る」を消す |
-| `heading_link` | `true` | `false` で見出しのリンクを消す |
-| `github_link` | `true` | `false` でヘッダーの GitHub へのリンクを消す |
 | `logo` | なし | ヘッダーのロゴ画像のパス |
 | `favicon` | なし | ファビコンのパス |
-| `search_content_limit` | `5000` | 検索で調べる本文の文字数の上限(1ページあたり) |
-| `lang_layout` | なし | ページの言語の決め方。指定がなければファイル名(`config.ja.md`)、`folder` は言語のフォルダ(`ja/config.md`。サイトの `lang` の言語は `docs/` の直下) |
 | `strings` | なし | 画面の文言の上書き |
 
-`_config.yml` の直下に書く設定は、[リファレンス](https://akilasatolu.github.io/tiny-md2docs/reference/site-config.ja.html)にまとめています。
+`_config.yml` の直下に書く設定は、[リファレンス](https://akilasatolu.github.io/tiny-md2docs/ja/reference/site-config.html)にまとめています。
 
-サイドバーの並びは `docs/_data/nav.yml` で決められます。なければフォルダから自動で並べます。詳しくは[ドキュメント](https://akilasatolu.github.io/tiny-md2docs/guide/sidebar.ja.html)を見てください。
+サイドバーの並びは `docs/_data/nav.yml` で決められます。なければフォルダから自動で並べます。詳しくは[ドキュメント](https://akilasatolu.github.io/tiny-md2docs/ja/guide/sidebar.html)を見てください。
 
-本文で使える書き方は、[表示の一覧](https://akilasatolu.github.io/tiny-md2docs/guide/elements.ja.html)に見本があります。
+本文で使える書き方は、[表示の一覧](https://akilasatolu.github.io/tiny-md2docs/ja/guide/elements.html)に見本があります。
 
 ## 色の変え方
 
@@ -78,7 +67,7 @@ remote_theme: akilasatolu/tiny-md2docs@v0.2.2
 }
 ```
 
-文字と幅も CSS 変数で変えられます。使える変数は[色とダークモード](https://akilasatolu.github.io/tiny-md2docs/guide/colors.ja.html)にあります。
+文字と幅も CSS 変数で変えられます。使える変数は[色とダークモード](https://akilasatolu.github.io/tiny-md2docs/ja/guide/colors.html)にあります。
 
 ## フッター
 
@@ -94,11 +83,11 @@ remote_theme: akilasatolu/tiny-md2docs@v0.2.2
 
 | ファイル | gzip |
 | --- | --- |
-| style.css | 4258 バイト |
-| tm2d.js | 2111 バイト |
-| search-core.js | 2812 バイト |
-| search-ui.js | 2704 バイト |
-| 合計 | 11885 バイト |
+| style.css | 4166 バイト |
+| tm2d.js | 1783 バイト |
+| search-core.js | 2635 バイト |
+| search-ui.js | 2644 バイト |
+| 合計 | 11228 バイト |
 
 ## 開発
 
@@ -112,8 +101,8 @@ script/size.sh            # サイズを測る
 版を出すときは、`CHANGELOG.md` と版の表記を直して commit し、版のタグを付けて、`v0` ブランチも同じ commit に進めます。
 
 ```bash
-git tag -a v0.2.2 -m v0.2.2
-git push --atomic origin main v0.2.2 main:v0
+git tag -a v0.3.0 -m v0.3.0
+git push --atomic origin main v0.3.0 main:v0
 ```
 
 ## ライセンス

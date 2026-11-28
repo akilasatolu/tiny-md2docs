@@ -32,7 +32,7 @@
 ## 링크
 
 {% capture ex %}
-[페이지 작성법](writing.ko__DOT__md)
+[페이지 작성법](writing__DOT__md)
 
 [GitHub Pages](https://pages.github.com/)
 
@@ -119,7 +119,7 @@ const message = "hello";
 ## 이미지
 
 {% capture ex %}
-![tm2d](../assets/images/tm2d-mark__DOT__svg){: width="96" }
+![tm2d](../../assets/images/tm2d-mark__DOT__svg){: width="96" }
 {% endcapture %}
 {% include example.html md=ex %}
 
@@ -177,4 +177,4 @@ HTML
 
 ## 설정으로 표시되는 부분
 
-헤더, 사이드바, 이동 경로, 이전/다음 링크 등은 본문에 쓰지 않습니다. [설정](config.ko.md), [사이드바](sidebar.ko.md), [검색](search.ko.md), [색상과 다크 모드](colors.ko.md)를 참고하세요.
+헤더, 사이드바, 이전/다음 링크 등은 본문에 쓰지 않습니다. [설정](config.md), [사이드바](sidebar.md), [검색](search.md), [색상과 다크 모드](colors.md)를 참고하세요.

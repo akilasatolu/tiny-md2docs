@@ -1,7 +1,6 @@
 {%- comment -%}
   nav.yml の項目(include.items)を、段数の制限なく並びに足す。nav-order.html と自分自身が include する。
   include.groups は、上の段から順のグループ名で、各名前の後ろに「␝」を付けた文字列。
-  include.urls は、同じ順のグループの URL(なければ空)で、各 URL の後ろに「␝」を付けた文字列。
   結果は nav-order.html の _tm2d_r と _tm2d_n に足していく。
   assign の変数は再帰の中で上書きされるので、引数は include から作る。
 {%- endcomment -%}
@@ -9,16 +8,14 @@
   {%- if _n.url -%}
     {%- assign _tm2d_n = _tm2d_n | plus: 1 -%}
     {%- include url-key.html url=_n.url -%}
-    {%- capture _tm2d_rec -%}{{ _tm2d_n }}␟{{ _n.url }}␟{{ tm2d_url_key }}␟{{ _n.title }}␟{{ include.groups }}␟{{ include.urls }}␟.{%- endcapture -%}
+    {%- capture _tm2d_rec -%}{{ _tm2d_n }}␟{{ _n.url }}␟{{ tm2d_url_key }}␟{{ _n.title }}␟{{ include.groups }}␟.{%- endcapture -%}
     {%- assign _tm2d_r = _tm2d_r | append: _tm2d_rec | append: "␞" -%}
   {%- endif -%}
   {%- if _n.children -%}
     {%- assign _tm2d_chain = include.groups -%}
-    {%- assign _tm2d_urls = include.urls -%}
     {%- if _n.title -%}
       {%- assign _tm2d_chain = _tm2d_chain | append: _n.title | append: "␝" -%}
-      {%- assign _tm2d_urls = _tm2d_urls | append: _n.url | append: "␝" -%}
     {%- endif -%}
-    {%- include nav-tree.html items=_n.children groups=_tm2d_chain urls=_tm2d_urls -%}
+    {%- include nav-tree.html items=_n.children groups=_tm2d_chain -%}
   {%- endif -%}
 {%- endfor -%}

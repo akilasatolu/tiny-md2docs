@@ -23,8 +23,11 @@ function mark(text, ranges, from, to) {
   return out + esc(text.slice(p, to));
 }
 
+// Characters of each page body that are searched.
+const LIMIT = 5000;
+
 // The index lists the pages only: read each body from the published HTML.
-async function fill(d, limit) {
+async function fill(d) {
   d.headings = [];
   d.content = '';
   try {
@@ -35,15 +38,15 @@ async function fill(d, limit) {
     body.querySelectorAll('script, style').forEach((e) => e.remove());
     const clean = (e) => e.textContent.replace(/\s+/g, ' ').trim();
     d.headings = Array.from(body.querySelectorAll('h2, h3'), clean);
-    d.content = clean(body).slice(0, limit);
+    d.content = clean(body).slice(0, LIMIT);
   } catch (e) {}
 }
 
 // A few at a time, so that the time limit of a page starts when its request starts.
-async function fillAll(pages, limit) {
+async function fillAll(pages) {
   let next = 0;
   const worker = async () => {
-    while (next < pages.length) await fill(pages[next++], limit);
+    while (next < pages.length) await fill(pages[next++]);
   };
   await Promise.all(Array.from({ length: 8 }, worker));
 }
@@ -66,11 +69,9 @@ function init(root) {
         .then(async (all) => {
           // Search covers the language of this page only.
           const data = all.filter((d) => !lang || d.lang === lang);
-          const limit = Number(root.dataset.contentLimit);
-          await fillAll(data, Number.isNaN(limit) ? 5000 : limit);
+          await fillAll(data);
           docs = new Map(data.map((d) => [d.id, d]));
-          const seg = window.Intl && Intl.Segmenter ? new Intl.Segmenter(lang, { granularity: 'word' }) : null;
-          index = createIndex(data, { segmenter: seg });
+          index = createIndex(data);
         })
         .catch(() => {
           loading = null;

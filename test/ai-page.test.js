@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const read = (p) => readFileSync(resolve(root, p), 'utf8');
-const LANGS = ['', '.ja', '.ko'];
+const LANGS = ['', 'ja/', 'ko/'];
 
 // The text a reader copies: the only ````text block of the page.
 function block(page) {
@@ -20,7 +20,7 @@ function block(page) {
 // and CSS variables.
 function names(lang) {
   const out = [];
-  const doc = (p) => read(`docs/${p.replace(/\.md$/, `${lang}.md`)}`);
+  const doc = (p) => read(`docs/${lang}${p}`);
   for (const p of ['reference/theme-options.md', 'reference/site-config.md']) {
     out.push(...[...doc(p).matchAll(/^\| `([a-z_]+)` \|/gm)].map((m) => m[1]));
   }
@@ -35,7 +35,7 @@ function missing(page, list) {
 }
 
 for (const lang of LANGS) {
-  const path = `docs/getting-started/ai${lang}.md`;
+  const path = `docs/${lang}getting-started/ai.md`;
 
   test(`${path}: one block wrapped in raw`, () => {
     const page = read(path);
@@ -48,10 +48,10 @@ for (const lang of LANGS) {
 
   test(`${path}: lists every documented setting and variable`, () => {
     const list = names(lang);
-    assert.ok(list.length > 50, String(list.length));
+    assert.ok(list.length > 45, String(list.length));
     const page = read(path);
     assert.deepEqual(missing(page, list), []);
-    assert.deepEqual(missing(page.replaceAll('search_content_limit', ''), list), ['search_content_limit']);
+    assert.deepEqual(missing(page.replaceAll('favicon', ''), list), ['favicon']);
   });
 
   test(`${path}: dark variables exist in the theme`, () => {

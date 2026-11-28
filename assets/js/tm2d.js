@@ -1,5 +1,5 @@
 // tm2d: theme toggle, sidebar drawer, language menu, the search box on narrow
-// screens, copy buttons, heading links and the table of contents.
+// screens, copy buttons and heading links.
 (function () {
   var d = document;
   var html = d.documentElement;
@@ -95,7 +95,7 @@
     });
   }
 
-  // Copy buttons on code blocks (off when theme_options.code_copy is false).
+  // Copy buttons on code blocks.
   var copy = d.body.dataset.tm2dCopy;
   if (copy && navigator.clipboard) {
     var icons = '<svg class="tm2d-icon-copy" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4V4h11v1"/></svg>' +
@@ -127,7 +127,7 @@
     });
   }
 
-  // Heading anchor links (off when theme_options.heading_link is false).
+  // Heading anchor links.
   var linkLabel = d.body.dataset.tm2dHeadingLink;
   if (linkLabel) {
     d.querySelectorAll('.tm2d-content :is(h2, h3, h4, h5, h6)[id]').forEach(function (h) {
@@ -137,27 +137,5 @@
       a.setAttribute('aria-label', linkLabel + ': ' + h.textContent);
       h.appendChild(a);
     });
-  }
-
-  // Table of contents: mark the heading being read.
-  var tocLinks = d.querySelectorAll('.tm2d-toc a[href^="#"]');
-  if (tocLinks.length && window.IntersectionObserver) {
-    var heads = [];
-    tocLinks.forEach(function (a) {
-      var h = d.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
-      if (h && heads.indexOf(h) < 0) heads.push(h);
-    });
-    var update = function () {
-      var cur = heads[0];
-      heads.forEach(function (h) {
-        if (h.getBoundingClientRect().top < 120) cur = h;
-      });
-      tocLinks.forEach(function (a) {
-        a.classList.toggle('is-active', cur && a.getAttribute('href') === '#' + cur.id);
-      });
-    };
-    var io = new IntersectionObserver(update, { rootMargin: '0px 0px -60% 0px' });
-    heads.forEach(function (h) { io.observe(h); });
-    update();
   }
 })();
