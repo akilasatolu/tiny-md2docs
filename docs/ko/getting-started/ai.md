@@ -36,13 +36,13 @@ AI에게 문서를 만들게 할 때 전달할 정보를 아래 상자에 모았
 최소 설정은 다음 한 줄입니다.
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs
+remote_theme: akilasatolu/tiny-md2docs@v0
 ```
 
 자주 쓰는 형태:
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs
+remote_theme: akilasatolu/tiny-md2docs@v0
 title: My Docs
 description: 제품 사용법을 정리한 문서
 lang: en
@@ -162,23 +162,6 @@ nav.yml이 없으면 폴더 구조로 자동 정렬됩니다. 폴더가 그룹�
 
 - 본문 안의 목차: "* toc" 다음 줄에 "{:toc}"
 
-## UI 구성 요소 클래스
-단락 등의 다음 줄에 {: .클래스이름 }을 쓰거나, 글자 바로 뒤에 이어서 씁니다. HTML의 class에도 쓸 수 있습니다. 예: [시작하기](usage.md){: .button .button-primary }
-
-- 버튼: `.button`, `.button-outline`, `.button-primary`, `.button-green`, `.button-purple`, `.button-red`, `.button-plain`(button 요소의 꾸밈을 없앰), `.disabled`. `.button-*`의 색과 테두리는 `.button`과 함께 씁니다.
-- 배지: `.badge`, `.badge-blue`, `.badge-green`, `.badge-purple`, `.badge-red`, `.badge-yellow`
-- 표시 예시를 둘러싸는 틀: `.preview`(안에 Markdown을 쓸 때는 markdown="1")
-- 글자 크기: `.font-size-1`부터 `.font-size-10`
-- 굵기: `.font-weight-300`, `.font-weight-400`, `.font-weight-500`, `.font-weight-600`, `.font-weight-700`
-- 글꼴과 간격: `.font-family-mono`, `.line-height-0`, `.line-height-body`, `.line-height-tight`, `.letter-spacing-0`, `.letter-spacing-wide`, `.letter-spacing-wider`, `.text-transform-uppercase`
-- 제목 모양: `.heading-1`부터 `.heading-6`
-- 글자 위치: `.align-left`, `.align-center`, `.align-right`
-- 색: .color-색-1, .color-색-2, .background-색-1, .background-색-2. 색은 blue, green, yellow, red, purple, gray입니다. 1은 배경용, 2는 글자용입니다.
-- 표시: `.display-block`, `.display-flex`, `.display-inline`, `.display-inline-block`, `.display-none`, `.float-left`, `.float-right`, `.visually-hidden`
-- 배치: `.justify-content-start`, `.justify-content-end`, `.justify-content-space-between`, `.justify-content-space-around`, `.vertical-align-baseline`, `.vertical-align-bottom`, `.vertical-align-middle`, `.vertical-align-text-bottom`, `.vertical-align-text-top`, `.vertical-align-top`
-- 여백(N에 4px를 곱한 너비. N은 0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16): .margin-N, .padding-N, .margin-top-N(right, bottom, left, x, y도 같음. padding도 같음), .margin-x-negative-N, `.margin-x-auto`
-- 화면 너비별: 표시와 여백 클래스 앞에 from-768-이나 from-1200-을 붙이면 그 너비 이상에서만 적용됩니다(예: .from-768-display-none).
-
 ## 색상, 글자, 너비 변경
 docs/assets/css/style.scss를 만듭니다. 처음 두 줄과 @import는 필수입니다.
 
@@ -231,5 +214,6 @@ skip_to_content (Skip to content), nav_label (Documentation), menu_open (Open me
 - 바닥글의 "Powered by tiny-md2docs"는 없앨 수 없습니다.
 - 언어를 넘나드는 검색은 할 수 없습니다.
 - README.md, LICENSE.md 등은 front matter가 없으면 페이지가 되지 않습니다(index.md가 없는 폴더에서 README.md가 첫 페이지가 되는 경우는 제외).
+- 여백, 색상, 글자, 버튼, 배지, 표시 예시 틀의 클래스는 없습니다. 필요하면 docs/assets/css/style.scss에 정의합니다.
 ````
 {% endraw %}

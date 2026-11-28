@@ -11,7 +11,7 @@ The settings are listed in [_config.yml](../reference/site-config.md).
 ## Site information
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs
+remote_theme: akilasatolu/tiny-md2docs@v0
 title: My Docs
 description: Documentation on how to use the product
 lang: en

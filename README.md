@@ -7,7 +7,7 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 - 日本語の検索ができます(外部のサービスは使いません)。
 - ダークモード、目次、パンくず、コードのコピー、多言語に対応しています。
 - サイドバーの階層は深くできます(`nav.yml` の入れ子は48段まで)。本文の折りたたみ(`<details>`)も使えます。
-- ボタン、バッジ、ユーティリティクラスを本文で使え、印刷にも対応しています。
+- 印刷に対応しています。
 - CSS と JS は、合わせて gzip で 16 KB 以下です。
 
 社内のドキュメントを手早く公開したいチームや、ドキュメントの公開に時間をかけたくない個人・OSS・ライブラリの開発者に向いています。
@@ -19,7 +19,7 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 1. `docs/_config.yml` に次の1行を書きます。
 
    ```yaml
-   remote_theme: akilasatolu/tiny-md2docs
+   remote_theme: akilasatolu/tiny-md2docs@v0
    ```
 
 2. `docs/` に Markdown のファイルを置きます。
@@ -28,10 +28,10 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 > [!NOTE]
 > この設定だけだと、HTML のページと一緒に、元の `.md` ファイルも公開されます。公開したくないときは、[設定](https://akilasatolu.github.io/tiny-md2docs/ja/guide/config.html)を見てください。リポジトリのルートや GitHub Actions で公開する方法は、[公開の方法](https://akilasatolu.github.io/tiny-md2docs/ja/getting-started/publish.html)にあります。
 
-版を固定するときは、`@` のあとに版の名前を書きます。版の一覧は [CHANGELOG.md](CHANGELOG.md) にあります。
+`@v0` は、新しい版が次のビルドから自動で反映されます。版を固定するときは、`@` のあとに版の名前を書きます。版の一覧は [CHANGELOG.md](CHANGELOG.md) にあります。
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs@v0.1.4
+remote_theme: akilasatolu/tiny-md2docs@v0.1.5
 ```
 
 ## 設定
@@ -59,7 +59,7 @@ remote_theme: akilasatolu/tiny-md2docs@v0.1.4
 
 サイドバーの並びは `docs/_data/nav.yml` で決められます。なければフォルダから自動で並べます。詳しくは[ドキュメント](https://akilasatolu.github.io/tiny-md2docs/ja/guide/sidebar.html)を見てください。
 
-本文で使える書き方は、[表示の一覧](https://akilasatolu.github.io/tiny-md2docs/ja/guide/elements.html)に見本があります。ボタンやバッジなどのクラスは、[UI パーツ](https://akilasatolu.github.io/tiny-md2docs/ja/guide/ui-parts.html)にあります。
+本文で使える書き方は、[表示の一覧](https://akilasatolu.github.io/tiny-md2docs/ja/guide/elements.html)に見本があります。
 
 ## 色の変え方
 
@@ -92,11 +92,11 @@ remote_theme: akilasatolu/tiny-md2docs@v0.1.4
 
 | ファイル | gzip |
 | --- | --- |
-| style.css | 8387 バイト |
+| style.css | 4226 バイト |
 | tm2d.js | 2056 バイト |
 | search-core.js | 2812 バイト |
 | search-ui.js | 2704 バイト |
-| 合計 | 15959 バイト |
+| 合計 | 11798 バイト |
 
 ## 開発
 
@@ -105,6 +105,13 @@ bundle install
 script/preview.sh serve   # http://localhost:4000 で確認する
 npm test                  # 検索のテスト
 script/size.sh            # サイズを測る
+```
+
+版を出すときは、`CHANGELOG.md` と版の表記を直して commit し、版のタグを付けて、`v0` ブランチも同じ commit に進めます。
+
+```bash
+git tag -a v0.1.5 -m v0.1.5
+git push --atomic origin main v0.1.5 main:v0
 ```
 
 ## ライセンス

@@ -1,5 +1,23 @@
 # 変更履歴
 
+## v0.1.5
+
+互換性がなくなる変更があります。
+
+- 導入の指定を `@v0` に変更。`@v0` を指定すると、新しい版が次のビルドから反映される
+- 本文用のクラスを削除
+  - ボタン: `.button`、`.button-*`、`.disabled`
+  - バッジ: `.badge`、`.badge-*`
+  - 表示結果の枠: `.preview`
+  - 装飾: `.font-size-*`、`.font-weight-*`、`.font-family-mono`、`.line-height-*`、`.letter-spacing-*`、`.text-transform-uppercase`、`.heading-*`、`.align-*`、`.color-*`、`.background-*`、`.display-*`、`.float-*`、`.visually-hidden`、`.justify-content-*`、`.vertical-align-*`、`.margin-*`、`.padding-*`、`.from-768-*`、`.from-1200-*`
+- 色の CSS 変数 `--tm2d-color-*` を削除
+- 「UI パーツ」のページを削除
+- これらを使っているサイトは、`docs/assets/css/style.scss` で `@import "tm2d";` の後ろに同じ名前のクラスを定義すると、本文を直さずに使えます。前の版のままにするときは `remote_theme: akilasatolu/tiny-md2docs@v0.1.4` と指定します
+
+```scss
+.margin-top-4 { margin-top: 1rem !important; }
+```
+
 ## v0.1.4
 
 - 検索の本文は、検索窓に入ったときに各ページから読み込む方式に変更

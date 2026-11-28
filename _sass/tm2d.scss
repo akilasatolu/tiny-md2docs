@@ -11,9 +11,5 @@
 @import "tm2d/copy";
 @import "tm2d/footer";
 @import "tm2d/page-links";
-@import "tm2d/button";
-@import "tm2d/badge";
-@import "tm2d/preview";
-// Utilities come late so that they win; print comes last so that it hides parts.
-@import "tm2d/utilities";
+// Print comes last so that it hides parts.
 @import "tm2d/print";

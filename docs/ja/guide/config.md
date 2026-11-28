@@ -11,7 +11,7 @@ ref: config
 ## サイトの情報
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs
+remote_theme: akilasatolu/tiny-md2docs@v0
 title: My Docs
 description: 製品の使い方をまとめたドキュメント
 lang: en

@@ -6,7 +6,7 @@ ref: writing
 
 Write pages in ordinary Markdown. This page explains how to write pages and links, and the displays the theme provides.
 
-The writing you can use in the body is listed with examples in [Markdown examples](elements.md). The classes for buttons, badges, and more are in [UI parts](ui-parts.md).
+The writing you can use in the body is listed with examples in [Markdown examples](elements.md).
 
 ## Pages and links
 

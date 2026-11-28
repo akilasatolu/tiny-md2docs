@@ -16,8 +16,8 @@ function block(page) {
   return found[0][1];
 }
 
-// Names the reference pages of one language define: settings, strings, front matter,
-// CSS variables and class names.
+// Names the reference pages of one language define: settings, strings, front matter
+// and CSS variables.
 function names(lang) {
   const out = [];
   const doc = (p) => read(`docs/${lang}${p}`);
@@ -25,17 +25,13 @@ function names(lang) {
     out.push(...[...doc(p).matchAll(/^\| `([a-z_]+)` \|/gm)].map((m) => m[1]));
   }
   out.push(...[...doc('guide/colors.md').matchAll(/^\| `(--tm2d-[a-z-]+)` \|/gm)].map((m) => m[1]));
-  out.push(...[...doc('guide/ui-parts.md').matchAll(/`(\.[a-z][a-z0-9-]*)`/g)].map((m) => m[1]));
   return [...new Set(out)];
 }
 
 // Names that do not appear as a whole word in the page's block.
 function missing(page, list) {
   const text = block(page);
-  return list.filter((n) => {
-    const escaped = n.replace(/[.]/g, '\\.');
-    return !new RegExp(`(?<![A-Za-z0-9_-])${escaped}(?![A-Za-z0-9_-])`).test(text);
-  });
+  return list.filter((n) => !new RegExp(`(?<![A-Za-z0-9_-])${n}(?![A-Za-z0-9_-])`).test(text));
 }
 
 for (const lang of LANGS) {
@@ -53,9 +49,9 @@ for (const lang of LANGS) {
     assert.equal(text.split('{%').length, 2);
   });
 
-  test(`${path}: lists every documented setting, variable and class`, () => {
+  test(`${path}: lists every documented setting and variable`, () => {
     const list = names(lang);
-    assert.ok(list.length > 80, String(list.length));
+    assert.ok(list.length > 60, String(list.length));
     const page = read(path);
     assert.deepEqual(missing(page, list), []);
     assert.deepEqual(missing(page.replaceAll('search_content_limit', ''), list), ['search_content_limit']);

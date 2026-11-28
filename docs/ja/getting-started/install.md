@@ -9,8 +9,10 @@ ref: install
 公開したいリポジトリに `docs/_config.yml` を作り、次の1行を書きます。
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs
+remote_theme: akilasatolu/tiny-md2docs@v0
 ```
+
+`@v0` は、新しい版が次のビルドから自動で反映されます。版を固定するときは、`@` のあとに版の名前を書きます。
 
 > **メモ** この設定だけだと、HTML のページと一緒に、元の `.md` ファイルも公開されます。公開したくないときは、[設定](../guide/config.md)の「元の .md ファイルを公開しない」を見てください。
 {: .note }

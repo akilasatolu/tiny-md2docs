@@ -36,13 +36,13 @@ AI にドキュメントを作らせるときに渡す情報を、下の枠に�
 最小は次の1行です。
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs
+remote_theme: akilasatolu/tiny-md2docs@v0
 ```
 
 よく使う形:
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs
+remote_theme: akilasatolu/tiny-md2docs@v0
 title: My Docs
 description: 製品の使い方をまとめたドキュメント
 lang: en
@@ -162,23 +162,6 @@ nav.yml がなければ、フォルダの構成から自動で並びます。フ
 
 - 本文の中の目次: 「* toc」の次の行に「{:toc}」
 
-## UI パーツのクラス
-段落などの次の行に {: .クラス名 } と書くか、文字のすぐ後ろに続けて書きます。HTML の class にも書けます。例: [はじめる](usage.md){: .button .button-primary }
-
-- ボタン: `.button`、`.button-outline`、`.button-primary`、`.button-green`、`.button-purple`、`.button-red`、`.button-plain`(button 要素の装飾をなくす)、`.disabled`。`.button-*` の色と枠は `.button` と一緒に書きます。
-- バッジ: `.badge`、`.badge-blue`、`.badge-green`、`.badge-purple`、`.badge-red`、`.badge-yellow`
-- 表示の見本を囲む枠: `.preview`(中に Markdown を書くときは markdown="1")
-- 文字の大きさ: `.font-size-1` から `.font-size-10`
-- 太さ: `.font-weight-300`、`.font-weight-400`、`.font-weight-500`、`.font-weight-600`、`.font-weight-700`
-- 書体と間隔: `.font-family-mono`、`.line-height-0`、`.line-height-body`、`.line-height-tight`、`.letter-spacing-0`、`.letter-spacing-wide`、`.letter-spacing-wider`、`.text-transform-uppercase`
-- 見出しの見た目: `.heading-1` から `.heading-6`
-- 文字の位置: `.align-left`、`.align-center`、`.align-right`
-- 色: .color-色-1、.color-色-2、.background-色-1、.background-色-2。色は blue、green、yellow、red、purple、gray。1 は背景向き、2 は文字向き。
-- 表示: `.display-block`、`.display-flex`、`.display-inline`、`.display-inline-block`、`.display-none`、`.float-left`、`.float-right`、`.visually-hidden`
-- 配置: `.justify-content-start`、`.justify-content-end`、`.justify-content-space-between`、`.justify-content-space-around`、`.vertical-align-baseline`、`.vertical-align-bottom`、`.vertical-align-middle`、`.vertical-align-text-bottom`、`.vertical-align-text-top`、`.vertical-align-top`
-- 余白(N に 4px を掛けた幅。N は 0、1、2、3、4、5、6、8、10、12、16): .margin-N、.padding-N、.margin-top-N(right、bottom、left、x、y も同じ。padding も同じ)、.margin-x-negative-N、`.margin-x-auto`
-- 画面幅ごと: 表示と余白のクラスの先頭に from-768- か from-1200- を付けると、その幅以上でだけ効きます(例: .from-768-display-none)。
-
 ## 色、文字、幅の変更
 docs/assets/css/style.scss を作ります。最初の2行と @import は必須です。
 
@@ -231,5 +214,6 @@ skip_to_content (Skip to content)、nav_label (Documentation)、menu_open (Open 
 - フッターの「Powered by tiny-md2docs」は消せません。
 - 言語をまたいだ検索はできません。
 - README.md、LICENSE.md などは、front matter がないとページになりません(README.md は、index.md のないフォルダのトップページになる場合を除きます)。
+- 余白、色、文字、ボタン、バッジ、表示の見本の枠のクラスはありません。必要なら docs/assets/css/style.scss に定義します。
 ````
 {% endraw %}

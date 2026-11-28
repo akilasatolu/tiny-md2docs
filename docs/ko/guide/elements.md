@@ -179,8 +179,6 @@ HTML
 {% endcapture %}
 {% include example.html md=ex %}
 
-버튼이나 배지 등은 [UI 구성 요소](ui-parts.md)를 참고하세요.
-
 ## 설정으로 표시되는 부분
 
 헤더, 사이드바, 이동 경로, 이전/다음 링크 등은 본문에 쓰지 않습니다. [설정](config.md), [사이드바](sidebar.md), [검색](search.md), [색상과 다크 모드](colors.md)를 참고하세요.

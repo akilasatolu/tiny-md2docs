@@ -9,8 +9,10 @@ ref: install
 공개할 리포지토리에 `docs/_config.yml`을 만들고 다음 한 줄을 씁니다.
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs
+remote_theme: akilasatolu/tiny-md2docs@v0
 ```
+
+`@v0`은 새 버전이 다음 빌드부터 자동으로 반영됩니다. 버전을 고정할 때는 `@` 뒤에 버전 이름을 씁니다.
 
 > **메모** 이 설정만으로는 HTML 페이지와 함께 원본 `.md` 파일도 공개됩니다. 공개하고 싶지 않을 때는 [설정](../guide/config.md)의 '원본 .md 파일을 공개하지 않기'를 보세요.
 {: .note }

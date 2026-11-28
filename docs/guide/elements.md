@@ -179,8 +179,6 @@ Hidden **text**.
 {% endcapture %}
 {% include example.html md=ex %}
 
-For buttons, badges, and more, see [UI parts](ui-parts.md).
-
 ## Parts shown by settings
 
 Parts such as the header, sidebar, breadcrumb, and previous / next links are not written in the body. See [Configuration](config.md), [Sidebar](sidebar.md), [Search](search.md), and [Colors and dark mode](colors.md).

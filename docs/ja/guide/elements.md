@@ -179,8 +179,6 @@ HTML
 {% endcapture %}
 {% include example.html md=ex %}
 
-ボタンやバッジなどは、[UI パーツ](ui-parts.md)を見てください。
-
 ## 設定で出る部品
 
 ヘッダー、サイドバー、パンくず、前後リンクなどは、本文には書きません。[設定](config.md)、[サイドバー](sidebar.md)、[検索](search.md)、[色とダークモード](colors.md)を見てください。

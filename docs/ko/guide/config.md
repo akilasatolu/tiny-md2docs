@@ -11,7 +11,7 @@ ref: config
 ## 사이트 정보
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs
+remote_theme: akilasatolu/tiny-md2docs@v0
 title: My Docs
 description: 제품 사용법을 정리한 문서
 lang: en

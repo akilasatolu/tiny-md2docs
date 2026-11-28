@@ -36,13 +36,13 @@ You will write documentation that uses tiny-md2docs (tm2d), a Jekyll theme for G
 The minimum is this one line.
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs
+remote_theme: akilasatolu/tiny-md2docs@v0
 ```
 
 A common form:
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs
+remote_theme: akilasatolu/tiny-md2docs@v0
 title: My Docs
 description: How to use the product
 lang: en
@@ -162,23 +162,6 @@ Hidden **text**.
 
 - Table of contents inside the body: "{:toc}" on the line after "* toc"
 
-## Classes for UI parts
-Write {: .class-name } on the line after a paragraph and the like, or right after the text. You can also write them in the HTML class attribute. Example: [Get started](usage.md){: .button .button-primary }
-
-- Buttons: `.button`, `.button-outline`, `.button-primary`, `.button-green`, `.button-purple`, `.button-red`, `.button-plain` (removes the styling of a button element), `.disabled`. Write the `.button-*` colors and outline together with `.button`.
-- Badges: `.badge`, `.badge-blue`, `.badge-green`, `.badge-purple`, `.badge-red`, `.badge-yellow`
-- Frame around a rendered example: `.preview` (add markdown="1" to write Markdown inside)
-- Text size: `.font-size-1` to `.font-size-10`
-- Weight: `.font-weight-300`, `.font-weight-400`, `.font-weight-500`, `.font-weight-600`, `.font-weight-700`
-- Typeface and spacing: `.font-family-mono`, `.line-height-0`, `.line-height-body`, `.line-height-tight`, `.letter-spacing-0`, `.letter-spacing-wide`, `.letter-spacing-wider`, `.text-transform-uppercase`
-- Heading look: `.heading-1` to `.heading-6`
-- Text alignment: `.align-left`, `.align-center`, `.align-right`
-- Colors: .color-NAME-1, .color-NAME-2, .background-NAME-1, .background-NAME-2. NAME is blue, green, yellow, red, purple, or gray. 1 suits backgrounds, 2 suits text.
-- Display: `.display-block`, `.display-flex`, `.display-inline`, `.display-inline-block`, `.display-none`, `.float-left`, `.float-right`, `.visually-hidden`
-- Layout: `.justify-content-start`, `.justify-content-end`, `.justify-content-space-between`, `.justify-content-space-around`, `.vertical-align-baseline`, `.vertical-align-bottom`, `.vertical-align-middle`, `.vertical-align-text-bottom`, `.vertical-align-text-top`, `.vertical-align-top`
-- Spacing (the width is N times 4px; N is 0, 1, 2, 3, 4, 5, 6, 8, 10, 12, or 16): .margin-N, .padding-N, .margin-top-N (also right, bottom, left, x, y; the same for padding), .margin-x-negative-N, `.margin-x-auto`
-- By screen width: add from-768- or from-1200- in front of a display or spacing class to apply it only at that width or wider (example: .from-768-display-none).
-
 ## Changing colors, fonts, and widths
 Create docs/assets/css/style.scss. The first two lines and the @import are required.
 
@@ -231,5 +214,6 @@ skip_to_content (Skip to content), nav_label (Documentation), menu_open (Open me
 - The "Powered by tiny-md2docs" footer cannot be removed.
 - Search does not cross languages.
 - README.md, LICENSE.md, and the like do not become pages without front matter (except when README.md becomes the top page of a folder without index.md).
+- The theme has no classes for spacing, colors, text, buttons, badges, or preview frames. If you need one, define it in docs/assets/css/style.scss.
 ````
 {% endraw %}
