@@ -1,7 +1,3 @@
----
-ref: publish
----
-
 # Publishing
 
 Normally you publish from the `docs` folder of a branch, as described in [Install](install.md). This page explains the other two ways. Both are set under "Build and deployment" in the repository's Settings → Pages.

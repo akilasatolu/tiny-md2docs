@@ -1,6 +1,7 @@
 {%- assign _tm2d_mode = site.theme_options.dark_mode | default: "auto" -%}
+{%- include lang.html name=page.name -%}
 <!doctype html>
-<html lang="{{ page.lang | default: site.lang | default: 'en' | escape }}"{% if _tm2d_mode == "light" or _tm2d_mode == "dark" %} data-theme="{{ _tm2d_mode }}"{% endif %}>
+<html lang="{{ tm2d_lang | escape }}"{% if _tm2d_mode == "light" or _tm2d_mode == "dark" %} data-theme="{{ _tm2d_mode }}"{% endif %}>
 <head>
 {% include head.html %}
 </head>

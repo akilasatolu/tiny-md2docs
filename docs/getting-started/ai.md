@@ -1,8 +1,3 @@
----
-ref: ai
-search_exclude: true
----
-
 # Information for AI
 
 The box below gathers the information to give an AI when you have it write your documentation. The copy button at the top right of the box copies all of it.
@@ -69,9 +64,8 @@ Top-level settings:
 - title: the site name. If omitted, the repository name or the account name.
 - description: the description of the site. If omitted, the description of the repository.
 - image: the default image used when a page is shared on social media.
-- lang: the language of the whole site. If omitted, en.
+- lang: the language of pages whose file name has no language. If omitted, en.
 - theme_options: theme settings (the table below).
-- defaults: front matter values per folder. Used for multiple languages.
 - optional_front_matter: remove_originals: true stops publishing the original .md files. With enabled: false, Markdown without front matter does not become a page.
 - readme_index: in a folder without index.md, README.md becomes the top page. You can set remove_originals, enabled, and with_frontmatter.
 - exclude: files not to publish. Writing it replaces Jekyll's default list (Gemfile, Gemfile.lock, node_modules, vendor/bundle/, vendor/cache/, vendor/gems/, vendor/ruby/) and CNAME, so write those too.
@@ -97,24 +91,11 @@ theme_options (omitted items use the default):
 
 ## Writing pages
 - Write in Markdown (kramdown with GFM, as on GitHub Pages).
-- Front matter is optional. The name of a page is title, or else the first heading of the body. Start each page with a "# Heading".
-- Link between pages with a relative path to the target .md file. Examples: [Usage](guide/usage.md), [Back](../overview.md). Do not write paths starting with / or direct links to .html.
+- Front matter is not needed. The name of a page is the first heading of the body. Start each page with a "# Heading".
+- Link between pages with a relative path to the target .md file. Examples: [Usage](guide/usage.md), [Back](../overview.md). In a translated page, write the file name of the same language, such as guide/usage.ja.md. Do not write paths starting with / or direct links to .html.
 - Write images with a relative path. Example: ![Figure](../assets/images/figure.png){: width="480" }
 - A table of contents appears when a page has two or more h2 and h3 headings in total. To leave a heading out of it, write {: .no_toc } on the line after the heading.
 - Double curly braces, or a curly brace followed by %, in the body are processed as Liquid commands. To show them as they are, wrap them in raw tags ({% raw %} and the matching endraw tag).
-
-Front matter items (all optional):
-
-| Item | Meaning |
-| --- | --- |
-| title | name of the page |
-| description | description of the page |
-| image | image used when shared on social media |
-| nav_order | order in the automatic sidebar (smaller comes first) |
-| nav_exclude | true leaves the page out of the sidebar and the previous and next links |
-| search_exclude | true leaves the page out of search |
-| toc | false hides the table of contents |
-| ref | give translations of a page the same value to show the language switch |
 
 ## Sidebar
 If docs/_data/nav.yml exists, the sidebar follows its order and names.
@@ -134,7 +115,7 @@ If docs/_data/nav.yml exists, the sidebar follows its order and names.
 - url is a path from the site root, ending in .html. The top page is /.
 - Nesting can be up to 48 levels.
 
-Without nav.yml, the sidebar is built from the folder structure. Folders become groups, and the group name is the title of the folder's index.md (or else the folder name). The order is nav_order, then the path.
+Without nav.yml, the sidebar is built from the folder structure. Folders become groups, and the group name is the first heading of the folder's index.md (or else the folder name). The order is the file path. To change the order or leave pages out, use nav.yml.
 
 ## What you can use in the body
 - Headings, bold, italic, strikethrough, tables, ordered and unordered lists, task lists (- [ ] and - [x]), quotes, horizontal rules, footnotes ([^1]), definition lists (": explanation" on the line after the term), abbreviations (*[HTML]: HyperText Markup Language)
@@ -183,15 +164,11 @@ Create docs/assets/css/style.scss. The first two lines and the @import are requi
 - Keep the contrast between text and background at 4.5:1 or more.
 
 ## Multilingual
-- Pages in the language of the whole site stay in docs/. Put other languages in a folder named after the language, such as docs/ja/. The folder name and the lang value must be the same.
+- Put a translation next to the original page, with the language added to the file name: docs/guide/config.md and docs/guide/config.ja.md. Pages without a language in the name are in the language of the whole site.
+- The language is a two-letter ISO 639-1 code, optionally with a region (zh-CN). No setting is needed, and the language switch appears on pages that have translations.
 
 ```yaml
 lang: en
-defaults:
-  - scope:
-      path: ja
-    values:
-      lang: ja
 theme_options:
   strings:
     ja:
@@ -200,8 +177,8 @@ theme_options:
 ```
 
 - The theme's interface text is only in English. For other languages, write it per language in theme_options.strings.
-- Give pages that are translations of each other the same ref in front matter.
-- To set the order by hand, add a file per language such as docs/_data/nav.ja.yml.
+- To set the order by hand, add a file per language such as docs/_data/nav.ja.yml. In it, write URLs such as /guide/config.ja.html.
+- The top page of a language is index.<language>.md (URL /index.<language>.html).
 - The sidebar and search cover only pages in the same language as the current page.
 
 Keys of strings (the default English text is in parentheses):

@@ -1,5 +1,15 @@
 # 変更履歴
 
+## v0.2.0
+
+互換性がなくなる変更があります。
+
+- ページの言語は、ファイル名で決める方式に変更。`config.md` はサイトの `lang`、`config.ja.md` は日本語。同じフォルダで言語を除いた名前が同じファイルは、翻訳どうしになる
+- ページごとの設定の `nav_order`、`nav_exclude`、`search_exclude`、`toc`、`description`、`image`、`lang`、`ref` を削除。`defaults` で指定しても効かない。順番を決めるには `nav.yml` を使う
+- これまで検索や自動のサイドバーから外していたページも出る
+- 言語ごとのフォルダ(`docs/ja/` など)を使うサイトは、次のように移してください。`docs/ja/x.md` を `docs/x.ja.md` にする。`_config.yml` の `defaults` の `lang` を消す。ページ間のリンクと画像のパス、`nav.<lang>.yml` の URL を直す(`/ja/x.html` は `/x.ja.html`)。公開される URL も変わります
+- 前の版のままにするときは `remote_theme: akilasatolu/tiny-md2docs@v0.1.5` と指定します
+
 ## v0.1.5
 
 互換性がなくなる変更があります。

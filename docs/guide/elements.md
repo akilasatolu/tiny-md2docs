@@ -1,7 +1,3 @@
----
-ref: elements
----
-
 # Markdown examples
 
 Copy the code into your `.md` file. The box below each code block shows how it appears.

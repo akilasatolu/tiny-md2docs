@@ -1,34 +1,32 @@
 - title: はじめに
   children:
     - title: 概要
-      url: /ja/
+      url: /index.ja.html
     - title: インストール
-      url: /ja/getting-started/install.html
+      url: /getting-started/install.ja.html
     - title: 公開の方法
-      url: /ja/getting-started/publish.html
+      url: /getting-started/publish.ja.html
     - title: AI に渡す情報
-      url: /ja/getting-started/ai.html
+      url: /getting-started/ai.ja.html
 - title: 使い方
   children:
     - title: 設定
-      url: /ja/guide/config.html
+      url: /guide/config.ja.html
     - title: サイドバー
-      url: /ja/guide/sidebar.html
+      url: /guide/sidebar.ja.html
     - title: 検索
-      url: /ja/guide/search.html
+      url: /guide/search.ja.html
     - title: 色とダークモード
-      url: /ja/guide/colors.html
+      url: /guide/colors.ja.html
     - title: ページの書き方
-      url: /ja/guide/writing.html
+      url: /guide/writing.ja.html
     - title: 表示の一覧
-      url: /ja/guide/elements.html
+      url: /guide/elements.ja.html
     - title: 多言語
-      url: /ja/guide/i18n.html
+      url: /guide/i18n.ja.html
 - title: リファレンス
   children:
     - title: _config.yml
-      url: /ja/reference/site-config.html
+      url: /reference/site-config.ja.html
     - title: theme_options
-      url: /ja/reference/theme-options.html
-    - title: front matter
-      url: /ja/reference/front-matter.html
+      url: /reference/theme-options.ja.html

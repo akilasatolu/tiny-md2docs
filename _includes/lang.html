@@ -1,0 +1,22 @@
+{%- comment -%}
+  ファイル名からページの言語を決める。使い方: {% include lang.html name=page.name %}
+  「名前.言語.md」(例: config.ja.md、config.zh-CN.md)は、その言語。ほかはサイトの lang。
+  言語とみなすのは、「-」より前が ISO 639-1 の2文字(小文字)のとき。
+  作る変数: tm2d_lang(言語)、tm2d_stem(言語と拡張子を除いた名前)。
+{%- endcomment -%}
+{%- assign tm2d_lang = site.lang | default: "en" -%}
+{%- assign _tm2d_np = include.name | split: "." -%}
+{%- assign tm2d_stem = _tm2d_np[0] -%}
+{%- if _tm2d_np.size > 2 -%}
+  {%- assign _tm2d_i = _tm2d_np.size | minus: 2 -%}
+  {%- assign _tm2d_code = _tm2d_np[_tm2d_i] -%}
+  {%- assign _tm2d_primary = _tm2d_code | split: "-" | first -%}
+  {%- assign _tm2d_probe = " " | append: _tm2d_primary | append: " " -%}
+  {%- if " aa ab ae af ak am an ar as av ay az ba be bg bi bm bn bo br bs ca ce ch co cr cs cu cv cy da de dv dz ee el en eo es et eu fa ff fi fj fo fr fy ga gd gl gn gu gv ha he hi ho hr ht hu hy hz ia id ie ig ii ik io is it iu ja jv ka kg ki kj kk kl km kn ko kr ks ku kv kw ky la lb lg li ln lo lt lu lv mg mh mi mk ml mn mr ms mt my na nb nd ne ng nl nn no nr nv ny oc oj om or os pa pi pl ps pt qu rm rn ro ru rw sa sc sd se sg si sk sl sm sn so sq sr ss st su sv sw ta te tg th ti tk tl tn to tr ts tt tw ty ug uk ur uz ve vi vo wa wo xh yi yo za zh zu " contains _tm2d_probe -%}
+    {%- assign tm2d_lang = _tm2d_code -%}
+    {%- assign _tm2d_tail = "." | append: _tm2d_code | append: "." | append: _tm2d_np.last -%}
+    {%- assign tm2d_stem = include.name | remove: _tm2d_tail -%}
+  {%- else -%}
+    {%- assign tm2d_stem = _tm2d_np | pop | join: "." -%}
+  {%- endif -%}
+{%- endif -%}

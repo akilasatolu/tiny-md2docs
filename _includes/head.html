@@ -15,7 +15,7 @@
   {%- assign _tm2d_og_title = page.title %}
 <title>{{ page.title | escape }}</title>
 {%- endif %}
-{%- assign _tm2d_desc = page.description | default: site.description %}
+{%- assign _tm2d_desc = site.description %}
 {%- if _tm2d_desc %}
 <meta name="description" content="{{ _tm2d_desc | strip_html | normalize_whitespace | escape }}">
 {%- endif %}
@@ -31,7 +31,7 @@
 {%- if site.title %}
 <meta property="og:site_name" content="{{ site.title | escape }}">
 {%- endif %}
-{%- assign _tm2d_image = page.image | default: site.image %}
+{%- assign _tm2d_image = site.image %}
 {%- if _tm2d_image %}
 <meta property="og:image" content="{{ _tm2d_image | absolute_url }}">
 {%- endif %}

@@ -10,14 +10,15 @@ layout: null
 {%- assign _tm2d_id = 0 -%}
 [
 {%- for p in site.html_pages -%}
-  {%- if p.search_exclude == true or p.url == "/404.html" -%}{%- continue -%}{%- endif -%}
+  {%- if p.url == "/404.html" -%}{%- continue -%}{%- endif -%}
   {%- assign _tm2d_head = p.url | slice: 0, 8 -%}
   {%- if _tm2d_head == "/assets/" -%}{%- continue -%}{%- endif -%}
   {%- comment -%} 一覧のタイトルには、Liquid のタグより前の部分を使う。 {%- endcomment -%}
   {%- assign _tm2d_title = p.title | default: "" | split: "{%" | first | strip -%}
-  {%- if _tm2d_title == "" -%}{%- assign _tm2d_title = p.name | split: "." | first -%}{%- endif -%}
+  {%- include lang.html name=p.name -%}
+  {%- if _tm2d_title == "" -%}{%- assign _tm2d_title = tm2d_stem -%}{%- endif -%}
   {%- if _tm2d_id > 0 %},{% endif %}
-{"id":{{ _tm2d_id }},"title":{{ _tm2d_title | jsonify }},"url":{{ p.url | relative_url | jsonify }},"lang":{{ p.lang | default: site.lang | default: "en" | jsonify }}}
+{"id":{{ _tm2d_id }},"title":{{ _tm2d_title | jsonify }},"url":{{ p.url | relative_url | jsonify }},"lang":{{ tm2d_lang | jsonify }}}
   {%- assign _tm2d_id = _tm2d_id | plus: 1 -%}
 {%- endfor %}
 ]

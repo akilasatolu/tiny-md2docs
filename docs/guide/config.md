@@ -1,7 +1,3 @@
----
-ref: config
----
-
 # Configuration
 
 All settings go in `docs/_config.yml`. The minimum setting is the single `remote_theme` line.
@@ -18,8 +14,8 @@ lang: en
 ```
 
 - `title` is the site name shown in the header and the browser tab.
-- `description` is the description used by search engines and social media. A page can override it with `description` in its front matter.
-- `lang` is the language of the whole site. It is used for `<html lang>` and the on-screen text. If you omit it, it is `en`. To use a language other than English, see [Multilingual](i18n.md).
+- `description` is the description used by search engines and social media. It is shared by all pages.
+- `lang` is the language of pages whose file name has no language. It is used for `<html lang>` and the on-screen text. If you omit it, it is `en`. To use several languages, see [Multilingual](i18n.md).
 - If you do not write `title`, the site name is the repository name for a project page (`https://user.github.io/repo/`), and the account name for a user page (`https://user.github.io/`). If you do not write `description`, the repository description (About) is used.
 
 ## Do not publish the original .md files

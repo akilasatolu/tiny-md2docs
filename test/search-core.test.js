@@ -91,15 +91,14 @@ function walk(dir) {
     const p = join(dir, name);
     if (name.startsWith('_')) return [];
     if (statSync(p).isDirectory()) return walk(p);
-    // Pages with search_exclude are not in search.json either.
-    return name.endsWith('.md') && !/^search_exclude: true$/m.test(readFileSync(p, 'utf8').split(/^---$/m)[1] || '') ? [p] : [];
+    return name.endsWith('.md') ? [p] : [];
   });
 }
 
 function toDoc(file, id) {
   const rel = relative(join(root, 'docs'), file).split('\\').join('/');
   let url = '/' + rel.replace(/\.md$/, '.html');
-  url = url.replace(/(^|\/)index\.html$/, '$1');
+  url = url.replace(/(^|\/)index\.html$/, '$1'); // index.ja.html stays
   const src = readFileSync(file, 'utf8').replace(/^---\n[\s\S]*?\n---\n/, '');
   const title = (src.match(/^# (.+)$/m) || [, rel])[1];
   const headings = [...src.matchAll(/^#{2,3} (.+)$/gm)].map((m) => m[1]);
@@ -109,8 +108,7 @@ function toDoc(file, id) {
     .replace(/[`*|>]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
-  const first = rel.split('/')[0];
-  const lang = first === 'ja' || first === 'ko' ? first : 'en';
+  const lang = (rel.match(/\.(ja|ko)\.md$/) || [, 'en'])[1];
   return { id, title, url, headings, content, lang };
 }
 

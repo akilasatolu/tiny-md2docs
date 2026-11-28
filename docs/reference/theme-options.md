@@ -1,7 +1,3 @@
----
-ref: theme-options
----
-
 # theme_options
 
 These are the items you can write in `theme_options` in `docs/_config.yml`.

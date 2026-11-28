@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const read = (p) => readFileSync(resolve(root, p), 'utf8');
-const LANGS = ['', 'ja/', 'ko/'];
+const LANGS = ['', '.ja', '.ko'];
 
 // The text a reader copies: the only ````text block of the page.
 function block(page) {
@@ -20,8 +20,8 @@ function block(page) {
 // and CSS variables.
 function names(lang) {
   const out = [];
-  const doc = (p) => read(`docs/${lang}${p}`);
-  for (const p of ['reference/theme-options.md', 'reference/front-matter.md', 'reference/site-config.md']) {
+  const doc = (p) => read(`docs/${p.replace(/\.md$/, `${lang}.md`)}`);
+  for (const p of ['reference/theme-options.md', 'reference/site-config.md']) {
     out.push(...[...doc(p).matchAll(/^\| `([a-z_]+)` \|/gm)].map((m) => m[1]));
   }
   out.push(...[...doc('guide/colors.md').matchAll(/^\| `(--tm2d-[a-z-]+)` \|/gm)].map((m) => m[1]));
@@ -35,13 +35,10 @@ function missing(page, list) {
 }
 
 for (const lang of LANGS) {
-  const path = `docs/${lang}getting-started/ai.md`;
+  const path = `docs/getting-started/ai${lang}.md`;
 
-  test(`${path}: front matter and one block wrapped in raw`, () => {
+  test(`${path}: one block wrapped in raw`, () => {
     const page = read(path);
-    const front = page.match(/^---\n([\s\S]*?)\n---\n/)[1];
-    assert.match(front, /^ref: ai$/m);
-    assert.match(front, /^search_exclude: true$/m);
     assert.match(page, /\{% raw %\}\n````text\n[\s\S]*\n````\n\{% endraw %\}/);
     const text = block(page);
     assert.ok(!text.includes('{{'));
@@ -51,7 +48,7 @@ for (const lang of LANGS) {
 
   test(`${path}: lists every documented setting and variable`, () => {
     const list = names(lang);
-    assert.ok(list.length > 60, String(list.length));
+    assert.ok(list.length > 50, String(list.length));
     const page = read(path);
     assert.deepEqual(missing(page, list), []);
     assert.deepEqual(missing(page.replaceAll('search_content_limit', ''), list), ['search_content_limit']);

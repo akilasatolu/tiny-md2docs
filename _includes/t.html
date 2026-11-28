@@ -3,7 +3,8 @@
   属性値の中で使うときは attr=true を足す。
   探す順: theme_options.strings[言語][key] → theme_options.strings[key] → 内蔵の既定値(英語)
 {%- endcomment -%}
-{%- assign _tm2d_lang = page.lang | default: site.lang | default: "en" -%}
+{%- include lang.html name=page.name -%}
+{%- assign _tm2d_lang = tm2d_lang -%}
 {%- assign _tm2d_s = nil -%}
 {%- if site.theme_options.strings -%}
   {%- assign _tm2d_s = site.theme_options.strings[_tm2d_lang][include.key] | default: site.theme_options.strings[include.key] -%}

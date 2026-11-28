@@ -1,7 +1,3 @@
----
-ref: install
----
-
 # Install
 
 ## 1. Add the config file

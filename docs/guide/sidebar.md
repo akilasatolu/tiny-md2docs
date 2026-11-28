@@ -1,7 +1,3 @@
----
-ref: sidebar
----
-
 # Sidebar
 
 The sidebar lists the pages of the documentation. You can decide the order in two ways.
@@ -36,7 +32,7 @@ docs/
   index.md              # heading is "Overview"
   faq.md                # heading is "FAQ"
   getting-started/
-    index.md            # title: Getting started in the front matter
+    index.md            # heading is "Getting started"
     install.md          # heading is "Install"
   guide/
     config.md           # heading is "Configuration"
@@ -60,21 +56,11 @@ guide
 
 - Folder levels are counted from `docs/`. Pages directly under `docs/` are placed first, without a group. The top page (`index.md`) comes first.
 - A folder directly under `docs/` is a group, and a folder inside it is a subgroup. Deeper folders nest in the same way, with no limit on the depth. The indentation stops growing from the fifth level.
-- A folder's `index.md` also appears as an item, like other pages. Its `title` is also the group name. If there is no `index.md`, the folder name is the group name (`guide` and `advanced` in the example above). To keep it out of the items, write `nav_exclude: true` (the `title` is still used as the group name).
-- An item's name is the `title` in the front matter, or otherwise the first heading of the body.
-- The order is by `nav_order` in the front matter, smallest first; if equal, by file path. The order of groups is by the `nav_order` in the folder's `index.md`, smallest first; if equal, by folder name. Within a group, pages come before subgroups. The `nav_order` of an `index.md` is used both for the order of the groups and for the order of that page within its group.
+- A folder's `index.md` also appears as an item, like other pages. Its first heading is also the group name. If there is no `index.md`, the folder name is the group name (`guide` and `advanced` in the example above).
+- An item's name is the first heading of the body.
+- The order is by file path. Within a group, pages come before subgroups. To change the order, to rename items, or to leave pages out, use `nav.yml`.
 
-```markdown
----
-nav_order: 2
----
-
-# Install
-```
-
-Write `nav_exclude: true` on pages you do not want in the sidebar.
-
-For how the order works when you split folders by language, see [Multilingual](i18n.md).
+For how pages are listed for each language, see [Multilingual](i18n.md).
 
 ## Previous and next links
 

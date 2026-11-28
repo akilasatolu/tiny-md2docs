@@ -1,7 +1,3 @@
----
-ref: writing
----
-
 # Writing pages
 
 Write pages in ordinary Markdown. This page explains how to write pages and links, and the displays the theme provides.
@@ -10,7 +6,7 @@ The writing you can use in the body is listed with examples in [Markdown example
 
 ## Pages and links
 
-- The front matter at the top of a page (settings enclosed in `---`) is optional. The first heading of the body is used as the page name. The items you can write are listed in [front matter](../reference/front-matter.md).
+- Front matter (settings enclosed in `---`) is not needed. The first heading of the body is used as the page name.
 - Write links between pages as a relative path to the `.md` file you link to. When published, they turn into links to the `.html` pages. For example, a link from this page (`docs/guide/writing.md`) to [Overview](../index.md) is written as `../index.md`.
 - Do not use paths that start with `/` (such as `/guide/config.md`). Except on pages directly under `docs/`, the link is not converted and breaks.
 - Also avoid writing `.html` links directly. A `.html` link that starts with `/` breaks on a project page (`https://user.github.io/repo/`).
@@ -19,7 +15,7 @@ The writing you can use in the body is listed with examples in [Markdown example
 
 When a page has two or more h2 and h3 headings, a table of contents appears. On wide screens it is to the right of the body, and on narrow screens it is collapsed above the body. The heading you are reading is highlighted in the table of contents.
 
-To hide it, write `toc: false` in the page's front matter. To hide it on the whole site, set `theme_options.toc: false`.
+To hide it on the whole site, set `theme_options.toc: false`.
 
 To leave one heading out of the table of contents, write `{: .no_toc }` on the line after the heading. The heading can still be found by search.
 

@@ -9,11 +9,14 @@
   - tm2d_current_groups: 今のページのグループ名の配列(上の段から順。nav にないときは空)
   - tm2d_current_group_urls: 同じ順のグループの URL の配列(末尾の空は含まないことがある)
   _data/nav.<lang>.yml、_data/nav.yml の順に探し、あればその順と名前を使う。なければフォルダから自動で作る。
-  自動のときは、今のページと同じ lang のページだけを並べ、パスの先頭が lang と同じフォルダ(docs/ja/ など)は除いて考える。
+  自動のときは、今のページと同じ言語(ファイル名で決まる)のページだけを、パスの順に並べる。
 {%- endcomment -%}
 {%- assign _tm2d_r = "" -%}
 {%- assign _tm2d_n = 10000 -%}
-{%- assign _tm2d_lang = page.lang | default: site.lang | default: "en" -%}
+{%- include lang.html name=page.name -%}
+{%- assign _tm2d_lang = tm2d_lang -%}
+{%- if _tm2d_lang == site.lang or site.lang == nil and _tm2d_lang == "en" -%}{%- assign _tm2d_index = "index.md" -%}
+{%- else -%}{%- assign _tm2d_index = "index." | append: _tm2d_lang | append: ".md" -%}{%- endif -%}
 {%- comment -%} Jekyll はデータのファイル名の「.」を除いてキーにする(nav.en.yml → naven)。 {%- endcomment -%}
 {%- assign _tm2d_navkey = "nav" | append: _tm2d_lang -%}
 {%- assign _tm2d_nav = site.data[_tm2d_navkey] | default: site.data.nav -%}
@@ -21,45 +24,38 @@
   {%- include nav-tree.html items=_tm2d_nav groups="" urls="" -%}
 {%- else -%}
   {%- for _p in site.html_pages -%}
-    {%- if _p.nav_exclude == true or _p.url == "/404.html" -%}{%- continue -%}{%- endif -%}
+    {%- if _p.url == "/404.html" -%}{%- continue -%}{%- endif -%}
     {%- assign _tm2d_head = _p.url | slice: 0, 8 -%}
     {%- if _tm2d_head == "/assets/" -%}{%- continue -%}{%- endif -%}
-    {%- assign _tm2d_plang = _p.lang | default: site.lang | default: "en" -%}
-    {%- if _tm2d_plang != _tm2d_lang -%}{%- continue -%}{%- endif -%}
+    {%- include lang.html name=_p.name -%}
+    {%- if tm2d_lang != _tm2d_lang -%}{%- continue -%}{%- endif -%}
     {%- assign _tm2d_parts = _p.path | split: "/" -%}
-    {%- assign _tm2d_base = "" -%}
-    {%- if _tm2d_parts[0] == _tm2d_lang and _tm2d_parts.size > 1 -%}
-      {%- assign _tm2d_base = "/" | append: _tm2d_lang -%}
-      {%- assign _tm2d_parts = _tm2d_parts | shift -%}
-    {%- endif -%}
     {%- assign _tm2d_depth = _tm2d_parts | size -%}
-    {%- assign _tm2d_order = _p.nav_order | default: 9999 | plus: 5000000 -%}
     {%- assign _tm2d_title = _p.title | default: "" -%}
-    {%- if _tm2d_title == "" -%}{%- assign _tm2d_title = _p.name | split: "." | first -%}{%- endif -%}
+    {%- if _tm2d_title == "" -%}{%- assign _tm2d_title = tm2d_stem -%}{%- endif -%}
     {%- if _tm2d_depth == 1 -%}
-      {%- if _p.name == "index.md" -%}{%- assign _tm2d_top = "0" -%}{%- else -%}{%- assign _tm2d_top = "1" -%}{%- endif -%}
-      {%- capture _tm2d_rec -%}0!{{ _tm2d_top }}!{{ _tm2d_order }}!{{ _p.path }}␟{{ _p.url }}␟{{ _p.url }}␟{{ _tm2d_title }}␟␟␟.{%- endcapture -%}
+      {%- if tm2d_stem == "index" -%}{%- assign _tm2d_top = "0" -%}{%- else -%}{%- assign _tm2d_top = "1" -%}{%- endif -%}
+      {%- capture _tm2d_rec -%}0!{{ _tm2d_top }}!{{ _p.path }}␟{{ _p.url }}␟{{ _p.url }}␟{{ _tm2d_title }}␟␟␟.{%- endcapture -%}
     {%- else -%}
       {%- comment -%}
         フォルダを上の段から順にたどり、グループの列と並びのキーを作る。
         キーはページが「0!」、下のグループが「1!」で始まるので、ページが先に並ぶ。区切りの「!」は、名前の前方一致で混ざらないためのもの。
       {%- endcomment -%}
       {%- assign _tm2d_dirs = _tm2d_depth | minus: 1 -%}
-      {%- assign _tm2d_gpath = _tm2d_base | append: "/" -%}
+      {%- assign _tm2d_gpath = "/" -%}
       {%- assign _tm2d_chain = "" -%}
       {%- assign _tm2d_urls = "" -%}
       {%- assign _tm2d_key = "" -%}
       {%- for _d in _tm2d_parts limit: _tm2d_dirs -%}
         {%- assign _tm2d_gpath = _tm2d_gpath | append: _d | append: "/" -%}
-        {%- assign _tm2d_gindex = site.html_pages | where: "dir", _tm2d_gpath | where: "name", "index.md" | first -%}
+        {%- assign _tm2d_gindex = site.html_pages | where: "dir", _tm2d_gpath | where: "name", _tm2d_index | first -%}
         {%- assign _tm2d_gname = _tm2d_gindex.title | default: _d -%}
-        {%- assign _tm2d_gorder = _tm2d_gindex.nav_order | default: 9999 | plus: 5000000 -%}
         {%- assign _tm2d_chain = _tm2d_chain | append: _tm2d_gname | append: "␝" -%}
         {%- assign _tm2d_urls = _tm2d_urls | append: _tm2d_gindex.url | append: "␝" -%}
-        {%- capture _tm2d_k -%}{{ _tm2d_key }}1!{{ _tm2d_gorder }}!{{ _d }}!{%- endcapture -%}
+        {%- capture _tm2d_k -%}{{ _tm2d_key }}1!{{ _d }}!{%- endcapture -%}
         {%- assign _tm2d_key = _tm2d_k -%}
       {%- endfor -%}
-      {%- capture _tm2d_rec -%}{{ _tm2d_key }}0!{{ _tm2d_order }}!{{ _p.path }}␟{{ _p.url }}␟{{ _p.url }}␟{{ _tm2d_title }}␟{{ _tm2d_chain }}␟{{ _tm2d_urls }}␟.{%- endcapture -%}
+      {%- capture _tm2d_rec -%}{{ _tm2d_key }}0!{{ _p.path }}␟{{ _p.url }}␟{{ _p.url }}␟{{ _tm2d_title }}␟{{ _tm2d_chain }}␟{{ _tm2d_urls }}␟.{%- endcapture -%}
     {%- endif -%}
     {%- assign _tm2d_r = _tm2d_r | append: _tm2d_rec | append: "␞" -%}
   {%- endfor -%}

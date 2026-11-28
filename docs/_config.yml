@@ -2,15 +2,6 @@ remote_theme: akilasatolu/tiny-md2docs
 title: tm2d
 description: A small documentation theme. Just put Markdown in docs/
 lang: en
-defaults:
-  - scope:
-      path: ja
-    values:
-      lang: ja
-  - scope:
-      path: ko
-    values:
-      lang: ko
 optional_front_matter:
   remove_originals: true
 theme_options:

@@ -12,7 +12,7 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 
 社内のドキュメントを手早く公開したいチームや、ドキュメントの公開に時間をかけたくない個人・OSS・ライブラリの開発者に向いています。
 
-ドキュメント: https://akilasatolu.github.io/tiny-md2docs/ja/
+ドキュメント: https://akilasatolu.github.io/tiny-md2docs/index.ja.html
 
 ## 導入
 
@@ -26,12 +26,12 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 3. リポジトリの Settings → Pages で、ブランチの `/docs` フォルダを公開元にします。
 
 > [!NOTE]
-> この設定だけだと、HTML のページと一緒に、元の `.md` ファイルも公開されます。公開したくないときは、[設定](https://akilasatolu.github.io/tiny-md2docs/ja/guide/config.html)を見てください。リポジトリのルートや GitHub Actions で公開する方法は、[公開の方法](https://akilasatolu.github.io/tiny-md2docs/ja/getting-started/publish.html)にあります。
+> この設定だけだと、HTML のページと一緒に、元の `.md` ファイルも公開されます。公開したくないときは、[設定](https://akilasatolu.github.io/tiny-md2docs/guide/config.ja.html)を見てください。リポジトリのルートや GitHub Actions で公開する方法は、[公開の方法](https://akilasatolu.github.io/tiny-md2docs/getting-started/publish.ja.html)にあります。
 
 `@v0` は、新しい版が次のビルドから自動で反映されます。版を固定するときは、`@` のあとに版の名前を書きます。版の一覧は [CHANGELOG.md](CHANGELOG.md) にあります。
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs@v0.1.5
+remote_theme: akilasatolu/tiny-md2docs@v0.2.0
 ```
 
 ## 設定
@@ -55,11 +55,11 @@ remote_theme: akilasatolu/tiny-md2docs@v0.1.5
 | `search_content_limit` | `5000` | 検索で調べる本文の文字数の上限(1ページあたり) |
 | `strings` | なし | 画面の文言の上書き |
 
-`_config.yml` の直下に書く設定は、[リファレンス](https://akilasatolu.github.io/tiny-md2docs/ja/reference/site-config.html)にまとめています。
+`_config.yml` の直下に書く設定は、[リファレンス](https://akilasatolu.github.io/tiny-md2docs/reference/site-config.ja.html)にまとめています。
 
-サイドバーの並びは `docs/_data/nav.yml` で決められます。なければフォルダから自動で並べます。詳しくは[ドキュメント](https://akilasatolu.github.io/tiny-md2docs/ja/guide/sidebar.html)を見てください。
+サイドバーの並びは `docs/_data/nav.yml` で決められます。なければフォルダから自動で並べます。詳しくは[ドキュメント](https://akilasatolu.github.io/tiny-md2docs/guide/sidebar.ja.html)を見てください。
 
-本文で使える書き方は、[表示の一覧](https://akilasatolu.github.io/tiny-md2docs/ja/guide/elements.html)に見本があります。
+本文で使える書き方は、[表示の一覧](https://akilasatolu.github.io/tiny-md2docs/guide/elements.ja.html)に見本があります。
 
 ## 色の変え方
 
@@ -76,7 +76,7 @@ remote_theme: akilasatolu/tiny-md2docs@v0.1.5
 }
 ```
 
-文字と幅も CSS 変数で変えられます。使える変数は[色とダークモード](https://akilasatolu.github.io/tiny-md2docs/ja/guide/colors.html)にあります。
+文字と幅も CSS 変数で変えられます。使える変数は[色とダークモード](https://akilasatolu.github.io/tiny-md2docs/guide/colors.ja.html)にあります。
 
 ## フッター
 
@@ -110,8 +110,8 @@ script/size.sh            # サイズを測る
 版を出すときは、`CHANGELOG.md` と版の表記を直して commit し、版のタグを付けて、`v0` ブランチも同じ commit に進めます。
 
 ```bash
-git tag -a v0.1.5 -m v0.1.5
-git push --atomic origin main v0.1.5 main:v0
+git tag -a v0.2.0 -m v0.2.0
+git push --atomic origin main v0.2.0 main:v0
 ```
 
 ## ライセンス

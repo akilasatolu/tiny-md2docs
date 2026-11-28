@@ -1,7 +1,3 @@
----
-ref: colors
----
-
 # Colors and dark mode
 
 ## Change the colors

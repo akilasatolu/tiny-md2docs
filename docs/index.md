@@ -1,8 +1,3 @@
----
-ref: index
-description: A small documentation theme. Just put Markdown in docs/
----
-
 # Overview
 
 tm2d (tiny-md2docs) is a small Jekyll theme for GitHub Pages. Put Markdown files in `docs/` and publish them as a documentation site.
