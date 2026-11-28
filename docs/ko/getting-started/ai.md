@@ -92,11 +92,11 @@ nav.yml이 없으면 폴더 구조로 자동 정렬됩니다. 폴더가 그룹�
 ## 본문에서 쓸 수 있는 표현
 - 제목, 굵게, 기울임, 취소선, 표, 번호 있는 목록과 없는 목록, 작업 목록(- [ ]와 - [x]), 인용, 구분선, 각주([^1]), 정의 목록(용어 다음 줄에 ": 설명"), 약어(*[HTML]: HyperText Markup Language)
 - 코드 블록에는 언어 이름을 붙입니다. 복사 버튼이 자동으로 붙습니다.
-- 알림 상자는 note와 warning 두 종류입니다.
+- 알림 상자: GitHub 알림(NOTE, TIP, IMPORTANT, WARNING, CAUTION. 대문자로, 다른 요소 안에 있지 않은 인용의 첫 줄에 그것만 씀). 제목을 정하려면 대신 인용 뒤에 {: .note data-title="..." }를 씀.
 
 ```markdown
-> **메모** 설정을 바꾼 뒤에는 몇 분 기다렸다가 확인합니다.
-{: .note }
+> [!NOTE]
+> 설정을 바꾼 뒤에는 몇 분 기다렸다가 확인합니다.
 
 > 이 작업은 되돌릴 수 없습니다.
 {: .warning data-title="주의" }
@@ -130,8 +130,8 @@ docs/assets/css/style.scss를 만듭니다. 처음 두 줄과 @import는 필수�
 }
 ```
 
-- 색: --tm2d-accent, --tm2d-accent-weak, --tm2d-bg, --tm2d-text, --tm2d-muted, --tm2d-subtle, --tm2d-border, --tm2d-link
-- 다크 모드의 색은 별도의 변수입니다: --tm2d-dark-accent, --tm2d-dark-accent-weak, --tm2d-dark-bg, --tm2d-dark-text, --tm2d-dark-muted, --tm2d-dark-subtle, --tm2d-dark-border. --tm2d-link에는 다크 모드용 변수가 없고, 기본적으로 accent 색을 따라 바뀝니다.
+- 색: --tm2d-accent, --tm2d-accent-weak, --tm2d-bg, --tm2d-text, --tm2d-muted, --tm2d-subtle, --tm2d-border, --tm2d-link, --tm2d-tip, --tm2d-important, --tm2d-warning, --tm2d-warning-weak, --tm2d-caution
+- 다크 모드의 색은 별도의 변수입니다: --tm2d-dark-accent, --tm2d-dark-accent-weak, --tm2d-dark-bg, --tm2d-dark-text, --tm2d-dark-muted, --tm2d-dark-subtle, --tm2d-dark-border, --tm2d-dark-tip, --tm2d-dark-important, --tm2d-dark-warning, --tm2d-dark-warning-weak, --tm2d-dark-caution. --tm2d-link에는 다크 모드용 변수가 없고, 기본적으로 accent 색을 따라 바뀝니다.
 - 글자와 너비: --tm2d-font-body, --tm2d-font-heading, --tm2d-font-mono, --tm2d-font-size, --tm2d-line-height, --tm2d-sidebar-width, --tm2d-toc-width, --tm2d-content-max-width
 - 글자와 배경의 대비는 4.5:1 이상으로 합니다.
 
@@ -146,8 +146,7 @@ docs/assets/css/style.scss를 만듭니다. 처음 두 줄과 @import는 필수�
 
 ## 할 수 없는 것과 제한
 - GitHub Pages의 표준 빌드에서 동작하는 것만 사용합니다. 자체 플러그인은 쓸 수 없습니다.
-- Mermaid 그림은 그려지지 않습니다.
-- 알림 상자는 note와 warning뿐입니다.
+- Mermaid 그림과 수식은 테마에서 그리지 않습니다. 그리려면 docs/_includes/body-custom.html에서 Mermaid나 MathJax를 불러옵니다.
 - 바닥글의 "Powered by tiny-md2docs"는 없앨 수 없습니다.
 - 언어를 넘나드는 검색은 할 수 없습니다.
 - README.md, LICENSE.md 등은 front matter가 없으면 페이지가 되지 않습니다(index.md가 없는 폴더에서 README.md가 첫 페이지가 되는 경우는 제외).

@@ -30,6 +30,11 @@ The variables you can use are as follows.
 | `--tm2d-subtle` | Background of code and quotes | `#F5F6F4` |
 | `--tm2d-border` | Divider lines | `#E4E6E1` |
 | `--tm2d-link` | Links (the same as accent by default) | `--tm2d-accent` |
+| `--tm2d-tip` | Tip callouts | `#176B2C` |
+| `--tm2d-important` | Important callouts | `#6F42C1` |
+| `--tm2d-warning` | Warning callouts | `#8A5A00` |
+| `--tm2d-warning-weak` | Background of warning callouts | `#FBF1DC` |
+| `--tm2d-caution` | Caution callouts | `#B31D28` |
 
 Choose colors that give a contrast ratio of at least 4.5:1 between text and background.
 

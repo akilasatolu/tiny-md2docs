@@ -92,11 +92,11 @@ Without nav.yml, the sidebar is built from the folder structure. Folders become 
 ## What you can use in the body
 - Headings, bold, italic, strikethrough, tables, ordered and unordered lists, task lists (- [ ] and - [x]), quotes, horizontal rules, footnotes ([^1]), definition lists (": explanation" on the line after the term), abbreviations (*[HTML]: HyperText Markup Language)
 - Give code blocks a language name. A copy button is added automatically.
-- There are two kinds of callouts: note and warning.
+- Callouts: GitHub alerts (NOTE, TIP, IMPORTANT, WARNING, CAUTION, in capital letters, alone on the first line of a top-level quote). To choose the title, write {: .note data-title="..." } after a quote instead.
 
 ```markdown
-> **Note** After changing a setting, wait a few minutes and check.
-{: .note }
+> [!NOTE]
+> After changing a setting, wait a few minutes and check.
 
 > This operation cannot be undone.
 {: .warning data-title="Warning" }
@@ -130,8 +130,8 @@ Create docs/assets/css/style.scss. The first two lines and the @import are requi
 }
 ```
 
-- Colors: --tm2d-accent, --tm2d-accent-weak, --tm2d-bg, --tm2d-text, --tm2d-muted, --tm2d-subtle, --tm2d-border, --tm2d-link
-- Dark mode colors are separate variables: --tm2d-dark-accent, --tm2d-dark-accent-weak, --tm2d-dark-bg, --tm2d-dark-text, --tm2d-dark-muted, --tm2d-dark-subtle, --tm2d-dark-border. --tm2d-link has no dark mode variable; by default it follows the accent color.
+- Colors: --tm2d-accent, --tm2d-accent-weak, --tm2d-bg, --tm2d-text, --tm2d-muted, --tm2d-subtle, --tm2d-border, --tm2d-link, --tm2d-tip, --tm2d-important, --tm2d-warning, --tm2d-warning-weak, --tm2d-caution
+- Dark mode colors are separate variables: --tm2d-dark-accent, --tm2d-dark-accent-weak, --tm2d-dark-bg, --tm2d-dark-text, --tm2d-dark-muted, --tm2d-dark-subtle, --tm2d-dark-border, --tm2d-dark-tip, --tm2d-dark-important, --tm2d-dark-warning, --tm2d-dark-warning-weak, --tm2d-dark-caution. --tm2d-link has no dark mode variable; by default it follows the accent color.
 - Fonts and widths: --tm2d-font-body, --tm2d-font-heading, --tm2d-font-mono, --tm2d-font-size, --tm2d-line-height, --tm2d-sidebar-width, --tm2d-toc-width, --tm2d-content-max-width
 - Keep the contrast between text and background at 4.5:1 or more.
 
@@ -146,8 +146,7 @@ Create docs/assets/css/style.scss. The first two lines and the @import are requi
 
 ## What you cannot do, and limits
 - Use only what works with the standard GitHub Pages build. Custom plugins cannot be used.
-- Mermaid diagrams are not drawn.
-- The only callouts are note and warning.
+- Mermaid diagrams and math are not drawn by the theme. To draw them, load Mermaid or MathJax in docs/_includes/body-custom.html.
 - The "Powered by tiny-md2docs" footer cannot be removed.
 - Search does not cross languages.
 - README.md, LICENSE.md, and the like do not become pages without front matter (except when README.md becomes the top page of a folder without index.md).

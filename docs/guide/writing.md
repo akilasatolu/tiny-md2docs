@@ -36,59 +36,84 @@ To leave one heading out of the table of contents, write `{: .no_toc }` on the l
 
 ## Callout boxes
 
-Write `{: .note }` or `{: .warning }` on the line after the last line of a quote (`>`), and it becomes a colored box. To add a title, write `{: .note data-title="Note" }`. You can also write a label yourself at the start of the body.
+Write a GitHub alert, and it becomes a colored box with a title. The five types are `NOTE`, `TIP`, `IMPORTANT`, `WARNING`, and `CAUTION`.
 
 ```markdown
-> **Note** After you change the settings, wait a few minutes before checking.
-{: .note }
+> [!NOTE]
+> After you change the settings, wait a few minutes before checking.
 
-> **Warning** This operation cannot be undone.
-{: .warning }
+> [!WARNING]
+> This operation cannot be undone.
 ```
 
-> **Note** After you change the settings, wait a few minutes before checking.
-{: .note }
+> [!NOTE]
+> After you change the settings, wait a few minutes before checking.
 
-> **Warning** This operation cannot be undone.
-{: .warning }
+> [!WARNING]
+> This operation cannot be undone.
 
-Here is an example with a title.
+- Write the type in capital letters, alone on the first line of the quote.
+- As on GitHub, an alert inside a list, another quote, or `<details>` is not converted and appears as text.
+- A quote with a line such as `{: .note }` after it is not converted either.
+
+### Choose the title
+
+To choose the title yourself, or to leave it out, write `{: .note }` on the line after the last line of a quote (`>`). The types are `.note`, `.tip`, `.important`, `.warning`, and `.caution`. To add a title, write `{: .note data-title="Memo" }`.
 
 ```markdown
 > Save the file before you continue.
-{: .note data-title="Note" }
+{: .note data-title="Memo" }
 ```
 
 > Save the file before you continue.
-{: .note data-title="Note" }
+{: .note data-title="Memo" }
 
-You can also write several lines or paragraphs. Start each line with `>`, and put a line with only `>` where paragraphs are separated. Write `{: .note }` on the line after the last line. Lines written one after another are joined into one line when displayed.
+You can also write several lines or paragraphs. Start each line with `>`, and put a line with only `>` where paragraphs are separated. Lines written one after another are joined into one line when displayed.
 
 ```markdown
-> **Note** This is the first paragraph.
+> [!TIP]
+> This is the first paragraph.
 > Lines written one after another are in the same paragraph.
 >
 > This is the second paragraph.
 >
 > - You can also write a list
-{: .note }
 ```
 
-> **Note** This is the first paragraph.
+> [!TIP]
+> This is the first paragraph.
 > Lines written one after another are in the same paragraph.
 >
 > This is the second paragraph.
 >
 > - You can also write a list
-{: .note }
 
-## Writing that is not supported
+## Diagrams and math
 
-The following work on GitHub but not in this theme.
+The theme does not draw Mermaid diagrams or math: Mermaid diagrams appear as code, and math written with `$$` appears as `\(…\)` or `\[…\]`. To draw them, create `docs/_includes/body-custom.html` with the following. The libraries are loaded from an external server (jsDelivr), only on pages that need them.
 
-- GitHub alerts such as `> [!NOTE]` appear as text. Use `{: .note }` or `{: .warning }`.
-- Mermaid diagrams appear as code.
-- Math written with `$$` is not drawn; it appears as `\(…\)` or `\[…\]`.
+```html
+{% raw %}{%- if content contains 'class="language-mermaid"' %}
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@12/dist/mermaid.esm.min.mjs";
+const nodes = [...document.querySelectorAll("code.language-mermaid")].map((code) => {
+  const pre = code.parentElement;
+  pre.textContent = code.textContent;
+  pre.className = "mermaid";
+  return pre;
+});
+const dark = document.documentElement.getAttribute("data-theme") === "dark";
+mermaid.initialize({ startOnLoad: false, theme: dark ? "dark" : "default" });
+mermaid.run({ nodes });
+</script>
+{%- endif %}
+{%- if content contains '\(' or content contains '\[' %}
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+{%- endif %}{% endraw %}
+```
+
+- Write a diagram in a code block with the language name `mermaid`. Its colors follow dark mode when the page is opened; after switching, reload the page.
+- Write math between `$$`, both on its own lines and inside a sentence. A single `$` does not work.
 
 ## Copy code
 

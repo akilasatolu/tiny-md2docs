@@ -1,5 +1,12 @@
 # 変更履歴
 
+## v0.5.0
+
+- GitHub の注意書き(`> [!NOTE]`、`[!TIP]`、`[!IMPORTANT]`、`[!WARNING]`、`[!CAUTION]`)を、色の付いた囲みで表示します。これまで文字のまま出ていた注意書きの見た目が変わります
+- `{: .tip }`、`{: .important }`、`{: .caution }` を追加
+- 色の変数 `--tm2d-tip`、`--tm2d-important`、`--tm2d-caution`(ダークモード用は `--tm2d-dark-…`)を追加
+- Mermaid の図と数式を `_includes/body-custom.html` で表示する方法を文書に追加
+
 ## v0.4.0
 
 互換性がなくなる変更があります。

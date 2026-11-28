@@ -2,11 +2,33 @@
 layout: default
 ---
 {%- include nav-order.html -%}
+{%- comment -%}
+  GitHub の注意書き(> [!NOTE] など5種類)を、注意書きの囲みに置き換えて tm2d_html に入れる。
+  GitHub と同じく、ほかの要素の中にないもの(字下げが2文字の段落)だけが対象。
+{%- endcomment -%}
+{%- assign tm2d_html = content -%}
+{%- if tm2d_html contains "<p>[!" -%}
+  {%- capture _tm2d_nl %}
+{% endcapture -%}
+  {%- assign _tm2d_open = "<blockquote>" | append: _tm2d_nl | append: "  <p>" -%}
+  {%- assign _tm2d_types = "Note,Tip,Important,Warning,Caution" | split: "," -%}
+  {%- for _t in _tm2d_types -%}
+    {%- assign _tm2d_mark = _t | upcase | prepend: "[!" | append: "]" -%}
+    {%- assign _tm2d_from = _tm2d_open | append: _tm2d_mark -%}
+    {%- capture _tm2d_to %}<blockquote class="{{ _t | downcase }}" data-title="{{ _t }}">{{ _tm2d_nl }}  <p>{% endcapture -%}
+    {%- assign _tm2d_a = _tm2d_from | append: _tm2d_nl -%}
+    {%- assign _tm2d_b = _tm2d_from | append: " " | append: _tm2d_nl -%}
+    {%- assign _tm2d_c = _tm2d_from | append: "<br />" | append: _tm2d_nl -%}
+    {%- assign _tm2d_d = _tm2d_from | append: "</p>" -%}
+    {%- capture _tm2d_to_d %}<blockquote class="{{ _t | downcase }}" data-title="{{ _t }}">{% endcapture -%}
+    {%- assign tm2d_html = tm2d_html | replace: _tm2d_a, _tm2d_to | replace: _tm2d_b, _tm2d_to | replace: _tm2d_c, _tm2d_to | replace: _tm2d_d, _tm2d_to_d -%}
+  {%- endfor -%}
+{%- endif -%}
 {%- include toc.html html=content variant="inline" %}
 <article class="tm2d-content">
 {%- unless content contains "<h1" or page.title == nil %}
 <h1>{{ page.title | escape }}</h1>
 {%- endunless %}
-{{ content }}
+{{ tm2d_html }}
 </article>
 {%- include pager.html %}

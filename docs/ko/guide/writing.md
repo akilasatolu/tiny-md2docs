@@ -36,23 +36,29 @@
 
 ## 주의 문구 상자
 
-인용(`>`)의 마지막 줄 다음 줄에 `{: .note }` 또는 `{: .warning }`을 쓰면 색이 있는 상자가 됩니다. 제목을 붙일 때는 `{: .note data-title="메모" }`처럼 씁니다. 본문 맨 앞에 라벨을 직접 쓸 수도 있습니다.
+GitHub 알림을 쓰면 제목이 있는 색 상자가 됩니다. 종류는 `NOTE`, `TIP`, `IMPORTANT`, `WARNING`, `CAUTION` 다섯 가지입니다.
 
 ```markdown
-> **메모** 설정을 바꾼 뒤에는 몇 분 기다렸다가 확인합니다.
-{: .note }
+> [!NOTE]
+> 설정을 바꾼 뒤에는 몇 분 기다렸다가 확인합니다.
 
-> **주의** 이 작업은 되돌릴 수 없습니다.
-{: .warning }
+> [!WARNING]
+> 이 작업은 되돌릴 수 없습니다.
 ```
 
-> **메모** 설정을 바꾼 뒤에는 몇 분 기다렸다가 확인합니다.
-{: .note }
+> [!NOTE]
+> 설정을 바꾼 뒤에는 몇 분 기다렸다가 확인합니다.
 
-> **주의** 이 작업은 되돌릴 수 없습니다.
-{: .warning }
+> [!WARNING]
+> 이 작업은 되돌릴 수 없습니다.
 
-제목을 붙인 예입니다.
+- 종류는 대문자로, 인용의 첫 줄에 그것만 씁니다.
+- GitHub와 같이 목록, 다른 인용, `<details>` 안의 알림은 바뀌지 않고 글자 그대로 나옵니다.
+- 뒤의 줄에 `{: .note }` 같은 것을 쓴 인용도 바뀌지 않습니다.
+
+### 제목 정하기
+
+제목을 직접 정하거나 제목을 빼려면 인용(`>`)의 마지막 줄 다음 줄에 `{: .note }`를 씁니다. 종류는 `.note`, `.tip`, `.important`, `.warning`, `.caution`입니다. 제목을 붙일 때는 `{: .note data-title="메모" }`처럼 씁니다.
 
 ```markdown
 > 계속하기 전에 파일을 저장합니다.
@@ -62,33 +68,52 @@
 > 계속하기 전에 파일을 저장합니다.
 {: .note data-title="메모" }
 
-여러 줄이나 여러 단락도 쓸 수 있습니다. 각 줄의 맨 앞에 `>`를 붙이고, 단락을 나누는 곳에는 `>`만 있는 줄을 넣습니다. `{: .note }`는 마지막 줄 다음 줄에 씁니다. 이어서 쓴 줄은 표시할 때 한 줄로 이어집니다.
+여러 줄이나 여러 단락도 쓸 수 있습니다. 각 줄의 맨 앞에 `>`를 붙이고, 단락을 나누는 곳에는 `>`만 있는 줄을 넣습니다. 이어서 쓴 줄은 표시할 때 한 줄로 이어집니다.
 
 ```markdown
-> **메모** 첫 번째 단락입니다.
+> [!TIP]
+> 첫 번째 단락입니다.
 > 이어서 쓴 줄은 같은 단락이 됩니다.
 >
 > 두 번째 단락입니다.
 >
 > - 목록도 쓸 수 있습니다
-{: .note }
 ```
 
-> **메모** 첫 번째 단락입니다.
+> [!TIP]
+> 첫 번째 단락입니다.
 > 이어서 쓴 줄은 같은 단락이 됩니다.
 >
 > 두 번째 단락입니다.
 >
 > - 목록도 쓸 수 있습니다
-{: .note }
 
-## 지원하지 않는 작성법
+## 그림과 수식
 
-다음 작성법은 GitHub에서는 되지만 이 테마에서는 지원하지 않습니다.
+테마는 Mermaid 그림과 수식을 그리지 않습니다. Mermaid 그림은 코드로 나오고, `$$`로 쓴 수식은 `\(…\)`나 `\[…\]` 글자로 나옵니다. 그리려면 `docs/_includes/body-custom.html`을 다음 내용으로 만듭니다. 라이브러리는 필요한 페이지에서만 외부 서버(jsDelivr)에서 불러옵니다.
 
-- `> [!NOTE]` 같은 GitHub 알림은 글자 그대로 나옵니다. `{: .note }`나 `{: .warning }`을 씁니다.
-- Mermaid 그림은 코드로 나옵니다.
-- `$$`로 쓴 수식은 그려지지 않고 `\(…\)`나 `\[…\]` 글자로 나옵니다.
+```html
+{% raw %}{%- if content contains 'class="language-mermaid"' %}
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@12/dist/mermaid.esm.min.mjs";
+const nodes = [...document.querySelectorAll("code.language-mermaid")].map((code) => {
+  const pre = code.parentElement;
+  pre.textContent = code.textContent;
+  pre.className = "mermaid";
+  return pre;
+});
+const dark = document.documentElement.getAttribute("data-theme") === "dark";
+mermaid.initialize({ startOnLoad: false, theme: dark ? "dark" : "default" });
+mermaid.run({ nodes });
+</script>
+{%- endif %}
+{%- if content contains '\(' or content contains '\[' %}
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+{%- endif %}{% endraw %}
+```
+
+- 그림은 언어 이름을 `mermaid`로 한 코드 블록에 씁니다. 그림의 색은 페이지를 열 때의 다크 모드에 맞춥니다. 전환한 뒤에는 페이지를 다시 불러옵니다.
+- 수식은 줄을 나눌 때도 문장 안에서도 `$$`로 감쌉니다. `$` 하나는 쓸 수 없습니다.
 
 ## 코드 복사
 

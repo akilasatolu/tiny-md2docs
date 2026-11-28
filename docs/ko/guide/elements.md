@@ -102,6 +102,21 @@ const message = "hello";
 
 > 인용문
 {: .note data-title="참고" }
+
+> [!NOTE]
+> 인용문
+
+> [!TIP]
+> 인용문
+
+> [!IMPORTANT]
+> 인용문
+
+> [!WARNING]
+> 인용문
+
+> [!CAUTION]
+> 인용문
 {% endcapture %}
 {% include example.html md=ex %}
 

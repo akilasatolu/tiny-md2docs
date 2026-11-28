@@ -36,23 +36,29 @@
 
 ## 注意書きの囲み
 
-引用(`>`)の最後の行の次に `{: .note }` か `{: .warning }` を書くと、色の付いた囲みになります。タイトルを付けるときは `{: .note data-title="メモ" }` のように書きます。本文の先頭に自分でラベルを書くこともできます。
+GitHub の注意書きを書くと、タイトルの付いた色の付いた囲みになります。種類は `NOTE`、`TIP`、`IMPORTANT`、`WARNING`、`CAUTION` の5つです。
 
 ```markdown
-> **メモ** 設定を変えたら、数分待ってから確かめます。
-{: .note }
+> [!NOTE]
+> 設定を変えたら、数分待ってから確かめます。
 
-> **注意** この操作は元に戻せません。
-{: .warning }
+> [!WARNING]
+> この操作は元に戻せません。
 ```
 
-> **メモ** 設定を変えたら、数分待ってから確かめます。
-{: .note }
+> [!NOTE]
+> 設定を変えたら、数分待ってから確かめます。
 
-> **注意** この操作は元に戻せません。
-{: .warning }
+> [!WARNING]
+> この操作は元に戻せません。
 
-タイトルを付けた例です。
+- 種類は大文字で、引用の1行目にそれだけを書きます。
+- GitHub と同じく、リスト、別の引用、`<details>` の中の注意書きは置き換わらず、文字のまま出ます。
+- あとの行に `{: .note }` などを書いた引用も、置き換わりません。
+
+### タイトルを選ぶ
+
+タイトルを自分で決めるとき、またはタイトルを出さないときは、引用(`>`)の最後の行の次に `{: .note }` を書きます。種類は `.note`、`.tip`、`.important`、`.warning`、`.caution` です。タイトルを付けるときは `{: .note data-title="メモ" }` のように書きます。
 
 ```markdown
 > 続ける前にファイルを保存します。
@@ -62,33 +68,52 @@
 > 続ける前にファイルを保存します。
 {: .note data-title="メモ" }
 
-複数の行や段落も書けます。各行の先頭に `>` を付け、段落を分けるところには `>` だけの行を入れます。`{: .note }` は、最後の行の次に書きます。続けて書いた行は、表示では1行につながります。
+複数の行や段落も書けます。各行の先頭に `>` を付け、段落を分けるところには `>` だけの行を入れます。続けて書いた行は、表示では1行につながります。
 
 ```markdown
-> **メモ** 1つ目の段落です。
+> [!TIP]
+> 1つ目の段落です。
 > 続けて書いた行は、同じ段落になります。
 >
 > 2つ目の段落です。
 >
 > - リストも書けます
-{: .note }
 ```
 
-> **メモ** 1つ目の段落です。
+> [!TIP]
+> 1つ目の段落です。
 > 続けて書いた行は、同じ段落になります。
 >
 > 2つ目の段落です。
 >
 > - リストも書けます
-{: .note }
 
-## 使えない書き方
+## 図と数式
 
-次の書き方は、GitHub では使えますが、このテーマでは使えません。
+テーマは Mermaid の図と数式を描きません。Mermaid の図はコードとして出て、`$$` で書いた数式は `\(…\)` や `\[…\]` の文字で出ます。描くときは、`docs/_includes/body-custom.html` を次の内容で作ります。ライブラリは、必要なページだけで外部のサーバー(jsDelivr)から読み込みます。
 
-- `> [!NOTE]` などの GitHub の注意書きは、文字のまま出ます。`{: .note }` か `{: .warning }` を使います。
-- Mermaid の図は、コードとして出ます。
-- `$$` で書いた数式は表示されず、`\(…\)` や `\[…\]` の文字で出ます。
+```html
+{% raw %}{%- if content contains 'class="language-mermaid"' %}
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@12/dist/mermaid.esm.min.mjs";
+const nodes = [...document.querySelectorAll("code.language-mermaid")].map((code) => {
+  const pre = code.parentElement;
+  pre.textContent = code.textContent;
+  pre.className = "mermaid";
+  return pre;
+});
+const dark = document.documentElement.getAttribute("data-theme") === "dark";
+mermaid.initialize({ startOnLoad: false, theme: dark ? "dark" : "default" });
+mermaid.run({ nodes });
+</script>
+{%- endif %}
+{%- if content contains '\(' or content contains '\[' %}
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+{%- endif %}{% endraw %}
+```
+
+- 図は、言語名を `mermaid` にしたコードのブロックに書きます。図の色は、ページを開いたときのダークモードに合わせます。切り替えたあとは、ページを読み込み直します。
+- 数式は、行を分けるときも文の中でも `$$` で囲みます。`$` 1つは使えません。
 
 ## コードのコピー
 

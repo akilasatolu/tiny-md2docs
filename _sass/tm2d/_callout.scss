@@ -1,27 +1,44 @@
-// Callouts: write {: .note } or {: .warning } on the line after a blockquote.
+// Callouts: GitHub alerts (> [!NOTE] ...) and {: .note } / {: .warning } on the line after a blockquote.
 // Add data-title="..." to show a title.
 .tm2d-content blockquote {
   &.note,
-  &.warning {
-    border-left: 4px solid var(--tm2d-accent);
+  &.tip,
+  &.important,
+  &.warning,
+  &.caution {
+    --tm2d-callout: var(--tm2d-accent);
+    border-left: 4px solid var(--tm2d-callout);
     background: var(--tm2d-accent-weak);
+
+    &[data-title]::before {
+      content: attr(data-title);
+      display: block;
+      margin-bottom: 4px;
+      color: var(--tm2d-callout);
+      font-weight: 700;
+    }
+  }
+
+  &.tip,
+  &.important,
+  &.caution {
+    background: color-mix(in srgb, var(--tm2d-callout) 8%, var(--tm2d-bg));
+  }
+
+  &.tip {
+    --tm2d-callout: var(--tm2d-tip);
+  }
+
+  &.important {
+    --tm2d-callout: var(--tm2d-important);
   }
 
   &.warning {
-    border-left-color: var(--tm2d-warning);
+    --tm2d-callout: var(--tm2d-warning);
     background: var(--tm2d-warning-weak);
   }
 
-  &.note[data-title]::before,
-  &.warning[data-title]::before {
-    content: attr(data-title);
-    display: block;
-    margin-bottom: 4px;
-    color: var(--tm2d-accent);
-    font-weight: 700;
-  }
-
-  &.warning[data-title]::before {
-    color: var(--tm2d-warning);
+  &.caution {
+    --tm2d-callout: var(--tm2d-caution);
   }
 }

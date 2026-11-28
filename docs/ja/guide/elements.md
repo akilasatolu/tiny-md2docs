@@ -102,6 +102,21 @@ const message = "hello";
 
 > 引用文
 {: .note data-title="メモ" }
+
+> [!NOTE]
+> 引用文
+
+> [!TIP]
+> 引用文
+
+> [!IMPORTANT]
+> 引用文
+
+> [!WARNING]
+> 引用文
+
+> [!CAUTION]
+> 引用文
 {% endcapture %}
 {% include example.html md=ex %}
 

@@ -30,6 +30,11 @@
 | `--tm2d-subtle` | コードや引用の背景 | `#F5F6F4` |
 | `--tm2d-border` | 区切りの線 | `#E4E6E1` |
 | `--tm2d-link` | リンク(既定は accent と同じ) | `--tm2d-accent` |
+| `--tm2d-tip` | Tip の注意書き | `#176B2C` |
+| `--tm2d-important` | Important の注意書き | `#6F42C1` |
+| `--tm2d-warning` | Warning の注意書き | `#8A5A00` |
+| `--tm2d-warning-weak` | Warning の注意書きの背景 | `#FBF1DC` |
+| `--tm2d-caution` | Caution の注意書き | `#B31D28` |
 
 文字と背景のコントラストが 4.5:1 以上になる色を選んでください。
 

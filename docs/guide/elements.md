@@ -102,6 +102,21 @@ const message = "hello";
 
 > Quote
 {: .note data-title="Note" }
+
+> [!NOTE]
+> Quote
+
+> [!TIP]
+> Quote
+
+> [!IMPORTANT]
+> Quote
+
+> [!WARNING]
+> Quote
+
+> [!CAUTION]
+> Quote
 {% endcapture %}
 {% include example.html md=ex %}
 

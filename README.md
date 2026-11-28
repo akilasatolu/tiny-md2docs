@@ -32,7 +32,7 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 `@v0` は、新しい版が次のビルドから自動で反映されます。版を固定するときは、`@` のあとに版の名前を書きます。版の一覧は [CHANGELOG.md](CHANGELOG.md) にあります。
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs@v0.4.0
+remote_theme: akilasatolu/tiny-md2docs@v0.5.0
 ```
 
 ## 設定
@@ -103,8 +103,8 @@ script/size.sh            # サイズを測る
 版を出すときは、`CHANGELOG.md` と版の表記を直して commit し、版のタグを付けて、`v0` ブランチも同じ commit に進めます。
 
 ```bash
-git tag -a v0.4.0 -m v0.4.0
-git push --atomic origin main v0.4.0 main:v0
+git tag -a v0.5.0 -m v0.5.0
+git push --atomic origin main v0.5.0 main:v0
 ```
 
 ## ライセンス

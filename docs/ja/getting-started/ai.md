@@ -92,11 +92,11 @@ nav.yml がなければ、フォルダの構成から自動で並びます。フ
 ## 本文で使える表示
 - 見出し、太字、斜体、打ち消し、表、番号つきと番号なしのリスト、タスクリスト(- [ ] と - [x])、引用、区切り線、脚注([^1])、定義リスト(用語の次の行に「: 説明」)、略語(*[HTML]: HyperText Markup Language)
 - コードのブロックは言語名を付けます。コピーのボタンが自動で付きます。
-- 注意書きの囲みは note と warning の2種類です。
+- 注意書きの囲み: GitHub の注意書き(NOTE、TIP、IMPORTANT、WARNING、CAUTION。大文字で、ほかの要素の中にない引用の1行目にそれだけを書く)。タイトルを選ぶときは、代わりに引用のあとに {: .note data-title="..." } を書く。
 
 ```markdown
-> **メモ** 設定を変えたら、数分待ってから確かめます。
-{: .note }
+> [!NOTE]
+> 設定を変えたら、数分待ってから確かめます。
 
 > この操作は元に戻せません。
 {: .warning data-title="注意" }
@@ -130,8 +130,8 @@ docs/assets/css/style.scss を作ります。最初の2行と @import は必須�
 }
 ```
 
-- 色: --tm2d-accent、--tm2d-accent-weak、--tm2d-bg、--tm2d-text、--tm2d-muted、--tm2d-subtle、--tm2d-border、--tm2d-link
-- ダークモードの色は別の変数です: --tm2d-dark-accent、--tm2d-dark-accent-weak、--tm2d-dark-bg、--tm2d-dark-text、--tm2d-dark-muted、--tm2d-dark-subtle、--tm2d-dark-border。--tm2d-link にはダークモード用の変数がなく、既定では accent の色に合わせて変わります。
+- 色: --tm2d-accent、--tm2d-accent-weak、--tm2d-bg、--tm2d-text、--tm2d-muted、--tm2d-subtle、--tm2d-border、--tm2d-link、--tm2d-tip、--tm2d-important、--tm2d-warning、--tm2d-warning-weak、--tm2d-caution
+- ダークモードの色は別の変数です: --tm2d-dark-accent、--tm2d-dark-accent-weak、--tm2d-dark-bg、--tm2d-dark-text、--tm2d-dark-muted、--tm2d-dark-subtle、--tm2d-dark-border、--tm2d-dark-tip、--tm2d-dark-important、--tm2d-dark-warning、--tm2d-dark-warning-weak、--tm2d-dark-caution。--tm2d-link にはダークモード用の変数がなく、既定では accent の色に合わせて変わります。
 - 文字と幅: --tm2d-font-body、--tm2d-font-heading、--tm2d-font-mono、--tm2d-font-size、--tm2d-line-height、--tm2d-sidebar-width、--tm2d-toc-width、--tm2d-content-max-width
 - 文字と背景のコントラストは 4.5:1 以上にします。
 
@@ -146,8 +146,7 @@ docs/assets/css/style.scss を作ります。最初の2行と @import は必須�
 
 ## 使えないことと制限
 - GitHub Pages の標準のビルドで動くものだけを使います。独自のプラグインは使えません。
-- Mermaid の図は描かれません。
-- 注意書きの囲みは note と warning だけです。
+- Mermaid の図と数式は、テーマでは描かれません。描くときは docs/_includes/body-custom.html で Mermaid や MathJax を読み込みます。
 - フッターの「Powered by tiny-md2docs」は消せません。
 - 言語をまたいだ検索はできません。
 - README.md、LICENSE.md などは、front matter がないとページになりません(README.md は、index.md のないフォルダのトップページになる場合を除きます)。

@@ -30,6 +30,11 @@
 | `--tm2d-subtle` | 코드나 인용의 배경 | `#F5F6F4` |
 | `--tm2d-border` | 구분선 | `#E4E6E1` |
 | `--tm2d-link` | 링크(기본은 accent와 같음) | `--tm2d-accent` |
+| `--tm2d-tip` | Tip 알림 | `#176B2C` |
+| `--tm2d-important` | Important 알림 | `#6F42C1` |
+| `--tm2d-warning` | Warning 알림 | `#8A5A00` |
+| `--tm2d-warning-weak` | Warning 알림의 배경 | `#FBF1DC` |
+| `--tm2d-caution` | Caution 알림 | `#B31D28` |
 
 글자와 배경의 대비가 4.5:1 이상이 되는 색을 고르세요.
 
