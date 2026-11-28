@@ -8,6 +8,7 @@
   - tm2d_current_groups: 今のページのグループ名の配列(上の段から順。nav にないときは空)
   _data/nav.<lang>.yml、_data/nav.yml の順に探し、あればその順と名前を使う。なければフォルダから自動で作る。
   自動のときは、今のページと同じ言語(lang.html で決まる)のページだけを、パスの順に並べる。言語のフォルダは除いて考える。
+  各フォルダでは、トップのページ(index、なければ README)が先頭。グループ名は、そのページの見出し。
 {%- endcomment -%}
 {%- assign _tm2d_r = "" -%}
 {%- assign _tm2d_n = 10000 -%}
@@ -34,8 +35,21 @@
     {%- assign _tm2d_depth = _tm2d_parts | size -%}
     {%- assign _tm2d_title = _p.title | default: "" -%}
     {%- if _tm2d_title == "" -%}{%- assign _tm2d_title = tm2d_stem -%}{%- endif -%}
+    {%- comment -%}
+      フォルダのトップのページ(index、または URL がフォルダになった README)は、そのフォルダの先頭にする。
+    {%- endcomment -%}
+    {%- assign _tm2d_top = "1" -%}
+    {%- assign _tm2d_low = _p.name | downcase -%}
+    {%- if tm2d_stem == "index" -%}
+      {%- assign _tm2d_top = "0" -%}
+    {%- elsif _tm2d_low == "readme.md" -%}
+      {%- assign _tm2d_last = _p.url | slice: -1, 1 -%}
+      {%- assign _tm2d_lurl = _p.url | downcase -%}
+      {%- unless _tm2d_lurl contains "/readme/" -%}
+        {%- if _tm2d_last == "/" -%}{%- assign _tm2d_top = "0" -%}{%- endif -%}
+      {%- endunless -%}
+    {%- endif -%}
     {%- if _tm2d_depth == 1 -%}
-      {%- if tm2d_stem == "index" -%}{%- assign _tm2d_top = "0" -%}{%- else -%}{%- assign _tm2d_top = "1" -%}{%- endif -%}
       {%- capture _tm2d_rec -%}0!{{ _tm2d_top }}!{{ _p.path }}␟{{ _p.url }}␟{{ _p.url }}␟{{ _tm2d_title }}␟␟.{%- endcapture -%}
     {%- else -%}
       {%- comment -%}
@@ -49,12 +63,19 @@
       {%- for _d in _tm2d_parts limit: _tm2d_dirs -%}
         {%- assign _tm2d_gpath = _tm2d_gpath | append: _d | append: "/" -%}
         {%- assign _tm2d_gindex = site.html_pages | where: "dir", _tm2d_gpath | where: "name", "index.md" | first -%}
+        {%- if _tm2d_gindex == nil -%}
+          {%- assign _tm2d_dpages = site.html_pages | where: "dir", _tm2d_gpath -%}
+          {%- for _q in _tm2d_dpages -%}
+            {%- assign _tm2d_qname = _q.name | downcase -%}
+            {%- if _tm2d_qname == "readme.md" -%}{%- assign _tm2d_gindex = _q -%}{%- break -%}{%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
         {%- assign _tm2d_gname = _tm2d_gindex.title | default: _d -%}
         {%- assign _tm2d_chain = _tm2d_chain | append: _tm2d_gname | append: "␝" -%}
         {%- capture _tm2d_k -%}{{ _tm2d_key }}1!{{ _d }}!{%- endcapture -%}
         {%- assign _tm2d_key = _tm2d_k -%}
       {%- endfor -%}
-      {%- capture _tm2d_rec -%}{{ _tm2d_key }}0!{{ _p.path }}␟{{ _p.url }}␟{{ _p.url }}␟{{ _tm2d_title }}␟{{ _tm2d_chain }}␟.{%- endcapture -%}
+      {%- capture _tm2d_rec -%}{{ _tm2d_key }}0!{{ _tm2d_top }}!{{ _p.path }}␟{{ _p.url }}␟{{ _p.url }}␟{{ _tm2d_title }}␟{{ _tm2d_chain }}␟.{%- endcapture -%}
     {%- endif -%}
     {%- assign _tm2d_r = _tm2d_r | append: _tm2d_rec | append: "␞" -%}
   {%- endfor -%}

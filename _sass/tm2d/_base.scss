@@ -49,6 +49,9 @@ img {
 
 // Body typography
 .tm2d-content {
+  // A long URL or word wraps instead of widening the whole page.
+  overflow-wrap: break-word;
+
   h1,
   h2,
   h3,
@@ -156,6 +159,8 @@ img {
 
   th,
   td {
+    // Keeps columns readable: without it, Japanese text wraps one character per line.
+    min-width: 6em;
     text-align: left;
     padding: 10px 12px;
     border-bottom: 1px solid var(--tm2d-border);

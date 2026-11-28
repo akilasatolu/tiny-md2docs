@@ -23,7 +23,7 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
    remote_theme: akilasatolu/tiny-md2docs@v0
    ```
 
-2. `docs/` に Markdown のファイルを置きます。
+2. `docs/` に Markdown のファイルを置きます。トップページの `docs/index.md` は必ず作ります。
 3. リポジトリの Settings → Pages で、ブランチの `/docs` フォルダを公開元にします。
 
 > [!NOTE]
@@ -32,7 +32,7 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 `@v0` は、新しい版が次のビルドから自動で反映されます。版を固定するときは、`@` のあとに版の名前を書きます。版の一覧は [CHANGELOG.md](CHANGELOG.md) にあります。
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs@v0.3.2
+remote_theme: akilasatolu/tiny-md2docs@v0.3.3
 ```
 
 ## 設定
@@ -83,11 +83,11 @@ remote_theme: akilasatolu/tiny-md2docs@v0.3.2
 
 | ファイル | gzip |
 | --- | --- |
-| style.css | 4186 バイト |
+| style.css | 4212 バイト |
 | tm2d.js | 1547 バイト |
 | search-core.js | 2015 バイト |
 | search-ui.js | 2204 バイト |
-| 合計 | 9952 バイト |
+| 合計 | 9978 バイト |
 
 ## 開発
 
@@ -103,8 +103,8 @@ script/size.sh            # サイズを測る
 版を出すときは、`CHANGELOG.md` と版の表記を直して commit し、版のタグを付けて、`v0` ブランチも同じ commit に進めます。
 
 ```bash
-git tag -a v0.3.2 -m v0.3.2
-git push --atomic origin main v0.3.2 main:v0
+git tag -a v0.3.3 -m v0.3.3
+git push --atomic origin main v0.3.3 main:v0
 ```
 
 ## ライセンス

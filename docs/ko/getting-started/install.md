@@ -17,6 +17,11 @@ remote_theme: akilasatolu/tiny-md2docs@v0
 
 `docs/` 아래에 Markdown 파일을 둡니다. 최상위 페이지는 `docs/index.md`입니다. 쓰는 방법은 [페이지 작성법](../guide/writing.md)을 보세요.
 
+> **최상위 페이지** 사이트의 최상위 페이지는 `docs/index.md`입니다. 없으면 front matter가 없는 `docs/README.md`(대소문자 구분 없음)가 최상위 페이지가 됩니다. 둘 다 없으면 사이트의 최상위는 404가 됩니다(기본 설정의 경우).
+{: .warning }
+
+페이지에서 `{% raw %}{{ }}{% endraw %}`나 `{% raw %}{% %}{% endraw %}`를 보여 주려면 [페이지 작성법](../guide/writing.md)의 '중괄호 쓰는 법'을 보세요.
+
 ## 3. GitHub Pages 켜기
 
 1. 리포지토리의 Settings → Pages를 엽니다.

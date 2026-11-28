@@ -17,6 +17,11 @@ remote_theme: akilasatolu/tiny-md2docs@v0
 
 Put Markdown files under `docs/`. The top page is `docs/index.md`. For how to write them, see [Writing pages](../guide/writing.md).
 
+> **Top page** The top page of the site is `docs/index.md`. Without it, a `docs/README.md` without front matter (upper or lower case) becomes the top page. If neither exists, the top of the site is a 404 error (with the default settings).
+{: .warning }
+
+To show `{% raw %}{{ }}{% endraw %}` or `{% raw %}{% %}{% endraw %}` in a page, see "Curly braces" in [Writing pages](../guide/writing.md).
+
 ## 3. Turn on GitHub Pages
 
 1. Open Settings → Pages in the repository.

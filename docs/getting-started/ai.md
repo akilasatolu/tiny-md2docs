@@ -105,7 +105,7 @@ If docs/_data/nav.yml exists, the sidebar follows its order and names.
 - url is a path from the site root, ending in .html. The top page is /.
 - Nesting can be up to 48 levels.
 
-Without nav.yml, the sidebar is built from the folder structure. Folders become groups, and the group name is the first heading of the folder's index.md (or else the folder name). The order is the file path. To change the order or leave pages out, use nav.yml.
+Without nav.yml, the sidebar is built from the folder structure. Folders become groups, and the group name is the first heading of the folder's index.md or else README.md (or else the folder name). The order is the file path, with index.md or else README.md first in each folder. To change the order or leave pages out, use nav.yml.
 
 ## What you can use in the body
 - Headings, bold, italic, strikethrough, tables, ordered and unordered lists, task lists (- [ ] and - [x]), quotes, horizontal rules, footnotes ([^1]), definition lists (": explanation" on the line after the term), abbreviations (*[HTML]: HyperText Markup Language)

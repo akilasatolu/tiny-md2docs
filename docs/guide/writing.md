@@ -11,6 +11,18 @@ The writing you can use in the body is listed with examples in [Markdown example
 - Do not use paths that start with `/` (such as `/guide/config.md`). Except on pages directly under `docs/`, the link is not converted and breaks.
 - Also avoid writing `.html` links directly. A `.html` link that starts with `/` breaks on a project page (`https://user.github.io/repo/`).
 
+## Curly braces
+
+In the body, `{% raw %}{{ }}{% endraw %}` and `{% raw %}{% %}{% endraw %}` are processed by Jekyll (Liquid), even inside code blocks. The text disappears, or publishing fails. To show it as it is, wrap it in `raw` tags.
+
+```markdown
+{% raw %}{% raw %}{% endraw %}
+{% raw %}{{ message }}{% endraw %}
+{{ "{% endraw " }}%}
+```
+
+When publishing fails, check the log of the Pages build in the repository's Actions.
+
 ## Table of contents
 
 When a page has two or more h2 and h3 headings, a table of contents appears. On wide screens it is to the right of the body, and on narrow screens it is collapsed above the body.
@@ -69,6 +81,14 @@ You can also write several lines or paragraphs. Start each line with `>`, and pu
 >
 > - You can also write a list
 {: .note }
+
+## Writing that is not supported
+
+The following work on GitHub but not in this theme.
+
+- GitHub alerts such as `> [!NOTE]` appear as text. Use `{: .note }` or `{: .warning }`.
+- Mermaid diagrams appear as code.
+- Math written with `$$` is not drawn; it appears as `\(…\)` or `\[…\]`.
 
 ## Copy code
 

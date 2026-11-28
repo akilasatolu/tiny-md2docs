@@ -17,6 +17,11 @@ remote_theme: akilasatolu/tiny-md2docs@v0
 
 `docs/` の下に Markdown のファイルを置きます。トップページは `docs/index.md` です。書き方は[ページの書き方](../guide/writing.md)を見てください。
 
+> **トップページ** サイトのトップは `docs/index.md` です。なければ、front matter のない `docs/README.md`(大文字と小文字は問いません)がトップになります。どちらもないと、サイトのトップは 404 になります(既定の設定の場合)。
+{: .warning }
+
+ページで `{% raw %}{{ }}{% endraw %}` や `{% raw %}{% %}{% endraw %}` を見せるときは、[ページの書き方](../guide/writing.md)の「波かっこの書き方」を見てください。
+
 ## 3. GitHub Pages を有効にする
 
 1. リポジトリの Settings → Pages を開きます。
