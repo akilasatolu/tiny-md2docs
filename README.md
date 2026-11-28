@@ -83,11 +83,11 @@ favicon: /assets/images/favicon.svg
 
 | ファイル | gzip |
 | --- | --- |
-| style.css | 4212 バイト |
+| style.css | 4382 バイト |
 | tm2d.js | 1547 バイト |
 | search-core.js | 2015 バイト |
 | search-ui.js | 2204 バイト |
-| 合計 | 9978 バイト |
+| 合計 | 10148 バイト |
 
 ## 開発
 

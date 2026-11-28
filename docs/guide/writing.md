@@ -112,6 +112,7 @@ mermaid.run({ nodes });
 {%- endif %}{% endraw %}
 ```
 
+- Change the library versions in the example (`mermaid@12` and `mathjax@4`) as needed, for example to the latest version at the time. These specify only the major version, and newer releases within it are loaded automatically. Changing the major version may require changes to the code, so check the official documentation of each library.
 - Write a diagram in a code block with the language name `mermaid`. Its colors follow dark mode when the page is opened; after switching, reload the page.
 - Write math between `$$`, both on its own lines and inside a sentence. A single `$` does not work.
 
