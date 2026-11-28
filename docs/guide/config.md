@@ -15,7 +15,7 @@ lang: en
 
 - `title` is the site name shown in the header and the browser tab.
 - `description` is the description used by search engines and social media. It is shared by all pages.
-- `lang` is the language of pages that are not in a language folder. It is used for `<html lang>` and the on-screen text. If you omit it, it is `en`. To use several languages, see [Multilingual](i18n.md).
+- `lang` is the language of pages that are not in a language folder. It is used for `<html lang>`, the sidebar, and search. If you omit it, it is `en`. To use several languages, see [Multilingual](i18n.md).
 - If you do not write `title`, the site name is the repository name for a project page (`https://user.github.io/repo/`), and the account name for a user page (`https://user.github.io/`). If you do not write `description`, the repository description (About) is used.
 
 ## Do not publish the original .md files
@@ -36,33 +36,18 @@ readme_index:
   remove_originals: true
 ```
 
-## Theme settings
+## Logo and favicon
 
-The theme's behavior is set together under `theme_options`. Items you do not write use their default values.
-
-```yaml
-theme_options:
-  logo: /assets/images/logo.svg
-  favicon: /assets/images/logo.svg
-  dark_mode: auto
-```
-
-Write the paths of the logo and favicon as paths from the site root. Even for a project page (`https://user.github.io/repo/`), you do not need to add `/repo`.
-
-All items are listed in [theme_options](../reference/theme-options.md).
-
-## Change the on-screen text
-
-You can override the text of buttons and the search box with `theme_options.strings`. The text written here is used for pages in languages that have no text of their own. To split it by language, see [Multilingual](i18n.md).
+Write them at the top level of `_config.yml`.
 
 ```yaml
-theme_options:
-  strings:
-    search_placeholder: Search by keyword
-    next: Next page
+logo: /assets/images/logo.svg
+favicon: /assets/images/favicon.svg
 ```
 
-The list of keys is under "On-screen text" in [theme_options](../reference/theme-options.md).
+Write the paths as paths from the site root. Even for a project page (`https://user.github.io/repo/`), you do not need to add `/repo`.
+
+The theme's on-screen text, such as buttons and the search box, is in English only.
 
 ## Footer
 
@@ -70,4 +55,4 @@ Every page shows "Powered by tiny-md2docs" at the bottom, with a link to the tin
 
 ## 404 page
 
-When you open a URL that does not exist, the theme shows its own 404 page ("Page not found" in English). You do not need to add one. Change the text with `not_found_title` and `not_found_body` in `strings`.
+When you open a URL that does not exist, the theme shows its own 404 page ("Page not found" in English). You do not need to add one.

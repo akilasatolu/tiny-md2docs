@@ -15,7 +15,7 @@ Jekyll의 표준 기능으로 테마에 내용을 추가하거나 부품을 바�
 
 `docs/_includes/`나 `docs/_layouts/`에 같은 이름의 파일을 두면 테마 파일 대신 사용됩니다. 직접 만드는 부품에는 다음과 다른 이름을 붙이세요. 바꾼 파일에는 테마 업데이트가 반영되지 않습니다.
 
-- `_includes`: `body-custom.html`, `footer.html`, `head.html`, `head-custom.html`, `header.html`, `headings.html`, `lang.html`, `nav-order.html`, `nav-tree.html`, `pager.html`, `search.html`, `sidebar.html`, `t.html`, `toc.html`, `translations.html`, `url-key.html`
+- `_includes`: `body-custom.html`, `footer.html`, `head.html`, `head-custom.html`, `header.html`, `headings.html`, `lang.html`, `nav-order.html`, `nav-tree.html`, `pager.html`, `search.html`, `sidebar.html`, `toc.html`, `translations.html`, `url-key.html`
 - `_layouts`: `default.html`, `page.html`, `post.html`, `404.html`
 
 404 페이지를 직접 쓰려면 `docs/assets/404.html`을 다음과 같이 만듭니다. 헤더와 사이드바는 테마의 것이 나옵니다.

@@ -46,7 +46,7 @@ When nothing is found, Japanese particles (の, を, に, は, が, で, と, �
 ## How search works
 
 - What is searched: only pages in the same language (`<html lang>`) as the current page. To split pages by language, see [Multilingual](i18n.md).
-- How words are split: Han characters, hiragana, katakana, and hangul are split into overlapping pairs of two characters, as described in "Searching Japanese, Chinese, and Korean" above. Everything else is split into words made of runs of letters and digits. Symbols such as `_`, `-`, and `.` separate words, so `theme_options` becomes the two words `theme` and `options`. The pairs are used for ranking points. To match, the run must appear unbroken, as described above.
+- How words are split: Han characters, hiragana, katakana, and hangul are split into overlapping pairs of two characters, as described in "Searching Japanese, Chinese, and Korean" above. Everything else is split into words made of runs of letters and digits. Symbols such as `_`, `-`, and `.` separate words, so `optional_front_matter` becomes the three words `optional`, `front`, and `matter`. The pairs are used for ranking points. To match, the run must appear unbroken, as described above.
 - Single-character words: they are not matched as pairs or words. Search finds pages where that one character appears anywhere in the title, headings, or body.
 - Prefix match on the last word: for languages matched by word, the last word you type is matched as a prefix. "caf" finds "café".
 - One letter off: for languages matched by word, if a word of four or more letters does not match, words one letter off (one letter added, removed, or replaced) are also searched. "serch" finds "search". Swapped letters ("seacrh") are not found.

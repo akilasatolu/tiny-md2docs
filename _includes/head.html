@@ -1,9 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{%- assign _tm2d_mode = site.theme_options.dark_mode | default: "auto" -%}
-{%- if _tm2d_mode != "light" and _tm2d_mode != "dark" %}
 <script>(function(){var t;try{t=localStorage.getItem("tm2d-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)})();</script>
-{%- endif %}
 {%- assign _tm2d_page_title = page.title | default: "" %}
 {%- if page.url == "/" or _tm2d_page_title == "" %}
   {%- assign _tm2d_og_title = site.title %}
@@ -35,9 +32,9 @@
 {%- if _tm2d_image %}
 <meta property="og:image" content="{{ _tm2d_image | absolute_url }}">
 {%- endif %}
-{%- if site.theme_options.favicon %}
-  {%- assign _tm2d_fav_ext = site.theme_options.favicon | split: "." | last %}
-<link rel="icon" href="{{ site.theme_options.favicon | relative_url }}"{% if _tm2d_fav_ext == "svg" %} type="image/svg+xml"{% endif %}>
+{%- if site.favicon %}
+  {%- assign _tm2d_fav_ext = site.favicon | split: "." | last %}
+<link rel="icon" href="{{ site.favicon | relative_url }}"{% if _tm2d_fav_ext == "svg" %} type="image/svg+xml"{% endif %}>
 {%- endif %}
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 {% include head-custom.html %}

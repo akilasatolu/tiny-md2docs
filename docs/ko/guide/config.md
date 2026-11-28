@@ -15,7 +15,7 @@ lang: en
 
 - `title`은 헤더와 브라우저 탭에 나오는 사이트 이름입니다.
 - `description`은 검색 엔진이나 SNS에서 쓰이는 설명문입니다. 모든 페이지에서 씁니다.
-- `lang`은 언어 폴더에 없는 페이지의 언어이며, `<html lang>`과 화면의 문구에 쓰입니다. 생략하면 `en`입니다. 여러 언어를 쓸 때는 [다국어](i18n.md)를 보세요.
+- `lang`은 언어 폴더에 없는 페이지의 언어이며, `<html lang>`, 사이드바, 검색에 쓰입니다. 생략하면 `en`입니다. 여러 언어를 쓸 때는 [다국어](i18n.md)를 보세요.
 - `title`을 쓰지 않으면, 프로젝트 페이지(`https://user.github.io/repo/`)에서는 리포지토리 이름이, 사용자 페이지(`https://user.github.io/`)에서는 계정 이름이 사이트 이름이 됩니다. `description`을 쓰지 않으면 리포지토리의 설명(About)이 쓰입니다.
 
 ## 원본 .md 파일을 공개하지 않기
@@ -36,33 +36,18 @@ readme_index:
   remove_originals: true
 ```
 
-## 테마 설정
+## 로고와 파비콘
 
-테마의 동작은 `theme_options` 아래에 모아서 씁니다. 쓰지 않은 항목은 기본값이 됩니다.
-
-```yaml
-theme_options:
-  logo: /assets/images/logo.svg
-  favicon: /assets/images/logo.svg
-  dark_mode: auto
-```
-
-로고와 파비콘의 경로는 사이트 루트부터의 경로로 씁니다. 프로젝트 페이지(`https://user.github.io/repo/`)에서도 `/repo`를 붙일 필요가 없습니다.
-
-모든 항목은 [theme_options](../reference/theme-options.md)에 있습니다.
-
-## 화면의 문구 바꾸기
-
-버튼이나 검색창의 문구는 `theme_options.strings`로 덮어쓸 수 있습니다. 여기에 쓴 문구는 언어별 문구를 쓰지 않은 언어의 페이지에 쓰입니다. 언어별로 나눌 때는 [다국어](i18n.md)를 보세요.
+`_config.yml`의 최상위에 씁니다.
 
 ```yaml
-theme_options:
-  strings:
-    search_placeholder: 키워드로 검색
-    next: 다음 페이지
+logo: /assets/images/logo.svg
+favicon: /assets/images/favicon.svg
 ```
 
-키 목록은 [theme_options](../reference/theme-options.md)의 '화면의 문구'에 있습니다.
+경로는 사이트 루트부터의 경로로 씁니다. 프로젝트 페이지(`https://user.github.io/repo/`)에서도 `/repo`를 붙일 필요가 없습니다.
+
+버튼이나 검색창 같은 화면의 문구는 영어뿐입니다.
 
 ## 푸터
 
@@ -70,4 +55,4 @@ theme_options:
 
 ## 404 페이지
 
-존재하지 않는 URL을 열면 테마가 준비한 404 페이지(영어로는 'Page not found')가 나옵니다. 직접 둘 필요가 없습니다. 문구는 `strings`의 `not_found_title`과 `not_found_body`로 바꿀 수 있습니다.
+존재하지 않는 URL을 열면 테마가 준비한 404 페이지(영어로는 'Page not found')가 나옵니다. 직접 둘 필요가 없습니다.

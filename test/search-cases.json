@@ -7,7 +7,6 @@
   { "q": "特徴", "lang": "ja", "expect": "/ja/" },
   { "q": "設定", "lang": "ja", "expect": "/ja/guide/config.html" },
   { "q": "サイトの情報", "lang": "ja", "expect": "/ja/guide/config.html" },
-  { "q": "文言を変える", "lang": "ja", "expect": "/ja/guide/config.html" },
   { "q": "サイドバー", "lang": "ja", "expect": "/ja/guide/sidebar.html" },
   { "q": "nav.yml", "lang": "ja", "expect": "/ja/guide/sidebar.html" },
   { "q": "自動で並べる", "lang": "ja", "expect": "/ja/guide/sidebar.html" },
@@ -20,9 +19,7 @@
   { "q": "色を変える", "lang": "ja", "expect": "/ja/guide/colors.html" },
   { "q": "CSS 変数", "lang": "ja", "expect": "/ja/guide/colors.html" },
   { "q": "コントラスト", "lang": "ja", "expect": "/ja/getting-started/ai.html" },
-  { "q": "theme_options", "lang": "ja", "expect": "/ja/reference/theme-options.html" },
-  { "q": "画面の文言", "lang": "ja", "expect": "/ja/reference/theme-options.html", "top": 3 },
-  { "q": "favicon", "lang": "ja", "expect": "/ja/reference/theme-options.html", "top": 3 },
+  { "q": "favicon", "lang": "ja", "expect": "/ja/reference/site-config.html", "top": 3 },
   { "q": "フォルダー", "lang": "ja", "expect": "/ja/guide/sidebar.html", "top": 3 },
   { "q": "検索の順位", "lang": "ja", "expect": "/ja/guide/search.html", "top": 3 },
   { "q": "install", "lang": "en", "expect": "/getting-started/install.html" },
@@ -30,12 +27,10 @@
   { "q": "Deploy from a branch", "lang": "en", "expect": "/getting-started/ai.html" },
   { "q": "sidebar", "lang": "en", "expect": "/guide/sidebar.html" },
   { "q": "dark mode", "lang": "en", "expect": "/guide/colors.html" },
-  { "q": "theme_options", "lang": "en", "expect": "/reference/theme-options.html" },
   { "q": "설치", "lang": "ko", "expect": "/ko/getting-started/install.html" },
   { "q": "사이드바", "lang": "ko", "expect": "/ko/guide/sidebar.html" },
   { "q": "검색", "lang": "ko", "expect": "/ko/guide/search.html" },
   { "q": "다크 모드", "lang": "ko", "expect": "/ko/guide/colors.html" },
   { "q": "설정", "lang": "ko", "expect": "/ko/guide/config.html" },
-  { "q": "공개 방법", "lang": "ko", "expect": "/ko/getting-started/publish.html" },
-  { "q": "theme_options", "lang": "ko", "expect": "/ko/reference/theme-options.html" }
+  { "q": "공개 방법", "lang": "ko", "expect": "/ko/getting-started/publish.html" }
 ]

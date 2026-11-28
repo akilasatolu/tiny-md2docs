@@ -1,12 +1,11 @@
-{%- assign _tm2d_mode = site.theme_options.dark_mode | default: "auto" -%}
 {%- include lang.html name=page.name path=page.path -%}
 <!doctype html>
-<html lang="{{ tm2d_lang | escape }}"{% if _tm2d_mode == "light" or _tm2d_mode == "dark" %} data-theme="{{ _tm2d_mode }}"{% endif %}>
+<html lang="{{ tm2d_lang | escape }}">
 <head>
 {% include head.html %}
 </head>
-<body data-tm2d-copy="{% include t.html key="copy" attr=true %}" data-tm2d-copied="{% include t.html key="copied" attr=true %}" data-tm2d-heading-link="{% include t.html key="heading_link" attr=true %}">
-<a class="tm2d-skip" href="#main">{% include t.html key="skip_to_content" %}</a>
+<body data-tm2d-copy="Copy" data-tm2d-copied="Copied" data-tm2d-heading-link="Link to this section">
+<a class="tm2d-skip" href="#main">Skip to content</a>
 {% include header.html %}
 {%- include nav-order.html %}
 <div class="tm2d-shell">

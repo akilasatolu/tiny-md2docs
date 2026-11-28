@@ -15,7 +15,7 @@ Put what you want to add, such as an analytics script, in these files. You keep 
 
 A file with the same name in `docs/_includes/` or `docs/_layouts/` is used in place of the theme's file. Give your own parts names that differ from these. A file you replaced no longer receives theme updates.
 
-- `_includes`: `body-custom.html`, `footer.html`, `head.html`, `head-custom.html`, `header.html`, `headings.html`, `lang.html`, `nav-order.html`, `nav-tree.html`, `pager.html`, `search.html`, `sidebar.html`, `t.html`, `toc.html`, `translations.html`, `url-key.html`
+- `_includes`: `body-custom.html`, `footer.html`, `head.html`, `head-custom.html`, `header.html`, `headings.html`, `lang.html`, `nav-order.html`, `nav-tree.html`, `pager.html`, `search.html`, `sidebar.html`, `toc.html`, `translations.html`, `url-key.html`
 - `_layouts`: `default.html`, `page.html`, `post.html`, `404.html`
 
 To write your own 404 page, create `docs/assets/404.html` as follows. The header and sidebar stay those of the theme.

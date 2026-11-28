@@ -12,7 +12,8 @@
 | `description` | 리포지토리의 설명(About) | 사이트 설명 | Jekyll에서 흔히 쓰는 이름(생략하면 `jekyll-github-metadata`가 채움) |
 | `image` | 없음 | SNS에 공유할 때의 이미지 | 이 테마의 사용법 |
 | `lang` | `en` | 언어 폴더에 없는 페이지의 언어([다국어](../guide/i18n.md)) | 이 테마의 사용법 |
-| `theme_options` | 없음 | 테마 설정([theme_options](theme-options.md)) | 이 테마 |
+| `logo` | 없음 | 헤더 로고 이미지의, 사이트 루트부터의 경로 | 이 테마의 사용법 |
+| `favicon` | 없음 | 파비콘의, 사이트 루트부터의 경로 | 이 테마 |
 
 ## 사용할 때 관련되는 설정
 

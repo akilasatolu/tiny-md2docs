@@ -32,19 +32,19 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 `@v0` は、新しい版が次のビルドから自動で反映されます。版を固定するときは、`@` のあとに版の名前を書きます。版の一覧は [CHANGELOG.md](CHANGELOG.md) にあります。
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs@v0.3.3
+remote_theme: akilasatolu/tiny-md2docs@v0.4.0
 ```
 
 ## 設定
 
-`docs/_config.yml` の `theme_options` に書きます。省略した項目は既定値になります。
+ロゴとファビコンは、`docs/_config.yml` の直下に書きます。どちらも省略できます。
 
-| 項目 | 既定値 | 内容 |
-| --- | --- | --- |
-| `dark_mode` | `auto` | `auto`(OS に合わせ、切り替えボタンを出す)、`light`、`dark` |
-| `logo` | なし | ヘッダーのロゴ画像のパス |
-| `favicon` | なし | ファビコンのパス |
-| `strings` | なし | 画面の文言の上書き |
+```yaml
+logo: /assets/images/logo.svg
+favicon: /assets/images/favicon.svg
+```
+
+ボタンや検索窓などの画面の文言は、英語です。ダークモードは OS の設定に合わせ、ヘッダーのボタンで切り替えられます。
 
 `_config.yml` の直下に書く設定は、[リファレンス](https://akilasatolu.github.io/tiny-md2docs/ja/reference/site-config.html)にまとめています。
 
@@ -75,7 +75,7 @@ remote_theme: akilasatolu/tiny-md2docs@v0.3.3
 
 ## 404 ページ
 
-テーマが `/404.html` を用意するので、自分で置く必要はありません。文言は `theme_options.strings` の `not_found_title` と `not_found_body` で変えられます。
+テーマが `/404.html` を用意するので、自分で置く必要はありません。
 
 ## サイズ
 
@@ -103,8 +103,8 @@ script/size.sh            # サイズを測る
 版を出すときは、`CHANGELOG.md` と版の表記を直して commit し、版のタグを付けて、`v0` ブランチも同じ commit に進めます。
 
 ```bash
-git tag -a v0.3.3 -m v0.3.3
-git push --atomic origin main v0.3.3 main:v0
+git tag -a v0.4.0 -m v0.4.0
+git push --atomic origin main v0.4.0 main:v0
 ```
 
 ## ライセンス

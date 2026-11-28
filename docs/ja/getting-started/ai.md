@@ -43,21 +43,11 @@ description: 製品の使い方をまとめたドキュメント
 lang: en
 optional_front_matter:
   remove_originals: true
-theme_options:
-  logo: /assets/images/logo.svg
-  favicon: /assets/images/logo.svg
-  dark_mode: auto
+logo: /assets/images/logo.svg
+favicon: /assets/images/favicon.svg
 ```
 
-- 日本語だけのサイトでは lang: ja にして、画面の文言を theme_options.strings に書きます(下の「多言語」のキー)。言語が1つのときは、次のように strings の直下に書けます。
-
-```yaml
-lang: ja
-theme_options:
-  strings:
-    search_placeholder: ドキュメントを検索
-    next: 次へ
-```
+- テーマの画面の文言は英語だけです。
 
 直下の設定:
 - remote_theme: テーマ。@ のあとにブランチ、タグ、コミットを書くと版を固定できます。
@@ -65,19 +55,11 @@ theme_options:
 - description: サイトの説明。省略するとリポジトリの説明です。
 - image: SNS で共有したときの画像の既定値。
 - lang: 言語のフォルダにないページの言語。省略すると en です。
-- theme_options: テーマの設定(下の表)。
+- logo: ヘッダーのロゴ画像のパス(サイトのルートから。/repo は付けない)。
+- favicon: ファビコンのパス(同上)。
 - optional_front_matter: remove_originals: true で、元の .md ファイルを公開しません。enabled: false にすると front matter のない Markdown はページになりません。
 - readme_index: index.md のないフォルダでは README.md がトップページになります。remove_originals、enabled、with_frontmatter を指定できます。
 - exclude: 公開しないファイル。書くと Jekyll の既定の一覧(Gemfile、Gemfile.lock、node_modules、vendor/bundle/、vendor/cache/、vendor/gems/、vendor/ruby/)と CNAME が置き換わるので、一緒に書きます。
-
-theme_options(省略した項目は既定値):
-
-| 項目 | 既定値 | 内容 |
-| --- | --- | --- |
-| dark_mode | auto | auto、light、dark |
-| logo | なし | ロゴ画像のパス(サイトのルートから。/repo は付けない) |
-| favicon | なし | ファビコンのパス(同上) |
-| strings | なし | 画面の文言の上書き |
 
 ## ページの書き方
 - Markdown(GitHub Pages の kramdown、GFM)で書きます。
@@ -158,22 +140,9 @@ docs/assets/css/style.scss を作ります。最初の2行と @import は必須�
 - 言語のフォルダの名前は ISO 639-1 の2文字で、地域も付けられます(zh-CN)。この形の名前のフォルダは、いつも言語とみなされます。
 - 言語のフォルダを除いたパスが同じファイルが翻訳で、翻訳のあるページに言語の切り替えが出ます。共通の画像へのパスは、言語のフォルダの中では ../ が1つ多くなります。
 
-```yaml
-lang: en
-theme_options:
-  strings:
-    ja:
-      search_placeholder: ドキュメントを検索
-      next: 次へ
-```
-
-- テーマの画面の文言は英語だけです。ほかの言語では theme_options.strings に言語ごとに書きます。
 - 並びを手で決めるときは docs/_data/nav.ja.yml のように言語ごとに置きます。URL は /ja/guide/config.html のように書きます。
 - 言語ごとのトップページは <言語>/index.md です(URL は /<言語>/)。
 - サイドバーと検索は、今のページと同じ言語のページだけが対象です。
-
-strings のキー(かっこ内は英語の既定の文言):
-skip_to_content (Skip to content)、nav_label (Documentation)、menu_open (Open menu)、menu_close (Close menu)、search_label (Search)、search_placeholder (Search the docs)、search_open (Open search)、search_clear (Clear search)、search_no_results (No results)、search_results_count ({n} results)、toggle_dark (Switch to dark mode)、toggle_light (Switch to light mode)、github (GitHub)、toc_title (On this page)、prev (Previous)、next (Next)、copy (Copy)、copied (Copied)、not_found_title (Page not found)、not_found_body (The page you are looking for may have been moved or deleted.)、heading_link (Link to this section)、lang_switch (Language)
 
 ## 使えないことと制限
 - GitHub Pages の標準のビルドで動くものだけを使います。独自のプラグインは使えません。

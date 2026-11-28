@@ -12,7 +12,8 @@ These are the settings you write at the top level of `docs/_config.yml` that the
 | `description` | The repository description (About) | The site description | Common Jekyll name (default filled by `jekyll-github-metadata`) |
 | `image` | None | The image shown when shared on social media | This theme's use |
 | `lang` | `en` | The language of pages that are not in a language folder ([Multilingual](../guide/i18n.md)) | This theme's use |
-| `theme_options` | None | The theme's settings ([theme_options](theme-options.md)) | This theme |
+| `logo` | None | The path of the logo image in the header, from the site root | This theme's use |
+| `favicon` | None | The path of the favicon, from the site root | This theme |
 
 ## Related settings
 

@@ -21,7 +21,7 @@ function block(page) {
 function names(lang) {
   const out = [];
   const doc = (p) => read(`docs/${lang}${p}`);
-  for (const p of ['reference/theme-options.md', 'reference/site-config.md']) {
+  for (const p of ['reference/site-config.md']) {
     out.push(...[...doc(p).matchAll(/^\| `([a-z_]+)` \|/gm)].map((m) => m[1]));
   }
   out.push(...[...doc('guide/colors.md').matchAll(/^\| `(--tm2d-[a-z-]+)` \|/gm)].map((m) => m[1]));
@@ -48,7 +48,7 @@ for (const lang of LANGS) {
 
   test(`${path}: lists every documented setting and variable`, () => {
     const list = names(lang);
-    assert.ok(list.length > 45, String(list.length));
+    assert.ok(list.length > 20, String(list.length));
     const page = read(path);
     assert.deepEqual(missing(page, list), []);
     assert.deepEqual(missing(page.replaceAll('favicon', ''), list), ['favicon']);

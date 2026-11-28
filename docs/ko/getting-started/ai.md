@@ -43,21 +43,11 @@ description: 제품 사용법을 정리한 문서
 lang: en
 optional_front_matter:
   remove_originals: true
-theme_options:
-  logo: /assets/images/logo.svg
-  favicon: /assets/images/logo.svg
-  dark_mode: auto
+logo: /assets/images/logo.svg
+favicon: /assets/images/favicon.svg
 ```
 
-- 한국어만 쓰는 사이트는 lang: ko로 하고, 화면 문구를 theme_options.strings에 씁니다(아래 "다국어"의 키). 언어가 하나면 다음처럼 strings 바로 아래에 쓸 수 있습니다.
-
-```yaml
-lang: ko
-theme_options:
-  strings:
-    search_placeholder: 문서 검색
-    next: 다음
-```
+- 테마의 화면 문구는 영어뿐입니다.
 
 최상위 설정:
 - remote_theme: 테마. @ 뒤에 브랜치, 태그, 커밋을 쓰면 버전을 고정할 수 있습니다.
@@ -65,19 +55,11 @@ theme_options:
 - description: 사이트 설명. 생략하면 저장소 설명입니다.
 - image: SNS에 공유할 때 쓰는 이미지의 기본값.
 - lang: 언어 폴더에 없는 페이지의 언어. 생략하면 en입니다.
-- theme_options: 테마 설정(아래 표).
+- logo: 헤더 로고 이미지 경로(사이트 루트부터. /repo는 붙이지 않음).
+- favicon: 파비콘 경로(위와 같음).
 - optional_front_matter: remove_originals: true로 하면 원본 .md 파일을 공개하지 않습니다. enabled: false로 하면 front matter가 없는 Markdown은 페이지가 되지 않습니다.
 - readme_index: index.md가 없는 폴더에서는 README.md가 첫 페이지가 됩니다. remove_originals, enabled, with_frontmatter를 지정할 수 있습니다.
 - exclude: 공개하지 않을 파일. 쓰면 Jekyll의 기본 목록(Gemfile, Gemfile.lock, node_modules, vendor/bundle/, vendor/cache/, vendor/gems/, vendor/ruby/)과 CNAME이 대체되므로 함께 씁니다.
-
-theme_options(생략한 항목은 기본값):
-
-| 항목 | 기본값 | 내용 |
-| --- | --- | --- |
-| dark_mode | auto | auto, light, dark |
-| logo | 없음 | 로고 이미지 경로(사이트 루트부터. /repo는 붙이지 않음) |
-| favicon | 없음 | 파비콘 경로(위와 같음) |
-| strings | 없음 | 화면 문구 덮어쓰기 |
 
 ## 페이지 작성
 - Markdown(GitHub Pages의 kramdown, GFM)으로 씁니다.
@@ -158,22 +140,9 @@ docs/assets/css/style.scss를 만듭니다. 처음 두 줄과 @import는 필수�
 - 언어 폴더의 이름은 ISO 639-1의 두 글자이고 지역도 붙일 수 있습니다(zh-CN). 이런 형태의 이름을 가진 폴더는 항상 언어로 봅니다.
 - 언어 폴더를 뺀 경로가 같은 파일이 번역이고, 번역이 있는 페이지에 언어 전환이 나옵니다. 공통 이미지의 경로는 언어 폴더 안에서는 ../가 하나 더 필요합니다.
 
-```yaml
-lang: en
-theme_options:
-  strings:
-    ko:
-      search_placeholder: 문서 검색
-      next: 다음
-```
-
-- 테마의 화면 문구는 영어뿐입니다. 다른 언어는 theme_options.strings에 언어별로 씁니다.
 - 순서를 직접 정할 때는 docs/_data/nav.ko.yml처럼 언어별 파일을 둡니다. URL은 /ko/guide/config.html처럼 씁니다.
 - 언어별 첫 페이지는 <언어>/index.md입니다(URL은 /<언어>/).
 - 사이드바와 검색은 현재 페이지와 같은 언어의 페이지만 대상입니다.
-
-strings의 키(괄호 안은 영어 기본 문구):
-skip_to_content (Skip to content), nav_label (Documentation), menu_open (Open menu), menu_close (Close menu), search_label (Search), search_placeholder (Search the docs), search_open (Open search), search_clear (Clear search), search_no_results (No results), search_results_count ({n} results), toggle_dark (Switch to dark mode), toggle_light (Switch to light mode), github (GitHub), toc_title (On this page), prev (Previous), next (Next), copy (Copy), copied (Copied), not_found_title (Page not found), not_found_body (The page you are looking for may have been moved or deleted.), heading_link (Link to this section), lang_switch (Language)
 
 ## 할 수 없는 것과 제한
 - GitHub Pages의 표준 빌드에서 동작하는 것만 사용합니다. 자체 플러그인은 쓸 수 없습니다.

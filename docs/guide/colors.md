@@ -46,13 +46,7 @@ The dark mode colors are kept in variables with different names (such as `--tm2d
 
 ## Switch dark mode
 
-Set it with `theme_options.dark_mode`.
-
-| Value | Behavior |
-| --- | --- |
-| `auto` (default) | Follows the OS setting. A toggle button appears in the header and remembers the choice |
-| `light` | Always light mode. No button |
-| `dark` | Always dark mode. No button |
+The theme follows the OS setting. A toggle button appears in the header and remembers the choice.
 
 ## Change fonts and widths
 

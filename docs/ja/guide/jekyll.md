@@ -15,7 +15,7 @@ Jekyll の標準の仕組みで、テーマに足したり、部品を置き換�
 
 `docs/_includes/` や `docs/_layouts/` に同じ名前のファイルを置くと、テーマのファイルの代わりに使われます。自分の部品には、次と違う名前を付けてください。置き換えたファイルには、テーマの更新が届きません。
 
-- `_includes`: `body-custom.html`、`footer.html`、`head.html`、`head-custom.html`、`header.html`、`headings.html`、`lang.html`、`nav-order.html`、`nav-tree.html`、`pager.html`、`search.html`、`sidebar.html`、`t.html`、`toc.html`、`translations.html`、`url-key.html`
+- `_includes`: `body-custom.html`、`footer.html`、`head.html`、`head-custom.html`、`header.html`、`headings.html`、`lang.html`、`nav-order.html`、`nav-tree.html`、`pager.html`、`search.html`、`sidebar.html`、`toc.html`、`translations.html`、`url-key.html`
 - `_layouts`: `default.html`、`page.html`、`post.html`、`404.html`
 
 404 ページを自分で書くときは、`docs/assets/404.html` を次のように作ります。ヘッダーとサイドバーは、テーマのものが出ます。

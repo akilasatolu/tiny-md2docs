@@ -43,21 +43,11 @@ description: How to use the product
 lang: en
 optional_front_matter:
   remove_originals: true
-theme_options:
-  logo: /assets/images/logo.svg
-  favicon: /assets/images/logo.svg
-  dark_mode: auto
+logo: /assets/images/logo.svg
+favicon: /assets/images/favicon.svg
 ```
 
-- For a site in only one language other than English, set lang to that language and write the interface text in theme_options.strings (the keys are under "Multilingual" below). With one language, you can write them directly under strings.
-
-```yaml
-lang: ja
-theme_options:
-  strings:
-    search_placeholder: ドキュメントを検索
-    next: 次へ
-```
+- The theme's on-screen text is in English only.
 
 Top-level settings:
 - remote_theme: the theme. Add @ followed by a branch, tag, or commit to pin a version.
@@ -65,19 +55,11 @@ Top-level settings:
 - description: the description of the site. If omitted, the description of the repository.
 - image: the default image used when a page is shared on social media.
 - lang: the language of pages that are not in a language folder. If omitted, en.
-- theme_options: theme settings (the table below).
+- logo: the path of the logo image in the header (from the site root; do not add /repo).
+- favicon: the path of the favicon (same as above).
 - optional_front_matter: remove_originals: true stops publishing the original .md files. With enabled: false, Markdown without front matter does not become a page.
 - readme_index: in a folder without index.md, README.md becomes the top page. You can set remove_originals, enabled, and with_frontmatter.
 - exclude: files not to publish. Writing it replaces Jekyll's default list (Gemfile, Gemfile.lock, node_modules, vendor/bundle/, vendor/cache/, vendor/gems/, vendor/ruby/) and CNAME, so write those too.
-
-theme_options (omitted items use the default):
-
-| Item | Default | Meaning |
-| --- | --- | --- |
-| dark_mode | auto | auto, light, or dark |
-| logo | none | path of the logo image (from the site root; do not add /repo) |
-| favicon | none | path of the favicon (same as above) |
-| strings | none | overrides of the interface text |
 
 ## Writing pages
 - Write in Markdown (kramdown with GFM, as on GitHub Pages).
@@ -158,22 +140,9 @@ Create docs/assets/css/style.scss. The first two lines and the @import are requi
 - A language folder is a two-letter ISO 639-1 code, optionally with a region (zh-CN). A folder with such a name is always treated as a language.
 - Translations are files with the same path apart from the language folder, and the language switch appears on pages that have them. Paths to shared images need one more ../ in a language folder.
 
-```yaml
-lang: en
-theme_options:
-  strings:
-    ja:
-      search_placeholder: ドキュメントを検索
-      next: 次へ
-```
-
-- The theme's interface text is only in English. For other languages, write it per language in theme_options.strings.
 - To set the order by hand, add a file per language such as docs/_data/nav.ja.yml. In it, write URLs such as /ja/guide/config.html.
 - The top page of a language is <language>/index.md (URL /<language>/).
 - The sidebar and search cover only pages in the same language as the current page.
-
-Keys of strings (the default English text is in parentheses):
-skip_to_content (Skip to content), nav_label (Documentation), menu_open (Open menu), menu_close (Close menu), search_label (Search), search_placeholder (Search the docs), search_open (Open search), search_clear (Clear search), search_no_results (No results), search_results_count ({n} results), toggle_dark (Switch to dark mode), toggle_light (Switch to light mode), github (GitHub), toc_title (On this page), prev (Previous), next (Next), copy (Copy), copied (Copied), not_found_title (Page not found), not_found_body (The page you are looking for may have been moved or deleted.), heading_link (Link to this section), lang_switch (Language)
 
 ## What you cannot do, and limits
 - Use only what works with the standard GitHub Pages build. Custom plugins cannot be used.

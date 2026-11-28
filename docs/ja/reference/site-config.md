@@ -12,7 +12,8 @@
 | `description` | リポジトリの説明(About) | サイトの説明 | Jekyll でよく使う名前(省略時は `jekyll-github-metadata` が補う) |
 | `image` | なし | SNS で共有したときの画像 | このテーマの使い方 |
 | `lang` | `en` | 言語のフォルダにないページの言語([多言語](../guide/i18n.md)) | このテーマの使い方 |
-| `theme_options` | なし | テーマの設定([theme_options](theme-options.md)) | このテーマ |
+| `logo` | なし | ヘッダーのロゴ画像の、サイトのルートからのパス | このテーマの使い方 |
+| `favicon` | なし | ファビコンの、サイトのルートからのパス | このテーマ |
 
 ## 使うときに関係する設定
 

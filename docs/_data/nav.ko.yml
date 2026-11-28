@@ -30,5 +30,3 @@
   children:
     - title: _config.yml
       url: /ko/reference/site-config.html
-    - title: theme_options
-      url: /ko/reference/theme-options.html
