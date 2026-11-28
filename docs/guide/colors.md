@@ -16,7 +16,7 @@ The colors are set with CSS variables. To change them, create `docs/assets/css/s
 }
 ```
 
-You must write the first two lines (an empty front matter) and `@import "tm2d";`. This file is used in place of the theme's `style.scss`.
+You must write the first two lines (an empty front matter) and the `@import` line. {% raw %}`@import "{{ site.theme }}";`{% endraw %}, as in the GitHub documentation, also works (not in a fork with another repository name). This file is used in place of the theme's `style.scss`.
 
 The variables you can use are as follows.
 

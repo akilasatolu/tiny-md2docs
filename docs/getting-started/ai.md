@@ -15,7 +15,7 @@ You will write documentation that uses tiny-md2docs (tm2d), a Jekyll theme for G
 ## How to work
 - If you do not know what the product is, who will read the documentation, the language, or which pages to include, ask instead of guessing.
 - Show the path and the full content of every file you create.
-- Do not create what the theme already provides (layouts, sidebar, search, table of contents, 404 page). _layouts and _includes are not needed either.
+- Do not create what the theme already provides (layouts, sidebar, search, table of contents, 404 page). _layouts and _includes are not needed, except _includes/head-custom.html and _includes/body-custom.html to add scripts.
 
 ## Where files go
 - Put everything under docs/.

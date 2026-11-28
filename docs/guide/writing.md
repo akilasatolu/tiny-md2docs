@@ -78,7 +78,7 @@ You can also write several lines or paragraphs. Start each line with `>`, and pu
 
 ## Copy code
 
-When you hover over a code block, a copy button appears at the top right. On touch screens, it is always shown. You can turn it off with `theme_options.code_copy: false`.
+When you hover over a code block, a copy button appears at the top right. On touch screens, it is always shown. It also appears on blocks made with Jekyll's `highlight` tag, and line numbers are not copied. You can turn it off with `theme_options.code_copy: false`.
 
 ```bash
 bundle exec jekyll serve

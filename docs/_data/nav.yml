@@ -24,6 +24,8 @@
       url: /guide/elements.html
     - title: Multilingual
       url: /guide/i18n.html
+    - title: Extend the theme
+      url: /guide/jekyll.html
 - title: Reference
   children:
     - title: _config.yml

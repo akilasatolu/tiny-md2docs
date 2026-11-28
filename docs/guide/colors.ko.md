@@ -16,7 +16,7 @@
 }
 ```
 
-처음 두 줄(빈 front matter)과 `@import "tm2d";`는 반드시 써야 합니다. 이 파일이 테마의 `style.scss` 대신 쓰입니다.
+처음 두 줄(빈 front matter)과 `@import` 줄은 반드시 써야 합니다. GitHub 문서에 있는 {% raw %}`@import "{{ site.theme }}";`{% endraw %}도 쓸 수 있습니다(다른 이름의 저장소로 포크한 경우는 제외). 이 파일이 테마의 `style.scss` 대신 쓰입니다.
 
 쓸 수 있는 변수는 다음과 같습니다.
 

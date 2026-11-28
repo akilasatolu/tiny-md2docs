@@ -1,5 +1,13 @@
 # 変更履歴
 
+## v0.2.2
+
+- `_includes/head-custom.html` と `_includes/body-custom.html` で、`<head>` と `</body>` の直前に足せる
+- `@import "{{ site.theme }}";` で読み込める
+- `post` レイアウトを追加。投稿(`_posts`)がテーマの画面で表示される
+- `{% highlight %}` のコードにもコピーのボタンを出す(行番号はコピーしない)
+- テーマのロゴ画像(`/assets/images/tm2d-mark.svg`、`tm2d-wordmark.svg`)は配らない
+
 ## v0.2.1
 
 - `theme_options.lang_layout: folder` を追加。言語のフォルダ(`docs/ja/` など)で多言語にする形も選べる。サイトの `lang` の言語は `docs/` の直下に置く。指定がなければ、今までどおりファイル名で決まる

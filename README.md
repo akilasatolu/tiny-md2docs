@@ -6,6 +6,7 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 - GitHub Pages の標準のビルドだけで動きます。ワークフロー、npm、プラグインの追加は要りません。
 - 日本語の検索ができます(外部のサービスは使いません)。
 - ダークモード、目次、パンくず、コードのコピー、多言語に対応しています。
+- `head-custom.html` などで拡張できます([テーマを拡張する](https://akilasatolu.github.io/tiny-md2docs/guide/jekyll.ja.html))。
 - サイドバーの階層は深くできます(`nav.yml` の入れ子は48段まで)。本文の折りたたみ(`<details>`)も使えます。
 - 印刷に対応しています。
 - CSS と JS は、合わせて gzip で 16 KB 以下です。
@@ -31,7 +32,7 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 `@v0` は、新しい版が次のビルドから自動で反映されます。版を固定するときは、`@` のあとに版の名前を書きます。版の一覧は [CHANGELOG.md](CHANGELOG.md) にあります。
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs@v0.2.1
+remote_theme: akilasatolu/tiny-md2docs@v0.2.2
 ```
 
 ## 設定
@@ -93,11 +94,11 @@ remote_theme: akilasatolu/tiny-md2docs@v0.2.1
 
 | ファイル | gzip |
 | --- | --- |
-| style.css | 4226 バイト |
-| tm2d.js | 2056 バイト |
+| style.css | 4258 バイト |
+| tm2d.js | 2111 バイト |
 | search-core.js | 2812 バイト |
 | search-ui.js | 2704 バイト |
-| 合計 | 11798 バイト |
+| 合計 | 11885 バイト |
 
 ## 開発
 
@@ -111,8 +112,8 @@ script/size.sh            # サイズを測る
 版を出すときは、`CHANGELOG.md` と版の表記を直して commit し、版のタグを付けて、`v0` ブランチも同じ commit に進めます。
 
 ```bash
-git tag -a v0.2.1 -m v0.2.1
-git push --atomic origin main v0.2.1 main:v0
+git tag -a v0.2.2 -m v0.2.2
+git push --atomic origin main v0.2.2 main:v0
 ```
 
 ## ライセンス

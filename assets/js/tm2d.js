@@ -104,8 +104,9 @@
       b.title = text;
       b.setAttribute('aria-label', text);
     };
-    d.querySelectorAll('.tm2d-content div.highlighter-rouge').forEach(function (box) {
-      var pre = box.querySelector('pre');
+    d.querySelectorAll('.tm2d-content :is(div.highlighter-rouge, figure.highlight)').forEach(function (box) {
+      // With line numbers, copy the code cell only.
+      var pre = box.querySelector('td.code pre, .rouge-code pre') || box.querySelector('pre');
       if (!pre) return;
       var b = d.createElement('button');
       b.type = 'button';

@@ -1,5 +1,5 @@
 // Copy button on code blocks (added by tm2d.js)
-.tm2d-content div.highlighter-rouge {
+.tm2d-content :is(div.highlighter-rouge, figure.highlight) {
   position: relative;
 }
 
@@ -42,7 +42,7 @@
   }
 }
 
-div.highlighter-rouge:hover .tm2d-copy,
+:is(div.highlighter-rouge, figure.highlight):hover > .tm2d-copy,
 .tm2d-copy:focus-visible,
 .tm2d-copy.is-done {
   opacity: 1;
@@ -56,7 +56,8 @@ div.highlighter-rouge:hover .tm2d-copy,
 
 // On touch screens the button is always shown, so the code scrolls in the space left of it.
 @media screen and (hover: none) {
-  .tm2d-content div.highlighter-rouge:has(> .tm2d-copy) > .highlight > pre {
+  .tm2d-content div.highlighter-rouge:has(> .tm2d-copy) > .highlight > pre,
+  .tm2d-content figure.highlight:has(> .tm2d-copy) > pre {
     padding: 16px 40px 0 0;
 
     > code {

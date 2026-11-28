@@ -24,6 +24,8 @@
       url: /guide/elements.ja.html
     - title: 多言語
       url: /guide/i18n.ja.html
+    - title: テーマを拡張する
+      url: /guide/jekyll.ja.html
 - title: リファレンス
   children:
     - title: _config.yml

@@ -135,8 +135,9 @@ img {
     }
   }
 
-  // Wrapper emitted by rouge; spacing is left to the inner pre.
-  .highlighter-rouge {
+  // Wrappers emitted by rouge (fenced code and the highlight tag); spacing is left to the inner pre.
+  .highlighter-rouge,
+  figure.highlight {
     margin: 0 0 24px;
 
     pre {

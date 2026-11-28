@@ -78,7 +78,7 @@
 
 ## コードのコピー
 
-コードのブロックにマウスを重ねると、右上にコピーのボタンが出ます。タッチ操作の画面では、いつも出ています。`theme_options.code_copy: false` で消せます。
+コードのブロックにマウスを重ねると、右上にコピーのボタンが出ます。タッチ操作の画面では、いつも出ています。Jekyll の `highlight` タグのブロックにも出て、行番号はコピーされません。`theme_options.code_copy: false` で消せます。
 
 ```bash
 bundle exec jekyll serve

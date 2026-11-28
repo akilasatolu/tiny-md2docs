@@ -78,7 +78,7 @@
 
 ## 코드 복사
 
-코드 블록에 마우스를 올리면 오른쪽 위에 복사 버튼이 나옵니다. 터치 화면에서는 항상 나와 있습니다. `theme_options.code_copy: false`로 끌 수 있습니다.
+코드 블록에 마우스를 올리면 오른쪽 위에 복사 버튼이 나옵니다. 터치 화면에서는 항상 나와 있습니다. Jekyll의 `highlight` 태그 블록에도 나오며 줄 번호는 복사되지 않습니다. `theme_options.code_copy: false`로 끌 수 있습니다.
 
 ```bash
 bundle exec jekyll serve

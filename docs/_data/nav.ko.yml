@@ -24,6 +24,8 @@
       url: /guide/elements.ko.html
     - title: 다국어
       url: /guide/i18n.ko.html
+    - title: 테마 확장하기
+      url: /guide/jekyll.ko.html
 - title: 레퍼런스
   children:
     - title: _config.yml
