@@ -14,6 +14,8 @@ layout: null
   {%- assign _tm2d_title = p.title | default: "" | split: "{%" | first | strip -%}
   {%- include lang.html name=p.name path=p.path -%}
   {%- if _tm2d_title == "" -%}{%- assign _tm2d_title = tm2d_stem -%}{%- endif -%}
+  {%- comment -%} 見出しから取ったタイトルの文字参照を、文字に戻す(& は最後)。 {%- endcomment -%}
+  {%- assign _tm2d_title = _tm2d_title | replace: "&lt;", "<" | replace: "&gt;", ">" | replace: "&quot;", '"' | replace: "&#39;", "'" | replace: "&amp;", "&" -%}
   {%- if _tm2d_id > 0 %},{% endif %}
 {"id":{{ _tm2d_id }},"title":{{ _tm2d_title | jsonify }},"url":{{ p.url | relative_url | jsonify }},"lang":{{ tm2d_lang | jsonify }}}
   {%- assign _tm2d_id = _tm2d_id | plus: 1 -%}

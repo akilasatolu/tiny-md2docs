@@ -2,15 +2,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>(function(){var t;try{t=localStorage.getItem("tm2d-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)})();</script>
 {%- assign _tm2d_page_title = page.title | default: "" %}
+{%- comment -%} 見出しがないページは、サイドバーと同じくファイル名をタイトルにする(トップとフォルダのトップを除く)。 {%- endcomment -%}
+{%- if _tm2d_page_title == "" %}
+  {%- assign _tm2d_stem_low = tm2d_stem | downcase %}
+  {%- unless _tm2d_stem_low == "index" or _tm2d_stem_low == "readme" %}
+    {%- assign _tm2d_page_title = tm2d_stem %}
+  {%- endunless %}
+{%- endif %}
 {%- if page.url == "/" or _tm2d_page_title == "" %}
   {%- assign _tm2d_og_title = site.title %}
 <title>{{ site.title | escape }}</title>
 {%- elsif site.title %}
-  {%- assign _tm2d_og_title = page.title %}
-<title>{{ page.title | escape }} | {{ site.title | escape }}</title>
+  {%- assign _tm2d_og_title = _tm2d_page_title %}
+<title>{{ _tm2d_page_title | escape_once }} | {{ site.title | escape }}</title>
 {%- else %}
-  {%- assign _tm2d_og_title = page.title %}
-<title>{{ page.title | escape }}</title>
+  {%- assign _tm2d_og_title = _tm2d_page_title %}
+<title>{{ _tm2d_page_title | escape_once }}</title>
 {%- endif %}
 {%- assign _tm2d_desc = site.description %}
 {%- if _tm2d_desc %}
@@ -18,7 +25,7 @@
 {%- endif %}
 <link rel="canonical" href="{{ page.url | absolute_url }}">
 {%- if _tm2d_og_title %}
-<meta property="og:title" content="{{ _tm2d_og_title | escape }}">
+<meta property="og:title" content="{{ _tm2d_og_title | escape_once }}">
 {%- endif %}
 {%- if _tm2d_desc %}
 <meta property="og:description" content="{{ _tm2d_desc | strip_html | normalize_whitespace | escape }}">

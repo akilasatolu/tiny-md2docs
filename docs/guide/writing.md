@@ -6,7 +6,7 @@ The writing you can use in the body is listed with examples in [Markdown example
 
 ## Pages and links
 
-- Front matter (settings enclosed in `---`) is not needed. The first heading of the body is used as the page name.
+- Front matter (settings enclosed in `---`) is not needed. The heading at the very top of the body (`#` to `###`) is used as the page name. A page that does not start with a heading (including one that starts with an image or a comment) is named after its file.
 - Write links between pages as a relative path to the `.md` file you link to. When published, they turn into links to the `.html` pages. For example, a link from this page (`docs/guide/writing.md`) to [Overview](../index.md) is written as `../index.md`.
 - Do not use paths that start with `/` (such as `/guide/config.md`). Except on pages directly under `docs/`, the link is not converted and breaks.
 - Also avoid writing `.html` links directly. A `.html` link that starts with `/` breaks on a project page (`https://user.github.io/repo/`).
@@ -130,4 +130,4 @@ When you hover over a heading from h2 to h6, a `#` link to that heading appears.
 
 ## Printing
 
-When you print a page, the header, sidebar, table of contents, previous and next links, and copy buttons are left out, and the page is printed in the light colors.
+When you print a page, the header, sidebar, table of contents, previous and next links, and copy buttons are left out, and the page is printed in the light colors. The content of closed collapsible blocks (`<details>`) is printed too (older browsers may leave it out).

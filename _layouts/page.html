@@ -24,10 +24,21 @@ layout: default
     {%- assign tm2d_html = tm2d_html | replace: _tm2d_a, _tm2d_to | replace: _tm2d_b, _tm2d_to | replace: _tm2d_c, _tm2d_to | replace: _tm2d_d, _tm2d_to_d -%}
   {%- endfor -%}
 {%- endif -%}
+{%- comment -%}
+  本文の先頭の h2・h3 がタイトルと同じなら(見出しから取ったタイトル)、h1 を足さない。
+{%- endcomment -%}
+{%- assign _tm2d_dup = false -%}
+{%- assign _tm2d_first = content | strip -%}
+{%- assign _tm2d_tag = _tm2d_first | slice: 0, 3 -%}
+{%- if _tm2d_tag == "<h2" or _tm2d_tag == "<h3" -%}
+  {%- assign _tm2d_text = _tm2d_first | split: "</h" | first | strip_html | normalize_whitespace | strip -%}
+  {%- assign _tm2d_title = page.title | strip -%}
+  {%- if _tm2d_text == _tm2d_title -%}{%- assign _tm2d_dup = true -%}{%- endif -%}
+{%- endif -%}
 {%- include toc.html html=content variant="inline" %}
 <article class="tm2d-content">
-{%- unless content contains "<h1" or page.title == nil %}
-<h1>{{ page.title | escape }}</h1>
+{%- unless _tm2d_dup or content contains "<h1" or page.title == nil %}
+<h1>{{ page.title | escape_once }}</h1>
 {%- endunless %}
 {{ tm2d_html }}
 </article>

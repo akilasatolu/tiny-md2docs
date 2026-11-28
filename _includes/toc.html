@@ -9,7 +9,7 @@
 {%- for _h in tm2d_headings -%}
   {%- assign _f = _h | split: "␟" -%}
   {%- if _f[1] != "" %}
-<li class="tm2d-toc__l{{ _f[0] }}"><a href="#{{ _f[1] }}">{{ _f[2] | escape }}</a></li>
+<li class="tm2d-toc__l{{ _f[0] }}"><a href="#{{ _f[1] }}">{{ _f[2] | escape_once }}</a></li>
   {%- endif -%}
 {%- endfor %}
 </ul>

@@ -27,11 +27,11 @@
   {%- for _name in _tm2d_groups -%}
     {%- if _name != tm2d_current_groups[forloop.index0] -%}{%- assign _tm2d_cur = false -%}{%- endif -%}
     {%- if forloop.index0 >= _tm2d_common %}
-<li class="tm2d-nav__group{% unless forloop.first %} tm2d-nav__group--sub{% endunless %}"><details{% if _tm2d_cur %} open{% endif %}><summary>{{ _name | escape }}</summary><ul>
+<li class="tm2d-nav__group{% unless forloop.first %} tm2d-nav__group--sub{% endunless %}"><details{% if _tm2d_cur %} open{% endif %}><summary>{{ _name | escape_once }}</summary><ul>
     {%- endif -%}
   {%- endfor -%}
   {%- assign _tm2d_open = _tm2d_groups %}
-<li><a class="tm2d-nav__link" href="{{ _f[1] | relative_url }}"{% if forloop.index0 == tm2d_current_index %} aria-current="page"{% endif %}>{{ _f[3] | escape }}</a></li>
+<li><a class="tm2d-nav__link" href="{{ _f[1] | relative_url }}"{% if forloop.index0 == tm2d_current_index %} aria-current="page"{% endif %}>{{ _f[3] | escape_once }}</a></li>
 {%- endfor -%}
 {%- assign _tm2d_close = _tm2d_open.size -%}
 {%- for _x in (1.._tm2d_close) %}</ul></details></li>{% endfor %}

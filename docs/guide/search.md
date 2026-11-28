@@ -67,4 +67,4 @@ For each word you type, the points for each place it matches are added up, and p
 
 ## What is read
 
-Search looks at up to 5000 characters of the body of each page. The first search reads all pages of the current language, so it takes longer on a site with many pages. A page that cannot be read within 10 seconds is found by its title only. To search later parts too, split the page.
+Search looks at the whole body of each page. The first search reads all pages of the current language, so it takes longer on a site with many or long pages. A page that cannot be read within 10 seconds is found by its title only.

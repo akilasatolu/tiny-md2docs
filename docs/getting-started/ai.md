@@ -63,7 +63,7 @@ Top-level settings:
 
 ## Writing pages
 - Write in Markdown (kramdown with GFM, as on GitHub Pages).
-- Front matter is not needed. The name of a page is the first heading of the body. Start each page with a "# Heading".
+- Front matter is not needed. The name of a page is the heading at the very top of the body (without one, the file name). Start each page with a "# Heading".
 - Link between pages with a relative path to the target .md file. Examples: [Usage](guide/usage.md), [Back](../overview.md). In a translated page too, write relative paths; they stay inside the same language folder. Do not write paths starting with / or direct links to .html.
 - Write images with a relative path. Example: ![Figure](../assets/images/figure.png){: width="480" }
 - A table of contents appears when a page has two or more h2 and h3 headings in total. To leave a heading out of it, write {: .no_toc } on the line after the heading.
@@ -87,7 +87,7 @@ If docs/_data/nav.yml exists, the sidebar follows its order and names.
 - url is a path from the site root, ending in .html. The top page is /.
 - Nesting can be up to 48 levels.
 
-Without nav.yml, the sidebar is built from the folder structure. Folders become groups, and the group name is the first heading of the folder's index.md or else README.md (or else the folder name). The order is the file path, with index.md or else README.md first in each folder. To change the order or leave pages out, use nav.yml.
+Without nav.yml, the sidebar is built from the folder structure. Folders become groups, and the group name is the heading at the top of the folder's index.md or else README.md (or else the folder name). The order is the file path, with index.md or else README.md first in each folder. To change the order or leave pages out, use nav.yml.
 
 ## What you can use in the body
 - Headings, bold, italic, strikethrough, tables, ordered and unordered lists, task lists (- [ ] and - [x]), quotes, horizontal rules, footnotes ([^1]), definition lists (": explanation" on the line after the term), abbreviations (*[HTML]: HyperText Markup Language)

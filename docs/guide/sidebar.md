@@ -57,8 +57,8 @@ guide
 
 - Folder levels are counted from `docs/`. Pages directly under `docs/` are placed first, without a group. In `docs/` and in every folder, `index.md` (or else `README.md`, upper or lower case) comes first.
 - A folder directly under `docs/` is a group, and a folder inside it is a subgroup. Deeper folders nest in the same way, with no limit on the depth. The indentation stops growing from the fifth level.
-- A folder's `index.md` also appears as an item, like other pages. The first heading of `index.md` (or else `README.md`) is also the group name. If there is neither, the folder name is the group name (`guide` and `advanced` in the example above).
-- An item's name is the first heading of the body.
+- A folder's `index.md` also appears as an item, like other pages. The heading at the top of `index.md` (or else `README.md`) is also the group name. If there is neither, the folder name is the group name (`guide` and `advanced` in the example above).
+- An item's name is the heading at the very top of the body (`#` to `###`). A page that does not start with a heading is named after its file.
 - The order is by file path. When you number file names, use the same number of digits, such as `01-` and `02-` (otherwise `10-` comes before `9-`). Within a group, pages come before subgroups. To change the order, to rename items, or to leave pages out, use `nav.yml`.
 
 For how pages are listed for each language, see [Multilingual](i18n.md).

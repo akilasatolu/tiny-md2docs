@@ -21,8 +21,6 @@ p = e;
 return out + esc(text.slice(p, to));
 }
 
-const LIMIT = 5000;
-
 async function fill(d) {
 d.headings = [];
 d.content = '';
@@ -34,7 +32,7 @@ const body = page.querySelector('.tm2d-content') || page.querySelector('main') |
 body.querySelectorAll('script, style').forEach((e) => e.remove());
 const clean = (e) => e.textContent.replace(/\s+/g, ' ').trim();
 d.headings = Array.from(body.querySelectorAll('h2, h3'), clean);
-d.content = clean(body).slice(0, LIMIT);
+d.content = clean(body);
 } catch (e) {}
 }
 

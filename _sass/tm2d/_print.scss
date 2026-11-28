@@ -33,6 +33,12 @@
       break-after: avoid;
     }
 
+    // Closed <details> print their content (browsers without ::details-content ignore this).
+    details:not([open])::details-content {
+      content-visibility: visible;
+      padding-bottom: 16px;
+    }
+
     blockquote,
     tr,
     img {
