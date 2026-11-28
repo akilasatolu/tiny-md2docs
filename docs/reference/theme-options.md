@@ -17,6 +17,7 @@ These are the items you can write in `theme_options` in `docs/_config.yml`.
 | `logo` | None | The path of the logo image in the header. If not set, only the site name text appears |
 | `favicon` | None | The path of the favicon. If not set, none is shown |
 | `search_content_limit` | `5000` | The maximum number of body characters searched (per page) |
+| `lang_layout` | None | How the language of a page is decided. If not set, by file name (`config.ja.md`). `folder` uses the language folder (`ja/config.md`; the language of the whole site stays directly under `docs/`) ([Multilingual](../guide/i18n.md)) |
 | `strings` | None | Overrides for on-screen text. You can also split it by language ([Multilingual](../guide/i18n.md)) |
 
 ## On-screen text

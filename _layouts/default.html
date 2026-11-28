@@ -1,5 +1,5 @@
 {%- assign _tm2d_mode = site.theme_options.dark_mode | default: "auto" -%}
-{%- include lang.html name=page.name -%}
+{%- include lang.html name=page.name path=page.path -%}
 <!doctype html>
 <html lang="{{ tm2d_lang | escape }}"{% if _tm2d_mode == "light" or _tm2d_mode == "dark" %} data-theme="{{ _tm2d_mode }}"{% endif %}>
 <head>

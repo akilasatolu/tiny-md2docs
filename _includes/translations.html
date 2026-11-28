@@ -1,20 +1,31 @@
 {%- comment -%}
   今のページの翻訳(自分を含む)を tm2d_translations に入れる。
-  同じフォルダで、言語を除いた名前が同じファイルを、翻訳どうしとみなす(guide/config.md と guide/config.ja.md)。
+  指定なし: 同じフォルダで、言語を除いた名前が同じファイル(guide/config.md と guide/config.ja.md)。
+  folder: 言語のフォルダを除いたパスが同じファイル(guide/config.md と ja/guide/config.md)。
   各要素は「並びのキー␟言語␟URL」の文字列。サイトの lang が先頭で、ほかは言語の順。
 {%- endcomment -%}
-{%- include lang.html name=page.name -%}
+{%- include lang.html name=page.name path=page.path -%}
+{%- assign _tm2d_folder = false -%}
+{%- if site.theme_options.lang_layout == "folder" -%}{%- assign _tm2d_folder = true -%}{%- endif -%}
 {%- assign _tm2d_stem = tm2d_stem -%}
+{%- assign _tm2d_rest = tm2d_rest -%}
 {%- assign _tm2d_prefix = _tm2d_stem | append: "." -%}
 {%- assign _tm2d_dir = page.path | remove: page.name -%}
 {%- assign _tm2d_found = "" -%}
 {%- assign _tm2d_default = site.lang | default: "en" -%}
-{%- assign _tm2d_same = site.html_pages | where_exp: "p", "p.name contains _tm2d_prefix" -%}
+{%- if _tm2d_folder -%}
+  {%- assign _tm2d_same = site.html_pages | where: "name", page.name -%}
+{%- else -%}
+  {%- assign _tm2d_same = site.html_pages | where_exp: "p", "p.name contains _tm2d_prefix" -%}
+{%- endif -%}
 {%- for _p in _tm2d_same -%}
-  {%- assign _tm2d_pdir = _p.path | remove: _p.name -%}
-  {%- if _tm2d_pdir != _tm2d_dir -%}{%- continue -%}{%- endif -%}
-  {%- include lang.html name=_p.name -%}
-  {%- if tm2d_stem != _tm2d_stem -%}{%- continue -%}{%- endif -%}
+  {%- include lang.html name=_p.name path=_p.path -%}
+  {%- if _tm2d_folder -%}
+    {%- if tm2d_rest != _tm2d_rest -%}{%- continue -%}{%- endif -%}
+  {%- else -%}
+    {%- assign _tm2d_pdir = _p.path | remove: _p.name -%}
+    {%- if _tm2d_pdir != _tm2d_dir or tm2d_stem != _tm2d_stem -%}{%- continue -%}{%- endif -%}
+  {%- endif -%}
   {%- if tm2d_lang == _tm2d_default -%}{%- assign _tm2d_rank = "0" -%}{%- else -%}{%- assign _tm2d_rank = "1" -%}{%- endif -%}
   {%- capture _tm2d_rec -%}{{ _tm2d_rank }}{{ tm2d_lang }}␟{{ tm2d_lang }}␟{{ _p.url }}␟.{%- endcapture -%}
   {%- assign _tm2d_found = _tm2d_found | append: _tm2d_rec | append: "␞" -%}

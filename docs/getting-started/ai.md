@@ -87,6 +87,7 @@ theme_options (omitted items use the default):
 | logo | none | path of the logo image (from the site root; do not add /repo) |
 | favicon | none | path of the favicon (same as above) |
 | search_content_limit | 5000 | maximum number of body characters searched (per page) |
+| lang_layout | none | folder decides the language by the top folder (ja/config.md) instead of the file name (config.ja.md) |
 | strings | none | overrides of the interface text |
 
 ## Writing pages
@@ -166,6 +167,7 @@ Create docs/assets/css/style.scss. The first two lines and the @import are requi
 ## Multilingual
 - Put a translation next to the original page, with the language added to the file name: docs/guide/config.md and docs/guide/config.ja.md. Pages without a language in the name are in the language of the whole site.
 - The language is a two-letter ISO 639-1 code, optionally with a region (zh-CN). No setting is needed, and the language switch appears on pages that have translations.
+- To split languages by folder instead (docs/ja/guide/config.md), set theme_options.lang_layout: folder. Pages in the language of the whole site stay directly under docs/; do not make a folder for that language. Translations are files with the same path apart from the language folder. In nav.ja.yml, write URLs such as /ja/guide/config.html.
 
 ```yaml
 lang: en

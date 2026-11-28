@@ -87,6 +87,7 @@ theme_options(省略した項目は既定値):
 | logo | なし | ロゴ画像のパス(サイトのルートから。/repo は付けない) |
 | favicon | なし | ファビコンのパス(同上) |
 | search_content_limit | 5000 | 検索で調べる本文の文字数の上限(1ページあたり) |
+| lang_layout | なし | folder にすると、ファイル名(config.ja.md)の代わりに一番上のフォルダ(ja/config.md)で言語を決める |
 | strings | なし | 画面の文言の上書き |
 
 ## ページの書き方
@@ -166,6 +167,7 @@ docs/assets/css/style.scss を作ります。最初の2行と @import は必須�
 ## 多言語
 - 翻訳は、元のページの隣に、ファイル名に言語を足して置きます: docs/guide/config.md と docs/guide/config.ja.md。名前に言語のないページは、サイト全体の言語です。
 - 言語は ISO 639-1 の2文字で、地域も付けられます(zh-CN)。設定は要らず、翻訳のあるページに言語の切り替えが出ます。
+- フォルダで分けるとき(docs/ja/guide/config.md)は theme_options.lang_layout: folder を指定します。サイト全体の言語のページは docs/ の直下に置き、その言語のフォルダは作りません。言語のフォルダを除いたパスが同じファイルが翻訳になります。nav.ja.yml の URL は /ja/guide/config.html のように書きます。
 
 ```yaml
 lang: en

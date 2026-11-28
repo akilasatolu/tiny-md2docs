@@ -87,6 +87,7 @@ theme_options(생략한 항목은 기본값):
 | logo | 없음 | 로고 이미지 경로(사이트 루트부터. /repo는 붙이지 않음) |
 | favicon | 없음 | 파비콘 경로(위와 같음) |
 | search_content_limit | 5000 | 검색에서 확인하는 본문 글자 수의 상한(한 페이지당) |
+| lang_layout | 없음 | folder면 파일 이름(config.ja.md) 대신 맨 위 폴더(ja/config.md)로 언어를 정함 |
 | strings | 없음 | 화면 문구 덮어쓰기 |
 
 ## 페이지 작성
@@ -166,6 +167,7 @@ docs/assets/css/style.scss를 만듭니다. 처음 두 줄과 @import는 필수�
 ## 다국어
 - 번역은 원래 페이지 옆에, 파일 이름에 언어를 더해 둡니다: docs/guide/config.md와 docs/guide/config.ko.md. 이름에 언어가 없는 페이지는 사이트 전체의 언어입니다.
 - 언어는 ISO 639-1의 두 글자이고 지역도 붙일 수 있습니다(zh-CN). 설정은 필요 없고, 번역이 있는 페이지에 언어 전환이 나옵니다.
+- 폴더로 나눌 때(docs/ja/guide/config.md)는 theme_options.lang_layout: folder를 지정합니다. 사이트 전체 언어의 페이지는 docs/ 바로 아래에 두고, 그 언어의 폴더는 만들지 않습니다. 언어 폴더를 뺀 경로가 같은 파일이 번역이 됩니다. nav.ja.yml의 URL은 /ja/guide/config.html처럼 씁니다.
 
 ```yaml
 lang: en
