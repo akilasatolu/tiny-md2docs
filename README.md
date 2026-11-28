@@ -32,7 +32,7 @@ GitHub Pages で使う、小さな Jekyll のドキュメントテーマです�
 `@v0` は、新しい版が次のビルドから自動で反映されます。版を固定するときは、`@` のあとに版の名前を書きます。版の一覧は [CHANGELOG.md](CHANGELOG.md) にあります。
 
 ```yaml
-remote_theme: akilasatolu/tiny-md2docs@v0.3.0
+remote_theme: akilasatolu/tiny-md2docs@v0.3.1
 ```
 
 ## 設定
@@ -84,10 +84,10 @@ remote_theme: akilasatolu/tiny-md2docs@v0.3.0
 | ファイル | gzip |
 | --- | --- |
 | style.css | 4166 バイト |
-| tm2d.js | 1783 バイト |
-| search-core.js | 2635 バイト |
-| search-ui.js | 2644 バイト |
-| 合計 | 11228 バイト |
+| tm2d.js | 1547 バイト |
+| search-core.js | 2015 バイト |
+| search-ui.js | 2204 バイト |
+| 合計 | 9932 バイト |
 
 ## 開発
 
@@ -98,11 +98,13 @@ npm test                  # 検索のテスト
 script/size.sh            # サイズを測る
 ```
 
+`assets/js` のファイルは、容量を減らすため、コメントの行と行頭の字下げを置きません。
+
 版を出すときは、`CHANGELOG.md` と版の表記を直して commit し、版のタグを付けて、`v0` ブランチも同じ commit に進めます。
 
 ```bash
-git tag -a v0.3.0 -m v0.3.0
-git push --atomic origin main v0.3.0 main:v0
+git tag -a v0.3.1 -m v0.3.1
+git push --atomic origin main v0.3.1 main:v0
 ```
 
 ## ライセンス
